@@ -1,18 +1,28 @@
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
-	<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css' />
+	<link href='animate.css' rel='stylesheet' type='text/css' />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <title>macapinlac.com</title>
         <meta name="description" content="There are a tonne of reasons why there isn't a website here anymore.">
+	<script>
+		$(document).ready(function() {
+			$('.social-media a').each(function(e) {
+				$(this).hover(function(e) { $(this).addClass('animated pulse'); },
+                                              function(e) { $(this).removeClass('animated pulse'); });
+			});
+		})
+	</script>
 	<style>
-	.main-container, .social-media {
+	.main-container, .social-media, .old-stuff {
 		width: 80%;
 	}
 	.main-container {
-		font-family: 'Inconsolata';	
+		font-family: 'Inconsolata', monospace;
 	}
 	.intro .first {
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 17pt;
 	}
 	#mc_embed_signup {
@@ -23,6 +33,11 @@
 		margin-top: 10px;
 		font-family: arial;
 	}
+	.social-media a {
+		text-decoration: none;
+		color: #aaa;
+		border-bottom: 1px solid #ababab;
+	}
 	.social-media ul {
 		list-style: none;
 		margin: 0px;
@@ -30,7 +45,15 @@
 	}
 	.social-media ul li {
 		display: inline-block;
+		margin-right: 15px;
 		font-size: 10pt;
+	}
+	.old-stuff {
+		margin-top: 15px;
+	}
+	.old-stuff a {
+		font-size: 10pt;
+		color: #ccc;
 	}
 	</style>
     </head>
@@ -57,7 +80,7 @@
 			</form>
 		</div>
 
-<!--End mc_embed_signup-->
+		<!--End mc_embed_signup-->
 	</div>
 	<div class="social-media">
 		<ul>
@@ -76,7 +99,7 @@
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
+            e.src='http://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
