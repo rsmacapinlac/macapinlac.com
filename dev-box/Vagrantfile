@@ -1,0 +1,24 @@
+#n -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box       = 'dev-box-macapinlac.com'
+  config.vm.box_url   = 'https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box'
+
+
+  config.vm.network "forwarded_port", guest: 80, host: 8888
+
+  config.vm.synced_folder "salt/root/", "/srv/salt/"
+  config.vm.synced_folder "../site", "/vagrant/site/"
+
+  # Use all the defaults:
+  config.vm.provision :salt do |salt|
+    salt.bootstrap_options = "-F -c /tmp -P"
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
+    salt.log_level = "info"
+  end
+
+end
+
