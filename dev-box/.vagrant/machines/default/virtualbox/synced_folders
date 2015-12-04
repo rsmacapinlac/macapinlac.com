@@ -1,1 +1,0 @@
-{"virtualbox":{"/srv/salt":{"guestpath":"/srv/salt","hostpath":"/home/ritchie/code/macapinlac/dev-box/salt/root","disabled":false},"/vagrant/site":{"guestpath":"/vagrant/site","hostpath":"/home/ritchie/code/macapinlac/site","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/ritchie/code/macapinlac/dev-box","disabled":false}}}
