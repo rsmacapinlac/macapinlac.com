@@ -1,0 +1,13 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {{ page.content }}
+    <ul>
+    {% for module in page.collection() %}
+      <li>
+        {{ module.title }}
+        {{ module.content }}
+      </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

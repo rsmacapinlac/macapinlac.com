@@ -1,0 +1,33 @@
+enabled: true
+built_in_css: true
+route: /theoffice
+rememberme:
+  enabled: true
+  timeout: 1800
+  name: grav-rememberme
+oauth:
+  enabled: false
+  user:
+    autocreate: false
+    access:
+      site:
+        login: '1'
+  providers:
+    Facebook:
+      enabled: false
+    Google:
+      enabled: false
+    GitHub:
+      enabled: false
+    Twitter:
+      enabled: false
+user_registration:
+  enabled: true
+  fields:
+    - username
+    - password
+    - email
+    - fullname
+    - title
+    - access
+    - state

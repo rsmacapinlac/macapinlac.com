@@ -1,2 +1,4 @@
 dev-box/.vagrant
-site/cache
+site/logs/**
+site/user/pages/**
+site/cache/**

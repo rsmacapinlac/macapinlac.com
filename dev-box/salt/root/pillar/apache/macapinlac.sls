@@ -18,5 +18,4 @@ apache:
       - cache
       - expires
       - headers
-      - php5
       - rewrite
