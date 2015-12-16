@@ -26,10 +26,15 @@ floats your boat.
 
 Make sure that you have VirtualBox and Vagrant installed on your laptop.
 
+```
 cd dev-box
 vagrant up
 
-Wait...
+# Wait...
+
+vagrant ssh -c "sudo service apache2 restart"
+
+```
 
 Open browser and point to http://localhost:8888 <-- Boom! working copy of
 macapinlac.com
