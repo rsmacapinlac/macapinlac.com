@@ -1,5 +1,5 @@
 enabled: true
-route: '/theoffice'
+route: '/admin'
 theme: grav
 dashboard:
   days_of_stats: 7

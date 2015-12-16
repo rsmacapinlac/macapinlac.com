@@ -1,6 +1,8 @@
 enabled: true
-from: 'ritchie@macapinlac.com'
-to: 'ritchie+website@macapinlac.com'
+from:
+from_name:
+to:
+to_name:
 mailer:
   engine: mail
   smtp:

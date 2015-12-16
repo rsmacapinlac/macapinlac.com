@@ -12,13 +12,13 @@
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 
     {% block stylesheets %}
-    {% do assets.addcss('http://fonts.googleapis.com/css?family=inconsolata') %}
+      {% do assets.addcss('http://fonts.googleapis.com/css?family=inconsolata') %}
+      {% do assets.add('theme://css/style.css',200) %}
     {% endblock %}
     {{ assets.css() }}
-
-    {{ assets.js() }}
     {% block javascripts %}
     {% endblock %}
+    {{ assets.js() }}
 
 {% endblock head %}
 </head>

@@ -1,3 +1,15 @@
+# v1.1.2
+## 12/11/2015
+
+1. [](#improved)
+    Fix double escaping comments text and author
+
+# v1.1.1
+## 12/10/2015
+
+1. [](#improved)
+    Drop the autofocus on the comment form
+
 # v1.1.0
 ## 11/24/2015
 

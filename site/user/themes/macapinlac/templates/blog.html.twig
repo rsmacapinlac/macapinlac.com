@@ -1,10 +1,6 @@
 {% embed 'partials/base.html.twig' %}
 
 {% block content %}
-  {% if config.plugins.breadcrumbs.enabled %}
-    {% include 'partials/breadcrumbs.html.twig' %}
-  {% endif %}
-
   <div class="blog-content">
     <div class="blog-header">
       <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
