@@ -1,15 +1,17 @@
 #main-container{
   width: 80%;
+  margin-left: 1.4em;
 }
 header#pageheader{
   font-family: 'Inconsolata', monospace;
 }
 header#pageheader h1 {
   font-weight: 700;
-  font-size: 1.3em;
+  font-size: 2.5em;
 }
 header#pageheader span.description, section#content {
   font-family: Arial, sans-serif;
+  line-height: 1.3em;
 }
 header#pageheader nav.navbar {
   font-family: Arial, sans-serif;
