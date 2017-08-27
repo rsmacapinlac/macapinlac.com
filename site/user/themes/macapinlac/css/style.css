@@ -29,6 +29,17 @@ header#pageheader nav.navbar {
   font-family: Arial, sans-serif;
   font-size: 0.95em;
 }
+section#content div.blog-header div.tags {
+  text-align: right;
+}
+section#content div.blog-header div.tags a {
+  font-size: 0.9em;
+  border-width: 0px;
+  color: #ccc;
+}
+section#content div.blog-header div.tags a:hover {
+  text-decoration: underline;
+}
 section#content h2 {
   font-family: 'Inconsolata', monospace;
   font-size: 2em;
@@ -50,6 +61,21 @@ section#content div.blog-date {
 }
 section#content ul li {
   margin-bottom: 0.35em;
+}
+section#content blockquote {
+  color: #ccc;
+  border-left: 3px solid #ccc;
+}
+section#content blockquote p {
+  margin-left: 10px;
+}
+section#content div.pagination a {
+  color: #F28200;
+  border-bottom: 1px solid #F28200;
+}
+section#content div.pagination {
+  color: #F28200;
+  font-size: 1.2em;
 }
 
 footer#pagefooter {

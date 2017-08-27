@@ -20,10 +20,11 @@
         {{ child.summary }}
       {% endfor %}
 
-      {% if config.plugins.pagination.enabled and collection.params.pagination %}
-        {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
-      {% endif %}
     </div>
+
+    {% if config.plugins.pagination.enabled and collection.params.pagination %}
+      {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+    {% endif %}
 
     <div id="sidebar">
       {% include 'partials/sidebar.html.twig' with {'blog':page} %}
