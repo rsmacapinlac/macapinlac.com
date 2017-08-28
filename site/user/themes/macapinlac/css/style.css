@@ -64,7 +64,8 @@ section#content ul li {
 }
 section#content blockquote {
   color: #ccc;
-  border-left: 3px solid #ccc;
+  border-left: 10px solid #ccc;
+  margin: unset;
 }
 section#content blockquote p {
   margin-left: 10px;
