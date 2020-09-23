@@ -1,0 +1,79 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ config.site.metadata.description }}</title>
+    {% include 'partials/metadata.html.twig' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png', true) }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+    {% block stylesheets %}
+      {% do assets.addcss('http://fonts.googleapis.com/css?family=inconsolata') %}
+      {% do assets.add('theme://css/style.css',200) %}
+    {% endblock %}
+    {{ assets.css() }}
+    {% block javascripts %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head %}
+</head>
+<body id="top" class="{{ page.header.body_classes }}">
+    <div id="main-container">
+        {% block header %}
+        <header id="pageheader">
+            <div id="logo">
+                <h1><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h1>
+                <span class="description">{{ config.site.metadata.description }}</span>
+            </div>
+            <nav class="navbar">
+                {% block header_navigation %}
+                {% include 'partials/navigation.html.twig' %}
+                {% endblock %}
+            </nav>
+        </header>
+        {% endblock %}
+
+        {% block showcase %}{% endblock %}
+
+        {% block body %}
+        <section id="content" class="{{ class }}">
+            {% block content %}{% endblock %}
+        </section>
+        {% endblock %}
+
+        {% block footer %}
+        <footer id="pagefooter">
+          <nav class="navbar">
+            {% include 'partials/navigation.html.twig' %}
+          </nav>
+          <div class="socialmedia">
+            <ul>
+              <li><a href="https://twitter.com/rsmacapinlac">twitter.com/rsmacapinlac</a></li>
+              <li><a href="https://www.facebook.com/ritchie.macapinlac">facebook.com/ritchie.macapinlac</a></li>
+              <li><a href="http://instagram.com/rsmacapinlac">instagram.com/rsmacapinlac</a></li>
+              <li><a href="https://www.linkedin.com/in/rsmacapinlac">linkedin.com/in/rsmacapinlac</a></li>
+            </ul>
+          </div>
+        </footer>
+        {% endblock %}
+    </div>
+    {% block bottom %}
+        {{ assets.js('bottom') }}
+        <script>
+        $(function () {
+            $(document).ready(function() {
+              $.slidebars({
+                hideControlClasses: true,
+                scrollLock: true
+              });
+            });
+        });
+        </script>
+    {% endblock %}
+</body>
+</html>

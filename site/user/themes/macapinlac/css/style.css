@@ -1,0 +1,108 @@
+#main-container{
+  width: 80%;
+  margin-left: 1.4em;
+}
+#main-container a {
+  color: #008ED3;
+  text-decoration: none;
+  border-bottom: 1.3px solid #008ED3;
+}
+#main-container a:visited {
+  color: #006799;
+}
+header#pageheader{
+  font-family: 'Inconsolata', monospace;
+}
+header#pageheader h1 {
+  font-weight: 700;
+  font-size: 2.4em;
+}
+header#pageheader h1 a {
+  text-decoration: underline;
+  border-bottom: 0px;
+}
+header#pageheader span.description, section#content {
+  font-family: Arial, sans-serif;
+  line-height: 1.3em;
+}
+header#pageheader nav.navbar {
+  font-family: Arial, sans-serif;
+  font-size: 0.95em;
+}
+section#content div.blog-header div.tags {
+  text-align: right;
+}
+section#content div.blog-header div.tags a {
+  font-size: 0.9em;
+  border-width: 0px;
+  color: #ccc;
+}
+section#content div.blog-header div.tags a:hover {
+  text-decoration: underline;
+}
+section#content h2 {
+  font-family: 'Inconsolata', monospace;
+  font-size: 2em;
+  text-transform: lowercase;
+  margin: 26px auto;
+  line-height: normal;
+}
+section#content h2 {
+  color: #F28200;
+}
+section#content h3 {
+  color: #F28200;
+  font-weight: normal;
+}
+section#content div.blog-date {
+  color: #ccc;
+  font-size: 0.8em;
+  text-align: right;
+}
+section#content ul li {
+  margin-bottom: 0.35em;
+}
+section#content blockquote {
+  color: #ccc;
+  border-left: 10px solid #ccc;
+  margin: unset;
+}
+section#content blockquote p {
+  margin-left: 10px;
+}
+section#content div.pagination a {
+  color: #F28200;
+  border-bottom: 1px solid #F28200;
+}
+section#content div.pagination {
+  color: #F28200;
+  font-size: 1.2em;
+}
+
+footer#pagefooter {
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  margin-top: 26px;
+}
+footer#pagefooter a {
+  text-decoration: none;
+  color: #aaa;
+  border-bottom: 1px solid #ababab;
+}
+footer#pagefooter ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+footer#pagefooter ul li {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 0.9em;
+}
+footer#pagefooter div ul {
+  font-size: 0.85em;
+  margin-top: 15px;
+}
+footer#pagefooter div.socialmedia {
+  margin-bottom: 60px;
+}

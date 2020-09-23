@@ -1,0 +1,36 @@
+{% embed 'partials/base.html.twig' %}
+
+{% block content %}
+  <div class="blog-content">
+    <div class="blog-header">
+      <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+      {% if page.taxonomy.tag %}
+      <div class="tags">
+        {% for tag in page.taxonomy.tag %}
+          {% set _url = page.url|split('/') %}
+          <a href="/{{ _url[1] }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if header_image %}
+        {% if header_image_file %}
+          {% set header_image_media = page.media.images[header_image_file] %}
+        {% else %}
+          {% set header_image_media = page.media.images|first %}
+        {% endif %}
+        {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
+      {% endif %}
+    </div>
+    <div class="content">
+      {{ page.content }}
+      <div class="blog-date">
+        <span>{{ page.date|date("d") }} {{ page.date|date("M") }} {{ page.date|date("Y") }}</span>
+      </div>
+    </div>
+    <div id="sidebar" class="block">
+      {% include 'partials/sidebar.html.twig' with {'blog':page.parent}%}
+    </div>
+  </div>
+{% endblock %}
+
+{% endembed %}

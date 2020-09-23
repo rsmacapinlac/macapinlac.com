@@ -1,0 +1,35 @@
+name: Macapinlac
+version: 0.0.1
+description: "This is the theme for macapinlac.com"
+icon: empire
+author:
+  name: Ritchie Macapinlac
+  email: ritchie@macapinlac.com
+  url: http://macapinlac.com
+homepage:
+demo:
+keywords:
+bugs:
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    default_lang:
+      type: text
+      size: x-small
+      label: Default lang
+      default: 'en'
+      validate:
+        type: text
+
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in navbar
+        highlight: 1
+        default: 1
+        options:
+          1: Enabled
+          0: Disabled
+        validate:
+          type: bool

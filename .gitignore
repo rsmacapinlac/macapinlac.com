@@ -1,0 +1,4 @@
+dev-box/.vagrant
+site/logs/**
+site/user/pages/**
+site/cache/**
