@@ -6,7 +6,7 @@ slug: now
 
 I got the idea from [Derek Sivers](http://sivers.org) (and [a whole bunch of people](http://nownownow.com/)). It's an interesting way to articulate what my current focuses are today. It holds me accountable to myself and to you. (Yea you! The person reading this.)
 
-## So what am I doing these days
+## So what am I doing these days?
 
 Nucleoid work has slowly restarted. I feel like I should probably start acting like a founder again.
 
