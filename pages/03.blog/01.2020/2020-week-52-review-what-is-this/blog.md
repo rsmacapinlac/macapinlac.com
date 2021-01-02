@@ -1,5 +1,6 @@
 ---
 title: '2020 Week 52 Review: What is this?!'
+published: true
 content:
     items:
         - '@self.children'
