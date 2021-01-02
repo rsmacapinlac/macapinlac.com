@@ -12,11 +12,9 @@ content:
     url_taxonomy_filters: true
 ---
 
-What is this??
+What is this?? I'm going to try and write my thoughts down more frequently (weekly) on this blog (that no one reads anymore). I figure that this would be cheaper than paying for an app like DayOne (plus I host all my own data).
 
-I'm going to try and write my thoughts down more frequently.
-
----
+===
 
 # Closing off 2020
 
@@ -26,4 +24,4 @@ It has been quite a year. Let's see if I can recap it quickly. At the end of 201
 
 # What's next?
 
-Well, I haven't
+Well, I haven't finished my 2021 goals yet. I suppose I'll be sharing that when I get it sorted out. Next week, I'm back to work.
