@@ -12,7 +12,7 @@ content:
     url_taxonomy_filters: true
 ---
 
-What is this?? I'm going to try and write my thoughts down more frequently (weekly) on this blog (that no one reads anymore). I figure that this would be cheaper than paying for an app like DayOne (plus I host all my own data).
+What is this?? I'm going to try and write my thoughts down more frequently (weekly) on this blog (that no one reads anymore). I figure that this would be cheaper than paying for an app like [Day One](https://dayoneapp.com) (plus I host all my own data).
 
 ===
 
@@ -24,6 +24,14 @@ Like most people, the pandemic did affect us. Our network had to be upgraded. Th
 
 2019 was probably my most fit year because I was riding my road bike to work 3 times a week. 2020 was year that I lost all that fitness. Working from home put a small wrench in the plans.
 
+I was getting overwhelmed with my GTD system so I've been putting sometime to rethink my systems and tools. I've been looking at the Bullet Journal and trying to adapt it for me.
+
+# Last week?
+
+- I didn't take vacation, however it was super quiet that I spent time catching up and planning.
+- I stopped TrainerRoad, and moved over to Zwift.
+- There was a lot of eating.
+
 # What's up for this up coming week?
 
-Well, I haven't finished my 2021 goals yet. Everyone is back at work, so I expect it to be a bit busy this week. The kids are back in school, so I will be happy if we settle back into the regular routine.
+Well, I haven't finished my 2021 goals yet. Everyone is back at work, so I expect it to be a bit busy this week. The kids are back in school, so I will be happy if we settled back into our regular routine.
