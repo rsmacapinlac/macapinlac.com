@@ -20,8 +20,10 @@ What is this?? I'm going to try and write my thoughts down more frequently (week
 
 It has been quite a year. Let's see if I can recap it quickly. At the end of 2019, I moved jobs to join a new project at work. Corona happened, lock down was officially declared on my birthday. The general theme of 2020 for me was work and learning. There was a lot of learning with the new role (technology learning, learning how to manage different people and project delivery). 
 
+Like most people, the pandemic did affect us. Our network had to be upgraded. The kids spent a lot of time online doing remote school to finish off their school year. We originally had plans to vacation in Barcelona; that fell through. Instead, we explored our own backyard (like most) and went to Kelowna and Whistler. Our family came from Edmonton to visit as well.
+
 2019 was probably my most fit year because I was riding my road bike to work 3 times a week. 2020 was year that I lost all that fitness. Working from home put a small wrench in the plans.
 
-# What's next?
+# What's up for this up coming week?
 
-Well, I haven't finished my 2021 goals yet. I suppose I'll be sharing that when I get it sorted out. Next week, I'm back to work.
+Well, I haven't finished my 2021 goals yet. Everyone is back at work, so I expect it to be a bit busy this week. The kids are back in school, so I will be happy if we settle back into the regular routine.
