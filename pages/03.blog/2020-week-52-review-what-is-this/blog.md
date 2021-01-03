@@ -30,7 +30,7 @@ I was getting overwhelmed with my GTD system so I've been putting sometime to re
 
 - I didn't take vacation, however it was super quiet that I spent time catching up and planning.
 - I stopped TrainerRoad, and moved over to Zwift.
-- There was a lot of eating.
+- There was a lot of eating...because New Years.
 
 # What's up for this up coming week?
 
