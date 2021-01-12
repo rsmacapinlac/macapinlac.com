@@ -23,7 +23,7 @@ Ok, all the plans from last week will be moving to this week. So it will be a bi
 
 - Even when I wasn't feeling so well, I still try to close off my Apple Watch Rings (to get a small / minimum amount) of activity.
 - There was a lot of fire fighting last week, and it makes the days go by quickly.
-- The chore board has been ressurrected!
+- The kid's chore board has been ressurrected!
 
 ## What didn't go well?
 
