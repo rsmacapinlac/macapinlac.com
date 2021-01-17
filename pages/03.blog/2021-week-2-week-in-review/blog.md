@@ -21,7 +21,3 @@ Last night, there was a deployment that was related to my project at work. The w
 - The outbreak was a bit scary, however it all went fairly well.
 - Had a few 'career' conversations this week that I need to think about
 - I was able to carve out some early mornings to work on a small personal project related to publishing my [Obsidian.md](https://www.obsidian.md) valuts for myself.
-
-## Some thoughts.
-
-Ok, something a bit different since I'm a bit mentally drained from this past week.
