@@ -7,9 +7,7 @@ It has been a long time since we've seen each other. The last time was at an air
 
 ===
 
-I hope you (the reader) allow me to be a bit selfish and express my thoughts in the best way I know.
-
-I've avoided it by burying myself in work for the last two weeks. Admittedly, I'm not the best at dealing with situations like this to be honest with you. Not my best quality, that is for sure. But I took some time off work to see you, even if it was only for a few minutes. It was the first time I've seen you since the airport 10+ years ago. I'm ashamed to say it's been that long. You didn't look the same anymore. You've lived 10 more years since we have seen each other and that time can physically change people.
+I've avoided it by burying myself in work for the last two weeks. Admittedly, I'm not the best at dealing with situations like this to be honest with you. Not my best quality, that is for sure. But I took some time off work to see you, even if it was only for a few minutes. It was the first time since I saw you at the airport 10+ years ago. I'm ashamed to say it's been that long. You didn't look the same anymore. 
 
 Then people started sharing. 
 
