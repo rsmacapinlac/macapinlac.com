@@ -1,6 +1,6 @@
 ---
 title: 'Goodbye my friend'
-published: false
+published: true
 ---
 
 It has been a long time since we've seen each other. The last time was at an airport where you worked a long while ago. I thought about you recently a month ago, over the holidays. It is hard to believe that you're gone.
