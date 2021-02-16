@@ -1,6 +1,6 @@
 ---
 title: '2021 Week 7 Week in review'
-published: false
+published: true
 content:
     items:
         - '@self.children'
@@ -12,4 +12,4 @@ content:
     url_taxonomy_filters: true
 ---
 
-Honestly, the last few weeks have been pretty busy.
+Honestly, the last few weeks have been pretty busy... gurp!
