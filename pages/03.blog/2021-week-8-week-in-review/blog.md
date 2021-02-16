@@ -28,4 +28,4 @@ So last week was busy. I wrote a post for [Week 7](../2021-week-7-week-in-review
 * Write some _more_ scripts to automate more of my daily "journal" folders. Eg. IFTTT into Todoist into Dropbox then some script into the "daily" folder.
 * Erm, backup scripts for stuff around the house. It's embarassing how much missiong critical things goes on around this house without any backups.
 * Work has a big milestone at the end of the month. The team has been working really hard on getting things ready. This week's goal is to take a 500 foot view of the whole thing (end to end), see if there are any gaps.
-* My weekly reviews are still taking longer than I care for. Is it worth trying to shorten it, or am I nearing that 80 / 20 rule?
+* My weekly reviews are still taking longer (and more brain power) than I care for. Is it worth trying to shorten it, or am I nearing that 80 / 20 rule?
