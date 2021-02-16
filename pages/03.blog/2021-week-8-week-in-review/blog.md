@@ -1,5 +1,5 @@
 ---
-title: '2021 Week 8 Week in review'
+title: '2021 Week 8: A lot of introspection'
 published: true
 content:
     items:
@@ -15,6 +15,8 @@ content:
 Ok, I'm really forcing myself here; It is a Monday night and I'm trying to write this down before I get the kids to bed. Monday night eh, Ritchie? Why yes blog because it was a long weekend and I did most of my work last Friday. So the to-do list was scarce, I also decided to generally empty my motivation yesterday (Sunday).
 
 ===
+
+## Week 7 in review
 
 So last week was busy. I wrote a post for [Week 7](../2021-week-7-week-in-review), and didn't post it until 5 minutes before writing this (hence the _very_ incomplete thought). *sigh* For this post, I am powering through even if it going to be a bulleted list of "stuff".
 
