@@ -19,7 +19,7 @@ Ok, I'm really forcing myself here; It is a Monday night and I'm trying to write
 So last week was busy. I wrote a post for [Week 7](../2021-week-7-week-in-review), and didn't post it until 5 minutes before writing this (hence the _very_ incomplete thought). *sigh* For this post, I am powering through even if it going to be a bulleted list of "stuff".
 
 * Last week ended on a bit of somber note. I've been thinking alot about "leadership" vs "management". Taking leadership requires a lot of effort when you don't want to be abrasive and you're trying to stick to your "nice" core values. It is easier to simply just manage.
-* I've been trying to slowly catch-up on things around the house that I've been putting off. This weekend, I finally re-configured my [Home Assistant](https://www.home-assistant.io) and [OVMS](https://www.openvehicles.com) to my liking. That is pretty satisfying.
+* I've been trying to slowly catch-up on things around the house that I've been putting off. This weekend, I finally re-configured my [Home Assistant](https://www.home-assistant.io) and [OVMS](https://www.openvehicles.com) to my liking.
 * On my weekly review (this morning), I didn't finish two of my goals last week (I had four key ones). What am I doing differently this week? I'm thinking of structuring my "Current month" project in Todoist similarly to something like [Carl Pullein's Goal setting and Tracking video](https://www.youtube.com/watch?v=Q_PghyW4UKg). It might require some admin related work though.
 
 ## This week's goals
