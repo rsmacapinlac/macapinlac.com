@@ -12,7 +12,7 @@ content:
     url_taxonomy_filters: true
 ---
 
-Ok, I'm really forcing myself here; It is a Monday night and I'm trying to write this down before I have to get the kids to bed. Monday night eh, Ritchie? Why yes blog, because it was a long weekend and I did most of my work last Friday. So the to-do list was scarce, I also decided to generally empty my motivation yesterday (Sunday).
+Ok, I'm really forcing myself here; It is a Monday night and I'm trying to write this down before I get the kids to bed. Monday night eh, Ritchie? Why yes blog because it was a long weekend and I did most of my work last Friday. So the to-do list was scarce, I also decided to generally empty my motivation yesterday (Sunday).
 
 ===
 
@@ -25,4 +25,4 @@ So last week was busy. I wrote a post for [Week 7](../2021-week-7-week-in-review
 
 * Write some _more_ scripts to automate more of my daily "journal" folders. Eg. IFTTT to Dropbox then some script into the daily folder.
 * Erm, backup scripts for stuff around the house. It's embarassing how much missiong critical things goes on around this house without any backups.
-* Work has a big milestone at the end of the month. Need to get a better wrangle over that date.
+* Work has a big milestone at the end of the month. The team has been working really hard on getting things ready. This week's goal is to take a 500 foot view of the whole thing (end to end), see if there are any gaps.
