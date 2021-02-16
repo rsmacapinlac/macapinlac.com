@@ -1,6 +1,6 @@
 ---
 title: '2021 Week 8 Week in review'
-published: false
+published: true
 content:
     items:
         - '@self.children'
