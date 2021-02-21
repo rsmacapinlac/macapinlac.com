@@ -1,5 +1,8 @@
 ---
 title: '2021 Week 2 Week in review'
+taxonomy:
+    tag:
+        - WeekInReview
 content:
     items:
         - '@self.children'
