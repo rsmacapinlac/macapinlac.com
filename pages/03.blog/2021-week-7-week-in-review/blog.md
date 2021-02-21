@@ -1,6 +1,9 @@
 ---
 title: '2021 Week 7: A lot of introspection'
 published: true
+taxonomy:
+    tag:
+        - WeekInReview
 content:
     items:
         - '@self.children'
