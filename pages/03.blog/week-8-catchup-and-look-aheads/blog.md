@@ -1,6 +1,9 @@
 ---
 title: 'Week 8: Catchup and look-aheads'
 published: true
+taxonomy:
+    tag:
+        - WeekInReview
 content:
     items:
         - '@self.children'
