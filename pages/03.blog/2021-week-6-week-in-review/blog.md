@@ -1,6 +1,9 @@
 ---
 title: '2021 Week 6 Week in review'
 published: true
+taxonomy:
+    tag:
+        - WeekInReview
 content:
     items:
         - '@self.children'
