@@ -1,5 +1,5 @@
 ---
-title: '2021 Week 7 Week in review'
+title: '2021 Week 6 Week in review'
 published: true
 content:
     items:
