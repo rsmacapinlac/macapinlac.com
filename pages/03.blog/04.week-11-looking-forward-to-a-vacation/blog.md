@@ -12,3 +12,4 @@ content:
     url_taxonomy_filters: true
 ---
 
+I fully admit that I am consistently inconsistent with updating these weekly review items.
