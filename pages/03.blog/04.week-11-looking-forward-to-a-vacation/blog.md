@@ -1,6 +1,9 @@
 ---
 title: '2021 Week 11: Looking forward to a vacation'
-published: false
+published: true
+taxonomy:
+    tag:
+        - WeekInReview
 content:
     items:
         - '@self.children'
