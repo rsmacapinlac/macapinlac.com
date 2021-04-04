@@ -33,4 +33,9 @@ So the deprecated library might not be a big issue (at this point), I'm going to
 
 - Start the garden work! 
 - Clear the downstairs suite of my "stuff".
+- Do some improvements on the home server setup
+
+### Stretch goals?
+
+- Calibrate the 3D printer
 - Evaluate [Notion](https://www.notion.so) for my PKM system (should I stay with Obsidian)
