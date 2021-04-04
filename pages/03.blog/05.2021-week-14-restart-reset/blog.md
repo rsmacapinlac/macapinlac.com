@@ -1,5 +1,5 @@
 ---
-title: '2021 Week 14: A whole new world'
+title: '2021 Week 14: Restart / reset'
 published: false
 content:
     items:
