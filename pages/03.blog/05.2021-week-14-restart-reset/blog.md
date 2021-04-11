@@ -1,6 +1,6 @@
 ---
 title: '2021 Week 14: Restart / reset'
-published: false
+published: true
 content:
     items:
         - '@self.children'
