@@ -26,7 +26,7 @@ It's weird that my crossed off accomplishments from last week were my "stretch g
 
 ## This week
 
-- Improvements on the home server setup: mostly routine clean up of [Home Assistant](https://www.home-assistant.io/), and putting up a proxy server to make things easier to access.
+- Maintenance on the home IT setup: mostly routine clean up of [Home Assistant](https://www.home-assistant.io/), and putting up a proxy server to make things easier to access.
 - A _lot_ of physical clean up this week.
 - The first week back to the 2019 exercise routine.
 - Doing a lot of research for some good courses to take in line with the 2021 goals.
