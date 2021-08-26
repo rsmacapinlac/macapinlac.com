@@ -1,0 +1,16 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: Hello, I'm Ritchie
+    entries:
+     - title: "I'm a tech guy who likes to build useful tools and be part of projects. I'm a husband and a father who runs for exercise and attempts the occassional triathlon. I love learning (from people, books, etc) and on (the small) occassion have others learn from me."
+     - title: I'm a <a href="http://typelogic.com/intj.html" target="_blank">INTJ</a>. I prefer isolated long-term thinking. In general I am pretty approachable unless you've somehow caught me <a href="http://www.urbandictionary.com/define.php?term=Hangry" target="_blank">hangry</a> or before caffeine hits my body.
+     - title: My resume.
+       url: cv.html
+  - title: blog &gt; <a href='feed.xml'>rss</a>
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: "...moar"
+      show_more_url: archive.html
