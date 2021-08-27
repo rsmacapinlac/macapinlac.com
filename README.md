@@ -36,6 +36,10 @@ rake serve
 ```
 Open browser and point to `http://localhost:4000` <-- Boom! working copy of macapinlac.com
 
+# TODO
+
+[] A nice way to take _post drafts to actual blog posts (maybe using Rake) 
+
 # Moar
 
 * https://www.macapinlac.com/blog/2021/08/26/simplification.html
