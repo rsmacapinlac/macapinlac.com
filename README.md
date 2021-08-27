@@ -22,6 +22,11 @@ Wait, you want to run my website locally? Why? Ok...
 
 Assuming that you know how to check out code (you are reading this on GitHub). Go clone this repository, fork it or download it on to your computer. Whichever floats your boat.
 
+### Install some stuff (dependencies)
+
+* rvm (cause it's probably good practice)
+* ncftp
+
 ```
 # Use bundler to ensure that you have all the necessary dependencies
 bundle

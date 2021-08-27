@@ -13,7 +13,7 @@ task :serve => [:clean] do
 end
 
 task :publish => [:build, :dotenv] do
-  command = "ncftpput -R -v -u " + ENV['FTPUSERNAME'] + " -p " + ENV['FTPPASSWORD'] + " " + ENV['FTPSERVER'] + " " + ENV['FTPREMOTEFOLDER'] + " _site"
+  command = "ncftpput -R -v -u " + ENV['FTPUSERNAME'] + " -p " + ENV['FTPPASSWORD'] + " " + ENV['FTPSERVER'] + " " + ENV['FTPREMOTEFOLDER'] + " _site/*"
   sh command
 end
 
