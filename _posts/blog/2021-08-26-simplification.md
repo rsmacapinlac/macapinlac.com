@@ -4,25 +4,25 @@ title:  "Simplification"
 tags: ["macapinlac.com", "personal projects"]
 ---
 
-You know when your smart phone has that 'unread' notification badge on the App? That really irritates me! If you have more than 3 unread messages, don't show me your phone. I might explode with anxiety.
+You know when your smart phone has that 'unread' notification badge on an App? That really irritates me! If you have more than 3 unread messages, don't show me your phone. I might explode with anxiety.
 
 I've always been a fan of minimalist CMS systems. This isn't a slam against platforms like Drupal or Wordpress.  I like them but for a personal site as small as mine they're all overkill. They have a time and a place. If you're a content creator who also has a blog, and will eventually sell merc to your 1M followers. Go nuts with those larger platforms. It isn't for me.
 
-I moved this site to [Grav](https://getgrav.org/) a few years back, and it has been great! It's biggest selling point is that it uses markdown files and doesn't require a database. It isn't perfect, but it was a good enough.
+I moved this site to [Grav](https://getgrav.org/) a few years back, and it has been great! It's biggest selling point is that it uses Markdown files and doesn't require a database. It isn't perfect (- it still requires PHP), but it was a good enough.
 
-My biggest is challenge is really my own doing. You see, I host this website on a shared server. Why? Because I'm too cheap to pay for a dedicated server. This essentially means that I'm at the mercy of the sysadmins of the providers. Normally this isn't a big deal, however a few months back [Grav changed their minimum PHP version requirements](https://getgrav.org/blog/raising-php-requirements-2020). I'm sure for good reason. I do what I normally do. I wait for my provided to provide me the required version of PHP.
+My biggest is challenge is really my own doing. You see, I host this website on a shared server. Why? Because I'm too cheap to pay for a dedicated server. This essentially means that I'm at the mercy of the sysadmins of the providers. Normally this isn't a big deal, however a few months back [Grav changed their minimum PHP version requirements](https://getgrav.org/blog/raising-php-requirements-2020). I'm sure for good reason. I do what I normally do. I wait for my provider to upgrade the required version of PHP.
 
 Since then, the number of notification badges looking to update Grav has slowly piled up and it has been slowly driving me crazy. I just got tired of waiting.
 
 ## Enter Jekyll
 
-[Jekyll](https://jekyllrb.com/) is a Ruby and Markdown powered static site generator. What does that mean? You install some stuff on your desktop (or laptop), you write your content in markdown (like I usually do) and it generates a website for you. This website is plain 'ol HTML, CSS and JavaScript, like a 1998 website. The files are uploaded (in my case via FTP) to a webserver (in my shared hosting). 
+[Jekyll](https://jekyllrb.com/) is a Ruby and Markdown powered static site generator. What does that mean? You install some stuff on your desktop (or laptop), you write your content in markdown (like I usually do) and it generates a website for you. This website is plain 'ol HTML, CSS and JavaScript, like a website from 1998. The files are uploaded (in my case via FTP) to a webserver. 
 
-The requirements to "run" the site is ultimately simplified. All you need is a plain 'ol vanilla webserver. No PHP requirements, or a big MySQL database either. I use my local computer (which I control) to write content in Markdown and publish the site.
+The requirements to "run" the site is ultimately simplified. All you need is a plain 'ol vanilla webserver; not PHP, not a MySQL database either. I use my local computer to write content in Markdown and publish the site.
 
 Jekyll [isn't the only tool](https://www.google.com/search?q=static+site+generator) that does this (I'm not even sure if it is the best -- I didn't do much research) but I'm a Ruby guy at heart and it seemed simple enough to use.
 
-A few ruby versions installation, a [Jekyll version change](https://github.com/riggraz/no-style-please/issues/5), a strong contemplation of my life choices later and I got it up and running.
+A few ruby versions installation, a [Jekyll version change](https://github.com/riggraz/no-style-please/issues/5), a strong contemplation of my life choices later and I got everything up and running.
 
 ## Workflow?
 
@@ -53,7 +53,6 @@ rake build    # this calls the clean command, and then builds the site
 rake serve    # this calls the clean command, and the the jekyll serve with -D and -H switches (I like to be able to access the site from different devices)
 rake publish  # calls the rake build, and uses ncftpput to FTP the _site folder to whats been defined in the .env file
 ```
-
 I will probably add more as I continue to use this new tool. So if you'd like to continue to follow along my website shananigans, here is the [github repository](https://github.com/rsmacapinlac/macapinlac.com).
 
 
