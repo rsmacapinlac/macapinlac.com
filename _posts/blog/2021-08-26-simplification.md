@@ -12,7 +12,7 @@ I moved this site to [Grav](https://getgrav.org/) a few years back, and it has b
 
 My biggest is challenge is really my own doing. You see, I host this website on a shared server. Why? Because I'm too cheap to pay for a dedicated server. This essentially means that I'm at the mercy of the sysadmins of the providers. Normally this isn't a big deal, however a few months back [Grav changed their minimum PHP version requirements](https://getgrav.org/blog/raising-php-requirements-2020). I'm sure for good reason. I do what I normally do. I wait for my provided to provide me the required version of PHP.
 
-I got tired of waiting.
+Since then, the number of notification badges looking to update Grav has slowly piled up and it has been slowly driving me crazy. I just got tired of waiting.
 
 ## Enter Jekyll
 
@@ -54,6 +54,6 @@ rake serve    # this calls the clean command, and the the jekyll serve with -D a
 rake publish  # calls the rake build, and uses ncftpput to FTP the _site folder to whats been defined in the .env file
 ```
 
-I will probably add more as I continue to use this new tool.
+I will probably add more as I continue to use this new tool. So if you'd like to continue to follow along my website shananigans, here is the [github repository](https://github.com/rsmacapinlac/macapinlac.com).
 
 

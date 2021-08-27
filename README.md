@@ -38,7 +38,7 @@ Open browser and point to `http://localhost:4000` <-- Boom! working copy of maca
 
 # TODO
 
-[] A nice way to take _post drafts to actual blog posts (maybe using Rake) 
+[ ] A nice way to take _post drafts to actual blog posts (maybe using Rake) 
 
 # Moar
 
