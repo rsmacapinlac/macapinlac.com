@@ -12,29 +12,25 @@ I'm writing me a README file. Which is why you're probably reading this.
 ## This is the source code to help me manage my website
 
 You see, I'm thinking about starting a new website at macapinlac.com. I didn't
-want to run Wordpress or Blogger because it was just way to complicated. Then I
-found Grav. So I'm running that.
+want to run Wordpress or Blogger because it was just way to complicated. 
 
-On another project, I also started to run Vagrant boxes. Which is an awesome
-idea because I don't need to install apache / php on my laptop.
+I'm using [Jekyll](https://jekyllrb.com/) which is a static site generator.
 
 ## Great, how do I run it then?
 
-Assuming that you know how to check out code (you are reading this on GitHub).
-Go clone this repository, fork it or download it on to your computer. Whichever
-floats your boat.
+Wait, you want to run my website locally? Why? Ok...
 
-Make sure that you have VirtualBox and Vagrant installed on your laptop.
+Assuming that you know how to check out code (you are reading this on GitHub). Go clone this repository, fork it or download it on to your computer. Whichever floats your boat.
 
 ```
-cd dev-box
-vagrant up
+# Use bundler to ensure that you have all the necessary dependencies
+bundle
 
-# Wait...
-
-vagrant ssh -c "sudo service apache2 restart"
-
+# I build a rake task
+rake serve
 ```
+Open browser and point to `http://localhost:4000` <-- Boom! working copy of macapinlac.com
 
-Open browser and point to http://localhost:8888 <-- Boom! working copy of
-macapinlac.com
+# Moar
+
+* https://www.macapinlac.com/blog/2021/08/26/simplification.html

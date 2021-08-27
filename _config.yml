@@ -30,6 +30,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # permalink: /:slug.html
 
+exclude: ["LICENSE", "README.md", "Rakefile", "env_example", "Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
+
 defaults:
   # blog 
   - scope:
