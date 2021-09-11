@@ -25,6 +25,9 @@ namespace :post do
   task :new, [:title] do |t, args|
     @title = args[:title]
     @slug = build_slug(args[:title])
+
+    FileUtils.mkdir '_drafts' unless File.exist? '_drafts'
+
     FileUtils.touch("_drafts/#{@slug}.md")
     open("_drafts/#{@slug}.md", 'a' ) do |file|
       file.puts "---"
