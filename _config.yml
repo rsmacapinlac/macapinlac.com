@@ -1,0 +1,41 @@
+# Dependencies
+markdown:         redcarpet 
+highlighter:      pygments
+
+plugins:
+  - jekyll-paginate
+  - classifier-reborn
+  - jekyll-gist
+  - pygments
+
+# Permalinks
+permalink:        pretty
+# relative_permalinks: true
+
+# Setup
+title:            macapinlac.com 
+# tagline:          'Just a website, standing infront of a reader asking them to love it.'
+description:      'Just my humble space on the Internet. Nothing really to see.'
+url:              https://macapinlac.com
+baseurl:          /
+excerpt_separator: '<!-- more //-->'
+
+author:
+  name:           'Ritchie Macapinlac'
+  url:            https://macapinlac.com
+
+defaults:
+  # blog 
+  - scope:
+      path: "_posts/blog"
+      type: posts
+    values:
+      permalink: blog/:year/:month/:day/:title:output_ext
+
+paginate:         1
+
+# Custom vars
+version:          2.0.0
+
+github:
+  repo:           https://github.com/rsmacapinlac
