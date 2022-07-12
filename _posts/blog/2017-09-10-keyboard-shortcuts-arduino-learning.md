@@ -1,6 +1,11 @@
 ---
 layout: post
 title:  "Keyboard shortcuts, payloads, and some Arduino learning"
+tags:
+  - tech
+  - hardware
+  - arduino
+  - projects
 ---
 
 I've been a software guy all my life. I love building software systems. Things

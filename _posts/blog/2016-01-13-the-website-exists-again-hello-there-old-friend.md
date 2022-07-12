@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "The website exists again! Hello there old friend."
-tags: ["macapinlac.com", "projects"]
+tags:
+  - macapinlac.com
+  - projects
 ---
 
 

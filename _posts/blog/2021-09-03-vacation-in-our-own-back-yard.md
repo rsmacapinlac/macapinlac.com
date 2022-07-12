@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "Vacation in our own back yard"
-tags: ["vacation", "personal"]
+tags:
+  - vacation
+  - personal
 ---
 
 I always wonder how many people have actually been a tourist in their own

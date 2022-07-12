@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "Simplification"
-tags: ["macapinlac.com", "projects", "web"]
+tags:
+  - macapinlac.com
+  - projects
 ---
 
 You know when your smart phone has that 'unread' notification badge on an App? That really irritates me! If you have more than 3 unread messages, don't show me your phone. I might explode with anxiety.

@@ -7,6 +7,7 @@ GEM
       fast-stemmer (~> 1.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.10)
+    dotenv (2.7.6)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -57,6 +58,7 @@ GEM
       forwardable-extended (~> 2.6)
     public_suffix (4.0.7)
     pygments.rb (2.3.0)
+    rake (13.0.6)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -80,11 +82,13 @@ PLATFORMS
 
 DEPENDENCIES
   classifier-reborn
+  dotenv
   jekyll (~> 3)
   jekyll-gist
   jekyll-paginate
   jekyll-seo-tag
   pygments.rb
+  rake
   redcarpet
   webrick
 

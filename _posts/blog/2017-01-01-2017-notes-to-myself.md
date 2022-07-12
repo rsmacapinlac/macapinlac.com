@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "2017 notes to myself"
-tags: ["year-end", "personal"]
+tags:
+  - year-end
+  - personal
 ---
 
 Nice to meet you 2017! Glad to see that you've made it here safely. I'm trying

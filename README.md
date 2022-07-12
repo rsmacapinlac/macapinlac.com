@@ -1,92 +1,45 @@
-# Poole
+macapinlac.com
+==============
 
-*The Strange Case of Dr. Jekyll and Mr. Hyde* tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel's supporting cast is a man by the name of Mr. Poole, Dr. Jekyll's loyal butler.
+My minimal website!
 
------
+# What is this?
 
-Poole is the butler for [Jekyll](http://jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example templates, pages, posts, and styles.
+So you know, how you build something and completely forget what it's for. You end
+up having to look through the code to try and figure it out? This time around,
+I'm writing me a README file. Which is why you're probably reading this.
 
-![Poole](https://f.cloud.github.com/assets/98681/1834359/71ae4048-73db-11e3-9a3c-df38eb170537.png)
+## This is the source code to help me manage my website
 
-See Poole in action with [the demo site](https://demo.getpoole.com).
+You see, I'm thinking about starting a new website at macapinlac.com. I didn't
+want to run Wordpress or Blogger because it was just way to complicated. 
 
-There are currently two official themes built on Poole:
+I'm using [Jekyll](https://jekyllrb.com/) which is a static site generator.
 
-* [Hyde](https://hyde.getpoole.com)
-* [Lanyon](https://lanyon.getpoole.com)
+## Great, how do I run it then?
 
-Individual theme feedback and bug reports should be submitted to the theme's individual repository.
+Wait, you want to run my website locally? Why? Ok...
 
+Assuming that you know how to check out code (you are reading this on GitHub). Go clone this repository, fork it or download it on to your computer. Whichever floats your boat.
 
-## Contents
+### Install some stuff (dependencies)
 
-- [Usage](#usage)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
+* rvm (cause it's probably good practice)
+* ncftp
 
-
-## Usage
-
-### 1. Install dependencies
-
-Poole is built on Jekyll and uses its built-in SCSS compiler to generate our CSS. Before getting started, you'll need to install the Jekyll gem and related dependencies:
-
-```bash
-$ gem install jekyll jekyll-gist jekyll-sitemap jekyll-seo-tag
 ```
+# Use bundler to ensure that you have all the necessary dependencies
+bundle
 
-**Windows users:** Windows users have a bit more work to do, but luckily [@juthilo](https://github.com/juthilo) has your back with his [Run Jekyll on Windows](https://github.com/juthilo/run-jekyll-on-windows) guide.
-
-**Need syntax highlighting?** Poole includes support for Pygments or Rouge, so install your gem of choice to make use of the built-in styling. Read more about this in the [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting).
-
-### 2a. Quick start
-
-To help anyone with any level of familiarity with Jekyll quickly get started, Poole includes everything you need for a basic Jekyll site. To that end, just download Poole and start up Jekyll.
-
-### 2b. Roll your own Jekyll site
-
-Folks wishing to use Jekyll's templates and styles can do so with a little bit of manual labor. Download Poole and then copy what you need (likely `_layouts/`, `*.html` files, `atom.xml` for RSS, and `assets/` for CSS, JS, etc.).
-
-### 3. Running locally
-
-To see your Jekyll site with Poole applied, start a Jekyll server. In Terminal, from `/poole` (or whatever your Jekyll site's root directory is named):
-
-```bash
-$ jekyll serve
+# I build a rake task
+rake serve
 ```
+Open browser and point to `http://localhost:4000` <-- Boom! working copy of macapinlac.com
 
-Open <http://localhost:4000> in your browser, and voilà.
+# TODO
 
-### 4. Serving it up
+[ ] A nice way to take _post drafts to actual blog posts (maybe using Rake) 
 
-If you host your code on GitHub, you can use [GitHub Pages](https://pages.github.com) to host your project.
+# Moar
 
-1. Fork this repo and switch to the `gh-pages` branch.
-  1. If you're [using a custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages), modify the `CNAME` file to point to your new domain.
-  2. If you're not using a custom domain name, **modify the `baseurl` in `_config.yml`** to point to your GitHub Pages URL. Example: for a repo at `github.com/username/poole`, use `http://username.github.io/poole/`. **Be sure to include the trailing slash.**
-3. Done! Head to your GitHub Pages URL or custom domain.
-
-No matter your production or hosting setup, be sure to verify the `baseurl` option file and `CNAME` settings. Not applying this correctly can mean broken styles on your site.
-
-## Development
-
-Poole has two branches, but only one is used for active development.
-
-- `master` for development.  **All pull requests should be to submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
-
-CSS is handled via Jeykll's built-in Sass compiler. Source Sass files are located in `_sass/`, included into `styles.scss`, and compile to `styles.css`.
-
-## Author
-
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
-
-
-## License
-
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+* https://www.macapinlac.com/blog/2021/08/26/simplification.html

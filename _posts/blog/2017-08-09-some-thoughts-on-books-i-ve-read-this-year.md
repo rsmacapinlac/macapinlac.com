@@ -1,6 +1,10 @@
 ---
 layout: post
 title:  "Some thoughts on books"
+tags:
+  - books
+  - personal
+  - reviews
 ---
 Here is a stream of conciousness / opinions / reviews on the books that I've
 read in 2017. 

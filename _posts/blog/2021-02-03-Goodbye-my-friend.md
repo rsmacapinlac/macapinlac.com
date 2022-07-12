@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Goodbye my friend"
+tags:
+  - personal
 ---
 
 It has been a long time since we've seen each other. The last time was at an
