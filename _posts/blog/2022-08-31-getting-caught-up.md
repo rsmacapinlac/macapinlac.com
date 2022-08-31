@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Getting caught up
+tags:
+  - personal
+  - random-thoughts
 
 ---
 
