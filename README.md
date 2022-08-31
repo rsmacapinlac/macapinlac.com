@@ -32,7 +32,8 @@ Assuming that you know how to check out code (you are reading this on GitHub). G
 bundle
 
 # I build a rake task
-rake serve
+rake site:serve
+
 ```
 Open browser and point to `http://localhost:4000` <-- Boom! working copy of macapinlac.com
 
