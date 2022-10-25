@@ -1,4 +1,5 @@
 require 'dotenv/tasks'
+require 'rake'
 
 namespace 'site' do
   task :clean do
@@ -21,8 +22,8 @@ namespace 'site' do
   end
 end
 
-namespace :post do
-  desc 'Create a new post (in the _drafts) folder (ex rake post:new[\'new post title\'])'
+namespace 'post' do
+  desc 'Create a new post (in the _drafts) folder (ex rake \'post:new[new post title]\')'
   task :new, [:title] do |t, args|
     @title = args[:title]
     @slug = build_slug(args[:title])
