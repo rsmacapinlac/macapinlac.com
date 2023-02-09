@@ -14,7 +14,7 @@ I've never really understood hardware. So when the Arduino and the Raspberry PI
 came out I ignored them for the most part. Lately though I've been seeing things
 through a different lens.
 
-===
+<!-- more //-->
 
 ## Hardware and me
 

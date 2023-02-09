@@ -13,6 +13,8 @@ space caused a tonne of anxiety. I didn't know what to write anymore. I think
 that I even put up a "sponsored post" about cars at one point (hummm I don't
 think I even got a cheque for that).
 
+<!-- more //-->
+
 So hey you! Yea, the one staring into the browser screen reading my words. Sit
 down (or stand up) and let me tell you how this blog came back to existence.
 

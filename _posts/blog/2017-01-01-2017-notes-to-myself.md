@@ -8,9 +8,9 @@ tags:
 
 Nice to meet you 2017! Glad to see that you've made it here safely. I'm trying
 to be more honest and open so let me tell you about a few things that I wanted
-to put on the burner this year and why. 
+te put on the burner this year and why. 
 
-===
+<!-- more //-->
 
 Also just a note, I've left off the 'how' part of this post because, well I'm a
 bit more embarrassed of that. :) Mostly because the Internet will see that I'm

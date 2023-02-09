@@ -8,6 +8,8 @@ tags:
 
 You know when your smart phone has that 'unread' notification badge on an App? That really irritates me! If you have more than 3 unread messages, don't show me your phone. I might explode with anxiety.
 
+<!-- more //-->
+
 I've always been a fan of minimalist CMS systems. This isn't a slam against platforms like Drupal or Wordpress.  I like them but for a personal site as small as mine they're all overkill. They have a time and a place. If you're a content creator who also has a blog, and will eventually sell merc to your 1M followers. Go nuts with those larger platforms. It isn't for me.
 
 I moved this site to [Grav](https://getgrav.org/) a few years back, and it has been great! It's biggest selling point is that it uses Markdown files and doesn't require a database. It isn't perfect (- it still requires PHP), but it was a good enough.

@@ -9,6 +9,8 @@ It has been a long time since we've seen each other. The last time was at an
 airport where you worked a long while ago. I thought about you recently a month
 ago, over the holidays. It is hard to believe that you're gone.
 
+<!-- more //-->
+
 I've avoided everything by focusing on work for the last two weeks. Admittedly,
 I'm not the best at dealing with situations like this to be honest with you. Not
 my best quality, that is for sure. But I took some time off work to see you,

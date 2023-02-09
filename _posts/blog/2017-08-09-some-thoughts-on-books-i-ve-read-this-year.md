@@ -9,6 +9,8 @@ tags:
 Here is a stream of conciousness / opinions / reviews on the books that I've
 read in 2017. 
 
+<!-- more //-->
+
 A recurring [goal of mine](/blog/2017-notes-to-myself) has been to read more.
 This year I've been trying to keep this particular goal top of mind (more on
 that on a different blog post). In addition, I've accepted that I'm lazy and

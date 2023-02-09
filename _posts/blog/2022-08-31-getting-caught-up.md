@@ -10,6 +10,8 @@ tags:
 Completely admitting that I am procrastinating this evening. It was a pretty
 long day at work and there was a big need to unwind.
 
+<!-- more //-->
+
 Didn't feel like reading any of my books tonight.
 
 To occupy the time, here are some random thoughts knocking around:
