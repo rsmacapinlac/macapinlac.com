@@ -16,6 +16,7 @@ jobs:
     - run: gem install bundler
     - run: bundle install
   publish:
+    runs-on: ubuntu-latest
     needs: build
     steps:
     - run: bundle exec jekyll build
