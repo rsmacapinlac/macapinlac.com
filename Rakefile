@@ -12,7 +12,7 @@ namespace 'site' do
 
   desc 'Run the local webserver'
   task :serve => [:clean] do
-    sh "bundle exec jekyll server -D -H 0.0.0.0 --lsi --trace"
+    sh "bundle exec jekyll server -D -H 0.0.0.0 -P 3000 --lsi --trace"
   end
 
   desc 'FTP the _site folder (configuration via dotenv)'

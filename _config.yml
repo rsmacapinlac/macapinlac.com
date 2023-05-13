@@ -17,7 +17,7 @@ title:            macapinlac.com
 # tagline:          'Just a website, standing infront of a reader asking them to love it.'
 description:      'Just my humble space on the Internet. Nothing really to see.'
 url:              https://macapinlac.com
-baseurl:          /
+baseurl:          '/'
 excerpt_separator: '<!-- more //-->'
 
 author:
@@ -32,10 +32,10 @@ defaults:
     values:
       permalink: blog/:year/:month/:day/:title:output_ext
 
-paginate:         1
+paginate:         5
 
 # Custom vars
-version:          2.0.0
+version:          2.1.0
 
 github:
   repo:           https://github.com/rsmacapinlac
