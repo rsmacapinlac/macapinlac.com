@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Archive
+title: A Place to Write
 ---
-
-Browse all posts by month and year.
 
 {% assign postsByYearMonth = site.posts | group_by_exp: "post", "post.date | date: '%B %Y'" %}
 {% for yearMonth in postsByYearMonth %}
@@ -17,3 +15,5 @@ Browse all posts by month and year.
     {% endfor %}
   </ul>
 {% endfor %}
+
+<a href="/">Home</a> | <a href="cv">Resume</a> | <a href="archive">A Place to Write</a> 
