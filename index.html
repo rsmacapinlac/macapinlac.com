@@ -1,16 +1,42 @@
 ---
-layout: default
-title: Home
+layout: blog_index
+title: Clarity through writing
 ---
 
-<div class="">
-  <h1>Hi, my name is Ritchie. Nice to meet you.</h1>
-  <ul>
-    <li>I'm a tech guy who likes to build useful tools and be part of projects. I'm a husband and a father who <strike>runs for exercise and attempts the occassional triathlon</strike>, after the pandemic is working to get back into shape. I love learning (from people, books, etc) and on occassion have others learn from me.</li>
-    <li>I'm a <a href="http://typelogic.com/intj.html" target="_blank">INTJ</a>. I prefer isolated long-term thinking. In general I am pretty approachable unless you've somehow caught me <a href="https://www.urbandictionary.com/define.php?term=Hangry" target="_blank">hangry</a> or before caffeine hits my body.</li>
-    <li>This site uses <strike>the <a href="https://github.com/riggraz/no-style-please" title="Well, it used to use this theme." target="_blank">no style please</a> theme</strike> a bastardized version of the <a href="https://github.com/poole/hyde" target="_blank">Hyde</a> theme for <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> because <strike>I couldn't be bothered to write my own</strike> I needed a more cohesive theme
-that didn't give me security alerts in <a href="https://github.com/rsmacapinlac/macapinlac.com" target="_blank">Github</a> and I like simple, minimalist designs that loads fast.</li>
-  <ul>
+<div class="message">
+  Really random everyday thinking. Not everything needs to be a formed thought.
 </div>
 
+{% for post in paginator.posts %}
+<div class="posts">
+  <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+  <div class="meta">
+    <span class="date">{{ post.date | date_to_string }}</span>
+  </div>
+  {{ post.content }}
+  <hr />
+</div>
+{% endfor %}
+<!--
 <a href="/">Home</a> | <a href="cv">Resume</a> | <a href="archive">A Place to Write</a> 
+//-->
+
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
+      Previous
+    </a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">
+    {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
+    <span class="next ">Next</span>
+  {% endif %}
+</div>
