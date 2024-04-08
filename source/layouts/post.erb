@@ -5,9 +5,9 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
     <title>macapinlac.com<%= ' - ' + current_article.title unless current_article.nil? %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
-    <!-- source/layouts/layouts.erb -->
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site" %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,27 @@
     <%= partial 'layouts/_header' %>
 
     <main>
+      <h2><%= current_article.title %></h2>
+      <div class="jetbrains-mono-postbody">
       <%= yield %>
+      </div>
+
+      <%
+        @git = Git.open('./').log.object(current_page)
+        if @git.size > 1
+      %>
+        <details class="blog__changes">
+          <summary>Changelog</summary>
+          <ul>
+            <% @git.each do |commit| %>
+              <li>
+                <b class="blog__changes__date"><%= time_ago_in_words commit.author_date %></b>
+                <%= simple_format(commit.message) %>
+              </li>
+            <% end %>
+          </ul>
+        </details>
+      <% end %>
     </main>
 
     <%= partial 'layouts/_footer' %>

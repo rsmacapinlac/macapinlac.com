@@ -1,0 +1,13 @@
+---
+pageable: true
+per_page: 12
+---
+<h2>Articles tagged '<%= tagname %>'</h2>
+<div id="articles">
+<% page_articles.each_with_index do |article, i| %>
+  <%= partial 'layouts/_article', locals: {
+    article: article,
+    i: i
+  } %>
+<% end %>
+</div>

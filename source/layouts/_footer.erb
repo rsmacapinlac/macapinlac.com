@@ -1,0 +1,11 @@
+<footer>
+  <% unless data.socials.sites.empty? %>
+    <h4>My socials</h4>
+    <ul>
+    <% data.socials.sites.each do |sites| %>
+      <li><%= link_to sites.name, sites.url %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</footer>
+

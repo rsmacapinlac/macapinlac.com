@@ -1,0 +1,15 @@
+<div class="article">
+  <span class="inconsolata-date">
+    <%= article.date.strftime('%m') %><br />
+    <%= article.date.strftime('%d') %><br />
+    <%= article.date.strftime('%y') %><br />
+  </span>
+  <h3><%= link_to article.title, article %></h3>
+  <% unless article.tags.empty? %>
+    <ul class="tags">
+    <% article.tags.each do |tag| %>
+      <li><%= link_to tag, tag_path(tag) %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

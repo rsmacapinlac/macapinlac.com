@@ -5,8 +5,92 @@ body {
     "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
     "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
     "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
-  padding: 18vh 1rem;
+  // padding: 18vh 1rem;
+  // text-align: center;
+  margin: 2em;
+}
+
+@media only screen and (min-width: 769px) {
+  body header h1 {
+    font-size: 2.7em;
+  }
+  body main {
+    width: 30%;
+    h2 {
+      font-size: 2em;
+    }
+  }
+
+  div.article h3 {
+    font-size: 2em;
+  }
+
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 900
+
+.inconsolata-date {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.jetbrains-mono-postbody {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body header {
+  margin: 0 0 3em 0;
+  padding: 0;
+}
+body header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+div#articles {
+  margin-right: 5em;
+}
+
+div.article {
+  margin: 0;
+  margin-bottom: 2em;
+  width: 100%;
+  display: block;
+}
+div.article span {
+  display: block;
+  float: left;
+  margin:0 0 0 1em;
+  width: 2em;
   text-align: center;
+}
+
+div.article h3 {
+  margin: 0 0 0 2em;
+  padding: 0;
+  width: 100%;
+}
+div.article h3 a {
+  margin: 0;
+  padding: 0;
+}
+div.article .tags {
+  list-style: none;
+  display: block;
+  margin: 0 0 0 4em;
+  padding: 0;
+}
+div.article .tags li {
+  display: inline-block;
+  margin: 0;
 }
 
 a {
@@ -16,9 +100,4 @@ a {
   &:hover {
     color: rgba(#000, 0.6);
   }
-}
-
-.middleman-logo {
-  margin-bottom: 1rem;
-  width: 10rem;
 }
