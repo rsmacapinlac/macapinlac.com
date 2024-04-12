@@ -28,9 +28,10 @@
       <div class="jetbrains-mono-postbody">
       <%= yield %>
       </div>
-
       <%
-        @git = Git.open('./').log.object(current_page)
+        file = 'source/' + current_page.path + '.md'
+        @git = Git.open('./').log.object(file)
+        # ignore the first commit
         if @git.size > 1
       %>
         <details class="blog__changes">
@@ -38,7 +39,7 @@
           <ul>
             <% @git.each do |commit| %>
               <li>
-                <b class="blog__changes__date"><%= time_ago_in_words commit.author_date %></b>
+                <b class="blog__changes__date"><%= commit.author_date %></b>
                 <%= simple_format(commit.message) %>
               </li>
             <% end %>
