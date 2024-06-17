@@ -26,7 +26,21 @@
     <main>
       <h2><%= current_article.title %></h2>
       <div class="jetbrains-mono-postbody">
-      <%= yield %>
+
+        <%
+          has_reply = !current_page.data.reply.nil?
+          if has_reply == true
+            reply_url = current_page.data.reply.url
+            reply_title = current_page.data.reply.reply_title
+            if reply_title.nil?
+              reply_title = reply_url
+            end
+          end
+        %>
+
+      <%= link_to reply_title, reply_url %>
+
+        <%= yield %>
       </div>
       <%
         file = 'source/' + current_page.path + '.md'
