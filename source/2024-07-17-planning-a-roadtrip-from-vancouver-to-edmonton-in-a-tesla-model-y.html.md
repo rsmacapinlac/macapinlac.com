@@ -27,11 +27,13 @@ Enter [A Better Route Planner (ABRP)](https://abetterrouteplanner.com), the app 
 
 Here’s where ABRP lets you customize your trip to suit your level of anxiety. These are the settings I used to keep my peace of mind intact:
 
-- **Arrival at each stop with 25% charge**: This wasn’t just about playing it safe; it was about avoiding a heart attack every time the battery dipped below 20%. 
+- **Arrival at each stop with 25% charge**: This wasn’t just about playing it safe; it was about avoiding a heart attack every time the battery dipped below 20%. This setting meant that we spent a little more time charging at each stop to ensure we had a comfortable buffer.
 - **10% battery degradation**: Our Model Y was brand new, so the battery was pristine. But I added a 10% degradation just to force the app into giving me a more conservative estimate. Better safe than sorry, right?
-- **450kg of extra weight**: Here’s the thing—I wasn’t about to weigh our luggage or, worse, ask Cheryl to step on a scale. That’s a conversation that would not end well. So, I just threw in a nice (high) round number and called it a day.
+- **450kg of extra weight**: Here’s the thing — I wasn’t about to weigh our luggage or, worse, ask Cheryl to step on a scale. That’s a conversation that would not end well. So, I just threw in a nice (high) round number and called it a day.
 
-I accepted the rest of the default settings. With our settings locked in, ABRP mapped out the route, highlighting all the Tesla Superchargers along the way. We were ready to hit the road with a plan.
+The last two adjustements impacted which charging stations were chosen and occassionally affected the speed we travelled.
+
+I accepted the rest of the default settings. With everything locked in, ABRP mapped out the route, highlighting all the Tesla Superchargers along the way. We were ready to hit the road with a plan.
 
 ## What’s Next: The Road Ahead
 
