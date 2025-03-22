@@ -151,7 +151,7 @@ PLATFORMS
 DEPENDENCIES
   builder (~> 3.0)
   git
-  middleman (~> 4.2)
+  middleman (~> 4.4)
   middleman-autoprefixer
   middleman-blog
   middleman-livereload
