@@ -14,9 +14,7 @@ Three years later, all I had was a clunky UI, audiobook support locked to Kobo�
 
 I upgraded to the 12.9" iPad Pro, thinking it’d be my perfect travel companion. It’s gorgeous, but unless you want [Popeye arms](https://static.wikia.nocookie.net/smashtopia/images/7/78/Popeye.jpg/revision/latest/scale-to-width-down/287?cb=20181223184820), it’s too heavy to use as a tablet. And the keyboard? Useless on your lap unless you're training for Olympic gymnastics.
 
-So travel became a decision tree: laptop? iPad? Kobo? All of them? None?
-
-After months of Reddit threads, YouTube reviews, and price comparisons —where every ad tried to sell me a $4 Temu tablet that apparently cured cancer— I realized I was stuck. Normally I’m the one friends call for gadget advice. This time, I needed help.
+After months of Reddit threads, YouTube reviews, and price comparisons —where every ad tried to sell me a $4 Temu tablet that apparently cured cancer— I realized I was stuck. Normally I’m the one friends call for gadget advice. This time, _I_ needed help.
 
 <!-- more //-->
 
@@ -80,9 +78,9 @@ Requirements come after this line.
 </pre>
 </blockquote>
 
-I made a modification to the requirements from step 1. I added a list of devices that wasn't being used. 
+I had a list of 'stuff' that I wasn't using: old iPads, apple watches, and old Kindle e-readers. I put that in requirements as well. 
 
-It provided a top 3 list of tablets. For each tablet, it recommended if it was an outright purchase from the website or if I should wait for a refurbished model to come on sale. It recommended to do a trade-in on one device, and sell the others on Facebook Marketplace.
+The AI provided a top 3 list of tablets. For each tablet, it gave me the strategy for that device (ie if it was an outright purchase from the website or if I should wait for a refurbished model to come on sale). For the old devices it recommended to do a trade-in on one device, or sell the others on Facebook Marketplace.
 
 I was impressed—until I realized it didn’t include any Android tablets.
 
