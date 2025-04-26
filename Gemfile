@@ -26,4 +26,5 @@ group :test do
   gem 'rack-test', '~> 2.1'
   gem 'selenium-webdriver', '~> 4.16'
   gem 'simplecov', '~> 0.22.0'
+  gem 'simplecov-console', '~> 0.9.1'
 end

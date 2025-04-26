@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+# Load SimpleCov configuration
 require 'simplecov'
-SimpleCov.root(File.expand_path("#{File.dirname(__FILE__)}/.."))
+require 'simplecov-console'
+load File.join(File.dirname(__FILE__), '..', '.simplecov')
 
 require 'middleman'
 require 'middleman-core'
@@ -37,4 +39,9 @@ RSpec.configure do |config|
       TestApp.mm_app
     end
   }
+
+  # Add coverage reporting to RSpec
+  config.after(:suite) do
+    SimpleCov.result.format!
+  end
 end
