@@ -18,3 +18,12 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby, :x64_mingw]
 
 # For faster file watcher updates on Windows:
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw, :x64_mingw]
+
+# Testing
+group :test do
+  gem 'rspec', '~> 3.12'
+  gem 'capybara', '~> 3.39'
+  gem 'rack-test', '~> 2.1'
+  gem 'selenium-webdriver', '~> 4.16'
+  gem 'simplecov', '~> 0.22.0'
+end

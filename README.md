@@ -19,6 +19,9 @@ A personal blog and website built with Middleman, a Ruby-based static site gener
 - ERB - Template engine
 - Markdown - Content format
 - SASS - CSS preprocessor
+- RSpec - Testing framework
+- Rack::Test - HTTP testing
+- SimpleCov - Code coverage
 
 ## Getting Started
 
@@ -58,6 +61,36 @@ A personal blog and website built with Middleman, a Ruby-based static site gener
    bundle exec middleman build
    ```
 
+### Testing
+
+The project uses RSpec for testing. To run the test suite:
+
+```bash
+bundle exec rspec
+```
+
+The test suite is organized as follows:
+```
+spec/
+├── features/           # High-level feature tests
+│   ├── layout_spec.rb  # Tests for layout and homepage
+│   └── blog_spec.rb    # Tests for blog functionality
+├── support/            # Support files and helpers
+└── spec_helper.rb      # Shared test configuration
+```
+
+Key test areas:
+- Layout and homepage content
+- Blog functionality and content
+- Site configuration
+- Middleman extensions
+
+The test suite uses:
+- RSpec for test framework
+- Rack::Test for HTTP testing
+- SimpleCov for code coverage
+- Middleman's test environment
+
 ### Deployment
 
 The site is deployed to macapinlac.com. The build process generates static files in the `build/` directory that can be deployed to any static hosting service.
@@ -71,6 +104,9 @@ The site is deployed to macapinlac.com. The build process generates static files
 │   ├── stylesheets/ # CSS/SASS files
 │   ├── javascripts/ # JavaScript files
 │   └── images/      # Image assets
+├── spec/            # Test files
+│   ├── features/    # Feature tests
+│   └── support/     # Test support files
 ├── config.rb        # Middleman configuration
 ├── Gemfile          # Ruby dependencies
 └── build/           # Generated static site (not in repo)
