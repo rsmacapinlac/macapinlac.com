@@ -1,0 +1,58 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Code Style Guidelines
+
+### Templates
+- Use ERB for complex templates
+- Keep templates DRY using partials
+- Use semantic HTML5 elements
+- Follow BEM naming convention for CSS classes
+- Maintain consistent indentation in templates
+
+### Asset Organization
+- Keep stylesheets modular
+- Use SASS features for maintainability
+- Organize JavaScript by feature
+- Optimize images before committing
+- Use relative paths for assets
+
+### Configuration
+- Keep config.rb organized by feature
+- Document non-obvious configuration choices
+- Use environment variables for sensitive data
+- Follow Middleman's configuration patterns
+
+## Testing
+
+### RSpec Style
+- Use descriptive context and example names
+- Follow the Arrange-Act-Assert pattern
+- Keep tests focused and atomic
+- Use shared examples for common patterns
+- Mock external dependencies
+
+### Test Organization
+- Group tests by feature
+- Use descriptive describe blocks
+- Keep setup code minimal
+- Use before/after hooks appropriately
+- Maintain test data in fixtures
+
+## JavaScript and CSS
+
+### JavaScript Standards
+- Use ES6+ features appropriately
+- Follow Airbnb JavaScript Style Guide
+- Keep functions pure when possible
+- Document complex algorithms
+- Use meaningful variable names
+
+### CSS/SASS Guidelines
+- Follow BEM methodology
+- Use variables for colors and spacing
+- Keep selectors shallow
+- Avoid !important
+- Use mixins for repeated patterns

@@ -1,0 +1,96 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Blog Post Guidelines
+
+## Content Structure
+
+### Frontmatter Requirements
+```yaml
+---
+title: "Descriptive Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2]
+description: "Brief description for SEO and social sharing"
+---
+```
+
+### Post Organization
+- Start with a compelling introduction
+- Use clear section headings (H2, H3)
+- Include relevant images with alt text
+- End with a conclusion or call to action
+- Keep paragraphs short and focused
+
+## Writing Style
+
+### Tone and Voice
+- Write in a personal, conversational tone
+- Be clear and direct
+- Use active voice
+- Avoid jargon unless necessary
+- Include personal experiences when relevant
+
+### Content Formatting
+- Use proper markdown syntax
+- Include code blocks with language specification
+- Use blockquotes for important quotes
+- Create lists for multiple points
+- Use emphasis (bold/italic) sparingly
+
+## Media and Examples
+
+### Image Guidelines
+- Optimize images before adding
+- Use descriptive filenames
+- Include alt text for accessibility
+- Specify image dimensions
+- Use relative paths for local images
+
+### Code Examples
+- Use syntax highlighting
+- Keep examples focused and relevant
+- Include comments for clarity
+- Test code before including
+- Link to full examples when available
+
+## SEO and Accessibility
+
+### Required Elements
+- Descriptive title
+- Meta description
+- Relevant tags
+- Proper heading structure
+- Alt text for images
+
+### Best Practices
+- Use descriptive URLs
+- Include internal links
+- Add external references
+- Use proper heading hierarchy
+- Optimize for readability
+
+## Post Types
+
+### Technical Posts
+- Start with problem statement
+- Include relevant code examples
+- Explain technical decisions
+- Link to documentation
+- Provide working solutions
+
+### Personal Posts
+- Share personal experiences
+- Include relevant context
+- Reflect on lessons learned
+- Connect with readers
+- Maintain authenticity
+
+### Tutorial Posts
+- Break down complex topics
+- Include step-by-step instructions
+- Provide working examples
+- Anticipate common issues
+- Include troubleshooting tips

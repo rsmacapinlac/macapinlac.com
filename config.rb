@@ -16,12 +16,14 @@ end
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page '/*.md', layout: false
 page "/feed.xml", layout: false
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
 
-activate :directory_indexes
+# Serve files directory statically
+page "/files/*", layout: false
 
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
@@ -54,6 +56,10 @@ activate :blog do |blog|
   # blog.per_page = 10
   # blog.page_link = "page/{num}"
 end
+
+# Configure static files
+set :relative_links, true
+set :relative_assets, true
 
 # Reload the browser automatically whenever files change
 configure :development do
