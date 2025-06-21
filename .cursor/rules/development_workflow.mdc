@@ -1,0 +1,151 @@
+---
+description: Local development patterns, testing workflow, and daily development procedures
+globs: ["spec/**/*", "source/**/*", "config.rb", "Gemfile*"]
+alwaysApply: false
+---
+
+# Development Workflow Guidelines
+
+## Local Development Setup
+
+### Environment Prerequisites
+- Follow complete setup procedures in `README.md`
+- Ruby version managed via `.ruby-version`
+- Dependencies managed via `Gemfile` with rationale in comments
+
+### Development Server
+- **Start command**: `bundle exec middleman server`
+- **Default port**: `localhost:4567`
+- **Network access**: Use `-H 0.0.0.0` flag for device testing
+- **Alternative port**: Use `-p 4568` if default port conflicts
+- **Live reload**: Automatic browser refresh on file changes
+
+### Development Environment Features
+- **Hot reloading**: Asset changes reflected without server restart
+- **Error pages**: Detailed error information during development
+- **Source maps**: Available for debugging SASS and JavaScript
+- **Cache disabled**: Fresh builds on every request
+
+## Asset Management During Development
+
+### Static Asset Handling
+- **Images**: Place in `source/images/` with descriptive filenames
+- **Static files**: Use `source/files/` for direct serving
+- **SASS changes**: Automatic compilation with live reload
+- **Font loading**: Verify Google Fonts load correctly locally
+
+## Testing Workflow
+
+### Test Execution
+- **Run all tests**: `bundle exec rspec`
+- **Coverage report**: Automatically generated via SimpleCov
+- **Test watching**: Manual re-run after changes (no auto-watch configured)
+
+### RSpec Testing Patterns
+- **Descriptive contexts**: Use clear describe and context blocks that explain behavior
+- **Test organization**: Group tests by feature and functionality
+- **Arrange-Act-Assert**: Structure tests with clear setup, execution, and verification phases
+- **Focused tests**: Keep individual tests atomic and focused on single behaviors
+- **Meaningful names**: Use descriptive example names that explain expected behavior
+- **Shared examples**: Use shared examples for common patterns when beneficial
+- **External dependencies**: Mock external dependencies to isolate unit tests
+
+### Test Organization Standards
+- **Feature grouping**: Organize tests by application features in `spec/features/`
+- **Describe blocks**: Use descriptive nested describe blocks for clarity
+- **Setup management**: Keep before/after hooks minimal and focused
+- **Test data**: Maintain test data in appropriate fixtures or use minimal setup
+- **Context separation**: Use context blocks to group related test scenarios
+
+### Test-Driven Development Pattern
+1. **Write failing test** for new feature
+2. **Implement minimum code** to pass test
+3. **Refactor** while maintaining green tests
+4. **Verify coverage** meets minimum thresholds
+
+### Coverage Validation
+- **Minimum coverage**: 90% overall, 80% per file
+- **Branch coverage**: Enabled for conditional logic
+- **Coverage reports**: Available in `/coverage` directory
+- **Exclude patterns**: Specs, vendor, build files automatically excluded
+
+## Code Quality Workflow
+
+### Before Committing Changes
+- **Run test suite**: Ensure all tests pass
+- **Check coverage**: Verify coverage thresholds maintained
+- **Review changes**: Use git diff to review modifications
+- **Validate locally**: Test in browser before committing
+
+### File Modification Patterns
+- **ERB templates**: Validate syntax and test rendering
+- **SASS files**: Check compiled CSS output
+- **Configuration changes**: Restart development server
+- **New dependencies**: Run `bundle install` and document rationale
+
+## Build and Preview Workflow
+
+### Local Build Testing
+- **Clean build**: `bundle exec middleman clean && bundle exec middleman build`
+- **Build output**: Generated files in `build/` directory
+- **Asset verification**: Check minification and relative paths
+- **Build errors**: Address before pushing to repository
+
+### Content Validation
+- **Link checking**: Verify internal links resolve correctly
+- **Image validation**: Ensure all images load and have alt text
+- **Responsive testing**: Test across device sizes
+
+## Debugging Patterns
+
+### Common Development Issues
+- **Port conflicts**: Use alternative port with `-p` flag
+- **Ruby version mismatches**: Check `.ruby-version` and switch Ruby versions
+- **Gem conflicts**: Run `bundle update` or check `Gemfile.lock`
+- **Asset loading**: Clear browser cache and restart server
+
+### Error Investigation
+- **Middleman errors**: Check server logs in terminal
+- **Template errors**: Review ERB syntax and variable availability
+- **SASS compilation**: Check syntax and import paths
+- **Test failures**: Use verbose output with `--format documentation`
+
+### Performance Monitoring
+- **Build times**: Monitor for significant increases
+- **Asset sizes**: Check for bloated CSS/JS files
+- **Development server**: Restart if response times slow
+- **Memory usage**: Monitor during long development sessions
+
+## Integration with Other Tools
+
+### Design System Integration
+- **Typography changes**: Reference `docs/Design System.md` for specifications
+- **Color modifications**: Use design system color palette
+- **Component patterns**: Follow established component patterns
+
+## Daily Development Routine
+
+### Starting Development Session
+1. **Pull latest changes** from repository
+2. **Install dependencies** if Gemfile changed: `bundle install`
+3. **Start development server**: `bundle exec middleman server`
+4. **Run tests** to ensure clean starting state
+
+### During Development
+- **Save frequently** for live reload feedback
+- **Test changes** in browser immediately
+- **Run relevant tests** for modified areas
+- **Check console** for JavaScript or loading errors
+
+### Ending Development Session
+- **Run full test suite** before committing
+- **Review all changes** with git diff
+- **Clean up** any temporary files or experiments
+- **Commit changes** following conventional commit format
+
+## Cross-Reference Documentation
+
+- **Setup procedures**: See `README.md` for environment setup
+- **Architecture patterns**: See `architecture.mdc` for high-level guidance
+- **Technical implementation**: See `middleman_conventions.mdc` for specific patterns
+- **Content guidelines**: See `content_strategy.mdc` for editorial standards

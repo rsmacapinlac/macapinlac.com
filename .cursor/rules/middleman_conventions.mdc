@@ -1,0 +1,205 @@
+---
+description: Middleman-specific development patterns and best practices for macapinlac.com
+globs: ["source/**/*.erb", "source/**/*.md", "config.rb", "source/layouts/**/*", "source/stylesheets/**/*"]
+alwaysApply: false
+---
+
+# Middleman Development Conventions
+
+## Project Structure
+
+### Core Middleman Patterns
+- **Source directory**: All content lives in `source/`
+- **Layouts**: ERB templates in `source/layouts/`
+- **Blog posts**: Markdown files with date prefix: `YYYY-MM-DD-title.html.md`
+- **Partials**: Prefixed with underscore: `_header.erb`, `_footer.erb`, `_article.erb`
+- **Static files**: Direct serving via `page "/files/*", layout: false`
+
+### File Organization
+```
+source/
+├── layouts/           # ERB template files
+│   ├── layout.erb     # Main site layout
+│   ├── post.erb       # Blog post layout
+│   ├── _header.erb    # Header partial
+│   ├── _footer.erb    # Footer partial
+│   └── _article.erb   # Article preview partial
+├── stylesheets/       # SASS/SCSS files
+├── javascripts/       # JavaScript files
+├── images/           # Static images and assets
+└── files/            # Static files served directly
+```
+
+## ERB Template Conventions
+
+### Layout Structure
+- Use `<!doctype html>` for all layouts
+- Include viewport meta for responsive design
+- Load fonts from Google Fonts with preconnect
+- Use `<%= yield %>` for content injection
+- Include RSS feed link: `<%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>`
+
+### Partial Usage
+- Keep partials focused on single responsibilities
+- Pass data via locals: `<%= partial 'layouts/_article', locals: { article: article, i: i } %>`
+- Use semantic HTML5 elements (header, main, footer, aside)
+
+### Blog-Specific Patterns
+- Access current article: `current_article.title`, `current_article.date`
+- Loop through articles: `page_articles.each_with_index do |article, i|`
+- Handle pagination: Check `paginate`, `num_pages`, `page_number`
+- Tag links: `<%= link_to tag, tag_path(tag) %>`
+
+## Configuration Patterns (config.rb)
+
+### Blog Extension Setup
+```ruby
+activate :blog do |blog|
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.layout = "post"
+  blog.tag_template = "tag.html"
+  blog.calendar_template = "calendar.html"
+end
+```
+
+### Blog Extension Configuration
+```ruby
+activate :blog do |blog|
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.layout = "post"
+  blog.tag_template = "tag.html"
+  blog.calendar_template = "calendar.html"
+end
+```
+
+### Asset Pipeline Configuration
+- Use `activate :autoprefixer` for CSS compatibility
+- Set `relative_links: true` and `relative_assets: true` for build
+- Configure livereload for development: `activate :livereload`
+
+### Page-Specific Configurations
+- Disable layout for feeds: `page '/*.xml', layout: false`
+- Static file serving: `page "/files/*", layout: false`
+- Set timezone: `Time.zone = "America/Vancouver"`
+
+## Design System Integration
+
+### Typography and Visual Standards
+- Follow the three-font hierarchy defined in `docs/Design System.md`
+- Use color palette, spacing grid, and component patterns from design system document
+- Implement responsive breakpoints and layout constraints per design system
+- Reference typography specifications for Lora, Crimson Text, and Inter fonts
+
+### Component Implementation
+- Implement unified earth tone styling for all tags (colors defined in design system)
+- Follow component patterns for post cards, topic cards, and navigation elements
+- Maintain 800px max-width content constraint
+- Use 8px grid spacing system for consistent layouts
+
+### Dark Mode Support
+- Default to light mode on first visit (as specified in design system)
+- Implement color mapping and transition patterns from design system
+- Follow accessibility guidelines for contrast and readability
+
+### Content Conventions
+
+#### Frontmatter Requirements
+```yaml
+---
+title: "Post Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2]
+layout: post  # Optional, defaults to blog layout
+---
+```
+
+#### Markdown Patterns
+- Use `<!-- more //-->` for post excerpts
+- Include meaningful alt text for images
+- Use proper heading hierarchy (H2, H3, etc.)
+- Link to external resources with descriptive text
+
+#### Special Features
+- **Git changelog**: Automatically generated from git history in post layout
+- **Reply context**: Support for `reply` frontmatter with URL and title
+- **Tag system**: Organized by categories, linked via `tag_path(tag)`
+
+### Cross-Reference
+- **Content creation guidelines**: See `docs/Content Strategy.md` for brand voice, editorial standards, and site architecture
+- **Visual design standards**: See `docs/Design System.md` for complete typography, color, and component specifications  
+- **Project requirements**: See `docs/Redesign Brief.md` for overall project objectives and target audience
+- **Deployment procedures**: See `deployment.mdc`
+- **Overall architecture decisions**: See `architecture.mdc`
+
+## Testing Integration
+
+### RSpec Patterns
+- Test files in `spec/features/` directory
+- Use `rack-test` for HTTP testing: `get '/'`, `expect(last_response).to be_ok`
+- Include both layout and content tests
+- Test blog functionality and navigation
+
+### Coverage Requirements
+- Maintain SimpleCov configuration in `.simplecov`
+- Target 90% minimum coverage
+- Track all source files: `source/**/*.{rb,erb,builder,js,scss,css}`
+
+## Build and Deployment
+
+### Build Configuration
+- Assets are minified in build environment
+- Relative paths enabled for portability
+- Source maps disabled for production
+
+### GitHub Actions Integration
+- Build uses Ruby setup with bundler cache
+- Deploy to AWS S3 with sync and delete
+- Triggered on main branch pushes
+
+## Data Integration
+
+### YAML Data Files
+- Store in `data/` directory (e.g., `data/socials.yml`)
+- Access via `data.socials.sites`
+- Use for navigation, social links, or configuration
+
+### Helper Methods
+- Define in `config.rb` helpers block if needed
+- Keep helpers simple and focused
+- Prefer data files over complex helper logic
+
+## Development Workflow
+
+### Local Development
+- Use `bundle exec middleman server` for development
+- Check `http://localhost:4567` for preview
+- Leverage livereload for immediate feedback
+
+### Content Creation
+- Create new posts with proper filename format
+- Test locally before committing
+- Verify tag links and navigation work
+- Check responsive design on multiple screen sizes
+
+## Common Patterns to Follow
+
+### When creating new templates:
+- Follow design system specifications in `docs/Design System.md`
+- Use established typography hierarchy (Lora, Crimson Text, Inter)
+- Implement responsive patterns per design system breakpoints
+- Include proper meta tags and font loading
+- Use partials for repeated elements
+
+### When adding new features:
+- Check if data files can be used instead of hardcoding
+- Reference visual standards from `docs/Design System.md`
+- Follow content strategy guidelines from `docs/Content Strategy.md`
+- Add appropriate tests for new functionality
+- Maintain existing CSS class naming patterns
+
+### When modifying existing code:
+- Preserve design system standards (typography, colors, spacing)
+- Reference `docs/Design System.md` for visual decisions
+- Keep ERB template logic minimal
+- Test across different post types and tag pages
+- Maintain responsive design patterns

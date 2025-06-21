@@ -1,0 +1,169 @@
+---
+description: High-level architectural decisions, testing patterns, and project organization principles
+globs: ["config.rb", "Gemfile*", "spec/**/*", ".github/**/*"]
+alwaysApply: true
+---
+
+# Architecture Guidelines
+
+## Core Technology Stack
+
+### Static Site Generator Philosophy
+- **Middleman**: Ruby-based static site generator optimized for blogs
+- **Static-first approach**: Generate deployable HTML/CSS/JS with no server dependencies
+- **Git-based content management**: Blog posts as markdown files in version control
+- **Separation of concerns**: Content (markdown), presentation (ERB), styling (SASS)
+
+### Ruby Ecosystem Integration
+- **Ruby**: Version specified in `.ruby-version`
+- **Bundler**: Dependency management - see `Gemfile` for gem choices and rationale
+- **Gem selection**: Comments in `Gemfile` provide context for dependency choices
+- **RSpec**: Test framework aligned with Ruby community standards
+- **Rack-based**: Leverage Rack ecosystem for development and testing
+
+## Project Organization Principles
+
+### File Structure Philosophy
+```
+├── source/              # All source content
+│   ├── layouts/         # ERB templates
+│   ├── stylesheets/     # SASS/CSS
+│   ├── javascripts/     # Client-side JS
+│   ├── images/          # Static assets
+│   └── files/           # Direct-served files
+├── spec/                # Test suite
+├── docs/                # Project documentation
+├── .cursor/             # AI development rules
+└── config.rb            # Middleman configuration
+```
+
+### Configuration Management
+- **Environment-specific settings**: Development vs production configuration
+- **Timezone awareness**: `Time.zone = "America/Vancouver"` for consistent dates
+- **Asset pipeline**: Autoprefixer, relative paths, minification in build
+- **Blog extension**: Centralized blog configuration with SEO-friendly URLs
+
+## Testing Architecture
+
+### RSpec Testing Strategy
+- **Feature-driven testing**: Test user-facing functionality in `spec/features/`
+- **Rack::Test integration**: HTTP-level testing for static site verification
+- **SimpleCov coverage**: 90% minimum coverage with branch tracking
+- **Test environment isolation**: Separate test configuration from development
+
+### Testing Patterns
+```ruby
+# Feature test structure
+describe 'Homepage' do
+  it 'contains essential content' do
+    get '/'
+    expect(last_response).to be_ok
+    expect(last_response.body).to include('expected content')
+  end
+end
+```
+
+### Coverage Requirements
+- **Minimum thresholds**: 90% overall, 80% per file
+- **Branch coverage**: Track conditional logic paths
+- **File tracking**: All source files including ERB templates
+- **Exclude patterns**: Specs, vendor, build artifacts
+
+## Build Architecture
+
+### Build Optimization
+- **Asset minification**: CSS/JS compression in production
+- **Relative paths**: Portable builds for any hosting environment
+- **Cache busting**: Automatic asset versioning
+- **Error handling**: Build failures prevent deployment
+
+## Content Architecture
+
+### Blog Post Structure
+- **Filename convention**: `YYYY-MM-DD-title.html.md`
+- **Frontmatter schema**: Title, date, tags, optional layout
+- **Git changelog integration**: Automatic change tracking via Git history
+- **Tag taxonomy**: Organized categorization for discoverability
+
+### Asset Management
+- **Static file serving**: Direct `/files/*` path serving
+- **Image optimization**: Manual optimization before commit
+- **Font loading**: Google Fonts with preconnect optimization
+- **SASS compilation**: Component-based stylesheet organization
+
+#
+
+### Version Control Guidelines
+- **Commit frequency**: Cursor should suggest commits after completing discrete features or fixes
+- **Commit timing**: When tests pass and functionality is complete
+- **Commit message format**: Follow conventional commit format: `type(scope): description`
+- **Types**: feat, fix, docs, style, refactor, test, chore
+- **Scope**: Optional component/area affected (e.g., layout, config, content)
+- **Examples**:
+  - `feat(blog): add series navigation to post layout`
+  - `fix(styles): correct responsive typography scaling`
+  - `docs(readme): update development setup instructions`
+  - `refactor(config): simplify blog extension configuration`
+
+## Security and Performance
+
+### Static Site Security
+- **No server-side vulnerabilities**: Static HTML/CSS/JS only
+- **Content Security Policy**: Implementable via meta tags
+- **HTTPS enforcement**: Handled at hosting level
+- **No database**: Eliminates SQL injection vectors
+
+### Performance Optimization
+- **Minimal JavaScript**: Essential functionality only
+- **Optimized fonts**: Subset loading and display swap
+- **Image optimization**: Manual optimization workflow
+- **CDN compatibility**: Static assets suitable for CDN distribution
+
+
+
+## Error Handling and Monitoring
+
+### Build Error Management
+- **Validation**: Pre-build content validation
+- **Fallback strategies**: Graceful degradation for missing assets
+- **Error reporting**: GitHub Actions failure notifications
+- **Rollback capability**: Git-based rollback to previous versions
+
+### Content Validation
+- **Frontmatter validation**: Required fields checking
+- **Link validation**: Internal link verification
+- **Image validation**: Asset existence verification
+- **Tag consistency**: Tag taxonomy enforcement
+
+## Architecture Decision Records
+
+### Technology Stack Decisions
+- **Static site generator choice**: See `docs/Architecture Decision Records.md` for detailed rationale
+- **Hosting platform selection**: See `docs/Architecture Decision Records.md` for comparison analysis
+- **Ruby version**: Specified in `.ruby-version` for consistency
+- **Testing framework**: RSpec chosen for Ruby ecosystem alignment
+
+### Key Architectural Patterns
+1. **Static over dynamic**: Chosen for simplicity, security, and performance
+2. **Git-based content**: Version control for all content and configuration
+3. **Component separation**: Clear boundaries between content, presentation, and logic
+4. **Test-driven development**: Comprehensive test coverage with automated verification
+
+## Integration Points
+
+### Documentation References
+- **Development workflow**: See `development_workflow.mdc` for local development patterns
+- **Development setup**: See `README.md` for complete setup procedures
+- **Dependency rationale**: See `Gemfile` comments for gem selection context
+- **Technology decisions**: See `docs/Architecture Decision Records.md` for detailed analysis
+- **Design standards**: See `docs/Design System.md` for visual architecture
+- **Content strategy**: See `docs/Content Strategy.md` for content architecture
+
+### External Services
+- **GitHub**: Source control and CI/CD
+- **Google Fonts**: Typography assets
+- **Future integrations**: Analytics, comments, newsletter services
+
+---
+
+This architecture prioritizes simplicity, maintainability, and developer experience while providing a solid foundation for a personal blog with professional presentation.
