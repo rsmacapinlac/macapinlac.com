@@ -13,6 +13,20 @@ activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
 
+# Image Optimization Configuration
+# Optimizes images for web performance and accessibility
+activate :imageoptim do |options|
+  # Enable all optimizers for maximum compression
+  options.pngout = false
+  options.svgo = false
+  options.gifsicle = true
+  options.jpegoptim = true
+  options.jpegrecompress = true
+  options.optipng = true
+  options.pngquant = true
+  options.svgo = true
+end
+
 # Layout Configuration
 # https://middlemanapp.com/basics/layouts/
 
@@ -119,11 +133,15 @@ end
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
 configure :build do
-  # CSS Minification (commented out - manual optimization preferred)
-  # Reduces file size for faster loading - consider enabling for production
-  # activate :minify_css
+  # CSS Minification
+  # Reduces file size for faster loading - enabled for production optimization
+  activate :minify_css
 
-  # JavaScript Minification (commented out - manual optimization preferred)
-  # Reduces file size for faster loading - consider enabling for production
-  # activate :minify_javascript
+  # JavaScript Minification
+  # Reduces file size for faster loading - enabled for production optimization
+  activate :minify_javascript
+
+  # HTML Minification
+  # Reduces file size for faster loading - enabled for production optimization
+  activate :minify_html
 end

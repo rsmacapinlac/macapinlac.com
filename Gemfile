@@ -10,6 +10,12 @@ gem 'middleman-autoprefixer'
 # Automatic browser refresh on file changes for improved development workflow
 gem 'middleman-livereload'
 
+# Asset Optimization
+# HTML minification for production builds - reduces file size for faster loading
+gem 'middleman-minify-html'
+# Image optimization for web performance and accessibility
+gem 'middleman-imageoptim'
+
 # Git Integration
 # Enables git-based features in templates including changelog generation and commit history
 gem 'git'
