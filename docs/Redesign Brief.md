@@ -10,21 +10,43 @@ tags:
 
 **macapinlac.com** is a personal blog by Ritchie Macapinlac that mixes thoughtful, often humorous reflections on technology, parenting, productivity, and personal development. It serves as both a public digital journal and a resource for fellow curious minds—featuring deep dives into EV road trips, Docker guides, and daily-life experiments in living and working smarter.
 
-This redesign will transform macapinlac.com into a contemporary digital space that balances clarity, authenticity, and sophistication. The updated site will reflect Ritchie’s evolving professional identity while supporting a growing body of writing and new content formats. The tone and presentation should remain grounded, personal, and accessible—never overly polished or corporate.
+This redesign will transform macapinlac.com into a contemporary digital space that balances clarity, authenticity, and sophistication. The updated site will reflect Ritchie's evolving professional identity while supporting a growing body of writing and new content formats. The tone and presentation should remain grounded, personal, and accessible—never overly polished or corporate.
 
 ### **2. Objectives and Goals**
 
 * **Enhance User Experience (UX):** Simplify navigation and optimize the reading experience across all devices.
-* **Modernize Visual Identity:** Align the visual look and feel with Ritchie’s personality and current body of work.
-* **Grow and Engage Readership:**
-
-  * Introduce a **newsletter sign-up** to build a mailing list and deepen audience connection (as a secondary/tertiary call to action).
-  * Design with **commenting or reader feedback** functionality in mind (but do not implement yet).
-* **Showcase Personal Brand and Projects:**
-
-  * Highlight ongoing or past **projects** and potential content **series** to demonstrate depth and continuity in Ritchie’s work.
+* **Modernize Visual Identity:** Align the visual look and feel with Ritchie's personality and current body of work.
+* **Grow and Engage Readership:** Design with reader engagement functionality in mind for future implementation.
+* **Showcase Personal Brand and Series:**
+  * Highlight content **series** to demonstrate depth and continuity in Ritchie's work.
 * **Facilitate Professional Connection:** Create clear paths for potential collaborators, employers, and readers to connect.
 * **Improve Discoverability:** Apply basic SEO practices to help new readers discover the site organically.
+
+### **2.1 Success Criteria and Measurable Outcomes**
+
+#### **User Experience Metrics**
+- **Page Load Speed:** Target <3 seconds on mobile, <2 seconds on desktop
+- **Mobile Usability:** 90%+ mobile-friendly score on Google PageSpeed Insights
+- **Accessibility:** WCAG 2.1 AA compliance across all pages
+- **Reading Experience:** Improved time on page and reduced bounce rate
+
+#### **Content Engagement Goals**
+- **Article Completion Rate:** 60%+ of visitors read to article end
+- **Series Navigation:** 40%+ of series readers continue to next article
+- **Internal Linking:** 25%+ increase in page views per session
+- **Content Discoverability:** 30%+ of traffic from internal search and tags
+
+#### **Professional Positioning Metrics**
+- **Contact Form Submissions:** Quality inquiries from potential collaborators
+- **CV/Resume Downloads:** Trackable professional interest
+- **Social Sharing:** Articles shared across professional networks
+- **SEO Performance:** Top 3 ranking for "[Ritchie's name] + [expertise areas]"
+
+#### **Technical Performance Standards**
+- **Core Web Vitals:** All pages meet Google's recommended thresholds
+- **Cross-browser Compatibility:** Consistent experience across Chrome, Safari, Firefox, Edge
+- **Device Responsiveness:** Optimal experience on mobile, tablet, desktop
+- **Error Rate:** <1% of page loads result in errors
 
 ---
 
@@ -33,14 +55,12 @@ This redesign will transform macapinlac.com into a contemporary digital space th
 * **Primary:** Readers and followers interested in thoughtful tech commentary, introspective writing, and lifestyle design.
 
 * **Secondary:**
-
   * Industry peers in innovation, tech, and design
   * Productivity and journaling enthusiasts
   * Readers of Craig Mod, Derek Sivers, or Lifehacker-style blogs
   * Recruiters, hiring managers, and collaborators
 
 * **Tertiary:**
-
   * Parents who value authentic storytelling
   * Podcast Audience
 
@@ -53,15 +73,33 @@ This redesign will transform macapinlac.com into a contemporary digital space th
 * Responsive web design (desktop, tablet, mobile)
 * Homepage redesign
 * Redesigned blog/writing section
-* New **Projects or Series** section
-* Revamped “About” page
+* New **Series** section
+* Revamped "About" page
 * Optimized contact page
-* **Newsletter sign-up** (lightweight—consider integration with Substack, Mailchimp, or Buttondown, positioned as secondary or tertiary CTA)
 * Logical information architecture + intuitive navigation
 * Visual identity (color palette, typography, light branding elements)
 * Basic on-page SEO
-* Design accommodations for **future engagement tools** (commenting, reactions, etc.)
 * **Basic design system** or style guide for future use
+
+### **4.1 Technical Constraints and Requirements**
+
+#### **Platform and Technology Constraints**
+- **Static Site Generation:** Must work with current Middleman setup
+- **Hosting Compatibility:** Deployable to current hosting infrastructure
+- **Performance Budget:** Maximum 2MB total page weight for article pages
+- **Browser Support:** Modern browsers (Chrome, Safari, Firefox, Edge) - last 2 versions
+
+#### **Content Management Requirements**
+- **Markdown Compatibility:** All content creation remains in Markdown
+- **Git-based Workflow:** Content management through Git commits
+- **No Database Dependencies:** Maintain static site architecture
+- **Build Process:** Integration with existing GitHub Actions deployment
+
+#### **SEO and Analytics Requirements**
+- **URL Structure:** Maintain existing URL patterns for SEO preservation
+- **Meta Tags:** Comprehensive meta tags for social sharing
+- **Schema Markup:** Structured data for articles and author information
+- **Analytics Integration:** Google Analytics 4 and Search Console compatibility
 
 ---
 
@@ -83,17 +121,14 @@ Professional and insightful, yet warm and conversational—striking a balance be
 * **Color Palette:**
   Neutral, calming tones: soft greys, whites, muted blues, or earthy accents.
 * **Layout:**
-
   * Clean, wide margins
   * Minimal distractions
   * Clear reading hierarchy
   * Mobile-first
 * **Imagery & Graphics:**
-
   * Sparse, subtle illustrations or minimal photography
   * Optional icons or emojis for personality
 * **Branding:**
-
   * Light personal branding (e.g., subtle RM monogram)
   * Favicon and footer mark
   * Signature font for blog titles optional
@@ -102,48 +137,28 @@ Professional and insightful, yet warm and conversational—striking a balance be
 
 ### **6. New Additions to Content Structure**
 
-* **Newsletter Sign-Up**
-  Tasteful opt-in on homepage and blog posts (suggested: end of article or inline). Integration with a simple newsletter tool. Positioned as a **secondary or tertiary call to action**, ideally non-intrusive but effective in encouraging subscriptions.
-* **Projects / Series Section**
+* **Series Section**
   A modular page to showcase:
-
   * Multi-part writing series
   * Personal experiments or tech builds
-  * Highlights of co-op program work or innovation themes
-  * Option to include tags or filters for topical browsing
-* **Future Engagement Elements (Planned, Not Launched)**
-
-  * Placeholder or notes in design system for:
-
-    * Commenting/discussion section under posts
-    * Reactions or lightweight feedback (e.g., “This was helpful” button)
+  * Highlights of innovation themes
+  * Option to include tags or filters for browsing
 
 ---
 
 ### **7. Context & Rationale**
 
-* Current site is minimal but outdated; lacks warmth and depth to reflect Ritchie’s current writing and direction.
+* Current site is minimal but outdated; lacks warmth and depth to reflect Ritchie's current writing and direction.
 * This redesign will elevate the experience without losing the honest, approachable charm of the original site.
-* A more modular design allows the site to grow with Ritchie’s ideas and evolving content strategy.
-
----
-
-### **8. Inspiration & Competitive Landscape**
-
-* [Craig Mod](https://craigmod.com/) — clean, reader-first design, strong personality
-* [Derek Sivers](https://sive.rs/) — clarity, simplicity, and modular structure
-* [Paul Jarvis](https://pjrvs.com/) — personal site as professional home base
-* [Julian Lehr](https://julian.digital/) — creative navigation and minimal aesthetics
-* [A Cup of Jo](https://cupofjo.com/) — for integrating personal tone with editorial polish
+* A more modular design allows the site to grow with Ritchie's ideas and evolving content strategy.
 
 ---
 
 ### **9. Content Priorities**
 
-1. Blog / Journal entries
+1. Blog / Journal articles
 2. About
-3. Projects or Series (new)
+3. Series (new)
 4. Contact
-5. Newsletter sign-up (new)
-6. Archive / Tags / Topics
-7. Optional: Tools, booklists, personal projects, or recommendations
+5. Archive / Tags / Categories
+6. Optional: Tools, booklists, personal recommendations

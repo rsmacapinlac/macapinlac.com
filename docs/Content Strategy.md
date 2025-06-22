@@ -1,6 +1,6 @@
 # Macapinlac.com Content Strategy Document
 
-**Version:** 1.3
+**Version:** 2.0
 
 ## 1. Overview
 
@@ -12,20 +12,14 @@
 
 * **Path:** `/`
 * **Sections:**
-
   * Intro blurb (short bio or welcome message)
   * Recent posts list (reverse chronological)
-  * Optional newsletter signup
   * Light link to About or Series section
 * **Relevant CTAs (in priority):**
-
   * "Read this post"
   * "Learn more about me"
-  * "Subscribe to the newsletter"
 * **Functionality:**
-
   * Lightweight post summaries
-  * Reaction buttons on visible post previews (optional)
   * Responsive, clean layout with clear typography
 
 ### 2.2 Writing Section
@@ -36,218 +30,151 @@
 
 * **Path Examples:** `/writing/`, `/writing/2025/`
 * **Sections:**
-
-  * Reverse chronological list of posts
+  * Reverse chronological list of articles
   * Yearly archive indexes (e.g., grouped by year)
-  * Tag/topic filters (optional sidebar or top-nav UI)
+  * Tag filters (optional sidebar or top-nav UI)
 * **Relevant CTAs:**
-
-  * "Read more" on each post preview
-  * Newsletter opt-in after list or pinned inline
+  * "Read more" on each article preview
 * **Functionality:**
-
   * Pagination or infinite scroll
   * Filter by tag/year
-  * Lightweight summaries per post
+  * Lightweight summaries per article
 
-#### 2.2.2 Individual Posts
+#### 2.2.2 Individual Articles
 
 * **Path Example:** `/writing/planning-a-road-trip-in-a-tesla/`
 * **Sections:**
-
   * Title and publish date
   * Optional series badge or navigation ("Part X of Y")
   * Main content body (text, images, links)
   * Tags for related content
-  * Related posts (optional)
+  * Related articles (optional)
 * **Relevant CTAs:**
-
-  * "Helpful?" feedback buttons
   * Series navigation (if part of a collection)
-  * "Subscribe to the newsletter" prompt (inline or footer)
 * **Functionality:**
-
-  * Reaction buttons (👍 💡 🤔)
-  * Sticky header or back-to-top nav (optional)
   * SEO schema (title, meta description, social preview)
 
-### 2.3 Projects and Series Section
+### 2.3 Series Section
 
 * **Path:** `/series`
 * **Sections:**
-
   * Series landing page (intro + list of series)
-  * Individual series pages with intro and post index
+  * Individual series pages with intro and article index
 * **Relevant CTAs:**
-
   * "Explore this series"
   * Links to next/previous entries in a series
 * **Functionality:**
+  * Filters by tag (e.g., Tech, Productivity, Experiments)
+  * Series badge in article headers
 
-  * Filters by topic (e.g., Tech, Productivity, Experiments)
-  * Series badge in post headers
-
-### 2.4 Newsletter
-
-* **Path:** `/newsletter`
-
-#### 1. Sections:
-
-* Intro text on what the newsletter is
-* Email opt-in form
-* Optional: archive of past issues (Substack/Buttondown depending)
-* **Relevant CTAs:**
-
-  * "Subscribe to the newsletter"
-* **Functionality:**
-
-  * Embedded sign-up form
-  * Replies enabled for engagement
-
-### 2.5 About Page
+### 2.4 About Page
 
 * **Path:** `/about`
 * **Sections:**
-
   * Brief personal intro
   * Site purpose
   * What Ritchie does professionally
   * Résumé / CV links
-  * Topics covered on the site
+  * Tags covered on the site
   * How to connect
 * **Relevant CTAs:**
-
   * "View Résumé (PDF)"
   * "Contact me"
-  * "Subscribe to the newsletter"
 * **Functionality:**
+  * Links to CV page and Contact form
 
-  * Links to CV page, Contact form, and Newsletter
-
-### 2.6 Community Policy
-
-* **Path:** `/community/policy`
-* **Sections:**
-
-  * Why the policy exists
-  * What engagement methods are available
-  * Tone and behavior expectations
-  * What’s coming next (e.g., comments)
-* **Relevant CTAs:**
-
-  * None for now (informational only)
-* **Functionality:**
-
-  * Static content page, may evolve with comment system
-
-### 2.7 Contact Page
+### 2.5 Contact Page
 
 * **Path:** `/contact`
 * **Sections:**
-
   * Brief invitation to connect
   * Form fields (Name, Email, Message)
 * **Relevant CTAs:**
-
   * "Send Message"
 * **Functionality:**
-
   * Form submission to email or backend processor
 
-## 3. Newsletter Content Strategy
+## 3. Content Organization
 
-* **Content Type:** Enhanced reflections and dispatches, published alongside or in between blog posts.
-* **Includes:**
+### 3.1 Navigation Structure
 
-  * Curated lists (e.g., favorite tools, book recommendations, media roundups)
-  * Extended or behind-the-scenes context for recent posts
-  * Experiments or drafts not ready for publication
-  * Direct personal reflections exclusive to newsletter subscribers
-  * Curated media (articles, tools, books, podcasts)
-  * Occasional responses to reader feedback or questions
-  * Extended or behind-the-scenes context for recent posts
-  * Experiments or drafts not ready for publication
-  * Direct personal reflections exclusive to newsletter subscribers
-  * Curated media (articles, tools, books, podcasts)
-  * Occasional responses to reader feedback or questions
-* **Relationship to Blog Posts:**
+```
+macapinlac.com/
+├── Home (recent articles)
+├── Writing
+│   ├── Individual Articles
+│   └── Tags
+├── Series
+│   ├── Series Pages
+│   └── Filters (by tag)
+├── About
+└── Contact
+```
 
-  * May include post excerpts with commentary or expansion
-  * May function independently as standalone essays
-* **Tone:** Intimate, direct, slightly less polished than blog content but aligned in voice
-* **Audience Benefit:** First look at new ideas, a more personal connection with Ritchie, and low-friction engagement via reply
+### 3.2 Archival Strategy
 
-## 4. Content Organization
+* Year-based archive (e.g. /writing/2025/)
+* Tag-based navigation
+* Optional: "Start here" or curated collections
 
-### 4.3 Tag Strategy
+### 3.3 Tag Strategy
 
 * **Purpose:** Support discoverability, SEO, and reader exploration.
 * **Structure:**
-
-  * Tags will be applied to blog posts and series entries.
+  * Tags will be applied to articles and series entries.
   * Tags should be specific but not overly granular (e.g., `docker`, `productivity`, `parenting`, `ev-road-trip`).
   * Avoid duplicate or ambiguous terms (e.g., don't mix `tech` and `technology`).
   * A curated tag index will be available at `/tags/`.
 * **Editorial Guidance:**
-
-  * Limit to 3–5 tags per post.
+  * Limit to 3–5 tags per article.
   * Use consistent lowercase formatting.
   * Tie tags into future curated collections (e.g., "Start here", "Most popular", "Reader favorites").
 
-### 4.4 Engagement Template Notes
+## 4. Content Quality and Editorial Standards
 
-* **Helpful Reactions (Phase 1):**
+### Writing Guidelines
+- **Tone**: Professional yet warm and conversational
+- **Voice characteristics**: Authentic, curious, thoughtful, clever, relatable
+- **Approach**: Minimal, grounded, personal digital journal style
+- **Balance**: Approachable expertise - knowledgeable without being intimidating
 
-  * Placement: Bottom of each post.
-  * Options: 👍 (Helpful), 💡 (Interesting), 🤔 (Thought-provoking)
-  * Display: Simple emoji-style toggle, no login required.
-* **Newsletter Replies (Phase 1):**
+### Content Themes and Focus
+- **Primary topics**: Technology, parenting, productivity, personal development
+- **Content style**: Thoughtful reflections and experimental insights
+- **Narrative approach**: Personal experiences with broader applications
+- **Technical content**: Accessible explanations with practical examples
 
-  * Encourage replies in newsletter footer (e.g., "Have thoughts? Just hit reply.")
-  * Funnel responses into curated highlights if desired.
-* **Commenting (Future Phase):**
+## 5. Series and Content Organization
 
-  * Placeholder block under posts (e.g., “Comments coming soon”)
-  * Optional integration with Commento, Webmentions, or Cove.chat
-  * Include tone guide in community policy (e.g., "Curious, kind, on-topic")
+### Series Content Structure
+- **Series landing pages**: Introduction and sequential post index
+- **Post navigation**: Clear next/previous within series
+- **Progress indicators**: Show completion status for multi-part content
+- **Series badges**: Visual identification in post headers
 
-### 4.1 Navigation Structure
+### Content Documentation Patterns
+- **Process documentation**: Steps, decisions, and lessons learned
+- **Resource sharing**: Tools, references, and helpful materials
+- **Follow-up content**: Updates, iterations, and refined insights
 
-```
-macapinlac.com/
-├── Home (recent posts)
-├── Writing
-│   ├── Individual Posts
-│   └── Tags
-├── Projects & Series
-│   ├── Series Pages
-│   └── Filters (by topic)
-├── About
-├── Newsletter
-├── Contact
-├── Community
-│   └── Policy
-└── [Future: Archive, Uses, Podcast, Resources]
-```
+## 6. SEO and Content Discoverability
 
-### 4.2 Archival Strategy
+### On-Page SEO Practices
+- **Title optimization**: Descriptive, search-friendly titles under 60 characters
+- **Meta descriptions**: Compelling summaries for social sharing
+- **Internal linking**: Connect related posts and topics naturally
+- **Image optimization**: Descriptive alt text and meaningful file names
 
-* Year-based archive (e.g. /writing/2025/)
-* Tag and topic-based navigation
-* Optional: "Start here" or curated collections
+### Content Discoverability Strategy
+- **Tag strategy**: Consistent taxonomy for exploration
+- **Series organization**: Logical grouping of related content
+- **Cross-referencing**: Link to related articles and external resources
+- **Archive structure**: Year-based and tag-based navigation
 
-## 5. Future Considerations
-
-* Expand commenting via Webmentions, Commento, or Cove (Phase 2+)
-* Add full-text search and curated evergreen content
-* Introduce Uses, Now, or Book List pages
-* Add CV, Media Kit, or Speaking page as profile grows
-
-## 6. Content Governance
+## 7. Content Governance
 
 * Content calendar driven by Ritchie's personal projects and reflections
-* Newsletter cadence: biweekly or monthly
-* Comments (when enabled): moderated with clear tone guide
+* Editorial standards focused on clarity, authenticity, and value
 
 ---
 

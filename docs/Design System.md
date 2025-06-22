@@ -1,6 +1,6 @@
 # Macapinlac.com Design System
 
-**Version:** 1.1 | **Date:** December 2024
+**Version:** 2.0 | **Date:** December 2024
 
 ## Overview
 
@@ -32,13 +32,12 @@ This design system serves as the foundation for macapinlac.com's redesign, creat
 | Font | Purpose | Applications |
 |------|---------|-------------|
 | **Lora (Serif)** | Authoritative Headings | Section headers ("Featured Post", "Topics"), page titles, post titles |
-| **Crimson Text (Serif)** | Editorial/Narrative Content | Tagline quotes, post excerpts, newsletter descriptions, narrative text |
+| **Crimson Text (Serif)** | Editorial/Narrative Content | Tagline quotes, post excerpts, narrative text |
 | **Inter (Sans-serif)** | Functional Interface | Navigation, buttons, labels, dates, metadata, UI elements |
 
 #### **Specific Applications:**
 - **Tagline/Brand Quote**: Crimson Text, 28px, italic
 - **Post Excerpts**: Crimson Text, 16px, regular
-- **Newsletter Descriptions**: Crimson Text, 16px, regular
 - **Section Headers**: Lora, 28px, bold
 - **Post Titles**: Lora, 22-24px, semi-bold
 - **Navigation**: Inter, 16px, regular
@@ -127,11 +126,11 @@ Home | Writing | Series | About | Contact
 - Positioned in header (desktop)
 - In menu on mobile
 - Sun/moon icons with smooth transition
-- Default: Light mode (updated from dark mode default)
+- Default: Light mode
 
 ### Content Cards
 
-#### Post Preview Card
+#### Article Preview Card
 ```
 [Optional Image]
 Date
@@ -140,7 +139,7 @@ Brief excerpt (2-3 lines)
 Read more → (or time estimate)
 ```
 
-#### Featured Post Card
+#### Featured Article Card
 ```
 [Larger Optional Image]
 Featured Badge
@@ -150,12 +149,12 @@ Extended excerpt (3-4 lines)
 Read more → (or time estimate)
 ```
 
-#### Project/Series Card
+#### Series Card
 ```
 [Visual Element/Icon]
 Series Title (H3)
 Brief description
-x Posts in series
+x Articles in series
 Explore →
 ```
 
@@ -196,8 +195,16 @@ Helper text / Error message
 - **Primary:** Filled background, white text
 - **Secondary:** Outline, colored text
 - **Tertiary:** Text only with subtle hover
-- **States:** Default, Hover, Active, Disabled
+- **States:** Default, Hover, Active, Disabled, Loading
 - **Padding:** Generous padding for comfortable touch targets (minimum 180px width for text-heavy buttons)
+
+##### Button States and Behaviors
+- **Default:** Primary blue (#3B5F7F) background, white text
+- **Hover:** Darker blue (#2D4A5F), smooth 200ms transition
+- **Active:** Pressed state with slightly darker background and 1px inset shadow
+- **Disabled:** Light gray (#A0A0A0) background, disabled cursor
+- **Loading:** Spinner icon replaces text, button remains same size
+- **Focus:** 2px blue outline for keyboard navigation
 
 #### Text Areas
 ```
@@ -208,28 +215,9 @@ Label
 Helper text / Character count
 ```
 
-### Interactive Elements (Future Implementation)
-
-#### Reaction Buttons
-```
-Was this helpful? 👍 💡 🤔
-```
-- Placement: End of articles
-- Visual feedback on click
-- No login required
-
-#### Comment Section Placeholder
-```
-Comments coming soon
-[Sign up for the newsletter to join the conversation]
-```
-
-#### Share Options
-- Simple icon set: Twitter, LinkedIn, Email, Copy Link
-- Placement: End of articles
-- Tooltip on hover
-
 ### Utility Components
+
+#### Tag System Components
 
 #### Tags
 ```
@@ -238,15 +226,15 @@ Comments coming soon
 - Unified earth tone styling: #F5F3F0 background, #7F6E56 border
 - Small text size
 - Hover effect
-- Placement: Post footer, series pages
+- Placement: Article footer, series pages
 
-#### Topic Cards
+#### Tag Cards
 - **Background:** #F5F3F0 (light earth tone)
 - **Border:** #7F6E56 (earth tone), 1px width
 - **Dimensions:** 110px × 90px
 - **Border radius:** 8px
 - **Layout:** Single row of 6 cards
-- **Content:** Emoji icon, topic name, post count
+- **Content:** Emoji icon, tag name, article count
 
 #### Badges
 ```
@@ -270,7 +258,7 @@ Part of: [Series Name]
 
 ## 3. Page Templates
 
-### Writing Section (Priority 1)
+### Writing Section
 
 #### Writing Index Template
 - **Header:**
@@ -278,22 +266,19 @@ Part of: [Series Name]
   - Optional filter controls
 
 - **Main:**
-  - Post preview cards in reverse chronological order
+  - Article preview cards in reverse chronological order
   - Year-based navigation sidebar (desktop) or dropdown (mobile)
   - Pagination or load more option
 
 - **Sidebar/Filter (Desktop):**
   - Year filter
   - Popular tags
-  - Featured posts
+  - Featured articles
 
-- **Footer:**
-  - Newsletter signup (subtle)
-
-#### Individual Post Template
+#### Individual Article Template
 - **Header:**
   - Series badge (if applicable)
-  - Post title (H1)
+  - Article title (H1)
   - Date
   - Reading time
 
@@ -305,16 +290,14 @@ Part of: [Series Name]
 
 - **Footer:**
   - Tags
-  - Reaction placeholder
   - Series navigation (if applicable)
-  - Related posts
-  - Newsletter signup
+  - Related articles
 
-### Projects and Series (Priority 2)
+### Series Section
 
 #### Series Landing Template
 - **Header:**
-  - Page title: "Series & Projects"
+  - Page title: "Series"
   - Brief introduction
 
 - **Main:**
@@ -328,11 +311,11 @@ Part of: [Series Name]
   - Series description
 
 - **Main:**
-  - Sequential post listing
+  - Sequential article listing
   - Progress indicator
-  - Post previews with dates
+  - Article previews with dates
 
-### About Page (Priority 3)
+### About Page
 
 #### About Template
 - **Header:**
@@ -348,9 +331,8 @@ Part of: [Series Name]
 - **Footer:**
   - Connection options
   - CV/Resume link
-  - Newsletter signup
 
-### Contact Page (Priority 4)
+### Contact Page
 
 #### Contact Template
 - **Header:**
@@ -368,66 +350,25 @@ Part of: [Series Name]
 
 ---
 
-## 4. Special Components
+## 4. Tag System
 
-### Newsletter Signup
-
-#### Inline Variant
-```
-Join the Newsletter
-[Email field] [Subscribe →]
-```
-
-#### Footer Variant
-```
-Stay in Touch
-Get occasional updates on new posts and projects.
-[Email field] [Subscribe →]
-```
-
-#### Dedicated Page Variant
-```
-Newsletter
-Brief description of what subscribers receive
-Frequency indication
-[Name - Optional]
-[Email - Required]
-[Subscribe →]
-```
-
-### Tag System
-
-#### Tag Display
+### Tag Display
 - Unified earth tone styling across all tags
-- Group at bottom of posts
-- Limited to 3-5 per post
+- Group at bottom of articles
+- Limited to 3-5 per article
 
-#### Topic Cards (Updated)
-- **Unified Design:** All topic cards use the same earth tone color scheme
+### Tag Cards
+- **Unified Design:** All tag cards use the same earth tone color scheme
 - **Background:** #F5F3F0
 - **Border:** #7F6E56, 1px stroke
 - **Layout:** Single row of 6 cards (110px × 90px each)
-- **Content:** Emoji icon at top, topic name center, post count bottom
+- **Content:** Emoji icon at top, tag name center, article count bottom
 - **Hover State:** Subtle interaction feedback
 
-#### Tag Index Page
+### Tag Index Page
 - Alphabetical grid or list
-- Post count per tag
+- Article count per tag
 - Most popular tags highlighted
-
-### Search Component (Future)
-
-#### Search Bar
-```
-[🔍 Search...]
-```
-- Placement: Header or navigation
-- Expandable on mobile
-
-#### Search Results Template
-- Similar to writing index
-- Highlighting of search terms
-- Filters for result types
 
 ---
 
@@ -439,7 +380,7 @@ Frequency indication
 - Smooth transition animation (300ms)
 
 ### Dark Mode Defaults
-- Default to light mode on first visit (updated)
+- Default to light mode on first visit
 - Clear visual hierarchy maintained
 - All interactive elements clearly visible
 - Reduced brightness for comfortable reading
@@ -455,48 +396,71 @@ Frequency indication
 
 ---
 
-## 6. Accessibility Considerations
+## 8. Mobile-Specific Design Considerations
 
-### Core Principles
-- WCAG 2.1 AA compliance target
-- Keyboard navigation support
-- Screen reader friendly markup
-- Sufficient color contrast (4.5:1 minimum)
+### Mobile Typography Adjustments
+- **Touch targets:** Minimum 44px height for all interactive elements
+- **Reading distance:** Optimized for 16-24 inch reading distance
+- **Line length:** Maximum 50-60 characters per line on mobile
+- **Contrast:** Enhanced contrast ratios for outdoor reading
 
-### Focus States
-- Visible focus indicators on all interactive elements
-- Consistent style across components
+### Mobile Component Variations
 
-### Motion and Animation
-- Respect reduced motion preferences
-- Subtle transitions (300ms maximum)
-- No essential content in animations
+#### Mobile Navigation
+- **Hamburger menu:** 3-line icon, 48px touch target
+- **Menu overlay:** Full-screen with large touch targets
+- **Gesture support:** Swipe to close menu
+- **Safe areas:** Respect iOS notch and Android navigation
 
----
+#### Mobile Article Cards
+- **Simplified layout:** Stack elements vertically
+- **Larger touch targets:** Entire card clickable
+- **Thumb-friendly:** Important actions within thumb reach
+- **Image sizing:** Responsive images with art direction
 
-## 7. Future Integration Points
+#### Mobile Forms
+- **Input fields:** Minimum 48px height
+- **Spacing:** Extra spacing between fields for fat finger navigation
+- **Keyboard optimization:** Appropriate input types (email, tel, etc.)
+- **Validation:** Real-time feedback without overwhelming
 
-### Commenting System
-- Reserved space in post template footer
-- Clear visual separation from post content
-- Moderation UI considerations
-
-### Enhanced Analytics
-- Event tracking hooks in component design
-- Non-invasive implementation
-
-### Search Functionality
-- Reserved UI space in navigation
-- Search results page template
-
-### Extended Media Types
-- Video embed component
-- Audio player component
-- Interactive content frames
+### Mobile Performance Considerations
+- **Progressive enhancement:** Core functionality works without JavaScript
+- **Image optimization:** Responsive images with appropriate sizing
+- **Touch responsiveness:** 100ms maximum touch response time
+- **Smooth scrolling:** 60fps scroll performance maintained
 
 ---
 
-## 8. Style Guide Usage
+## 9. Accessibility Implementation Details
+
+### Screen Reader Support
+- **Semantic HTML:** Proper heading hierarchy (H1→H2→H3)
+- **ARIA labels:** Descriptive labels for complex interactions
+- **Skip links:** "Skip to main content" for keyboard users
+- **Focus management:** Logical tab order throughout
+
+### Visual Accessibility
+- **Color contrast:** 4.5:1 minimum for normal text, 3:1 for large text
+- **Color independence:** Information not conveyed by color alone
+- **Focus indicators:** Visible 2px outline on all interactive elements
+- **Text scaling:** Layout remains functional at 200% zoom
+
+### Motor Accessibility
+- **Click targets:** Minimum 44px touch targets
+- **Hover alternatives:** Touch-friendly alternatives for hover states
+- **Keyboard navigation:** All functionality accessible via keyboard
+- **Time limits:** No automatic timeouts on user interactions
+
+### Cognitive Accessibility
+- **Clear language:** Simple, concise instructions and labels
+- **Consistent patterns:** UI patterns repeat throughout site
+- **Error prevention:** Clear validation and confirmation
+- **Help text:** Contextual help without overwhelming interface
+
+---
+
+## 7. Style Guide Usage
 
 ### Implementation Notes
 - Component-based approach recommended
@@ -508,14 +472,6 @@ Frequency indication
 - Design system version tracking
 - Component approval process
 - Feedback loop for improvements
-
-### Updates from Version 1.0
-- Added Crimson Text as third font for editorial content
-- Updated typography hierarchy with three-font system
-- Unified topic card design with earth tone color scheme
-- Updated default mode preference to light mode
-- Enhanced button padding specifications
-- Refined color applications based on approved mockup
 
 ---
 
