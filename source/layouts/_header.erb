@@ -1,14 +1,49 @@
-<header>
-  <h1>
-    <% link_to '/', class: 'h-card' do %>
-      <span class="p-given-name">ritchie</span>
-      <span class="p-family-name">macapinlac</span>.com
-    <% end %>
-  </h1>
-  <div id="main_navigation">
-    <ul>
-      <li><%= link_to 'Home', '/' %></li>
-      <li><a href="/feed.xml">RSS</a></li>
-    </ul>
+<header class="site-header">
+  <div class="header-container">
+    <div class="header-brand">
+      <h1 class="site-title">
+        <% link_to '/', class: 'h-card site-link' do %>
+          <span class="p-given-name">ritchie</span>
+          <span class="p-family-name">macapinlac</span>.com
+        <% end %>
+      </h1>
+    </div>
+
+    <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="hamburger"></span>
+      </button>
+      
+      <ul id="nav-menu" class="nav-menu">
+        <li class="nav-item">
+          <%= link_to 'Home', '/', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <a href="/feed.xml" class="nav-link">RSS</a>
+        </li>
+        <li class="nav-item">
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+            <span class="theme-icon light">☀️</span>
+            <span class="theme-icon dark">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+<script>
+  // Mobile navigation toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function() {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('nav-menu--open');
+      });
+    }
+  });
+</script>
