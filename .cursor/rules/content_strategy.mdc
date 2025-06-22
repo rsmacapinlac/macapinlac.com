@@ -3,19 +3,64 @@ description: Content creation guidelines, brand voice, editorial standards, and 
 globs: ["source/**/*.md", "*.md", "source/layouts/post.erb"]
 alwaysApply: false
 ---
-
 # Content Strategy Guidelines
 
-## Content Creation Standards
+## Core Principles
 
-### Blog Post Structure
-- **Filename format**: `YYYY-MM-DD-title.html.md` in `source/`
-- **Required frontmatter**: title, date, tags
-- **Optional frontmatter**: layout (defaults to post), reply (for response posts)
-- **Excerpt separator**: Use `<!-- more //-->` for post previews
-- **Heading hierarchy**: Start with H2, maintain logical structure
+### Content Creation Philosophy
+- **Always follow established content patterns**: Maintain consistency with existing post structure and formatting
+- **Always consider the reader experience**: Write for clarity and accessibility across all devices
+- **Authenticity over perfection**: Share genuine experiences and perspectives rather than polished marketing
+- **Value-driven content**: Provide actionable insights or meaningful reflection in every piece
+- **Documentation as content**: Treat content creation as part of the development process
 
-### Frontmatter Patterns
+### Brand Voice Philosophy
+- **Professional yet warm**: Knowledgeable without being intimidating
+- **Personal digital journal style**: Authentic, curious, thoughtful, and relatable
+- **Minimal and grounded**: Focus on substance over style
+- **Approachable expertise**: Make complex topics accessible to general audiences
+
+### Content Organization Philosophy
+- **Series over standalone**: Group related content into logical series when possible
+- **Tag-driven discovery**: Use consistent taxonomy for content organization
+- **Chronological with context**: Maintain temporal flow while providing topical connections
+- **Progressive disclosure**: Layer information from simple to complex
+
+## Process
+
+### Creating New Content
+
+#### When to Create Content
+- **Personal insights**: Significant experiences or lessons learned
+- **Technical discoveries**: Solutions, patterns, or approaches worth sharing
+- **Project documentation**: Processes, decisions, and outcomes from development work
+- **Response posts**: Meaningful engagement with others' content
+- **Series content**: Multi-part explorations of complex topics
+
+#### Content Creation Process
+1. **Identify the core message**: What insight or experience is worth sharing?
+2. **Research existing content**: Check for related posts and series in the archive
+3. **Choose appropriate format**: Single post, series part, or project documentation
+4. **Draft with reader in mind**: Focus on clarity and value delivery
+5. **Apply consistent formatting**: Follow established frontmatter and structure patterns
+6. **Review for brand alignment**: Ensure tone and approach match established voice
+
+#### Content Review Process
+- **Clarity check**: Can a general audience understand this content?
+- **Value validation**: Does this provide actionable insights or meaningful reflection?
+- **Authenticity verification**: Does this reflect genuine experience and perspective?
+- **Technical accuracy**: Are technical details correct and appropriately explained?
+
+### Content Organization Workflow
+1. **Series planning**: Identify when content should be part of a larger series
+2. **Tag assignment**: Use consistent taxonomy for content discovery
+3. **Cross-referencing**: Link to related posts and external resources
+4. **Archive maintenance**: Ensure historical content remains discoverable
+
+## Templates
+
+### Blog Post Frontmatter
+
 ```yaml
 ---
 title: "Descriptive Title"
@@ -23,6 +68,7 @@ date: YYYY-MM-DD
 tags:
   - tag1
   - tag2
+  - tag3
 layout: post  # Optional, defaults to blog layout
 reply:        # Optional, for response posts
   url: https://example.com
@@ -30,134 +76,83 @@ reply:        # Optional, for response posts
 ---
 ```
 
-### Tag Management
-- **Tag limits**: 3-5 tags per post maximum
-- **Tag consistency**: Use established taxonomy from existing posts
-- **Tag format**: Lowercase, hyphenated for multi-word tags
-- **Tag purpose**: Facilitate content discovery and organization
+### Content Structure Template
 
-## Brand Voice and Editorial Standards
+```markdown
+# [Post Title]
 
-### Writing Guidelines
-- **Tone**: Professional yet warm and conversational
-- **Voice characteristics**: Authentic, curious, thoughtful, clever, relatable
-- **Approach**: Minimal, grounded, personal digital journal style
-- **Balance**: Approachable expertise - knowledgeable without being intimidating
+[Brief introduction or context]
 
-### Content Themes and Focus
-- **Primary topics**: Technology, parenting, productivity, personal development
-- **Content style**: Thoughtful reflections and experimental insights
-- **Narrative approach**: Personal experiences with broader applications
-- **Technical content**: Accessible explanations with practical examples
+## [Main Section Heading]
 
-## Site Information Architecture
+[Content with clear paragraphs and logical flow]
 
-### Navigation Structure
-```
-Home | Writing | Series | About | Contact
+### [Subsection if needed]
+
+[Supporting content with examples or details]
+
+<!-- more //-->
+
+[Additional content for full post view]
 ```
 
-### Content Hierarchy and Priorities
-1. **Blog/Journal entries** (primary content)
-2. **About page** (personal and professional context)
-3. **Projects/Series section** (multi-part content organization)
-4. **Contact form** (connection facilitation)
-5. **Archive/Tags/Topics** (content discovery)
+### Tag Taxonomy Standards
+- **Technology**: tech, programming, tools, productivity
+- **Personal**: parenting, life, reflection, learning
+- **Projects**: series, projects, experiments
+- **Topics**: specific areas of interest or expertise
 
-### Homepage Content Strategy
-- **Intro section**: Brief welcome message or current focus
-- **Recent posts**: Reverse chronological listing with previews
-- **Navigation**: Clear paths to main content sections
-- **Engagement**: Subtle calls to action for deeper exploration
+## Commands
 
-## Series and Project Organization
+### Content Creation
+```bash
+# Create new post with current date
+bundle exec middleman article "Post Title"
 
-### Series Content Structure
-- **Series landing pages**: Introduction and sequential post index
-- **Post navigation**: Clear next/previous within series
-- **Progress indicators**: Show completion status for multi-part content
-- **Series badges**: Visual identification in post headers
+# Create post with specific date
+bundle exec middleman article "Post Title" --date=2024-01-15
 
-### Project Documentation Patterns
-- **Project scope**: Clear description of goals and outcomes
-- **Process documentation**: Steps, decisions, and lessons learned
-- **Resource sharing**: Tools, references, and helpful materials
-- **Follow-up content**: Updates, iterations, and refined insights
+# Create draft post
+bundle exec middleman article "Post Title" --draft
+```
 
-## Content Quality and Editorial Standards
+### Content Management
+```bash
+# List all posts
+find source -name "*.html.md" | sort
 
-### Editorial Guidelines
-- **Clarity**: Write for understanding, not impressiveness
-- **Authenticity**: Share genuine experiences and perspectives
-- **Value**: Provide actionable insights or meaningful reflection
-- **Completeness**: Finish thoughts and provide sufficient context
+# Search post content
+grep -r "search term" source/
 
-### Technical Content Standards
-- **Accuracy**: Verify technical information and provide sources
-- **Accessibility**: Explain technical concepts for general audience
-- **Examples**: Include practical, working examples when relevant
-- **Updates**: Note when technical content may become outdated
+# Validate frontmatter
+bundle exec middleman validate
+```
 
-## SEO and Content Discoverability
+### Content Publishing
+```bash
+# Build site for review
+bundle exec middleman build
 
-### On-Page SEO Practices
-- **Title optimization**: Descriptive, search-friendly titles under 60 characters
-- **Meta descriptions**: Compelling summaries for social sharing
-- **Internal linking**: Connect related posts and topics naturally
-- **Image optimization**: Descriptive alt text and meaningful file names
+# Preview with live reload
+bundle exec middleman server --livereload
 
-### Content Discoverability Strategy
-- **Tag strategy**: Consistent taxonomy for topic exploration
-- **Series organization**: Logical grouping of related content
-- **Cross-referencing**: Link to related posts and external resources
-- **Archive structure**: Year-based and topic-based navigation
+# Deploy content
+bundle exec middleman deploy
+```
 
-## Responsive Content and Accessibility
+## Integration Points
 
-### Multi-Device Content Considerations
-- **Reading experience**: Optimized for mobile and desktop consumption
-- **Content length**: Appropriate for various reading contexts and attention spans
-- **Visual hierarchy**: Clear structure that works across screen sizes
-- **Navigation usability**: Touch-friendly interfaces for mobile users
-
-### Accessibility Standards
-- **Alt text**: Descriptive text for all images that convey meaning
-- **Heading structure**: Logical H1-H6 hierarchy for screen readers
-- **Link context**: Descriptive link text and clear external link indication
-- **Readability**: Use clear language and appropriate contrast
-
-## Content Maintenance and Version Control
-
-### Regular Content Review
-- **Link validation**: Check for broken internal and external links
-- **Content freshness**: Update outdated information when relevant
-- **Tag cleanup**: Maintain consistent taxonomy and remove unused tags
-- **Archive organization**: Ensure historical content remains discoverable
-
-### Version Control Integration
-- **Git changelog**: Automatic tracking of content changes via post layout
-- **Update documentation**: Note significant revisions in git history
-- **Content versioning**: Track major updates to evergreen content
-- **Editorial notes**: Document reasoning for significant changes
-
-## Integration with Design and Technical Systems
-
-### Design System Alignment
-- **Typography hierarchy**: Follow design system specifications for readability
-- **Content width**: Maintain 800px maximum width for optimal reading
-- **Spacing**: Use design system spacing grid for content sections
-- **Visual consistency**: Maintain brand alignment across all content
-
-### Template and Technical Integration
-- **Post layout**: Use established post template patterns consistently
-- **Responsive design**: Ensure content works across design system breakpoints
-- **Component usage**: Leverage design system components appropriately
-- **Performance**: Consider content impact on site loading and navigation
-
-## Cross-Reference Documentation
-
+### Documentation References
 - **Comprehensive strategy**: See `docs/Content Strategy.md` for detailed guidelines
 - **Design specifications**: See `docs/Design System.md` for visual standards
 - **Project objectives**: See `docs/Redesign Brief.md` for overall context
 - **Technical implementation**: See `middleman_conventions.mdc` for template patterns
 - **Development workflow**: See `development_workflow.mdc` for content creation process
+
+### External Services
+- **GitHub**: Version control for all content
+- **Future integrations**: Analytics, comments, newsletter services
+
+---
+
+This content strategy prioritizes authenticity, clarity, and value while maintaining consistent patterns and discoverability. The approach ensures content serves both personal expression and reader engagement goals.

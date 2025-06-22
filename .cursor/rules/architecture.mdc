@@ -3,159 +3,301 @@ description: High-level architectural decisions, testing patterns, and project o
 globs: ["config.rb", "Gemfile*", "spec/**/*", ".github/**/*"]
 alwaysApply: true
 ---
-
 # Architecture Guidelines
 
-## Core Technology Stack
+## Core Principles
 
-### Static Site Generator Philosophy
-- **Middleman**: Ruby-based static site generator optimized for blogs
+### Architecture Decision Records (ADR) Philosophy
+- **Always audit the Decision Log folder**: Review existing ADRs (`docs/Decision Log`)before making architectural changes. Only consider approved decisions.
+- **Always identify decisions that need documentation**: Any significant architectural choice must be documented
+- **Context preservation**: Understand historical decisions and their rationale before proposing changes
+- **Consistency over novelty**: Prefer established patterns unless there's clear justification for deviation
+- **Documentation-driven development**: Architectural decisions guide implementation, not the reverse
+
+### Technology Stack Philosophy
 - **Static-first approach**: Generate deployable HTML/CSS/JS with no server dependencies
-- **Git-based content management**: Blog posts as markdown files in version control
-- **Separation of concerns**: Content (markdown), presentation (ERB), styling (SASS)
+- **Git-based content management**: All content and configuration in version control
+- **Separation of concerns**: Clear boundaries between content, presentation, and logic
+- **Ruby ecosystem alignment**: Leverage established Ruby/Middleman patterns and conventions
 
-### Ruby Ecosystem Integration
-- **Ruby**: Version specified in `.ruby-version`
-- **Bundler**: Dependency management - see `Gemfile` for gem choices and rationale
-- **Gem selection**: Comments in `Gemfile` provide context for dependency choices
-- **RSpec**: Test framework aligned with Ruby community standards
-- **Rack-based**: Leverage Rack ecosystem for development and testing
+### Project Organization Principles
+- **Convention over configuration**: Follow established Middleman and Ruby community patterns
+- **Component-based architecture**: Organize code into logical, reusable components
+- **Test-driven development**: Comprehensive test coverage with automated verification
+- **Documentation as code**: Keep documentation close to implementation
 
-## Project Organization Principles
+### New Component Selection Criteria
+- **Must be compatible with existing components**: New components must integrate seamlessly with current architecture and not break existing functionality
+- **Must be actively maintained**: Components must have recent updates, active development, and community support
+- **ADR's must contain the link to the website or GitHub repository**: All architectural decisions must include direct links to component documentation and source code for transparency and verification
 
-### File Structure Philosophy
+## Decision Documentation Guidelines
+
+### Architectural Decisions vs Implementation Details
+
+#### Decisions That Require ADR Documentation
+
+**Architectural decisions** are strategic choices that affect the overall system design, have long-term implications, or establish patterns that guide future development. These **MUST** be documented as ADRs:
+
+- **Technology Stack Choices**: Framework selection, programming language decisions, database choices
+- **Architectural Patterns**: Design patterns, system organization, data flow approaches
+- **Integration Strategies**: How systems communicate, API design decisions, external service integration
+- **Performance Strategies**: Caching approaches, optimization methodologies, scalability decisions
+- **Security Approaches**: Authentication methods, data protection strategies, privacy compliance
+- **Development Process Changes**: CI/CD strategies, testing methodologies, deployment approaches
+- **Breaking Changes**: Modifications that affect existing functionality or APIs
+- **Component Selection**: Library and tool choices that become part of the core architecture
+
+**Examples of ADR-Worthy Decisions:**
+- Choosing Middleman as the static site generator
+- Implementing series functionality using custom collections
+- Selecting Google Fonts CDN for typography
+- Adopting SASS with CSS custom properties for theming
+- Implementing dark mode with CSS custom properties
+
+#### Implementation Details (No ADR Required)
+
+**Implementation details** are tactical choices that follow established architectural patterns and don't establish new architectural direction. These are documented in implementation plans and technical specifications, **NOT** as ADRs:
+
+- **Configuration Settings**: Specific gem versions, build settings, environment variables
+- **File Organization**: Directory structure, file naming conventions, asset organization
+- **Code Implementation**: Specific function implementations, class structures, method names
+- **UI/UX Details**: Specific styling choices, layout implementations, interaction patterns
+- **Content Organization**: Tag structures, metadata formats, content migration steps
+- **Testing Implementation**: Specific test cases, testing frameworks setup, test data
+- **Deployment Configuration**: Hosting setup, SSL configuration, domain management
+- **Performance Optimization**: Specific caching rules, image optimization settings, minification
+
+**Examples of Implementation Details:**
+- Setting up `middleman-imageoptim` configuration
+- Implementing RSS feed with `feed.xml.builder`
+- Creating specific SASS variables for color palette
+- Setting up RSpec test framework with Capybara
+- Configuring Google Analytics tracking code
+- Implementing 404 error page design
+- Setting up GitHub Actions deployment workflow
+
+#### Decision Classification Framework
+
+Use these questions to determine if a decision requires an ADR:
+
+1. **Does this establish a new architectural pattern or approach?**
+   - **Yes** → ADR required
+   - **No** → Implementation detail
+
+2. **Will this decision guide future development choices?**
+   - **Yes** → ADR required
+   - **No** → Implementation detail
+
+3. **Does this choice have long-term maintenance implications?**
+   - **Yes** → ADR required
+   - **No** → Implementation detail
+
+4. **Is this a strategic choice between multiple viable alternatives?**
+   - **Yes** → ADR required
+   - **No** → Implementation detail
+
+5. **Does this decision affect the overall system architecture?**
+   - **Yes** → ADR required
+   - **No** → Implementation detail
+
+#### Documentation Hierarchy
+
 ```
-├── source/              # All source content
-│   ├── layouts/         # ERB templates
-│   ├── stylesheets/     # SASS/CSS
-│   ├── javascripts/     # Client-side JS
-│   ├── images/          # Static assets
-│   └── files/           # Direct-served files
-├── spec/                # Test suite
-├── docs/                # Project documentation
-├── .cursor/             # AI development rules
-└── config.rb            # Middleman configuration
+Architectural Decisions (ADRs)
+├── Technology choices
+├── Design patterns
+├── Integration strategies
+└── Process changes
+
+Implementation Details
+├── Configuration files
+├── Code implementation
+├── UI/UX specifics
+└── Deployment setup
+
+Project Documentation
+├── Implementation Plan
+├── Technical Specifications
+├── Design System
+└── Content Strategy
 ```
 
-### Configuration Management
-- **Environment-specific settings**: Development vs production configuration
-- **Timezone awareness**: `Time.zone = "America/Vancouver"` for consistent dates
-- **Asset pipeline**: Autoprefixer, relative paths, minification in build
-- **Blog extension**: Centralized blog configuration with SEO-friendly URLs
+## Process
 
-## Testing Architecture
+### Documenting a Decision Log
 
-### RSpec Testing Strategy
-- **Feature-driven testing**: Test user-facing functionality in `spec/features/`
-- **Rack::Test integration**: HTTP-level testing for static site verification
-- **SimpleCov coverage**: 90% minimum coverage with branch tracking
-- **Test environment isolation**: Separate test configuration from development
+#### When to Create an ADR
+- **Technology choices**: Framework, library, or tool selection
+- **Architectural patterns**: Design patterns, data flow, or system organization
+- **Process changes**: Development workflow, deployment, or testing approaches
+- **Breaking changes**: Modifications that affect existing functionality or APIs
+- **Performance decisions**: Optimization strategies or trade-offs
 
-### Testing Patterns
-```ruby
-# Feature test structure
-describe 'Homepage' do
-  it 'contains essential content' do
-    get '/'
-    expect(last_response).to be_ok
-    expect(last_response.body).to include('expected content')
-  end
-end
+#### ADR Creation Process
+1. **Identify the decision**: Clearly state what architectural choice needs to be made
+2. **Research existing ADRs**: Check `docs/Decision Log/` for related decisions
+3. **Analyze alternatives**: Consider multiple approaches with pros/cons
+4. **Document the decision**: Use the ADR template with full context and rationale
+5. **Update status**: Mark as approved, pending, or deprecated as appropriate
+6. **Communicate changes**: Ensure team awareness of new architectural decisions
+
+#### ADR Review Process
+- **Context validation**: Verify the decision aligns with project constraints and goals
+- **Impact assessment**: Evaluate effects on existing systems and future flexibility
+- **Implementation verification**: Cross-reference ADR decisions with actual code
+- **Status updates**: Maintain current status of all ADRs as systems evolve
+
+### Decision Auditing Workflow
+1. **Pre-change audit**: Review relevant ADRs before implementing changes
+2. **Dependency mapping**: Identify how decisions relate to and impact each other
+3. **Consistency validation**: Ensure new changes align with established patterns
+4. **Documentation updates**: Update ADRs when decisions become deprecated or superseded
+
+## Templates
+
+### Architecture Decision Record
+
+```markdown
+---
+status: approved
+type: technical
+---
+
+# [Decision Title]
+
+## 1. Context / Background
+
+### 1.1 Current State
+[Describe the current system state and constraints]
+
+### 1.2 Requirements
+[List the requirements driving this decision]
+
+## 2. Decision
+
+**Selected Solution:** [Brief description of chosen approach]
+
+### 2.1 Rationale
+[Explain why this solution was chosen over alternatives]
+
+## 3. Solutions Considered
+
+### 3.1 Option A: [Description]
+- **Pros:**
+  - [Benefit 1]
+  - [Benefit 2]
+- **Cons:**
+  - [Drawback 1]
+  - [Drawback 2]
+
+### 3.2 Option B: [Description]
+- **Pros:**
+  - [Benefit 1]
+  - [Benefit 2]
+- **Cons:**
+  - [Drawback 1]
+  - [Drawback 2]
+
+## 4. Consequences
+
+### 4.1 Positive
+- [Positive outcome 1]
+- [Positive outcome 2]
+
+### 4.2 Negative
+- [Negative outcome 1]
+- [Negative outcome 2]
+
+### 4.3 Risks
+- [Risk 1 with mitigation strategy]
+- [Risk 2 with mitigation strategy]
+
+## 5. Component Information
+
+### 5.1 Repository Links
+- **GitHub Repository**: [Link to GitHub repository]
+- **Documentation**: [Link to official documentation]
+- **Release Notes**: [Link to latest release notes]
+
+### 5.2 Maintenance Status
+- **Last Updated**: [Date of last commit/release]
+- **Active Development**: [Yes/No with evidence]
+- **Community Support**: [Description of community activity]
+- **Version Compatibility**: [Compatible versions with current stack]
+
+### 5.3 Integration Verification
+- **Compatibility Tested**: [Yes/No with test results]
+- **Existing Component Impact**: [Analysis of impact on current components]
+- **Migration Path**: [Steps required for integration]
 ```
 
-### Coverage Requirements
-- **Minimum thresholds**: 90% overall, 80% per file
-- **Branch coverage**: Track conditional logic paths
-- **File tracking**: All source files including ERB templates
-- **Exclude patterns**: Specs, vendor, build artifacts
+### ADR Status Types
+- **approved**: Decision is active and implemented
+- **pending**: Decision is under consideration
+- **deprecated**: Decision has been superseded or is no longer relevant
 
-## Build Architecture
+### ADR Categories
+- **technical**: Technology, architecture, or implementation decisions
+- **content**: Content strategy, organization, or presentation decisions
+- **process**: Development workflow, deployment, or operational decisions
 
-### Build Optimization
-- **Asset minification**: CSS/JS compression in production
-- **Relative paths**: Portable builds for any hosting environment
-- **Cache busting**: Automatic asset versioning
-- **Error handling**: Build failures prevent deployment
+## Commands
 
-## Content Architecture
+### Development Server
+```bash
+# Start development server
+bundle exec middleman server
 
-### Blog Post Structure
-- **Filename convention**: `YYYY-MM-DD-title.html.md`
-- **Frontmatter schema**: Title, date, tags, optional layout
-- **Git changelog integration**: Automatic change tracking via Git history
-- **Tag taxonomy**: Organized categorization for discoverability
+# Start with live reload
+bundle exec middleman server --livereload
 
-### Asset Management
-- **Static file serving**: Direct `/files/*` path serving
-- **Image optimization**: Manual optimization before commit
-- **Font loading**: Google Fonts with preconnect optimization
-- **SASS compilation**: Component-based stylesheet organization
+# Start on specific port
+bundle exec middleman server -p 4567
+```
 
-#
+### Build and Deploy
+```bash
+# Build for production
+bundle exec middleman build
 
-### Version Control Guidelines
-- **Commit frequency**: Cursor should suggest commits after completing discrete features or fixes
-- **Commit timing**: When tests pass and functionality is complete
-- **Commit message format**: Follow conventional commit format: `type(scope): description`
-- **Types**: feat, fix, docs, style, refactor, test, chore
-- **Scope**: Optional component/area affected (e.g., layout, config, content)
-- **Examples**:
-  - `feat(blog): add series navigation to post layout`
-  - `fix(styles): correct responsive typography scaling`
-  - `docs(readme): update development setup instructions`
-  - `refactor(config): simplify blog extension configuration`
+# Clean build directory
+bundle exec middleman clean
 
-## Security and Performance
+# Deploy (if configured)
+bundle exec middleman deploy
+```
 
-### Static Site Security
-- **No server-side vulnerabilities**: Static HTML/CSS/JS only
-- **Content Security Policy**: Implementable via meta tags
-- **HTTPS enforcement**: Handled at hosting level
-- **No database**: Eliminates SQL injection vectors
+### Testing
+```bash
+# Run all tests
+bundle exec rspec
 
-### Performance Optimization
-- **Minimal JavaScript**: Essential functionality only
-- **Optimized fonts**: Subset loading and display swap
-- **Image optimization**: Manual optimization workflow
-- **CDN compatibility**: Static assets suitable for CDN distribution
+# Run tests with coverage
+bundle exec rspec --format documentation
 
+# Run specific test file
+bundle exec rspec spec/features/blog_spec.rb
+```
 
+### Dependency Management
+```bash
+# Install dependencies
+bundle install
 
-## Error Handling and Monitoring
+# Update dependencies
+bundle update
 
-### Build Error Management
-- **Validation**: Pre-build content validation
-- **Fallback strategies**: Graceful degradation for missing assets
-- **Error reporting**: GitHub Actions failure notifications
-- **Rollback capability**: Git-based rollback to previous versions
-
-### Content Validation
-- **Frontmatter validation**: Required fields checking
-- **Link validation**: Internal link verification
-- **Image validation**: Asset existence verification
-- **Tag consistency**: Tag taxonomy enforcement
-
-## Architecture Decision Records
-
-### Technology Stack Decisions
-- **Static site generator choice**: See `docs/Architecture Decision Records.md` for detailed rationale
-- **Hosting platform selection**: See `docs/Architecture Decision Records.md` for comparison analysis
-- **Ruby version**: Specified in `.ruby-version` for consistency
-- **Testing framework**: RSpec chosen for Ruby ecosystem alignment
-
-### Key Architectural Patterns
-1. **Static over dynamic**: Chosen for simplicity, security, and performance
-2. **Git-based content**: Version control for all content and configuration
-3. **Component separation**: Clear boundaries between content, presentation, and logic
-4. **Test-driven development**: Comprehensive test coverage with automated verification
+# Check for outdated gems
+bundle outdated
+```
 
 ## Integration Points
 
 ### Documentation References
 - **Development workflow**: See `development_workflow.mdc` for local development patterns
 - **Development setup**: See `README.md` for complete setup procedures
-- **Dependency rationale**: See `Gemfile` comments for gem selection context
-- **Technology decisions**: See `docs/Architecture Decision Records.md` for detailed analysis
+- **Decision history**: See `docs/Decision Log/` for all architectural decision records
 - **Design standards**: See `docs/Design System.md` for visual architecture
 - **Content strategy**: See `docs/Content Strategy.md` for content architecture
 
@@ -166,4 +308,4 @@ end
 
 ---
 
-This architecture prioritizes simplicity, maintainability, and developer experience while providing a solid foundation for a personal blog with professional presentation.
+This architecture prioritizes simplicity, maintainability, and developer experience while ensuring all significant decisions are documented and understood. The ADR system provides a foundation for consistent, well-reasoned architectural choices.

@@ -60,6 +60,47 @@ A personal blog and website built with Middleman, a Ruby-based static site gener
    ```bash
    bundle exec middleman build
    ```
+## Development Tools
+
+### Ruby Version Management
+```bash
+# Switch to project Ruby version
+rvm use
+
+# Install Ruby version if not available
+rvm install $(cat .ruby-version)
+```
+
+### Development Server Options
+```bash
+# Standard development server
+bundle exec middleman server
+
+# Custom port (if 4567 is in use)
+bundle exec middleman server -p 4568
+
+# Network access (for device testing)
+bundle exec middleman server -H 0.0.0.0
+
+# Verbose output for debugging
+bundle exec middleman server --verbose
+```
+
+### Testing Tools
+```bash
+# Run all tests
+bundle exec rspec
+
+# Run focused tests (only matching examples)
+bundle exec rspec --tag focus
+
+# Run specific test file
+bundle exec rspec spec/features/blog_spec.rb
+
+# Run with documentation format
+bundle exec rspec --format documentation
+```
+
 
 ### Testing
 
