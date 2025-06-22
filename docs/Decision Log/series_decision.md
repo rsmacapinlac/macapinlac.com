@@ -1,7 +1,9 @@
-# Series Functionality Technical Decision
+---
+status: approved
+type: technical
+---
 
-**Status:** Approved  
-**Type:** Technical Implementation
+# Series Functionality Technical Decision
 
 ## 1. Context / Background
 

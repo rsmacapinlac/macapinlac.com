@@ -1,7 +1,9 @@
-# Dark Mode Implementation Technical Decision
+---
+status: approved
+type: technical
+---
 
-**Status:** Approved  
-**Type:** Technical Implementation
+# Dark Mode Implementation Technical Decision
 
 ## 1. Context / Background
 

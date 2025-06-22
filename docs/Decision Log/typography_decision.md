@@ -1,7 +1,9 @@
-# Typography System Implementation Decision
+---
+status: approved
+type: technical
+---
 
-**Status:** Approved  
-**Type:** Technical Implementation
+# Typography System Implementation Decision
 
 ## 1. Context / Background
 
