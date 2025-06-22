@@ -16,15 +16,56 @@ end
 # Image Optimization Configuration
 # Optimizes images for web performance and accessibility
 activate :imageoptim do |options|
-  # Enable all optimizers for maximum compression
-  options.pngout = false
-  options.svgo = false
+  # Enable supported optimizers for maximum compression
   options.gifsicle = true
   options.jpegoptim = true
-  options.jpegrecompress = true
   options.optipng = true
-  options.pngquant = true
   options.svgo = true
+end
+
+# Responsive Image Generation Configuration
+# Generates multiple image sizes for responsive design
+helpers do
+  def responsive_image_tag(image_path, options = {})
+    # Define responsive breakpoints
+    sizes = options[:sizes] || {
+      xs: '400px',
+      sm: '600px', 
+      md: '900px',
+      lg: '1200px',
+      xl: '1600px'
+    }
+    
+    # Generate srcset for responsive images
+    srcset = sizes.map do |breakpoint, width|
+      "#{image_path} #{width}"
+    end.join(', ')
+    
+    # Build image tag with responsive attributes
+    image_tag(image_path, {
+      srcset: srcset,
+      sizes: options[:sizes_attr] || '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw',
+      loading: 'lazy',
+      alt: options[:alt] || 'Responsive image'
+    }.merge(options.except(:sizes, :sizes_attr)))
+  end
+  
+  def picture_tag(image_path, options = {})
+    # Generate picture element with multiple sources
+    content_tag(:picture) do
+      # WebP format for modern browsers
+      concat(content_tag(:source, '', {
+        srcset: "#{image_path}.webp",
+        type: 'image/webp'
+      }))
+      
+      # Fallback image
+      concat(image_tag(image_path, {
+        loading: 'lazy',
+        alt: options[:alt] || 'Image'
+      }.merge(options.except(:sizes, :sizes_attr))))
+    end
+  end
 end
 
 # Layout Configuration

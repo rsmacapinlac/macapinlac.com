@@ -3,7 +3,6 @@ description: Local development patterns, testing workflow, and daily development
 globs: ["spec/**/*", "source/**/*", "config.rb", "Gemfile*"]
 alwaysApply: false
 ---
-
 # Development Workflow Guidelines
 
 ## Local Development Setup
@@ -35,6 +34,13 @@ alwaysApply: false
 - **Font loading**: Verify Google Fonts load correctly locally
 
 ## Testing Workflow
+
+### Frontend Change Testing
+- **Test-first assessment**: When updating the codebase with frontend changes (not backend), assess if a test can be created and suggest that a test is created first
+- **SASS compilation testing**: Test SASS/SCSS compilation for syntax errors and variable imports
+- **CSS output validation**: Verify that design tokens and variables are properly compiled into CSS
+- **Visual regression prevention**: Use tests to catch unexpected style changes
+- **Design system compliance**: Test that new styles follow established design tokens and patterns
 
 ### Test Execution
 - **Run all tests**: `bundle exec rspec`

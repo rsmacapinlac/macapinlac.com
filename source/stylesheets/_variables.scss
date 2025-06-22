@@ -1,0 +1,44 @@
+// Design Tokens for macapinlac.com
+// --------------------------------------------------
+// Typography
+$font-serif: 'Lora', 'Crimson Text', serif;
+$font-sans: 'Inter', Arial, sans-serif;
+$font-mono: 'JetBrains Mono', 'Inconsolata', monospace;
+
+// Font Sizes
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
+$font-size-xs: 0.75rem;
+
+// Color Palette (Light Mode)
+$color-bg-light: #f9f9f9;
+$color-bg-dark: #181a1b;
+$color-text-light: #222;
+$color-text-dark: #f9f9f9;
+$color-primary: #2a5d8f;
+$color-secondary: #e0a96d;
+$color-accent: #e4572e;
+$color-muted: #b0b0b0;
+
+// Color Palette (Dark Mode)
+$color-bg-darkmode: #181a1b;
+$color-text-darkmode: #f9f9f9;
+$color-primary-dark: #4a90e2;
+$color-secondary-dark: #f5c16c;
+$color-accent-dark: #ff6f61;
+$color-muted-dark: #444;
+
+// Spacing
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 2rem;
+$space-xl: 4rem;
+
+// Breakpoints
+$breakpoint-xs: 400px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1600px; 
