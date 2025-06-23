@@ -1,68 +1,101 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <title>macapinlac.com<%= ' - ' + current_article.title unless current_article.nil? %></title>
-    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
-    <%= stylesheet_link_tag "site" %>
-    <%= javascript_include_tag "site" %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <%= partial 'layouts/_html_head', locals: {
+      title: "macapinlac.com - #{current_article.title}",
+      description: current_article.data.summary || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
+    } %>
   </head>
   <body>
+    <div class="site-container">
+      <%= partial 'layouts/_header' %>
 
-    <%= partial 'layouts/_header' %>
-
-    <main>
-      <h2><%= current_article.title %></h2>
-      <div class="jetbrains-mono-postbody">
-
-        <%
-          has_reply = !current_page.data.reply.nil?
-          if has_reply == true
-            reply_url = current_page.data.reply.url
-            reply_title = current_page.data.reply.reply_title
-            if reply_title.nil?
-              reply_title = reply_url
-            end
-          end
-        %>
-
-      <%= link_to reply_title, reply_url %>
-
-        <%= yield %>
-      </div>
-      <%
-        file = 'source/' + current_page.path + '.md'
-        @git = Git.open('./').log.object(file)
-        # ignore the first commit
-        if @git.size > 1
-      %>
-        <details class="blog__changes">
-          <summary>Changelog</summary>
-          <ul>
-            <% @git.each do |commit| %>
-              <li>
-                <b class="blog__changes__date"><%= commit.author_date %></b>
-                <%= simple_format(commit.message) %>
-              </li>
+      <main class="main-content">
+        <article class="post">
+          <header class="post-header">
+            <div class="post-meta">
+              <time datetime="<%= current_article.date.iso8601 %>" class="post-date">
+                <%= current_article.date.strftime('%B %d, %Y') %>
+              </time>
+              <% unless current_article.tags.empty? %>
+                <span class="post-tags">
+                  <% current_article.tags.each do |tag| %>
+                    <%= link_to "##{tag}", tag_path(tag), class: 'post-tag' %>
+                  <% end %>
+                </span>
+              <% end %>
+            </div>
+            
+            <h1 class="post-title"><%= current_article.title %></h1>
+            
+            <% if current_article.data.summary %>
+              <p class="post-summary"><%= current_article.data.summary %></p>
             <% end %>
-          </ul>
-        </details>
-      <% end %>
-    </main>
+          </header>
 
-    <%= partial 'layouts/_footer' %>
+          <div class="post-content">
+            <% if current_article.data.reply %>
+              <div class="post-reply">
+                <p class="post-reply-label">In reply to:</p>
+                <%= link_to current_article.data.reply.reply_title || current_article.data.reply.url, 
+                            current_article.data.reply.url, 
+                            class: 'post-reply-link' %>
+              </div>
+            <% end %>
 
+            <%= yield %>
+          </div>
+
+          <footer class="post-footer">
+            <% if current_article.data.series %>
+              <div class="post-series">
+                <h3>Part of the "<%= current_article.data.series %>" series</h3>
+                <!-- Add series navigation here if needed -->
+              </div>
+            <% end %>
+
+            <div class="post-navigation">
+              <% if current_article.article_previous %>
+                <%= link_to "← #{current_article.article_previous.title}", 
+                            current_article.article_previous, 
+                            class: 'post-nav-link post-nav-prev' %>
+              <% end %>
+              
+              <% if current_article.article_next %>
+                <%= link_to "#{current_article.article_next.title} →", 
+                            current_article.article_next, 
+                            class: 'post-nav-link post-nav-next' %>
+              <% end %>
+            </div>
+
+            <% if current_article.data.changelog %>
+              <details class="post-changelog">
+                <summary>Changelog</summary>
+                <ul>
+                  <% current_article.data.changelog.each do |change| %>
+                    <li>
+                      <time datetime="<%= change.date %>"><%= change.date %></time>
+                      <span><%= change.message %></span>
+                    </li>
+                  <% end %>
+                </ul>
+              </details>
+            <% end %>
+          </footer>
+        </article>
+      </main>
+
+      <%= partial 'layouts/_footer' %>
+    </div>
+
+    <!-- Dark mode toggle script -->
+    <script>
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+    </script>
   </body>
 </html>

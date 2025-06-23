@@ -14,7 +14,7 @@ pageable: true
 
 <div id="articles">
 <% page_articles.each_with_index do |article, i| %>
-  <%= partial 'layouts/_article', locals: {
+  <%= partial 'layouts/_blog_card', locals: {
     article: article,
     i: i
   } %>

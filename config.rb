@@ -78,7 +78,6 @@ end
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
-page '/*.md', layout: false
 page "/feed.xml", layout: false
 
 # Alternative layout example (commented out)
@@ -107,7 +106,7 @@ activate :blog do |blog|
   blog.permalink = "{year}/{month}/{day}/{title}.html"
   
   # Source file matching pattern (commented out - using default)
-  # blog.sources = "{year}-{month}-{day}-{title}.md"
+  # blog.sources = "{year}-{month}-{day}-{title}.html.md"
   
   # Tag URL structure (commented out - using default)
   # blog.taglink = "tags/{tag}.html"
@@ -133,11 +132,11 @@ activate :blog do |blog|
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
 
-  # Pagination configuration (commented out - single page for now)
+  # Pagination configuration (enabled to show articles on homepage)
   # Enable pagination for large article collections
-  # blog.paginate = true
-  # blog.per_page = 10
-  # blog.page_link = "page/{num}"
+  blog.paginate = true
+  blog.per_page = 10
+  blog.page_link = "page/{num}"
 end
 
 # Build Configuration

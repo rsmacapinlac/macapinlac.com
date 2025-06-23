@@ -51,18 +51,52 @@ A personal blog and website built with Middleman, a Ruby-based static site gener
 4. Visit `http://localhost:4567` in your browser
 
 ### Development Workflow
+```bash
+# Option 1: Use the development script (recommended)
+./scripts/dev.sh server    # Start development server
+./scripts/dev.sh test      # Run all tests
+./scripts/dev.sh build     # Build for production
 
-1. Create new blog posts in `source/` with the format `YYYY-MM-DD-title.html.md`
-2. Use markdown for content
-3. Add frontmatter for metadata (title, date, tags, etc.)
-4. Preview changes locally using the development server
-5. Build the site for production:
-   ```bash
-   bundle exec middleman build
-   ```
-## Development Tools
+# Option 2: Manual commands
+bundle exec middleman server  # Start development server
+bundle exec rspec            # Run tests
+bundle exec middleman build  # Build for production
+```
 
-### Ruby Version Management
+**Note:** Tests use Rack::Test and don't require a running server. The development server is only needed for manual browser testing.
+
+### Development Script
+The `scripts/dev.sh` script provides a streamlined development workflow:
+
+```bash
+# Show help
+./scripts/dev.sh help
+
+# Start development server (automatically kills existing servers)
+./scripts/dev.sh server
+
+# Run all tests
+./scripts/dev.sh test
+
+# Run specific test file
+./scripts/dev.sh test spec/features/blog_spec.rb
+
+# Build for production
+./scripts/dev.sh build
+
+# Kill all Middleman servers
+./scripts/dev.sh kill
+```
+
+**Benefits:**
+- Prevents multiple server instances
+- Provides colored output and clear status messages
+- Automatically manages server lifecycle
+- Streamlines common development tasks
+
+### Development Tools
+
+#### Ruby Version Management
 ```bash
 # Switch to project Ruby version
 rvm use
@@ -71,7 +105,7 @@ rvm use
 rvm install $(cat .ruby-version)
 ```
 
-### Development Server Options
+#### Development Server Options
 ```bash
 # Standard development server
 bundle exec middleman server
@@ -86,51 +120,53 @@ bundle exec middleman server -H 0.0.0.0
 bundle exec middleman server --verbose
 ```
 
-### Testing Tools
+#### Testing Tools
 ```bash
-# Run all tests
+# Run all tests (uses Rack::Test - no server needed)
 bundle exec rspec
 
-# Run focused tests (only matching examples)
-bundle exec rspec --tag focus
-
-# Run specific test file
+# Run specific test files
 bundle exec rspec spec/features/blog_spec.rb
+bundle exec rspec spec/features/dark_mode_spec.rb
 
-# Run with documentation format
+# Run tests with verbose output
 bundle exec rspec --format documentation
-```
 
+# Run tests with coverage report
+bundle exec rspec --format documentation --coverage
+```
 
 ### Testing
 
-The project uses RSpec for testing. To run the test suite:
+This project uses RSpec with Rack::Test for automated testing. Tests run against an in-memory Middleman application, so no external server is required.
 
+### Testing Approach
+- **Rack::Test**: Tests run against an in-memory Middleman app instance
+- **No External Server**: Tests don't require a running development server
+- **Fast Execution**: In-memory testing is much faster than HTTP requests
+- **Isolated**: Each test runs in isolation with a fresh app instance
+
+### Running Tests
 ```bash
+# Run all tests (uses Rack::Test - no server needed)
 bundle exec rspec
+
+# Run specific test files
+bundle exec rspec spec/features/blog_spec.rb
+bundle exec rspec spec/features/dark_mode_spec.rb
+
+# Run tests with verbose output
+bundle exec rspec --format documentation
+
+# Run tests with coverage report
+bundle exec rspec --format documentation --coverage
 ```
 
-The test suite is organized as follows:
-```
-spec/
-├── features/           # High-level feature tests
-│   ├── layout_spec.rb  # Tests for layout and homepage
-│   └── blog_spec.rb    # Tests for blog functionality
-├── support/            # Support files and helpers
-└── spec_helper.rb      # Shared test configuration
-```
-
-Key test areas:
-- Layout and homepage content
-- Blog functionality and content
-- Site configuration
-- Middleman extensions
-
-The test suite uses:
-- RSpec for test framework
-- Rack::Test for HTTP testing
-- SimpleCov for code coverage
-- Middleman's test environment
+### Test Categories
+- **Feature Tests**: Test complete user workflows and page functionality
+- **Layout Tests**: Verify page structure and navigation
+- **Component Tests**: Test individual components (dark mode, typography, etc.)
+- **Blog Tests**: Verify blog functionality and post rendering
 
 ### Deployment
 
