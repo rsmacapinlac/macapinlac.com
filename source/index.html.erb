@@ -1,26 +1,102 @@
 ---
-title: Home
+title: "Ritchie Macapinlac - Personal Blog & Digital Journal"
+description: "Thoughtful reflections on technology, parenting, productivity, and personal development. A digital journal by Ritchie Macapinlac exploring life, work, and everything in between."
 ---
 
-<% if paginate && num_pages > 1 %>
-  <p>Page <%= page_number %> of <%= num_pages %></p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title"><%= data.homepage_hero.title %></h1>
+    <p class="hero-tagline"><%= data.homepage_hero.tagline %></p>
+    <p class="hero-description">
+      <%= data.homepage_hero.description %>
+    </p>
+    <div class="hero-actions">
+      <%= link_to data.homepage_hero.primary_button.text, data.homepage_hero.primary_button.url, class: 'button button--primary' %>
+      <%= link_to data.homepage_hero.secondary_button.text, data.homepage_hero.secondary_button.url, class: 'button button--secondary' %>
+    </div>
+  </div>
+</section>
 
-  <% if prev_page %>
-    <p><%= link_to 'Previous page', prev_page %></p>
-  <% end %>
-<% end %>
+<!-- Featured Content Section -->
+<section class="featured-content">
+  <div class="container">
+    <h2 class="section-title">Featured Series</h2>
+    <div class="featured-grid">
+      <% if all_series.any? %>
+        <% all_series.first(2).each do |series_name, articles| %>
+          <article class="featured-card">
+            <div class="featured-card-content">
+              <h3 class="featured-card-title"><%= series_name %></h3>
+              <p class="featured-card-description">
+                <%= articles.first.data.summary || "A multi-part exploration of #{series_name.downcase}." %>
+              </p>
+              <div class="featured-card-meta">
+                <span class="featured-card-count"><%= articles.length %> posts</span>
+                <span class="featured-card-status">In Progress</span>
+              </div>
+              <%= link_to "Explore Series", "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html", class: 'button button--tertiary' %>
+            </div>
+          </article>
+        <% end %>
+      <% else %>
+        <article class="featured-card">
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">Tesla Road Trip Adventure</h3>
+            <p class="featured-card-description">
+              Our journey from Vancouver to Edmonton in a Tesla Model Y, exploring the challenges and joys of long-distance EV travel.
+            </p>
+            <div class="featured-card-meta">
+              <span class="featured-card-count">2 posts</span>
+              <span class="featured-card-status">In Progress</span>
+            </div>
+            <%= link_to "Explore Series", "/series/tesla-road-trip-adventure.html", class: 'button button--tertiary' %>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<div id="articles">
-<% blog.articles.each_with_index do |article, i| %>
-  <%= partial 'layouts/_blog_card', locals: {
-    article: article,
-    i: i
-  } %>
-<% end %>
-</div>
+<!-- Site Introduction Section -->
+<section class="site-intro">
+  <div class="container">
+    <div class="intro-content">
+      <h2 class="section-title">About This Site</h2>
+      <p class="intro-text">
+        This is my digital journal—a place where I share thoughts on technology, parenting, productivity, and personal development. 
+        I write about what I'm learning, experimenting with, and thinking about. From Docker guides to EV road trips, 
+        from parenting insights to productivity experiments, this is where I document my journey.
+      </p>
+      <p class="intro-text">
+        I believe in thoughtful, authentic writing that balances professional insights with personal experience. 
+        Whether you're here for the tech content, parenting reflections, or productivity tips, I hope you find something valuable.
+      </p>
+      <div class="intro-actions">
+        <%= link_to 'Read My Latest Posts', '/', class: 'button button--secondary' %>
+        <%= link_to 'Browse All Series', '/series', class: 'button button--tertiary' %>
+      </div>
+    </div>
+  </div>
+</section>
 
-<% if paginate %>
-  <% if next_page %>
-    <p><%= link_to 'Next page', next_page %></p>
-  <% end %>
-<% end %>
+<!-- Recent Posts Section -->
+<section class="recent-posts">
+  <div class="container">
+    <h2 class="section-title">Recent Posts</h2>
+    <div class="posts-grid">
+      <% blog.articles.first(6).each_with_index do |article, i| %>
+        <%= partial 'layouts/_blog_card_homepage', locals: {
+          article: article,
+          i: i
+        } %>
+      <% end %>
+    </div>
+    
+    <% if blog.articles.length > 6 %>
+      <div class="posts-actions">
+        <%= link_to 'View All Posts', '/writing/', class: 'button button--primary' %>
+      </div>
+    <% end %>
+  </div>
+</section>

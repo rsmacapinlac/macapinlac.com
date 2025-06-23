@@ -1,0 +1,9 @@
+title: "Ritchie Macapinlac"
+tagline: "Thoughtful reflections on technology, parenting, productivity, and personal development"
+description: "A digital journal exploring life, work, and everything in between. From EV road trips to Docker guides, from parenting insights to productivity experiments—this is where I share what I'm learning and thinking about."
+primary_button:
+  text: "Read My Writing"
+  url: "/"
+secondary_button:
+  text: "Learn More About Me"
+  url: "/about" 

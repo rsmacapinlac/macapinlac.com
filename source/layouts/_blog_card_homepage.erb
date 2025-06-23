@@ -1,0 +1,24 @@
+<div class="card" data-url="<%= article.url %>">
+  <div class="card-clickable">
+    <h2 class="card-title">
+      <%= article.title %>
+    </h2>
+    <div class="card-meta">
+      <span class="card-date"><%= article.date.strftime('%B %d, %Y') %></span>
+      <% unless article.tags.empty? %>
+        <div class="card-tags">
+          <% article.tags.each do |tag| %>
+            <%= link_to tag, tag_path(tag), class: 'card-tag' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <!--
+    <% if article.data.summary || article.data.excerpt %>
+      <div class="card-content">
+        <p><%= article.data.summary || article.data.excerpt %></p>
+      </div>
+    <% end %>
+    //-->
+  </div>
+</div> 

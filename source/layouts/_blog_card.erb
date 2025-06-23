@@ -1,27 +1,23 @@
 <div class="card">
-  <div class="card-meta">
-    <span><%= article.date.strftime('%B %d, %Y') %></span>
-    <% unless article.tags.empty? %>
-      &bull;
-      <% article.tags.each_with_index do |tag, idx| %>
-        <%= link_to tag, tag_path(tag), class: 'card-tag' %><%= ', ' unless idx == article.tags.size - 1 %>
-      <% end %>
-    <% end %>
-  </div>
   <h2 class="card-title">
     <%= link_to article.title, article %>
   </h2>
+  <div class="card-meta">
+    <span class="card-date"><%= article.date.strftime('%B %d, %Y') %></span>
+  </div>
   <% if article.data.summary || article.data.excerpt %>
     <div class="card-content">
       <p><%= article.data.summary || article.data.excerpt %></p>
     </div>
   <% end %>
+  <% unless article.tags.empty? %>
+    <div class="card-tags">
+      <% article.tags.each do |tag| %>
+        <%= link_to tag, tag_path(tag), class: 'card-tag' %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="card-actions">
     <%= link_to 'Read More', article, class: 'button button--primary' %>
-    <% unless article.tags.empty? %>
-      <% article.tags.each do |tag| %>
-        <%= link_to "##{tag}", tag_path(tag), class: 'button button--secondary' %>
-      <% end %>
-    <% end %>
   </div>
 </div> 

@@ -18,11 +18,11 @@
                 <%= current_article.date.strftime('%B %d, %Y') %>
               </time>
               <% unless current_article.tags.empty? %>
-                <span class="post-tags">
+                <div class="post-tags">
                   <% current_article.tags.each do |tag| %>
-                    <%= link_to "##{tag}", tag_path(tag), class: 'post-tag' %>
+                    <%= link_to tag, tag_path(tag), class: 'post-tag' %>
                   <% end %>
-                </span>
+                </div>
               <% end %>
             </div>
             
