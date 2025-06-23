@@ -48,9 +48,35 @@
 
           <footer class="post-footer">
             <% if current_article.data.series %>
+              <% series_nav = series_navigation(current_article) %>
               <div class="post-series">
-                <h3>Part of the "<%= current_article.data.series %>" series</h3>
-                <!-- Add series navigation here if needed -->
+                <h3>Part of the "<%= series_nav[:series_name] %>" series</h3>
+                <div class="series-progress">
+                  <span class="series-progress-text">
+                    Part <%= series_nav[:current_index] + 1 %> of <%= series_nav[:total_posts] %>
+                  </span>
+                  <div class="series-progress-bar">
+                    <div class="series-progress-fill" style="width: <%= ((series_nav[:current_index] + 1).to_f / series_nav[:total_posts]) * 100 %>%"></div>
+                  </div>
+                </div>
+                
+                <div class="series-navigation">
+                  <% if series_nav[:previous_post] %>
+                    <%= link_to "← Previous: #{series_nav[:previous_post].title}", 
+                                series_nav[:previous_post], 
+                                class: 'series-nav-link series-nav-prev' %>
+                  <% end %>
+                  
+                  <%= link_to "View All Posts in Series", 
+                              "/series/#{series_nav[:series_name].downcase.gsub(/\s+/, '-')}.html", 
+                              class: 'series-nav-link series-nav-all' %>
+                  
+                  <% if series_nav[:next_post] %>
+                    <%= link_to "Next: #{series_nav[:next_post].title} →", 
+                                series_nav[:next_post], 
+                                class: 'series-nav-link series-nav-next' %>
+                  <% end %>
+                </div>
               </div>
             <% end %>
 

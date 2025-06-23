@@ -139,6 +139,42 @@ activate :blog do |blog|
   blog.page_link = "page/{num}"
 end
 
+# Series Helper Methods
+# Provides navigation and metadata for series content
+helpers do
+  def series_articles(series_name)
+    blog.articles.select { |article| article.data.series == series_name }
+  end
+  
+  def series_navigation(current_article)
+    return unless current_article.data.series
+    
+    series_posts = series_articles(current_article.data.series).sort_by(&:date)
+    current_index = series_posts.index(current_article)
+    
+    {
+      series_name: current_article.data.series,
+      current_index: current_index,
+      total_posts: series_posts.length,
+      previous_post: current_index > 0 ? series_posts[current_index - 1] : nil,
+      next_post: current_index < series_posts.length - 1 ? series_posts[current_index + 1] : nil,
+      all_posts: series_posts
+    }
+  end
+  
+  def all_series
+    blog.articles.group_by { |article| article.data.series }.reject { |series_name, _| series_name.nil? }
+  end
+end
+
+# Proxy Pages for Series
+# Create individual series pages using proxy functionality
+proxy "/series/tesla-road-trip-adventure.html", "/series.html", locals: {
+  series_name: "Tesla Road Trip Adventure",
+  series_description: "Our journey from Vancouver to Edmonton in a Tesla Model Y, exploring the challenges and joys of long-distance EV travel.",
+  series_status: "In Progress"
+}
+
 # Build Configuration
 # Settings that affect the final static site generation
 

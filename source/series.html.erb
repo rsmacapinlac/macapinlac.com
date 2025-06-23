@@ -1,0 +1,88 @@
+---
+layout: layout
+---
+
+<% if !defined?(series_name) || !series_name %>
+  <div class="series-page series-error">
+    <header class="series-header">
+      <h1 class="series-title">Series Not Found</h1>
+      <p class="series-description">No series specified. Please visit the <a href="/series">Series Index</a> to browse all available series.</p>
+    </header>
+    <footer class="series-footer">
+      <div class="series-navigation">
+        <%= link_to '← Back to All Series', '/series', class: 'button button--secondary' %>
+        <%= link_to '← Back to Blog', '/', class: 'button button--secondary' %>
+      </div>
+    </footer>
+  </div>
+<% else %>
+<div class="series-page">
+  <header class="series-header">
+    <h1 class="series-title"><%= series_name %></h1>
+    
+    <% if defined?(series_description) && series_description %>
+      <div class="series-description">
+        <p><%= series_description %></p>
+      </div>
+    <% end %>
+    
+    <div class="series-meta">
+      <span class="series-count"><%= series_articles(series_name).length %> posts</span>
+      <% if defined?(series_status) && series_status %>
+        <span class="series-status"><%= series_status %></span>
+      <% end %>
+    </div>
+  </header>
+
+  <div class="series-content">
+    <div class="series-posts">
+      <% series_articles(series_name).sort_by(&:date).each_with_index do |article, index| %>
+        <article class="series-post">
+          <div class="series-post-number">
+            <span class="post-number"><%= index + 1 %></span>
+          </div>
+          
+          <div class="series-post-content">
+            <header class="series-post-header">
+              <h2 class="series-post-title">
+                <%= link_to article.title, article %>
+              </h2>
+              
+              <div class="series-post-meta">
+                <time datetime="<%= article.date.iso8601 %>" class="series-post-date">
+                  <%= article.date.strftime('%B %d, %Y') %>
+                </time>
+                
+                <% unless article.tags.empty? %>
+                  <span class="series-post-tags">
+                    <% article.tags.each do |tag| %>
+                      <%= link_to "##{tag}", tag_path(tag), class: 'series-post-tag' %>
+                    <% end %>
+                  </span>
+                <% end %>
+              </div>
+            </header>
+            
+            <% if article.data.summary %>
+              <div class="series-post-summary">
+                <p><%= article.data.summary %></p>
+              </div>
+            <% end %>
+            
+            <div class="series-post-actions">
+              <%= link_to 'Read Post', article, class: 'button button--primary' %>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+  
+  <footer class="series-footer">
+    <div class="series-navigation">
+      <%= link_to '← Back to All Series', '/series', class: 'button button--secondary' %>
+      <%= link_to '← Back to Blog', '/', class: 'button button--secondary' %>
+    </div>
+  </footer>
+</div>
+<% end %> 
