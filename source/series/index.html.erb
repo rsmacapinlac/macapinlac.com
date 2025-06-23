@@ -4,68 +4,30 @@ title: "Series - macapinlac.com"
 description: "Multi-part content series and collections from Ritchie Macapinlac"
 ---
 
-<div class="series-index">
-  <header class="series-index-header">
-    <h1 class="series-index-title">Series</h1>
-    <p class="series-index-description">
+<div class="page-container">
+  <header class="page-header">
+    <h1 class="page-title">Series</h1>
+    <p class="page-description">
       Multi-part content exploring topics in depth through connected posts and experiments.
     </p>
   </header>
 
-  <div class="series-index-content">
+  <div class="page-content">
     <% if all_series.empty? %>
-      <div class="series-empty">
+      <div class="empty-state">
         <p>No series content available yet. Check back soon for multi-part explorations!</p>
       </div>
     <% else %>
-      <div class="series-grid">
+      <div class="card-grid">
         <% all_series.each do |series_name, articles| %>
-          <article class="series-card">
-            <div class="series-card-header">
-              <h2 class="series-card-title">
-                <%= link_to series_name, "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html" %>
-              </h2>
-              
-              <div class="series-card-meta">
-                <span class="series-card-count"><%= articles.length %> posts</span>
-                <span class="series-card-date">
-                  <%= articles.sort_by(&:date).first.date.strftime('%B %Y') %> - 
-                  <%= articles.sort_by(&:date).last.date.strftime('%B %Y') %>
-                </span>
-              </div>
-            </div>
-            
-            <div class="series-card-content">
-              <% latest_article = articles.sort_by(&:date).last %>
-              <% if latest_article.data.summary %>
-                <p class="series-card-summary"><%= latest_article.data.summary %></p>
-              <% end %>
-              
-              <div class="series-card-posts">
-                <h3>Posts in this series:</h3>
-                <ul>
-                  <% articles.sort_by(&:date).each_with_index do |article, index| %>
-                    <li>
-                      <span class="post-number"><%= index + 1 %>.</span>
-                      <%= link_to article.title, article, class: 'series-card-post-link' %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="series-card-actions">
-              <%= link_to 'Explore Series', "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html", 
-                          class: 'button button--primary' %>
-            </div>
-          </article>
+          <%= partial 'layouts/_series_card', locals: { series_name: series_name, articles: articles } %>
         <% end %>
       </div>
     <% end %>
   </div>
   
-  <footer class="series-index-footer">
-    <div class="series-index-navigation">
+  <footer class="page-footer">
+    <div class="page-navigation">
       <%= link_to '← Back to Blog', '/', class: 'button button--secondary' %>
     </div>
   </footer>

@@ -17,8 +17,8 @@ RSpec.describe 'Series Functionality' do
     # Check for series information
     expect(last_response.body).to include('Tesla Road Trip Adventure')
     expect(last_response.body).to include('Part 1 of 2')
-    expect(last_response.body).to include('series-progress')
-    expect(last_response.body).to include('series-navigation')
+    expect(last_response.body).to include('progress-indicator')
+    expect(last_response.body).to include('section-navigation')
   end
 
   it 'shows series navigation between posts' do
@@ -39,7 +39,7 @@ RSpec.describe 'Series Functionality' do
     # Check for series page content
     expect(last_response.body).to include('Tesla Road Trip Adventure')
     expect(last_response.body).to include('2 posts')
-    expect(last_response.body).to include('series-post')
+    expect(last_response.body).to include('card')
     expect(last_response.body).to include('Planning a Road Trip')
     expect(last_response.body).to include('The Actual Tesla Road Trip')
   end
@@ -49,8 +49,8 @@ RSpec.describe 'Series Functionality' do
     expect(last_response).to be_ok
     
     # Check for progress bar
-    expect(last_response.body).to include('series-progress-bar')
-    expect(last_response.body).to include('series-progress-fill')
+    expect(last_response.body).to include('progress-bar')
+    expect(last_response.body).to include('progress-fill')
   end
 
   it 'includes series in navigation' do

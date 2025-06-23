@@ -1,0 +1,39 @@
+<article class="card">
+  <div class="card-header">
+    <h2 class="card-title">
+      <%= link_to series_name, "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html" %>
+    </h2>
+    
+    <div class="card-meta">
+      <span class="card-count"><%= articles.length %> posts</span>
+      <span class="card-date">
+        <%= articles.sort_by(&:date).first.date.strftime('%B %Y') %> - 
+        <%= articles.sort_by(&:date).last.date.strftime('%B %Y') %>
+      </span>
+    </div>
+  </div>
+  
+  <div class="card-content">
+    <% latest_article = articles.sort_by(&:date).last %>
+    <% if latest_article.data.summary %>
+      <p class="card-summary"><%= latest_article.data.summary %></p>
+    <% end %>
+    
+    <div class="series-posts-list">
+      <h3>Posts in this series:</h3>
+      <ul>
+        <% articles.sort_by(&:date).each_with_index do |article, index| %>
+          <li>
+            <span class="post-number"><%= index + 1 %>.</span>
+            <%= link_to article.title, article, class: 'series-post-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="card-actions">
+    <%= link_to 'Explore Series', "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html", 
+                class: 'button button--primary' %>
+  </div>
+</article> 
