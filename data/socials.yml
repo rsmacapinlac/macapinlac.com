@@ -1,28 +1,14 @@
 ---
 sites:
-  - name: Instagram
-    url: https://www.instagram.com/rsmacapinlac
-  - name: LinkedIn
-    url: https://www.linkedin.com/in/rsmacapinlac
   - name: GitHub
-    url: https://github.com/rsmacapinlac
-
-github:
-  url: "https://github.com/rsmacapinlac"
-  icon: "🐙"
-  display_name: "GitHub"
-
-linkedin:
-  url: "https://www.linkedin.com/in/rsmacapinlac"
-  icon: "💼"
-  display_name: "LinkedIn"
-
-instagram:
-  url: "https://www.instagram.com/rsmacapinlac"
-  icon: "📸"
-  display_name: "Instagram"
-
-twitter:
-  url: "https://twitter.com/ritchie"
-  icon: "🐦"
-  display_name: "Twitter"
+    url: "https://github.com/rsmacapinlac"
+    icon: "🐙"
+    display_name: "GitHub"
+  - name: LinkedIn
+    url: "https://www.linkedin.com/in/rsmacapinlac"
+    icon: "💼"
+    display_name: "LinkedIn"
+  - name: Instagram
+    url: "https://www.instagram.com/rsmacapinlac"
+    icon: "📸"
+    display_name: "Instagram"

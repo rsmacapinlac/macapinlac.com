@@ -33,7 +33,6 @@ RSpec.describe 'About Page', type: :feature do
     expect(page).to have_link('GitHub', href: 'https://github.com/rsmacapinlac')
     expect(page).to have_link('LinkedIn', href: 'https://www.linkedin.com/in/rsmacapinlac')
     expect(page).to have_link('Instagram', href: 'https://www.instagram.com/rsmacapinlac')
-    expect(page).to have_link('Twitter', href: 'https://twitter.com/ritchie')
   end
 
   it 'responsive design works on mobile' do

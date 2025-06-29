@@ -5,6 +5,8 @@ alwaysApply: false
 ---
 # Development Workflow Guidelines
 
+**MANDATORY:** All requests for changes or new features must follow the Feature Implementation Pattern as documented in `docs/Feature Implementation Pattern.md`, including checklist and implementation plan documentation. This ensures consistent, well-documented, and maintainable feature development.
+
 ## Local Development Setup
 
 ### Environment Prerequisites

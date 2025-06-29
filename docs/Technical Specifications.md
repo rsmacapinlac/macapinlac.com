@@ -1,5 +1,7 @@
 # Macapinlac.com Technical Specifications
 
+**NOTE:** All new features and major changes must follow the Feature Implementation Pattern (see `docs/Feature Implementation Pattern.md`) for planning, checklist, and documentation.
+
 **Version:** 3.0 | **Date:** December 2024
 
 ## Overview

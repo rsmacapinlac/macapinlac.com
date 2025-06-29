@@ -3,7 +3,6 @@ description: Middleman-specific development patterns and best practices for maca
 globs: ["source/**/*.erb", "source/**/*.md", "config.rb", "source/layouts/**/*", "source/stylesheets/**/*"]
 alwaysApply: false
 ---
-
 # Middleman Development Conventions
 
 ## Project Structure
@@ -191,6 +190,7 @@ layout: post  # Optional, defaults to blog layout
 - Use partials for repeated elements
 
 ### When adding new features:
+- All new features and major changes must follow the Feature Implementation Pattern (see `docs/Feature Implementation Pattern.md`) for planning, checklist, and documentation.
 - Check if data files can be used instead of hardcoding
 - Reference visual standards from `docs/Design System.md`
 - Follow content strategy guidelines from `docs/Content Strategy.md`

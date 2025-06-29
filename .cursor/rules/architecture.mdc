@@ -120,7 +120,8 @@ Project Documentation
 ├── Implementation Plan
 ├── Technical Specifications
 ├── Design System
-└── Content Strategy
+├── Content Strategy
+└── All new features and major changes must follow the Feature Implementation Pattern (see docs/Feature Implementation Pattern.md)
 ```
 
 ## Process

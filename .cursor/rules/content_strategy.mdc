@@ -57,6 +57,9 @@ alwaysApply: false
 3. **Cross-referencing**: Link to related posts and external resources
 4. **Archive maintenance**: Ensure historical content remains discoverable
 
+### Feature and Major Content Change Process
+- For content features or major content changes, follow the Feature Implementation Pattern (see `docs/Feature Implementation Pattern.md`) for planning, checklist, and documentation.
+
 ## Templates
 
 ### Blog Post Frontmatter

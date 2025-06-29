@@ -1,5 +1,7 @@
 # Macapinlac.com Implementation Plan
 
+**NOTE:** All new features and major changes must use the Feature Implementation Pattern (see `docs/Feature Implementation Pattern.md`) for planning, checklist, and documentation.
+
 **Version:** 3.1 | **Date:** January 2025
 
 ## Overview

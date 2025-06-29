@@ -133,7 +133,7 @@ description: "Personal introduction and professional background of Ritchie Macap
             <h3>Social & Community</h3>
             <p>For general discussions, content sharing, and community building.</p>
             <div class="social-links">
-              <% data.socials.except('sites').each do |platform, social| %>
+              <% data.socials.sites.each do |social| %>
                 <a href="<%= social.url %>" class="social-link" target="_blank" rel="noopener">
                   <span class="social-icon"><%= social.icon %></span>
                   <span class="social-name"><%= social.display_name %></span>
@@ -165,6 +165,6 @@ description: "Personal introduction and professional background of Ritchie Macap
   "description": "Technology professional, parent, and lifelong learner sharing thoughts on technology, parenting, productivity, and personal development.",
   "jobTitle": "Technology Professional",
   "knowsAbout": ["Software Development", "DevOps", "Parenting", "Productivity", "Personal Development"],
-  "sameAs": [<%= data.socials.except('sites').values.map { |social| "\"#{social.url}\"" }.join(', ') %>]
+  "sameAs": [<%= data.socials.sites.map { |social| "\"#{social.url}\"" }.join(', ') %>]
 }
 </script> 
