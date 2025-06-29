@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <%= partial 'layouts/_html_head', locals: {
-      title: 'macapinlac.com',
-      description: 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
+      title: current_page.data.title || 'macapinlac.com',
+      description: current_page.data.description || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
     } %>
   </head>
   <body>

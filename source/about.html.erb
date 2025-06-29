@@ -1,0 +1,170 @@
+---
+title: "About Ritchie Macapinlac - Technology, Parenting, Productivity"
+description: "Personal introduction and professional background of Ritchie Macapinlac. Learn about my work in technology, parenting insights, and productivity experiments."
+---
+
+<div class="page-container">
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1 class="page-title">About</h1>
+    <p class="page-description">Personal introduction and professional background</p>
+  </header>
+
+  <!-- Personal Introduction Section -->
+  <section class="site-intro">
+    <div class="container">
+      <div class="intro-content">
+        <h2 class="section-title">Personal Introduction</h2>
+        <p class="intro-text">
+          Hi, I'm Ritchie Macapinlac. I'm a technology professional, parent, and lifelong learner 
+          who believes in thoughtful experimentation and authentic sharing. This site is my digital 
+          journal—a place where I document my journey through technology, parenting, productivity, 
+          and personal development.
+        </p>
+        <p class="intro-text">
+          I believe in the power of thoughtful reflection and honest documentation. Whether I'm 
+          exploring new technologies, navigating the challenges of parenting, or experimenting 
+          with productivity systems, I share my experiences here in the hope that they might 
+          resonate with others on similar paths.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Background Section -->
+  <section class="featured-content">
+    <div class="container">
+      <h2 class="section-title">Professional Background</h2>
+      <div class="featured-grid">
+        <article class="featured-card">
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">Technology & Development</h3>
+            <p class="featured-card-description">
+              I work in technology with a focus on software development, DevOps practices, 
+              and system architecture. My experience spans from Docker containerization to 
+              cloud infrastructure, always with an eye toward practical, maintainable solutions.
+            </p>
+            <div class="featured-card-meta">
+              <span class="featured-card-status">Current Focus</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="featured-card">
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">Productivity & Systems</h3>
+            <p class="featured-card-description">
+              I'm passionate about building effective systems for personal and professional 
+              productivity. From time management to knowledge organization, I experiment with 
+              various approaches and share what works (and what doesn't).
+            </p>
+            <div class="featured-card-meta">
+              <span class="featured-card-status">Ongoing Experimentation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Content Section -->
+  <section class="site-intro">
+    <div class="container">
+      <div class="intro-content">
+        <h2 class="section-title">What You'll Find Here</h2>
+        <p class="intro-text">
+          This site covers several interconnected themes that shape my thinking and work:
+        </p>
+        
+        <div class="content-areas">
+          <div class="content-area">
+            <h3>Technology</h3>
+            <p>Practical guides, experiments, and reflections on software development, 
+            DevOps, and emerging technologies. From Docker tutorials to EV road trip 
+            planning, I share hands-on experiences.</p>
+          </div>
+          
+          <div class="content-area">
+            <h3>Parenting</h3>
+            <p>Honest reflections on the challenges and joys of parenting. I believe 
+            in sharing both the successes and struggles, always with the goal of 
+            learning and growing together.</p>
+          </div>
+          
+          <div class="content-area">
+            <h3>Productivity</h3>
+            <p>Experiments with time management, knowledge systems, and workflow 
+            optimization. I test various approaches and share what actually works 
+            in real-world scenarios.</p>
+          </div>
+          
+          <div class="content-area">
+            <h3>Personal Development</h3>
+            <p>Thoughts on learning, growth, and the intersection of work and life. 
+            I believe in continuous improvement and authentic self-reflection.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connection Section -->
+  <section class="recent-posts">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="connection-content">
+        <p class="intro-text">
+          I believe in the power of thoughtful conversation and meaningful connections. 
+          Whether you're interested in technology, parenting, productivity, or just 
+          want to share your own experiences, I'd love to hear from you.
+        </p>
+        
+        <div class="connection-methods">
+          <div class="connection-method">
+            <h3>Professional</h3>
+            <p>For work-related discussions, collaborations, or professional networking.</p>
+            <div class="connection-actions">
+              <%= link_to 'View Résumé', '#', class: 'button button--primary' %>
+              <%= link_to 'Contact Me', '/contact', class: 'button button--secondary' %>
+            </div>
+          </div>
+          
+          <div class="connection-method">
+            <h3>Social & Community</h3>
+            <p>For general discussions, content sharing, and community building.</p>
+            <div class="social-links">
+              <% data.socials.except('sites').each do |platform, social| %>
+                <a href="<%= social.url %>" class="social-link" target="_blank" rel="noopener">
+                  <span class="social-icon"><%= social.icon %></span>
+                  <span class="social-name"><%= social.display_name %></span>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="page-navigation">
+      <%= link_to '← Back to Home', '/', class: 'button button--secondary' %>
+      <%= link_to 'Browse My Writing', '/writing', class: 'button button--secondary' %>
+    </div>
+  </footer>
+</div>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ritchie Macapinlac",
+  "url": "https://macapinlac.com",
+  "description": "Technology professional, parent, and lifelong learner sharing thoughts on technology, parenting, productivity, and personal development.",
+  "jobTitle": "Technology Professional",
+  "knowsAbout": ["Software Development", "DevOps", "Parenting", "Productivity", "Personal Development"],
+  "sameAs": [<%= data.socials.except('sites').values.map { |social| "\"#{social.url}\"" }.join(', ') %>]
+}
+</script> 

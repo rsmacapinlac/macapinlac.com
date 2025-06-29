@@ -2273,3 +2273,143 @@ ul, ol {
     border-color: var(--color-secondary);
   }
 }
+
+// About Page Specific Styles
+.content-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-lg;
+  margin: $space-xl 0;
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content-area {
+  padding: $space-lg;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    font-family: $font-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 $space-md 0;
+    color: var(--color-text);
+  }
+  
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.connection-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.connection-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-xl;
+  margin-top: $space-xl;
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.connection-method {
+  padding: $space-xl;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  
+  h3 {
+    font-family: $font-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 $space-md 0;
+    color: var(--color-text);
+  }
+  
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 0 $space-lg 0;
+  }
+}
+
+.connection-actions {
+  display: flex;
+  gap: $space-md;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-sm $space-md;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+.social-icon {
+  font-size: 1.2rem;
+}
+
+.social-name {
+  font-weight: 500;
+}
+
+// Dark mode adjustments for about page
+@media (prefers-color-scheme: dark) {
+  .content-area,
+  .connection-method {
+    background: var(--color-surface-dark);
+    border-color: var(--color-border-dark);
+  }
+  
+  .social-link {
+    border-color: var(--color-border-dark);
+    
+    &:hover {
+      border-color: var(--color-primary-dark);
+      background: var(--color-primary-dark);
+    }
+  }
+}

@@ -1,0 +1,546 @@
+== Activating: file_watcher
+== Activating: front_matter
+== Activating: data
+== Activating: inline_url_rewriter
+== Activating: sitemap_ondisk
+== Activating: sitemap_import
+== Activating: sitemap_endpoint
+== Activating: sitemap_proxies
+== Activating: sitemap_redirects
+== Activating: sitemap_move_files
+== Activating: sitemap_ignore
+== Activating: external_helpers
+== Activating: erb_renderer
+== Activating: coffee_renderer
+== Activating: haml_renderer
+== Activating: sass_renderer
+== Activating: markdown_renderer
+== Failed Activation `liquid_renderer` : cannot load such file -- liquid
+== Failed Activation `slim_renderer` : cannot load such file -- slim
+== Activating: less_renderer
+== Activating: default_helpers
+== Activating: lorem
+== Activating: routing
+== Activating: collections
+== Change (#<Set: {:data}>): homepage_hero.yml
+== Change (#<Set: {:data}>): socials.yml
+== Rebuilding resource list
+== Requesting resource list rebuilding: touched_data_file
+== Change (#<Set: {:source}>): 2024-06-17-on-being-kind.html.md
+== Change (#<Set: {:source}>): series/index.html.erb
+== Change (#<Set: {:source}>): files/2025-06-15/hyprland-prompt.txt
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_header.erb
+== Change (#<Set: {:source}>): layouts/post.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_footer.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_html_head.erb
+== Change (#<Set: {:source}>): layouts/layout.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_tag_examples.erb
+== Change (#<Set: {:source}>): layouts/blog_aside.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_blog_card_homepage.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_series_card.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_blog_card.erb
+== Change (#<Set: {:source}>): 2025-06-15-How-I-Learned-to-Stop-Worrying-and-Trust-My-AI-Overlords.html.md
+== Change (#<Set: {:source}>): 2024-04-07-this-is-my-playground-damnit.html.md
+== Change (#<Set: {:source}>): 2024-07-18-the-actual-tesla-road-trip-vancouver-to-edmonton.html.md
+== Change (#<Set: {:source}>): feed.xml.builder
+== Change (#<Set: {:source}>): robots.txt
+== Change (#<Set: {:source}>): 2025-04-11-this-week-s-obsessions.html.md
+== Change (#<Set: {:source}>): index.html.erb
+== Change (#<Set: {:source}>): 2025-04-20-I-Asked-AI-to-Pick-My-Next-Tablet.html.md
+== Change (#<Set: {:source}>): 2016-01-13-the-website-exists-again-hello-there-old-friend.html.md
+== Change (#<Set: {:source}>): writing/index.html.erb
+== Change (#<Set: {:source}>): 2024-04-12-awkward-interactions.html.md
+== Change (#<Set: {:source}>): 2021-09-03-vacation-in-our-own-back-yard.html.md
+== Change (#<Set: {:source}>): 2024-07-17-planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html.md
+== Change (#<Set: {:source, :no_frontmatter}>): stylesheets/_variables.scss
+== Change (#<Set: {:source}>): stylesheets/site.css.scss
+== Change (#<Set: {:source}>): calendar.html.erb
+== Change (#<Set: {:source}>): 2021-08-26-simplification.html.md
+== Change (#<Set: {:source}>): images/favicon-16x16.png
+== Change (#<Set: {:source}>): images/favicon.ico
+== Change (#<Set: {:source}>): images/apple-touch-icon.png
+== Change (#<Set: {:source}>): images/about.txt
+== Change (#<Set: {:source}>): images/android-chrome-512x512.png
+== Change (#<Set: {:source}>): images/android-chrome-192x192.png
+== Change (#<Set: {:source}>): images/site.webmanifest
+== Change (#<Set: {:source}>): images/favicon-32x32.png
+== Change (#<Set: {:source}>): images/.keep
+== Change (#<Set: {:source}>): 2023-02-26-dealing-with-some-setbacks.html.md
+== Change (#<Set: {:source}>): 2023-11-13-highlights-from-this-weekend.html.md
+== Change (#<Set: {:source}>): 2017-08-09-some-thoughts-on-books-i-ve-read-this-year.html.md
+== Change (#<Set: {:source}>): about.html.erb
+== Change (#<Set: {:source}>): tag.html.erb
+== Change (#<Set: {:source}>): 2021-02-03-Goodbye-my-friend.html.md
+== Change (#<Set: {:source}>): 2017-01-01-2017-notes-to-myself.html.md
+== Change (#<Set: {:source}>): javascripts/site.js
+== Change (#<Set: {:source}>): 2017-09-10-keyboard-shortcuts-arduino-learning.html.md
+== Change (#<Set: {:source}>): 2022-08-31-getting-caught-up.html.md
+== Change (#<Set: {:source}>): series.html.erb
+== Rebuilding resource list
+== Reading: Local config: config.rb
+== Activating: autoprefixer
+== Activating: imageoptim
+== Requesting resource list rebuilding: first_run_change_page
+== Requesting resource list rebuilding: first_run_change_page
+== Requesting resource list rebuilding: first_run_change_page
+== Requesting resource list rebuilding: first_run_change_page
+== Requesting resource list rebuilding: first_run_change_page
+== Activating: blog
+== Requesting resource list rebuilding: first_run_change_proxy
+== Requesting resource list rebuilding: first_run_change_proxy
+== Activating: minify_css
+== Activating: minify_javascript
+== Activating: minify_html
+Loaded extensions:
+== Extension: file_watcher
+== Extension: front_matter
+== Extension: data
+== Extension: inline_url_rewriter
+== Extension: sitemap_ondisk
+== Extension: sitemap_import
+== Extension: sitemap_endpoint
+== Extension: sitemap_proxies
+== Extension: sitemap_redirects
+== Extension: sitemap_move_files
+== Extension: sitemap_ignore
+== Extension: external_helpers
+== Extension: erb_renderer
+== Extension: coffee_renderer
+== Extension: haml_renderer
+== Extension: sass_renderer
+== Extension: markdown_renderer
+== Extension: less_renderer
+== Extension: default_helpers
+== Extension: lorem
+== Extension: routing
+== Extension: collections
+== Extension: autoprefixer
+== Extension: imageoptim
+== Extension: blog instance_0
+== Extension: minify_css
+== Extension: minify_javascript
+== Extension: minify_html
+== Change (#<Set: {:data}>): homepage_hero.yml
+== Change (#<Set: {:data}>): socials.yml
+== Rebuilding resource list
+== Requesting resource list rebuilding: touched_data_file
+== Change (#<Set: {:source}>): 2024-06-17-on-being-kind.html.md
+== Change (#<Set: {:source}>): series/index.html.erb
+== Change (#<Set: {:source}>): files/2025-06-15/hyprland-prompt.txt
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_header.erb
+== Change (#<Set: {:source}>): layouts/post.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_footer.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_html_head.erb
+== Change (#<Set: {:source}>): layouts/layout.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_tag_examples.erb
+== Change (#<Set: {:source}>): layouts/blog_aside.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_blog_card_homepage.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_series_card.erb
+== Change (#<Set: {:source, :no_frontmatter}>): layouts/_blog_card.erb
+== Change (#<Set: {:source}>): 2025-06-15-How-I-Learned-to-Stop-Worrying-and-Trust-My-AI-Overlords.html.md
+== Change (#<Set: {:source}>): 2024-04-07-this-is-my-playground-damnit.html.md
+== Change (#<Set: {:source}>): 2024-07-18-the-actual-tesla-road-trip-vancouver-to-edmonton.html.md
+== Change (#<Set: {:source}>): feed.xml.builder
+== Change (#<Set: {:source}>): robots.txt
+== Change (#<Set: {:source}>): 2025-04-11-this-week-s-obsessions.html.md
+== Change (#<Set: {:source}>): index.html.erb
+== Change (#<Set: {:source}>): 2025-04-20-I-Asked-AI-to-Pick-My-Next-Tablet.html.md
+== Change (#<Set: {:source}>): 2016-01-13-the-website-exists-again-hello-there-old-friend.html.md
+== Change (#<Set: {:source}>): writing/index.html.erb
+== Change (#<Set: {:source}>): 2024-04-12-awkward-interactions.html.md
+== Change (#<Set: {:source}>): 2021-09-03-vacation-in-our-own-back-yard.html.md
+== Change (#<Set: {:source}>): 2024-07-17-planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html.md
+== Change (#<Set: {:source, :no_frontmatter}>): stylesheets/_variables.scss
+== Change (#<Set: {:source}>): stylesheets/site.css.scss
+== Change (#<Set: {:source}>): calendar.html.erb
+== Change (#<Set: {:source}>): 2021-08-26-simplification.html.md
+== Change (#<Set: {:source}>): images/favicon-16x16.png
+== Change (#<Set: {:source}>): images/favicon.ico
+== Change (#<Set: {:source}>): images/apple-touch-icon.png
+== Change (#<Set: {:source}>): images/about.txt
+== Change (#<Set: {:source}>): images/android-chrome-512x512.png
+== Change (#<Set: {:source}>): images/android-chrome-192x192.png
+== Change (#<Set: {:source}>): images/site.webmanifest
+== Change (#<Set: {:source}>): images/favicon-32x32.png
+== Change (#<Set: {:source}>): images/.keep
+== Change (#<Set: {:source}>): 2023-02-26-dealing-with-some-setbacks.html.md
+== Change (#<Set: {:source}>): 2023-11-13-highlights-from-this-weekend.html.md
+== Change (#<Set: {:source}>): 2017-08-09-some-thoughts-on-books-i-ve-read-this-year.html.md
+== Change (#<Set: {:source}>): about.html.erb
+== Change (#<Set: {:source}>): tag.html.erb
+== Change (#<Set: {:source}>): 2021-02-03-Goodbye-my-friend.html.md
+== Change (#<Set: {:source}>): 2017-01-01-2017-notes-to-myself.html.md
+== Change (#<Set: {:source}>): javascripts/site.js
+== Change (#<Set: {:source}>): 2017-09-10-keyboard-shortcuts-arduino-learning.html.md
+== Change (#<Set: {:source}>): 2022-08-31-getting-caught-up.html.md
+== Change (#<Set: {:source}>): series.html.erb
+== Rebuilding resource list
+== Requesting resource list rebuilding: touched_file
+== Requesting resource list rebuilding: registered_new_manipulator_front_matter
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_ondisk
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_import
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_endpoint
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_proxies
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_redirects
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_move_files
+== Requesting resource list rebuilding: registered_new_manipulator_sitemap_ignore
+== Requesting resource list rebuilding: registered_new_manipulator_routing
+== Requesting resource list rebuilding: registered_new_manipulator_routing
+== Requesting resource list rebuilding: registered_new_manipulator_collections
+== Requesting resource list rebuilding: registered_new_manipulator_imageoptim
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: registered_new_manipulator_blog_blog1_articles
+== Requesting resource list rebuilding: first_run_change_ignore
+== Requesting resource list rebuilding: registered_new_manipulator_blog_blog1_tags
+== Requesting resource list rebuilding: registered_new_manipulator_blog_blog1_calendar
+== Requesting resource list rebuilding: registered_new_manipulator_blog_blog1_paginate
+== Blog Sources: {year}-{month}-{day}-{title}.html (:prefix + :sources)
+== Rebuilding resource list
+== Running manipulator: sitemap_ondisk (0)
+== Running manipulator: sitemap_endpoint (0)
+== Running manipulator: sitemap_proxies (0)
+== Running manipulator: sitemap_redirects (0)
+== Running manipulator: sitemap_ignore (0)
+== Running manipulator: sitemap_import (1)
+== Running manipulator: routing (10)
+== Running manipulator: front_matter (20)
+== Running manipulator: imageoptim (50)
+== Running manipulator: blog_blog1_articles (50)
+== Running manipulator: blog_blog1_tags (50)
+== Running manipulator: blog_blog1_calendar (50)
+== Running manipulator: blog_blog1_paginate (50)
+== Running manipulator: sitemap_move_files (101)
+== Running manipulator: collections (110)
+== Running manipulator: routing (130)
+== Prerendering CSS
+== Request: /stylesheets/site.css
+== Finishing Request: stylesheets/site.css (0.15s)
+   identical  build/stylesheets/site.css
+== Building files
+   identical  build/images/favicon-16x16.png
+   identical  build/images/apple-touch-icon.png
+   identical  build/images/android-chrome-512x512.png
+   identical  build/images/android-chrome-192x192.png
+   identical  build/images/favicon-32x32.png
+   identical  build/images/favicon.ico
+== Request: /javascripts/site.js
+== Finishing Request: javascripts/site.js (0.0s)
+== Request: /files/2025-06-15/hyprland-prompt.txt
+== Finishing Request: files/2025-06-15/hyprland-prompt.txt (0.0s)
+   identical  build/files/2025-06-15/hyprland-prompt.txt
+== Request: /series/index.html
+== Finishing Request: series/index.html (0.04s)
+   identical  build/series/index.html
+== Request: /2024/06/17/on-being-kind.html
+== Finishing Request: 2024/06/17/on-being-kind.html (0.07s)
+   identical  build/2024/06/17/on-being-kind.html
+== Request: /2024/04/07/this-is-my-playground-damnit.html
+== Finishing Request: 2024/04/07/this-is-my-playground-damnit.html (0.06s)
+   identical  build/2024/04/07/this-is-my-playground-damnit.html
+== Request: /2024/07/18/the-actual-tesla-road-trip-vancouver-to-edmonton.html
+== Finishing Request: 2024/07/18/the-actual-tesla-road-trip-vancouver-to-edmonton.html (0.03s)
+   identical  build/2024/07/18/the-actual-tesla-road-trip-vancouver-to-edmonton.html
+== Request: /robots.txt
+== Finishing Request: robots.txt (0.0s)
+   identical  build/robots.txt
+== Request: /2025/04/11/this-week-s-obsessions.html
+== Finishing Request: 2025/04/11/this-week-s-obsessions.html (0.02s)
+   identical  build/2025/04/11/this-week-s-obsessions.html
+== Request: /feed.xml
+== Finishing Request: feed.xml (0.07s)
+   identical  build/feed.xml
+== Request: /2025/06/15/how-i-learned-to-stop-worrying-and-trust-my-ai-overlords.html
+== Finishing Request: 2025/06/15/how-i-learned-to-stop-worrying-and-trust-my-ai-overlords.html (0.17s)
+   identical  build/2025/06/15/how-i-learned-to-stop-worrying-and-trust-my-ai-overlords.html
+   identical  build/javascripts/site.js
+== Request: /2025/04/20/i-asked-ai-to-pick-my-next-tablet.html
+== Finishing Request: 2025/04/20/i-asked-ai-to-pick-my-next-tablet.html (0.02s)
+   identical  build/2025/04/20/i-asked-ai-to-pick-my-next-tablet.html
+== Request: /2016/01/13/the-website-exists-again-hello-there-old-friend.html
+== Finishing Request: 2016/01/13/the-website-exists-again-hello-there-old-friend.html (0.03s)
+   identical  build/2016/01/13/the-website-exists-again-hello-there-old-friend.html
+== Request: /2024/04/12/awkward-interactions.html
+== Finishing Request: 2024/04/12/awkward-interactions.html (0.03s)
+   identical  build/2024/04/12/awkward-interactions.html
+== Request: /2021/09/03/vacation-in-our-own-back-yard.html
+== Finishing Request: 2021/09/03/vacation-in-our-own-back-yard.html (0.02s)
+   identical  build/2021/09/03/vacation-in-our-own-back-yard.html
+== Request: /index.html
+== Finishing Request: index.html (0.09s)
+   identical  build/index.html
+== Request: /images/about.txt
+== Finishing Request: images/about.txt (0.0s)
+   identical  build/images/about.txt
+== Request: /images/site.webmanifest
+== Finishing Request: images/site.webmanifest (0.0s)
+   identical  build/images/site.webmanifest
+== Request: /images/.keep
+== Finishing Request: images/.keep (0.0s)
+   identical  build/images/.keep
+== Request: /2021/08/26/simplification.html
+== Finishing Request: 2021/08/26/simplification.html (0.04s)
+   identical  build/2021/08/26/simplification.html
+== Request: /2024/07/17/planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html
+== Finishing Request: 2024/07/17/planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html (0.07s)
+   identical  build/2024/07/17/planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html
+== Request: /writing/index.html
+== Finishing Request: writing/index.html (0.12s)
+   identical  build/writing/index.html
+== Request: /2023/11/13/highlights-from-this-weekend.html
+== Finishing Request: 2023/11/13/highlights-from-this-weekend.html (0.03s)
+   identical  build/2023/11/13/highlights-from-this-weekend.html
+== Request: /2023/02/26/dealing-with-some-setbacks.html
+== Finishing Request: 2023/02/26/dealing-with-some-setbacks.html (0.05s)
+   identical  build/2023/02/26/dealing-with-some-setbacks.html
+== Request: /2017/08/09/some-thoughts-on-books-i-ve-read-this-year.html
+== Finishing Request: 2017/08/09/some-thoughts-on-books-i-ve-read-this-year.html (0.04s)
+   identical  build/2017/08/09/some-thoughts-on-books-i-ve-read-this-year.html
+== Request: /about.html
+== Finishing Request: about.html (0.01s)
+   identical  build/about.html
+== Request: /2021/02/03/goodbye-my-friend.html
+== Finishing Request: 2021/02/03/goodbye-my-friend.html (0.04s)
+   identical  build/2021/02/03/goodbye-my-friend.html
+== Request: /2017/09/10/keyboard-shortcuts-arduino-learning.html
+== Finishing Request: 2017/09/10/keyboard-shortcuts-arduino-learning.html (0.04s)
+   identical  build/2017/09/10/keyboard-shortcuts-arduino-learning.html
+== Request: /2017/01/01/2017-notes-to-myself.html
+== Finishing Request: 2017/01/01/2017-notes-to-myself.html (0.04s)
+   identical  build/2017/01/01/2017-notes-to-myself.html
+== Request: /about
+== Finishing Request: about (0.0s)
+   identical  build/about
+== Request: /imageoptim.manifest.yml
+== Finishing Request: imageoptim.manifest.yml (0.0s)
+     updated  build/imageoptim.manifest.yml
+== Request: /series/tesla-road-trip-adventure.html
+== Finishing Request: series/tesla-road-trip-adventure.html (0.03s)
+   identical  build/series/tesla-road-trip-adventure.html
+== Request: /series.html
+== Finishing Request: series.html (0.03s)
+   identical  build/series.html
+== Request: /tags/adventures-in-ai.html
+== Finishing Request: tags/adventures-in-ai.html (0.03s)
+   identical  build/tags/adventures-in-ai.html
+== Request: /tags/weekly.html
+== Finishing Request: tags/weekly.html (0.02s)
+   identical  build/tags/weekly.html
+== Request: /2022/08/31/getting-caught-up.html
+== Finishing Request: 2022/08/31/getting-caught-up.html (0.09s)
+   identical  build/2022/08/31/getting-caught-up.html
+== Request: /tags/road-trip.html
+== Finishing Request: tags/road-trip.html (0.03s)
+   identical  build/tags/road-trip.html
+== Request: /tags/seth-godin.html
+== Finishing Request: tags/seth-godin.html (0.02s)
+   identical  build/tags/seth-godin.html
+== Request: /tags/planning.html
+== Finishing Request: tags/planning.html (0.04s)
+   identical  build/tags/planning.html
+== Request: /tags/series.html
+== Finishing Request: tags/series.html (0.05s)
+   identical  build/tags/series.html
+== Request: /tags/newsletter.html
+== Finishing Request: tags/newsletter.html (0.02s)
+   identical  build/tags/newsletter.html
+== Request: /tags/tesla.html
+== Finishing Request: tags/tesla.html (0.07s)
+   identical  build/tags/tesla.html
+== Request: /tags/reply.html
+== Finishing Request: tags/reply.html (0.04s)
+   identical  build/tags/reply.html
+== Request: /tags/parenting.html
+== Finishing Request: tags/parenting.html (0.03s)
+   identical  build/tags/parenting.html
+== Request: /tags/stories.html
+== Finishing Request: tags/stories.html (0.05s)
+   identical  build/tags/stories.html
+== Request: /tags/projects.html
+== Finishing Request: tags/projects.html (0.04s)
+   identical  build/tags/projects.html
+== Request: /tags/recap.html
+== Finishing Request: tags/recap.html (0.02s)
+   identical  build/tags/recap.html
+== Request: /tags/blog.html
+== Finishing Request: tags/blog.html (0.03s)
+   identical  build/tags/blog.html
+== Request: /tags/checkin.html
+== Finishing Request: tags/checkin.html (0.02s)
+   identical  build/tags/checkin.html
+== Request: /tags/apple.html
+== Finishing Request: tags/apple.html (0.03s)
+   identical  build/tags/apple.html
+== Request: /tags/homelab.html
+== Finishing Request: tags/homelab.html (0.05s)
+   identical  build/tags/homelab.html
+== Request: /tags/exercise.html
+== Finishing Request: tags/exercise.html (0.06s)
+   identical  build/tags/exercise.html
+== Request: /tags/random-thoughts.html
+== Finishing Request: tags/random-thoughts.html (0.03s)
+   identical  build/tags/random-thoughts.html
+== Request: /tags/personal.html
+== Finishing Request: tags/personal.html (0.04s)
+   identical  build/tags/personal.html
+== Request: /tags/vacation.html
+== Finishing Request: tags/vacation.html (0.05s)
+   identical  build/tags/vacation.html
+== Request: /tags/tech.html
+== Finishing Request: tags/tech.html (0.02s)
+   identical  build/tags/tech.html
+== Request: /tags/macapinlac-com.html
+== Finishing Request: tags/macapinlac-com.html (0.04s)
+   identical  build/tags/macapinlac-com.html
+== Request: /tags/projects.html
+== Finishing Request: tags/projects.html (0.04s)
+   identical  build/tags/projects.html
+== Request: /tags/hardware.html
+== Finishing Request: tags/hardware.html (0.04s)
+   identical  build/tags/hardware.html
+== Request: /tags/arduino.html
+== Finishing Request: tags/arduino.html (0.03s)
+   identical  build/tags/arduino.html
+== Request: /tags/reviews.html
+== Finishing Request: tags/reviews.html (0.04s)
+   identical  build/tags/reviews.html
+== Request: /tags/year-end.html
+== Finishing Request: tags/year-end.html (0.02s)
+   identical  build/tags/year-end.html
+== Request: /tags/books.html
+== Finishing Request: tags/books.html (0.05s)
+   identical  build/tags/books.html
+== Request: /2025.html
+== Finishing Request: 2025.html (0.02s)
+   identical  build/2025.html
+== Request: /2025/06.html
+== Finishing Request: 2025/06.html (0.02s)
+   identical  build/2025/06.html
+== Request: /2025/04/20.html
+== Finishing Request: 2025/04/20.html (0.03s)
+   identical  build/2025/04/20.html
+== Request: /2025/06/15.html
+== Finishing Request: 2025/06/15.html (0.04s)
+   identical  build/2025/06/15.html
+== Request: /2025/04/11.html
+== Finishing Request: 2025/04/11.html (0.03s)
+   identical  build/2025/04/11.html
+== Request: /2025/04.html
+== Finishing Request: 2025/04.html (0.06s)
+   identical  build/2025/04.html
+== Request: /2024/07/17.html
+== Finishing Request: 2024/07/17.html (0.02s)
+   identical  build/2024/07/17.html
+== Request: /2024/07/18.html
+== Finishing Request: 2024/07/18.html (0.05s)
+   identical  build/2024/07/18.html
+== Request: /2024/07.html
+== Finishing Request: 2024/07.html (0.06s)
+   identical  build/2024/07.html
+== Request: /2024.html
+== Finishing Request: 2024.html (0.07s)
+   identical  build/2024.html
+== Request: /2024/06/17.html
+== Finishing Request: 2024/06/17.html (0.02s)
+   identical  build/2024/06/17.html
+== Request: /2024/06.html
+== Finishing Request: 2024/06.html (0.02s)
+   identical  build/2024/06.html
+== Request: /2024/04/12.html
+== Finishing Request: 2024/04/12.html (0.02s)
+   identical  build/2024/04/12.html
+== Request: /2023/11.html
+== Finishing Request: 2023/11.html (0.04s)
+   identical  build/2023/11.html
+== Request: /2024/04/07.html
+== Finishing Request: 2024/04/07.html (0.05s)
+   identical  build/2024/04/07.html
+== Request: /2024/04.html
+== Finishing Request: 2024/04.html (0.07s)
+   identical  build/2024/04.html
+== Request: /2023.html
+== Finishing Request: 2023.html (0.04s)
+   identical  build/2023.html
+== Request: /2023/11/13.html
+== Finishing Request: 2023/11/13.html (0.02s)
+   identical  build/2023/11/13.html
+== Request: /2023/02.html
+== Finishing Request: 2023/02.html (0.03s)
+   identical  build/2023/02.html
+== Request: /2023/02/26.html
+== Finishing Request: 2023/02/26.html (0.03s)
+   identical  build/2023/02/26.html
+== Request: /2022/08.html
+== Finishing Request: 2022/08.html (0.02s)
+   identical  build/2022/08.html
+== Request: /2022.html
+== Finishing Request: 2022.html (0.04s)
+   identical  build/2022.html
+== Request: /2022/08/31.html
+== Finishing Request: 2022/08/31.html (0.02s)
+   identical  build/2022/08/31.html
+== Request: /2021/09.html
+== Finishing Request: 2021/09.html (0.02s)
+   identical  build/2021/09.html
+== Request: /2021.html
+== Finishing Request: 2021.html (0.04s)
+   identical  build/2021.html
+== Request: /2021/08/26.html
+== Finishing Request: 2021/08/26.html (0.03s)
+   identical  build/2021/08/26.html
+== Request: /2021/08.html
+== Finishing Request: 2021/08.html (0.04s)
+   identical  build/2021/08.html
+== Request: /2021/09/03.html
+== Finishing Request: 2021/09/03.html (0.05s)
+   identical  build/2021/09/03.html
+== Request: /2021/02.html
+== Finishing Request: 2021/02.html (0.02s)
+   identical  build/2021/02.html
+== Request: /2021/02/03.html
+== Finishing Request: 2021/02/03.html (0.02s)
+   identical  build/2021/02/03.html
+== Request: /2017.html
+== Finishing Request: 2017.html (0.03s)
+   identical  build/2017.html
+== Request: /2017/08.html
+== Finishing Request: 2017/08.html (0.02s)
+   identical  build/2017/08.html
+== Request: /2017/09/10.html
+== Finishing Request: 2017/09/10.html (0.03s)
+   identical  build/2017/09/10.html
+== Request: /2017/08/09.html
+== Finishing Request: 2017/08/09.html (0.02s)
+   identical  build/2017/08/09.html
+== Request: /2017/09.html
+== Finishing Request: 2017/09.html (0.05s)
+   identical  build/2017/09.html
+== Request: /2017/01.html
+== Finishing Request: 2017/01.html (0.02s)
+   identical  build/2017/01.html
+== Request: /2017/01/01.html
+== Finishing Request: 2017/01/01.html (0.03s)
+   identical  build/2017/01/01.html
+== Request: /2016.html
+== Finishing Request: 2016.html (0.02s)
+   identical  build/2016.html
+== Request: /2016/01/13.html
+== Finishing Request: 2016/01/13.html (0.03s)
+   identical  build/2016/01/13.html
+== Request: /2016/01.html
+== Finishing Request: 2016/01.html (0.04s)
+   identical  build/2016/01.html
+== Request: /writing/page/2/index.html
+== Finishing Request: writing/page/2/index.html (0.06s)
+   identical  build/writing/page/2/index.html
+  imageoptim  [skipped] build/images/favicon-16x16.png not updated
+  imageoptim  [skipped] build/images/favicon-32x32.png not updated
+  imageoptim  [skipped] build/images/apple-touch-icon.png not updated
+  imageoptim  [skipped] build/images/android-chrome-192x192.png not updated
+  imageoptim  [skipped] build/images/android-chrome-512x512.png not updated
+  imageoptim  build/imageoptim.manifest.yml updated
+  imageoptim  Total savings: 0B
+Project built successfully.

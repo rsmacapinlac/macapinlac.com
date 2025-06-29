@@ -183,6 +183,7 @@ proxy "/series/tesla-road-trip-adventure.html", "/series.html", locals: {
 # Critical for deployment flexibility and CDN compatibility
 set :relative_links, true
 set :relative_assets, true
+set :pretty_urls, true
 
 # Development Environment Configuration
 # Settings applied only during development

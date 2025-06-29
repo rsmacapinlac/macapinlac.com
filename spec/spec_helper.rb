@@ -15,6 +15,7 @@ require 'middleman-minify-html'
 require 'middleman-livereload'
 require 'rack/test'
 require 'rspec'
+require 'capybara/rspec'
 
 # Load the Middleman application configuration
 module TestApp
@@ -33,8 +34,12 @@ module TestApp
   end
 end
 
+# Capybara configuration
+Capybara.app = TestApp.mm_app
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.include Capybara::DSL
   
   # Make the app method globally available
   config.include Module.new {
