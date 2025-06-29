@@ -73,18 +73,16 @@ This design system serves as the foundation for macapinlac.com's redesign, creat
 
 ### Spacing
 
-Based on an 8px grid system:
+Based on a flexible spacing system using rem units:
 
-| Token | Value |
-|-------|-------|
-| xs    | 4px   |
-| sm    | 8px   |
-| md    | 16px  |
-| lg    | 24px  |
-| xl    | 32px  |
-| xxl   | 48px  |
-| xxxl  | 64px  |
-| hero  | 80px  |
+| Token | Value | Pixels (16px base) |
+|-------|-------|-------------------|
+| xs    | 0.25rem | 4px   |
+| sm    | 0.5rem  | 8px   |
+| md    | 1rem    | 16px  |
+| lg    | 2rem    | 32px  |
+| xl    | 4rem    | 64px  |
+| xxl   | 8rem    | 128px |
 
 ### Breakpoints
 

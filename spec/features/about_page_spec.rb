@@ -6,33 +6,63 @@ RSpec.describe 'About Page', type: :feature do
   end
 
   it 'displays about page content correctly' do
-    expect(page).to have_content('About')
-    expect(page).to have_content('Personal Introduction')
-    expect(page).to have_content('Professional Background')
-    expect(page).to have_content('Technology & Development')
-    expect(page).to have_content('Productivity & Systems')
+    expect(page).to have_content('About Me')
+    expect(page).to have_content('Hello! I\'m Ritchie Macapinlac')
+    expect(page).to have_content('What You\'ll Find Here')
+    expect(page).to have_content('This Site')
   end
 
   it 'displays proper page structure' do
-    expect(page).to have_css('.page-header')
-    expect(page).to have_css('.page-title', text: 'About')
-    expect(page).to have_css('.page-description')
-    expect(page).to have_css('.site-intro')
-    expect(page).to have_css('.featured-content')
+    expect(page).to have_css('.page-main-content')
+    expect(page).to have_css('.sidebar-section')
+    expect(page).to have_css('h1', text: 'About Me')
+    expect(page).to have_css('h2', text: 'What You\'ll Find Here')
+    expect(page).to have_css('h2', text: 'This Site')
   end
 
   it 'about link works from navigation' do
     visit '/'
     click_link 'About'
-    expect(page).to have_content('About')
+    expect(page).to have_content('About Me')
     expect(current_path).to eq('/about.html')
   end
 
+  it 'displays sidebar content correctly' do
+    expect(page).to have_css('.sidebar-section')
+    expect(page).to have_content('Let\'s Connect')
+    expect(page).to have_css('.sidebar-actions')
+    expect(page).to have_css('.sidebar-social-links')
+  end
+
+  it 'displays resume button in sidebar' do
+    expect(page).to have_link('View Résumé (PDF)', href: '/resume.pdf')
+    expect(page).to have_css('.btn.btn-secondary')
+  end
+
   it 'displays social links correctly' do
-    expect(page).to have_css('.social-links')
+    expect(page).to have_css('.sidebar-social-links')
     expect(page).to have_link('GitHub', href: 'https://github.com/rsmacapinlac')
     expect(page).to have_link('LinkedIn', href: 'https://www.linkedin.com/in/rsmacapinlac')
     expect(page).to have_link('Instagram', href: 'https://www.instagram.com/rsmacapinlac')
+  end
+
+  it 'displays dynamic tag-based content areas' do
+    expect(page).to have_css('.content-areas')
+    expect(page).to have_css('.content-area')
+    
+    # Check for specific tags that should be present based on blog posts
+    # These are the tags we know exist in the blog posts
+    expect(page).to have_content('Adventures in AI')
+    expect(page).to have_content('Road Trip')
+    expect(page).to have_content('Tesla')
+    expect(page).to have_content('Parenting')
+  end
+
+  it 'displays tag icons in content areas' do
+    expect(page).to have_css('.tag-icon')
+    # Check that icons are present (emoji characters)
+    expect(page).to have_content('🤖') # Adventures in AI icon
+    expect(page).to have_content('🚗') # Road Trip icon
   end
 
   it 'responsive design works on mobile' do
@@ -49,9 +79,8 @@ RSpec.describe 'About Page', type: :feature do
   end
 
   it 'page has proper SEO meta tags' do
-    expect(page).to have_title('About Ritchie Macapinlac - Technology, Parenting, Productivity')
+    expect(page).to have_title('About - Macapinlac.com')
     expect(page).to have_css('meta[name="description"]', visible: false)
-    expect(page).to have_css('meta[name="author"]', visible: false)
   end
 
   it 'structured data is valid JSON-LD' do
@@ -71,13 +100,27 @@ RSpec.describe 'About Page', type: :feature do
     parsed_data = JSON.parse(json_ld_text)
     expect(parsed_data['@type']).to eq('Person')
     expect(parsed_data['name']).to eq('Ritchie Macapinlac')
+    expect(parsed_data['url']).to eq('https://macapinlac.com')
   end
 
-  it 'navigation buttons work correctly' do
-    expect(page).to have_link('Back to Home', href: '/')
-    expect(page).to have_link('Browse My Writing', href: '/writing')
-    
-    click_link 'Back to Home'
-    expect(current_path).to eq('/')
+  it 'does not display removed Professional Background section' do
+    expect(page).not_to have_content('Professional Background')
+    expect(page).not_to have_content('Technology & Development')
+    expect(page).not_to have_content('Productivity & Systems')
+    expect(page).not_to have_css('.featured-grid')
+    expect(page).not_to have_css('.featured-card')
+  end
+
+  it 'does not display removed page elements' do
+    expect(page).not_to have_css('.page-header')
+    expect(page).not_to have_css('.page-title')
+    expect(page).not_to have_css('.page-description')
+    expect(page).not_to have_css('.site-intro')
+    expect(page).not_to have_css('.featured-content')
+  end
+
+  it 'does not display removed navigation buttons' do
+    expect(page).not_to have_link('Back to Home')
+    expect(page).not_to have_link('Browse My Writing')
   end
 end 

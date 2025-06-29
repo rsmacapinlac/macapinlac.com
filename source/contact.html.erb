@@ -1,0 +1,115 @@
+---
+title: Contact - Macapinlac.com
+description: Get in touch with me. I'm always interested in hearing from fellow developers, writers, and curious minds.
+keywords: contact, get in touch, email, social media
+layout: sidebar_layout
+---
+
+<% content_for :sidebar do %>
+  <div class="sidebar-section">
+    <h3>Let's Connect</h3>
+    <p>I'm always interested in hearing from fellow developers, writers, and curious minds.</p>
+    
+    <div class="sidebar-social-links">
+      <% data.socials.sites.each do |social| %>
+        <a href="<%= social.url %>" class="sidebar-social-link" target="_blank" rel="noopener">
+          <span class="sidebar-social-icon"><%= social.icon %></span>
+          <span class="sidebar-social-name"><%= social.display_name %></span>
+        </a>
+      <% end %>
+      <a href="mailto:hello@macapinlac.com" class="sidebar-social-link">
+        <span class="sidebar-social-icon">✉️</span>
+        <span class="sidebar-social-name">Direct Email</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="sidebar-section">
+    <h4>Privacy</h4>
+    <p>Your privacy is important. I only use your contact info to respond to your message.</p>
+  </div>
+<% end %>
+
+<div class="page-main-content">
+  <h1>Get in Touch</h1>
+  
+  <p>I'm always interested in hearing from fellow developers, writers, and curious minds. Whether you have a question, want to collaborate, or just want to say hello, feel free to reach out.</p>
+  
+  <div class="contact-form-container">
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="name" class="form-label">Name *</label>
+        <input type="text" id="name" name="name" class="form-input" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email" class="form-label">Email *</label>
+        <input type="email" id="email" name="email" class="form-input" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" id="subject" name="subject" class="form-input">
+      </div>
+      
+      <div class="form-group">
+        <label for="message" class="form-label">Message *</label>
+        <textarea id="message" name="message" rows="6" class="form-textarea" required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <button type="submit" class="button btn-primary">Send Message</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Form Validation and Submission Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      // Basic client-side validation
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert('Please fill in all required fields (Name, Email, and Message).');
+        return false;
+      }
+      
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        e.preventDefault();
+        alert('Please enter a valid email address.');
+        return false;
+      }
+      
+      // If validation passes, allow form submission
+      // Formspree will handle the actual submission
+    });
+  }
+});
+</script>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Ritchie Macapinlac",
+  "description": "Get in touch with Ritchie Macapinlac for questions, collaboration, or just to say hello.",
+  "url": "https://macapinlac.com/contact.html",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Ritchie Macapinlac",
+    "url": "https://macapinlac.com",
+    "sameAs": [<%= data.socials.sites.map { |social| "\"#{social.url}\"" }.join(', ') %>]
+  }
+}
+</script> 

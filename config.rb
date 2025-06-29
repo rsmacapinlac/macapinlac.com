@@ -165,6 +165,23 @@ helpers do
   def all_series
     blog.articles.group_by { |article| article.data.series }.reject { |series_name, _| series_name.nil? }
   end
+  
+  # Get all unique tags from blog posts with their descriptions
+  def all_tags_with_descriptions
+    # Get all unique tags from blog posts
+    blog_tags = blog.articles.flat_map { |article| article.data.tags || [] }.uniq.sort
+    
+    # Get tag descriptions from data file
+    tag_descriptions = data.tags.tags
+    
+    # Create a hash mapping tag names to their descriptions
+    tag_map = tag_descriptions.each_with_object({}) do |tag, hash|
+      hash[tag.name] = tag
+    end
+    
+    # Return tags that exist in both blog posts and descriptions
+    blog_tags.map { |tag_name| tag_map[tag_name] }.compact
+  end
 end
 
 # Proxy Pages for Series

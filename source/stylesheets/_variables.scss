@@ -29,12 +29,27 @@ $color-secondary-dark: #f5c16c;
 $color-accent-dark: #ff6f61;
 $color-muted-dark: #444;
 
+// Surface Colors
+$color-surface-light: #ffffff;
+$color-surface-dark: #2a2a2a;
+$color-surface-hover-light: #f5f5f5;
+$color-surface-hover-dark: #3a3a3a;
+
+// Border Colors
+$color-border-light: #e0e0e0;
+$color-border-dark: #444;
+
+// Text Secondary Colors
+$color-text-secondary-light: #666;
+$color-text-secondary-dark: #ccc;
+
 // Spacing
 $space-xs: 0.25rem;
 $space-sm: 0.5rem;
 $space-md: 1rem;
 $space-lg: 2rem;
 $space-xl: 4rem;
+$space-xxl: 8rem;
 
 // Breakpoints
 $breakpoint-xs: 400px;

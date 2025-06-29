@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= partial 'layouts/_html_head', locals: {
+      title: current_page.data.title || 'macapinlac.com',
+      description: current_page.data.description || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
+    } %>
+  </head>
+  <body>
+    <div class="page-container">
+      <%= partial 'layouts/_header' %>
+      <div class="page-with-sidebar">
+        <aside class="page-sidebar">
+          <%= yield_content :sidebar %>
+        </aside>
+        <main class="page-main-content">
+          <%= yield %>
+        </main>
+      </div>
+      <%= partial 'layouts/_footer' %>
+    </div>
+
+    <!-- Dark mode toggle script -->
+    <script>
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+    </script>
+  </body>
+</html> 

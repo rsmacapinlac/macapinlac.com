@@ -74,16 +74,16 @@
 * **Sections:**
   * ✅ Brief personal intro
   * ✅ Site purpose and content areas
-  * ✅ What Ritchie does professionally
-  * ✅ Professional background with featured cards
+  * ✅ Dynamic tag-based content areas (automatically generated from blog post tags)
   * ✅ Social media connection methods
+  * ✅ Resume download link
   * ✅ Navigation to other site sections
 * **Relevant CTAs:**
-  * "View Résumé (PDF)" (placeholder link)
-  * "Contact Me" (placeholder link)
+  * "View Résumé (PDF)" (sidebar link)
   * Social media platform links
 * **Functionality:**
   * ✅ Dynamic social links from data file
+  * ✅ Dynamic tag-based content areas with descriptions
   * ✅ SEO optimization with structured data
   * ✅ Responsive design
   * ✅ Dark mode compatibility
