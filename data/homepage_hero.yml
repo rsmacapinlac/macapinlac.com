@@ -1,9 +1,9 @@
-title: "Ritchie Macapinlac"
-tagline: "Thoughtful reflections on technology, parenting, productivity, and personal development"
-description: "A digital journal exploring life, work, and everything in between. From EV road trips to Docker guides, from parenting insights to productivity experiments—this is where I share what I'm learning and thinking about."
+title: "Hi, I'm Ritchie"
+tagline: ""
+description: "Welcome to my own personal online space. It's an old space (since 2001) so things are a bit rickety. Try not to break anything but if you do find something that's broken, let me know. Make yourself at home."
 primary_button:
   text: "Read My Writing"
-  url: "/"
+  url: "/writing"
 secondary_button:
   text: "Learn More About Me"
-  url: "/about" 
+  url: "/about.html" 

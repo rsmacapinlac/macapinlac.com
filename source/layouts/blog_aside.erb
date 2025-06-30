@@ -1,15 +1,23 @@
-<aside>
-  <h2>Tags</h2>
-  <ol>
-    <% blog.tags.each do |tag, articles| %>
-      <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
-    <% end %>
-  </ol>
+<aside class="blog-aside">
+  <div class="aside-section">
+    <h4>Tags</h4>
+    <div class="tags-grid">
+      <% blog.tags.each do |tag, articles| %>
+        <a href="<%= tag_path(tag) %>" class="tag-link">
+          <%= tag %> (<%= articles.size %>)
+        </a>
+      <% end %>
+    </div>
+  </div>
 
-  <h2>By Year</h2>
-  <ol>
-    <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
-      <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
-    <% end %>
-  </ol>
+  <div class="aside-section">
+    <h4>By Year</h4>
+    <div class="years-list">
+      <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
+        <a href="/<%= year %>.html" class="year-link">
+          <%= year %> (<%= articles.size %>)
+        </a>
+      <% end %>
+    </div>
+  </div>
 </aside>

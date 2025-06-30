@@ -65,7 +65,7 @@ RSpec.describe 'Layout Structure' do
     expect(last_response.body).to include('.button')
     expect(last_response.body).to include('.button--primary')
     expect(last_response.body).to include('.button--secondary')
-    expect(last_response.body).to include('.button--text')
+    expect(last_response.body).to include('.button--card-action')
     expect(last_response.body).to include('background: var(--color-primary)')
   end
 

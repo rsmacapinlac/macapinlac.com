@@ -6,6 +6,9 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
+    <div class="hero-avatar">
+      <%= image_tag 'avatar-240.webp', alt: 'Ritchie Macapinlac', class: 'avatar-image' %>
+    </div>
     <h1 class="hero-title"><%= data.homepage_hero.title %></h1>
     <p class="hero-tagline"><%= data.homepage_hero.tagline %></p>
     <p class="hero-description">
@@ -67,8 +70,7 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
         Whether you're here for the tech content, parenting reflections, or productivity tips, I hope you find something valuable.
       </p>
       <div class="intro-actions">
-        <%= link_to 'Read My Latest Posts', '/', class: 'button button--secondary' %>
-        <%= link_to 'Browse All Series', '/series', class: 'button button--tertiary' %>
+        <%= link_to 'Learn More About Me', '/about.html', class: 'button button--primary' %>
       </div>
     </div>
   </div>

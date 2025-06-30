@@ -119,8 +119,8 @@ activate :blog do |blog|
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   
-  # Archive link structure (commented out - using default)
-  # blog.year_link = "{year}.html"
+  # Archive link structure (enabled for year-based navigation)
+  blog.year_link = "{year}.html"
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
   

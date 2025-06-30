@@ -1,0 +1,33 @@
+<nav class="writing-navigation" role="navigation" aria-label="Writing filters">
+  <div class="nav-container">
+    <div class="nav-section">
+      <h3 class="nav-title">Browse by Category</h3>
+      
+      <div class="nav-filters">
+        <!-- Tags Section -->
+        <div class="filter-group">
+          <h4 class="filter-label">Tags</h4>
+          <div class="filter-options">
+            <% blog.tags.each do |tag, articles| %>
+              <a href="<%= tag_path(tag) %>" class="filter-link tag-filter">
+                <%= tag %> (<%= articles.size %>)
+              </a>
+            <% end %>
+          </div>
+        </div>
+        
+        <!-- Years Section -->
+        <div class="filter-group">
+          <h4 class="filter-label">By Year</h4>
+          <div class="filter-options">
+            <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
+              <a href="/<%= year %>.html" class="filter-link year-filter">
+                <%= year %> (<%= articles.size %>)
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> 

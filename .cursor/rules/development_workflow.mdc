@@ -14,12 +14,19 @@ alwaysApply: false
 - Ruby version managed via `.ruby-version`
 - Dependencies managed via `Gemfile` with rationale in comments
 
-### Development Server
+### Development Server Management
 - **Start command**: `bundle exec middleman server`
 - **Default port**: `localhost:4567`
 - **Network access**: Use `-H 0.0.0.0` flag for device testing
 - **Alternative port**: Use `-p 4568` if default port conflicts
 - **Live reload**: Automatic browser refresh on file changes
+
+#### Server Management Workflow
+1. **Check for existing server**: Look for running Middleman server processes before starting new ones
+2. **Ask user first**: If no server is running, ask if they'd like to start one
+3. **User preference**: If user declines, offer to run a temporary server for testing
+4. **Temporary server**: If needed, start server with limited scope and duration
+5. **Respect user workflow**: Don't automatically start servers without user consent
 
 ### Development Environment Features
 - **Hot reloading**: Asset changes reflected without server restart
