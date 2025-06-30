@@ -39,6 +39,14 @@ jobs:
         run: aws s3 sync ./build/ s3://${{ secrets.BUCKET_NAME }} --delete
       - name: Verify deployment
         run: aws s3 ls s3://${{ secrets.BUCKET_NAME }} --recursive | head -20
-      #- name: Invalidate CloudFront cache
-      #  if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-      #  run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      - name: Purge Cloudflare cache
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN && secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+
