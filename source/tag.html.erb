@@ -1,8 +1,15 @@
 ---
 pageable: true
 per_page: 12
+title: Articles tagged '<%= tagname %>' - macapinlac.com
+description: Browse all articles tagged '<%= tagname %>' on macapinlac.com
 ---
-<h2>Articles tagged '<%= tagname %>'</h2>
+<h2><%= tagname %></h2>
+
+<% tag_metadata = get_tag_metadata(tagname) %>
+<% if tag_metadata && tag_metadata.description %>
+  <p class="tag-description"><%= tag_metadata.description %></p>
+<% end %>
 
 <div id="articles">
 <% page_articles.each_with_index do |article, i| %>

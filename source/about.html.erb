@@ -1,5 +1,5 @@
 ---
-title: About - Macapinlac.com
+title: About - macapinlac.com
 description: Learn more about me, my background, and what I do.
 keywords: about, bio, background, developer, writer
 layout: sidebar_layout
@@ -7,12 +7,8 @@ layout: sidebar_layout
 
 <% content_for :sidebar do %>
   <div class="sidebar-section">
-    <h3>Let's Connect</h3>
-    <p>I'm always interested in hearing from fellow developers, writers, and curious minds.</p>
-    
-    <div class="sidebar-actions">
-      <a href="/resume.pdf" class="button btn-secondary" target="_blank" rel="noopener">View Résumé (PDF)</a>
-    </div>
+    <h3>Say Hi</h3>
+    <p>If you're also overthinking the same stuff, have better solutions and are currently resisting the urge to reach through the screen to strangle me, or just want to say hi, I'd love to hear from you.</p>
     
     <div class="sidebar-social-links">
       <% data.socials.sites.each do |social| %>
@@ -22,40 +18,42 @@ layout: sidebar_layout
         </a>
       <% end %>
     </div>
+
+    <div class="sidebar-actions">
+      <a href="/resume.pdf" class="button btn-secondary" target="_blank" rel="noopener">View Résumé (PDF)</a>
+    </div>
   </div>
 <% end %>
 
 <div class="page-main-content">
   <h1>About Me</h1>
+  <p>I'm Ritchie Macapinlac, and this site has been my online home since 2000—which makes me older than dirt itself. What started as a simple personal site has evolved into my digital journal where I document whatever has currently captured my attention, from Tesla road trip logistics to Docker deep-dives to the reality of parenting while trying to maintain some semblence of productivity.</p>
+
+  <p>When I'm not wrestling with code or explaining why the wifi isn't working to my kids, you'll find me planning overly detailed road trips, rebuilding my Linux setup for the nth time, or discovering that the "simple" productivity system I just implemented is anything but. My wife questions most of these life choices.</p>
+  <p>Turns out documenting the process of figuring things out is useful—both for me and for other people who think "there has to be a better way to do this."</p>
+
+  <h2>Under the Hood</h2>
+
+  <p>This website is built with <a href="https://middlemanapp.com/">Middleman</a>, a Ruby-based static site generator that perfectly enables my tendency to overthink simple things. It's designed to be fast, accessible, and—most importantly—something I can break and rebuild without taking down a database.</p>
+
+  <p>The whole thing is just static HTML files deployed via <a href="https://github.com/features/actions">GitHub Actions</a>. Content is written in <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, styled with <a href="https://sass-lang.com/">SASS</a>, and served with a focus on speed and accessibility.</p>
+
+  <h2>Rabbit Holes I Keep Falling Into</h2>
   
-  <p>Hello! I'm Ritchie Macapinlac, a technology professional, parent, and lifelong learner based in Vancouver, Canada. I believe in thoughtful experimentation and authentic sharing. This site is my digital journal—a place where I document my journey through technology, parenting, productivity, and personal development.</p>
-  
-  <p>I believe in the power of thoughtful reflection and honest documentation. Whether I'm exploring new technologies, navigating the challenges of parenting, or experimenting with productivity systems, I share my experiences here in the hope that they might resonate with others on similar paths.</p>
-  
-  <h2>This Site</h2>
-  
-  <p>This website is built with Middleman, a static site generator that I've come to appreciate for its simplicity and flexibility. It's designed to be fast, accessible, and easy to maintain.</p>
-  
-  <p>The design emphasizes readability and minimalism, with a focus on content over flashy features. I believe that good design should get out of the way and let the content speak for itself.</p>
-  
-  <h2>What You'll Find Here</h2>
-  
-  <p>This site covers several interconnected themes that shape my thinking and work:</p>
-  
-  <!-- Dynamic Tag-Based Content Areas -->
+  <!-- Manually Curated Content Areas -->
   <div class="content-areas">
-    <% all_tags_with_descriptions.each do |tag| %>
+    <% about_page_tags.each do |tag| %>
       <div class="content-area">
         <h3>
-          <span class="tag-icon"><%= tag.icon %></span>
-          <%= tag.name %>
+          <a href="<%= tag_url(tag.name) %>" class="content-area-title">
+            <span class="tag-icon"><%= tag.icon %></span>
+            <%= tag.name %>
+          </a>
         </h3>
         <p><%= tag.description %></p>
       </div>
     <% end %>
   </div>
-  
-  <p>Thanks for stopping by. Feel free to explore my writing or get in touch if you'd like to connect.</p>
 </div>
 
 <!-- Structured Data for SEO -->

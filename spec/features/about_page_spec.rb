@@ -79,7 +79,7 @@ RSpec.describe 'About Page', type: :feature do
   end
 
   it 'page has proper SEO meta tags' do
-    expect(page).to have_title('About - Macapinlac.com')
+    expect(page).to have_title('About - macapinlac.com')
     expect(page).to have_css('meta[name="description"]', visible: false)
   end
 

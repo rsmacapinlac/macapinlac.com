@@ -1,0 +1,10 @@
+---
+# Manually curated list of tags to display on the About page
+# These tag names reference the full metadata in data/tags.yml
+about_page_tags:
+  - "Technology"
+  - "Parenting"
+  - "Productivity"
+  - "Personal Development"
+  - "Adventures in AI"
+  - "Road Trip" 

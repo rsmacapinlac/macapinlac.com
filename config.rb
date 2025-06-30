@@ -193,6 +193,34 @@ helpers do
     end
   end
   
+  # Get manually curated tags for the About page with full metadata from tags.yml
+  def about_page_tags
+    # Get the list of tag names to display on about page
+    about_tag_names = data.about_page_tags.about_page_tags
+    
+    # Get full tag metadata from tags.yml
+    tag_descriptions = data.tags.tags
+    
+    # Create a hash mapping tag names to their full metadata
+    tag_map = tag_descriptions.each_with_object({}) do |tag, hash|
+      hash[tag.name] = tag
+    end
+    
+    # Return full tag objects for tags that exist in both lists
+    about_tag_names.map { |tag_name| tag_map[tag_name] }.compact
+  end
+
+  # Get tag metadata by tag name
+  def get_tag_metadata(tag_name)
+    tag_descriptions = data.tags.tags
+    tag_descriptions.find { |tag| tag.name == tag_name }
+  end
+
+  # Generate tag URL helper
+  def tag_url(tag_name)
+    "/tags/#{tag_name.downcase.gsub(/\s+/, '-')}.html"
+  end
+
   # Get all unique tags from blog posts with their descriptions
   def all_tags_with_descriptions
     # Get all unique tags from blog posts
