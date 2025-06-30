@@ -2,7 +2,7 @@
 title: "The Actual Tesla Road Trip: Vancouver to Edmonton"
 date: 2024-07-18
 tags:
-  - Road Trip
+  - Travelling
 series: "Tesla Road Trip Adventure"
 ---
 

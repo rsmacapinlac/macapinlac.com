@@ -2,8 +2,7 @@
 title: Awkward Interactions
 date: 2024-04-12
 tags:
-  - Stories
-  - Parenting
+  - Family Adventures
 ---
 
 As a parent, I often find myself thrust into “social situations” that are a bit out of my comfort zone. This is due to the fact that I am, inherently, a socially awkward human. Take, for example, a recent parents’ meeting at my daughter’s high school gym to discuss logistics for an upcoming show choir trip to Seattle.

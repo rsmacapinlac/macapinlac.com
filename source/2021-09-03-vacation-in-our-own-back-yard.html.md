@@ -3,8 +3,8 @@ layout: post
 title:  "Vacation in our own back yard"
 date: 2021-09-03
 tags:
-  - vacation
-  - personal
+  - Travelling
+  - Figuring Things Out
 ---
 
 I always wonder how many people have actually been a tourist in their own

@@ -5,9 +5,7 @@ reply:
   reply_title: 'The unwarranted smile'
 date:
 tags:
-  - Seth Godin
-  - Newsletter
-  - Reply
+  - Conversations
 ---
 
 > The moments when it's the most difficult to be kind are the moments where it matters the most.

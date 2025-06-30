@@ -48,7 +48,7 @@ RSpec.feature 'Minimalist Reading Layout', type: :feature do
     expect(page).to have_css('.post-tag--minimal')
     
     # Check for tag content
-    expect(page).to have_content('Adventures in AI')
+    expect(page).to have_content('Playing with AI')
   end
   
   scenario 'displays enhanced typography for content' do

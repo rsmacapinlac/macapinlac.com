@@ -2,7 +2,7 @@
 title: "This Week’s Obsessions: E-Readers, Dot Files, and a Bit of Chaos"
 date: 2025-04-11
 tags:
-  - Weekly
+  - Random Thoughts
 ---
 
 Lately, I’ve been spiraling into an e-reader rabbit hole, obsessing over a potential upgrade from my trusty [Kobo Sage](https://ca.kobobooks.com/products/kobo-sage). The current frontrunner? The [Boox Go 10.3](https://shop.boox.com/products/go103). It checks all the right boxes—Android support for my DRM-free audiobook and EPUB collection, a bigger screen for manga, and just enough novelty to make me irrationally excited. 

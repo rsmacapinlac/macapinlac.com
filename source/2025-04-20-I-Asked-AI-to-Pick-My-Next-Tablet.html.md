@@ -2,7 +2,7 @@
 title: "I Asked AI to Pick My Next Tablet"
 date: 2025-04-20
 tags:
-  - Adventures in AI
+  - Playing with AI
 
 ---
 

@@ -3,10 +3,7 @@ layout: post
 title:  "Keyboard shortcuts, payloads, and some Arduino learning"
 date: 2017-09-10
 tags:
-  - tech
-  - hardware
-  - arduino
-  - projects
+  - Building Things
 ---
 
 I've been a software guy all my life. I love building software systems. Things

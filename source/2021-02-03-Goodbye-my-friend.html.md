@@ -2,7 +2,7 @@
 title: "Goodbye my friend"
 date: 2021-02-03
 tags:
-  - personal
+  - Figuring Things Out
 
 ---
 

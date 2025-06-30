@@ -2,9 +2,8 @@
 title: "Planning a Road Trip from Vancouver to Edmonton in a Tesla Model Y"
 date: 2024-07-17
 tags:
-  - Road Trip
-  - Planning
-  - Series
+  - Travelling
+  - Figuring Things Out
 series: "Tesla Road Trip Adventure"
 
 ---

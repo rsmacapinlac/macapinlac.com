@@ -3,8 +3,7 @@ layout: post
 title:  "2017 notes to myself"
 date: 2017-01-01 
 tags:
-  - year-end
-  - personal
+  - Figuring Things Out
 ---
 
 Nice to meet you 2017! Glad to see that you've made it here safely. I'm trying

@@ -3,8 +3,7 @@ layout: post
 title: Getting caught up
 date: 2022-08-31
 tags:
-  - personal
-  - random-thoughts
+  - Figuring Things Out
 
 ---
 

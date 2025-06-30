@@ -3,8 +3,7 @@ layout: post
 title:  "The website exists again! Hello there old friend."
 date: 2016-01-13
 tags:
-  - macapinlac.com
-  - projects
+  - Building Things
 
 ---
 

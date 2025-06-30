@@ -3,9 +3,8 @@ layout: post
 title:  "Some thoughts on books"
 date: 2017-08-09
 tags:
-  - books
-  - personal
-  - reviews
+  - Random Thoughts
+  - Figuring Things Out
 ---
 Here is a stream of conciousness / opinions / reviews on the books that I've
 read in 2017.

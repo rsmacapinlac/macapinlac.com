@@ -3,8 +3,7 @@ layout: post
 title:  "Simplification"
 date: 2021-08-26
 tags:
-  - macapinlac.com
-  - projects
+  - Building Things
 ---
 
 You know when your smart phone has that 'unread' notification badge on an App? That really irritates me! If you have more than 3 unread messages, don't show me your phone. I might explode with anxiety.

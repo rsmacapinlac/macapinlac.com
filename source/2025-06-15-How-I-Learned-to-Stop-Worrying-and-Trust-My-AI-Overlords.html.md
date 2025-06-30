@@ -2,7 +2,7 @@
 title: "How I Learned to Stop Worrying and Trust My AI Overlords"
 date: 2025-06-15
 tags:
-  - Adventures in AI
+  - Playing with AI
 
 ---
 

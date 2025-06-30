@@ -3,8 +3,7 @@ layout: post
 title: Dealing with some setbacks
 date: 2023-02-26
 tags:
-  - checkin
-  - exercise
+  - Figuring Things Out
 
 ---
 

@@ -3,9 +3,9 @@ layout: post
 title: "Highlights from this weekend!"
 date: 2023-11-13
 tags:
-  - recap
-  - HomeLab
-  - Apple
+  - Random Thoughts
+  - Homelab Experiments
+  - Tech Life
 
 ---
 

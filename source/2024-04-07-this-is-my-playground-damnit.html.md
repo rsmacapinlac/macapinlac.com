@@ -2,8 +2,7 @@
 title: This is my playground! Damnit!
 date: 2024-04-07
 tags:
-  - Projects
-  - Blog
+  - Building Things
 
 ---
 
