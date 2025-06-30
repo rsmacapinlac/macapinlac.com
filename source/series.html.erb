@@ -16,11 +16,21 @@ layout: layout
     </footer>
   </div>
 <% else %>
+<% series_metadata = get_series_metadata(series_name) %>
 <div class="page-container">
   <header class="page-header">
-    <h1 class="page-title"><%= series_name %></h1>
+    <h1 class="page-title">
+      <% if series_metadata && series_metadata[:icon] %>
+        <span class="series-icon"><%= series_metadata[:icon] %></span>
+      <% end %>
+      <%= series_name %>
+    </h1>
     
-    <% if defined?(series_description) && series_description %>
+    <% if series_metadata && series_metadata[:description] %>
+      <div class="page-description">
+        <p><%= series_metadata[:description] %></p>
+      </div>
+    <% elsif defined?(series_description) && series_description %>
       <div class="page-description">
         <p><%= series_description %></p>
       </div>
@@ -28,7 +38,9 @@ layout: layout
     
     <div class="page-meta">
       <span class="meta-item"><%= series_articles(series_name).length %> posts</span>
-      <% if defined?(series_status) && series_status %>
+      <% if series_metadata && series_metadata[:status] %>
+        <span class="meta-item"><%= series_metadata[:status] %></span>
+      <% elsif defined?(series_status) && series_status %>
         <span class="meta-item"><%= series_status %></span>
       <% end %>
     </div>
@@ -37,38 +49,12 @@ layout: layout
   <div class="page-content">
     <div class="card-stack">
       <% series_articles(series_name).sort_by(&:date).each_with_index do |article, index| %>
-        <article class="card">
-          <div class="card-header">
-            <div class="card-meta">
-              <span class="card-number">Part <%= index + 1 %></span>
-              <time datetime="<%= article.date.iso8601 %>" class="card-date">
-                <%= article.date.strftime('%B %d, %Y') %>
-              </time>
-            </div>
-            
-            <h2 class="card-title">
-              <%= link_to article.title, article %>
-            </h2>
-            
-            <% unless article.tags.empty? %>
-              <div class="card-tags">
-                <% article.tags.each do |tag| %>
-                  <%= link_to tag, tag_path(tag), class: 'card-tag' %>
-                <% end %>
-              </div>
-            <% end %>
+        <div class="series-post-wrapper">
+          <div class="series-post-meta">
+            <span class="series-post-number">Part <%= index + 1 %></span>
           </div>
-          
-          <% if article.data.summary %>
-            <div class="card-content">
-              <p><%= article.data.summary %></p>
-            </div>
-          <% end %>
-          
-          <div class="card-actions">
-            <%= link_to 'Read Post', article, class: 'button button--primary' %>
-          </div>
-        </article>
+          <%= partial 'layouts/_blog_card', locals: { article: article } %>
+        </div>
       <% end %>
     </div>
   </div>

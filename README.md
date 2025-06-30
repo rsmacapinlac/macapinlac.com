@@ -8,6 +8,7 @@ A personal blog and website built with Middleman, a Ruby-based static site gener
 - Responsive design
 - RSS feed
 - Tag-based organization
+- Series organization with data-driven metadata
 - Calendar view
 - Pagination
 - Article previews
@@ -181,6 +182,10 @@ The site is deployed to macapinlac.com. The build process generates static files
 │   ├── stylesheets/ # CSS/SASS files
 │   ├── javascripts/ # JavaScript files
 │   └── images/      # Image assets
+├── data/            # Data files
+│   ├── tags.yml     # Tag metadata
+│   ├── series.yml   # Series metadata
+│   └── socials.yml  # Social media links
 ├── spec/            # Test files
 │   ├── features/    # Feature tests
 │   └── support/     # Test support files
@@ -188,6 +193,47 @@ The site is deployed to macapinlac.com. The build process generates static files
 ├── Gemfile          # Ruby dependencies
 └── build/           # Generated static site (not in repo)
 ```
+
+## Series Management
+
+The site uses a data-driven approach for series management. Series metadata is centralized in `data/series.yml` following the same pattern as tags.
+
+### Adding a New Series
+
+1. **Add to `data/series.yml`**:
+```yaml
+---
+series:
+  - name: "My New Series"
+    description: "Description of the series"
+    status: "In Progress"
+    icon: "🚗"
+    color: "#ff6b6b"
+    slug: "my-new-series"
+    posts:
+      - title: "First Post Title"
+        date: "2025-01-15"
+        summary: "Post summary"
+```
+
+2. **Add to blog post frontmatter**:
+```yaml
+---
+title: "My Post Title"
+date: 2025-01-15
+series: "My New Series"
+---
+```
+
+3. **The series page will be generated automatically at `/series/my-new-series.html`**
+
+### Series Features
+
+- **Centralized Management**: All series metadata in one file
+- **Rich Metadata**: Description, status, icon, color, and slug
+- **Dynamic URLs**: Slug-based URLs generated automatically
+- **Enhanced Display**: Series cards show status, icons, and descriptions
+- **Backward Compatibility**: Existing series functionality continues to work
 
 ## Contributing
 

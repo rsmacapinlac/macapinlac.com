@@ -23,34 +23,28 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
   <div class="container">
     <h2 class="section-title">Featured Series</h2>
     <div class="featured-grid">
-      <% if all_series.any? %>
-        <% all_series.first(2).each do |series_name, articles| %>
-          <article class="featured-card">
-            <div class="featured-card-content">
-              <h3 class="featured-card-title"><%= series_name %></h3>
-              <p class="featured-card-description">
-                <%= articles.first.data.summary || "A multi-part exploration of #{series_name.downcase}." %>
-              </p>
-              <div class="featured-card-meta">
-                <span class="featured-card-count"><%= articles.length %> posts</span>
-                <span class="featured-card-status">In Progress</span>
-              </div>
-              <%= link_to "Explore Series", "/series/#{series_name.downcase.gsub(/\s+/, '-')}.html", class: 'button button--tertiary' %>
-            </div>
-          </article>
+      <% if all_series_metadata.any? %>
+        <% all_series_metadata.first(2).each do |series_metadata| %>
+          <% articles = series_articles(series_metadata[:name]) %>
+          <% if articles.any? %>
+            <%= partial 'layouts/_series_card', locals: { 
+              series_name: series_metadata[:name], 
+              articles: articles,
+              series_metadata: series_metadata 
+            } %>
+          <% end %>
         <% end %>
       <% else %>
-        <article class="featured-card">
-          <div class="featured-card-content">
-            <h3 class="featured-card-title">Tesla Road Trip Adventure</h3>
-            <p class="featured-card-description">
-              Our journey from Vancouver to Edmonton in a Tesla Model Y, exploring the challenges and joys of long-distance EV travel.
+        <article class="card">
+          <div class="card-content">
+            <h2 class="card-title">No Series Available</h2>
+            <p class="card-description">
+              Check back soon for multi-part content series and explorations.
             </p>
-            <div class="featured-card-meta">
-              <span class="featured-card-count">2 posts</span>
-              <span class="featured-card-status">In Progress</span>
+            <div class="card-meta">
+              <span class="card-count">Coming soon</span>
             </div>
-            <%= link_to "Explore Series", "/series/tesla-road-trip-adventure.html", class: 'button button--tertiary' %>
+            <%= link_to "Browse All Posts", '/writing/', class: 'button button--primary' %>
           </div>
         </article>
       <% end %>

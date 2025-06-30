@@ -3,10 +3,7 @@ title: "The Actual Tesla Road Trip: Vancouver to Edmonton"
 date: 2024-07-18
 tags:
   - Road Trip
-  - Tesla
-  - Series
 series: "Tesla Road Trip Adventure"
-summary: "The actual journey from Vancouver to Edmonton in our Tesla Model Y, including charging stops, range anxiety, and lessons learned from our first long-distance EV road trip."
 ---
 
 After all the planning and anxiety-inducing research, the day finally arrived. We packed our Tesla Model Y with luggage, snacks, and a healthy dose of optimism, ready to put our ABRP planning to the test on the 1,200-kilometer journey from Vancouver to Edmonton.

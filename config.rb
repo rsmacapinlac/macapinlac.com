@@ -140,20 +140,34 @@ activate :blog do |blog|
 end
 
 # Series Helper Methods
-# Provides navigation and metadata for series content
+# Provides navigation and metadata for series content using data/series.yml
 helpers do
+  # Get series metadata from data file
+  def get_series_metadata(series_name)
+    data.series.series.find { |s| s[:name] == series_name }
+  end
+  
+  # Get all series from data file
+  def all_series_metadata
+    data.series.series
+  end
+  
+  # Get articles for a specific series
   def series_articles(series_name)
     blog.articles.select { |article| article.data.series == series_name }
   end
   
+  # Get series navigation for individual posts
   def series_navigation(current_article)
     return unless current_article.data.series
     
+    series_metadata = get_series_metadata(current_article.data.series)
     series_posts = series_articles(current_article.data.series).sort_by(&:date)
     current_index = series_posts.index(current_article)
     
     {
       series_name: current_article.data.series,
+      series_metadata: series_metadata,
       current_index: current_index,
       total_posts: series_posts.length,
       previous_post: current_index > 0 ? series_posts[current_index - 1] : nil,
@@ -162,8 +176,21 @@ helpers do
     }
   end
   
-  def all_series
-    blog.articles.group_by { |article| article.data.series }.reject { |series_name, _| series_name.nil? }
+  # Generate series URL helper
+  def series_url(series_name_or_slug)
+    if series_name_or_slug.is_a?(String)
+      # Check if it's a slug by looking up in series metadata
+      series_metadata = all_series_metadata.find { |s| s[:slug] == series_name_or_slug }
+      if series_metadata
+        "/series/#{series_metadata[:slug]}.html"
+      else
+        # Fallback to name-based URL generation
+        "/series/#{series_name_or_slug.downcase.gsub(/\s+/, '-')}.html"
+      end
+    else
+      # Handle series metadata object
+      "/series/#{series_name_or_slug[:slug]}.html"
+    end
   end
   
   # Get all unique tags from blog posts with their descriptions
@@ -186,11 +213,14 @@ end
 
 # Proxy Pages for Series
 # Create individual series pages using proxy functionality
-proxy "/series/tesla-road-trip-adventure.html", "/series.html", locals: {
-  series_name: "Tesla Road Trip Adventure",
-  series_description: "Our journey from Vancouver to Edmonton in a Tesla Model Y, exploring the challenges and joys of long-distance EV travel.",
-  series_status: "In Progress"
-}
+# Generate proxies dynamically from series data
+data.series.series.each do |series|
+  proxy "/series/#{series[:slug]}.html", "/series.html", locals: {
+    series_name: series[:name],
+    series_description: series[:description],
+    series_status: series[:status]
+  }
+end
 
 # Build Configuration
 # Settings that affect the final static site generation
@@ -198,7 +228,7 @@ proxy "/series/tesla-road-trip-adventure.html", "/series.html", locals: {
 # Relative Links and Assets
 # Enables portable builds that work in any subdirectory or hosting environment
 # Critical for deployment flexibility and CDN compatibility
-set :relative_links, true
+set :relative_links, false
 set :relative_assets, true
 set :pretty_urls, true
 

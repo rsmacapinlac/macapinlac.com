@@ -6,7 +6,7 @@ tags:
   - Planning
   - Series
 series: "Tesla Road Trip Adventure"
-summary: "Planning our first long-distance EV road trip from Vancouver to Edmonton using A Better Route Planner (ABRP) to ensure we don't end up stranded in the mountains."
+
 ---
 
 Our family road trips from Vancouver, BC to Edmonton, AB used to be a no-brainer—12 hours of driving, two gas stops, and a whole lot of questionable snacks. But after years of loyal service, our Toyota Highlander started wheezing its way into retirement, and we knew it was time for an upgrade. Enter the 2024 Tesla Model Y, complete with free Full Self-Driving (FSD) and internet for the first month. With some vacation days to burn, we figured, why not revive the old road trip tradition with a shiny new set of wheels?

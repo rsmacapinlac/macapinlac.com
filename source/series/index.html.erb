@@ -13,14 +13,21 @@ description: "Multi-part content series and collections from Ritchie Macapinlac"
   </header>
 
   <div class="page-content">
-    <% if all_series.empty? %>
+    <% if all_series_metadata.empty? %>
       <div class="empty-state">
         <p>No series content available yet. Check back soon for multi-part explorations!</p>
       </div>
     <% else %>
       <div class="card-grid">
-        <% all_series.each do |series_name, articles| %>
-          <%= partial 'layouts/_series_card', locals: { series_name: series_name, articles: articles } %>
+        <% all_series_metadata.each do |series_metadata| %>
+          <% articles = series_articles(series_metadata[:name]) %>
+          <% if articles.any? %>
+            <%= partial 'layouts/_series_card', locals: { 
+              series_name: series_metadata[:name], 
+              articles: articles,
+              series_metadata: series_metadata 
+            } %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

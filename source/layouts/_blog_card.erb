@@ -5,9 +5,9 @@
   <div class="card-meta">
     <span class="card-date"><%= article.date.strftime('%B %d, %Y') %></span>
   </div>
-  <% if article.data.summary || article.data.excerpt %>
+  <% if article.summary %>
     <div class="card-content">
-      <p><%= article.data.summary || article.data.excerpt %></p>
+      <p><%= article.summary %></p> 
     </div>
   <% end %>
   <% unless article.tags.empty? %>
