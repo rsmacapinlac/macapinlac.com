@@ -3,6 +3,8 @@ layout: layout
 ---
 
 <% if !defined?(series_name) || !series_name %>
+  <% content_for :page_title, "Series Not Found - macapinlac.com" %>
+  <% content_for :page_description, "Series not found. Please visit the Series Index to browse all available series." %>
   <div class="page-container">
     <header class="page-header">
       <h1 class="page-title">Series Not Found</h1>
@@ -17,6 +19,9 @@ layout: layout
   </div>
 <% else %>
 <% series_metadata = get_series_metadata(series_name) %>
+<% series_articles = series_articles(series_name).sort_by(&:date) %>
+<% content_for :page_title, defined?(page_title) ? page_title : "#{series_name} - Series - macapinlac.com" %>
+<% content_for :page_description, defined?(page_description) ? page_description : (series_metadata && series_metadata[:description]) ? series_metadata[:description] : "Multi-part content series by Ritchie Macapinlac" %>
 <div class="page-container">
   <header class="page-header">
     <h1 class="page-title">
@@ -37,7 +42,7 @@ layout: layout
     <% end %>
     
     <div class="page-meta">
-      <span class="meta-item"><%= series_articles(series_name).length %> posts</span>
+      <span class="meta-item"><%= series_articles.length %> posts</span>
       <% if series_metadata && series_metadata[:status] %>
         <span class="meta-item"><%= series_metadata[:status] %></span>
       <% elsif defined?(series_status) && series_status %>
@@ -48,10 +53,17 @@ layout: layout
 
   <div class="page-content">
     <div class="card-stack">
-      <% series_articles(series_name).sort_by(&:date).each_with_index do |article, index| %>
+      <% series_articles.each_with_index do |article, index| %>
         <div class="series-post-wrapper">
           <div class="series-post-meta">
-            <span class="series-post-number">Part <%= index + 1 %></span>
+            <div class="progress-indicator progress-indicator--minimal">
+              <span class="progress-text progress-text--minimal">
+                Part <%= index + 1 %> of <%= series_articles.length %>
+              </span>
+              <div class="progress-bar progress-bar--minimal">
+                <div class="progress-fill progress-fill--minimal" style="width: <%= ((index + 1).to_f / series_articles.length) * 100 %>%"></div>
+              </div>
+            </div>
           </div>
           <%= partial 'layouts/_blog_card', locals: { article: article } %>
         </div>

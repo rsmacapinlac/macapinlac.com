@@ -10,6 +10,6 @@ tags:
   - Reply
 ---
 
->> The moments when it's the most difficult to be kind are the moments where it matters the most.
+> The moments when it's the most difficult to be kind are the moments where it matters the most.
 
 Don't just be nice. Show it in your actions and be kind. Especially when it is hard to do so.

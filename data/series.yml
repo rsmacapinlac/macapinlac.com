@@ -1,8 +1,7 @@
 ---
 series:
   - name: "Tesla Road Trip Adventure"
-    description: "Our journey from Vancouver to Edmonton in a Tesla Model Y, exploring the challenges and joys of long-distance EV travel."
-    status: "In Progress"
+    description: "Our journey from Vancouver to Edmonton and back in our new Tesla Model Y, exploring the challenges and joys of long-distance EV travel."
     icon: "🚗"
     color: "#e74c3c"
     slug: "tesla-road-trip-adventure"

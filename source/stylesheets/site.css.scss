@@ -1278,36 +1278,37 @@ ul, ol {
 }
 
 .post-reply--minimal {
-  background: var(--color-blockquote-bg);
-  border-left: 4px solid var(--color-blockquote-border);
-  padding: $space-lg;
-  margin-bottom: $space-xl;
-  border-radius: 0 8px 8px 0;
+  margin-bottom: $space-lg;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
   
   @media (max-width: $breakpoint-md) {
-    padding: $space-md;
-    margin-bottom: $space-lg;
+    margin-bottom: $space-md;
   }
 }
 
 .post-reply-label--minimal {
   font-size: $font-size-sm;
   color: var(--color-muted);
-  margin: 0 0 $space-sm 0;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin: 0 $space-xs 0 0;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  display: inline;
 }
 
 .post-reply-link--minimal {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
   
   &:hover {
     color: var(--color-accent);
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
 }
 
@@ -3691,6 +3692,112 @@ ul, ol {
     &:hover {
       background: var(--color-accent);
       border-color: var(--color-accent);
+    }
+  }
+}
+
+// Series Card Specific Styles
+.card--series {
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-lg;
+    
+    .series-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    
+    .card-title {
+      margin: 0;
+      flex-grow: 1;
+    }
+  }
+  
+  .card-meta {
+    .card-count {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-mono;
+      font-size: $font-size-sm;
+      color: var(--color-muted);
+      
+      .meta-icon {
+        font-size: 1rem;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+// Dark mode adjustments for series cards
+@media (prefers-color-scheme: dark) {
+  .card--series {
+    .card-meta {
+      .card-count {
+        color: var(--color-muted-dark);
+      }
+    }
+  }
+}
+
+// Series Page Post Wrapper Styles
+.series-post-wrapper {
+  margin-bottom: $space-xl;
+  
+  .series-post-meta {
+    margin-bottom: $space-md;
+    
+    .progress-indicator--minimal {
+      margin-bottom: 0;
+    }
+    
+    .progress-text--minimal {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: $space-xs;
+    }
+    
+    .progress-bar--minimal {
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 2px;
+    }
+    
+    .progress-fill--minimal {
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+  }
+}
+
+// Dark mode adjustments for series cards
+@media (prefers-color-scheme: dark) {
+  .card--series {
+    .card-meta {
+      .card-count {
+        color: var(--color-muted-dark);
+      }
+    }
+  }
+  
+  .series-post-wrapper {
+    .series-post-meta {
+      .progress-text--minimal {
+        color: var(--color-primary-dark);
+      }
+      
+      .progress-bar--minimal {
+        background: var(--color-border-dark);
+      }
+      
+      .progress-fill--minimal {
+        background: var(--color-primary-dark);
+      }
     }
   }
 }

@@ -1,5 +1,8 @@
-<article class="card">
-  <div class="card-content">
+<div class="card card--series">
+  <div class="card-header">
+    <% if defined?(series_metadata) && series_metadata && series_metadata[:icon] %>
+      <span class="series-icon"><%= series_metadata[:icon] %></span>
+    <% end %>
     <h2 class="card-title">
       <% if defined?(series_metadata) && series_metadata %>
         <%= link_to series_metadata[:name], series_url(series_metadata) %>
@@ -7,7 +10,9 @@
         <%= link_to series_name, series_url(series_name) %>
       <% end %>
     </h2>
-    
+  </div>
+  
+  <div class="card-content">
     <p class="card-description">
       <% if defined?(series_metadata) && series_metadata && series_metadata[:description] %>
         <%= series_metadata[:description] %>
@@ -20,15 +25,17 @@
         <% end %>
       <% end %>
     </p>
-    
-    <div class="card-meta">
-      <span class="card-count"><%= articles.length %> posts</span>
-      <% if defined?(series_metadata) && series_metadata && series_metadata[:status] %>
-        <span class="card-status"><%= series_metadata[:status] %></span>
-      <% end %>
-    </div>
-    
-    <%= link_to "Explore Series", series_url(defined?(series_metadata) && series_metadata ? series_metadata : series_name), 
-                class: 'button button--primary' %>
   </div>
-</article> 
+  
+  <div class="card-meta">
+    <span class="card-count">
+      <span class="meta-icon">📚</span>
+      <%= articles.length %> posts
+    </span>
+  </div>
+  
+  <div class="card-actions">
+    <%= link_to "Explore Series", series_url(defined?(series_metadata) && series_metadata ? series_metadata : series_name), 
+                class: 'button button--card-action' %>
+  </div>
+</div> 

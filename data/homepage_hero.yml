@@ -2,8 +2,8 @@ title: "Hi, I'm Ritchie"
 tagline: ""
 description: "Welcome to my own personal online space. It's an old space (since 2001) so things are a bit rickety. Try not to break anything but if you do find something that's broken, let me know. Make yourself at home."
 primary_button:
-  text: "Read My Writing"
+  text: "Read My Posts"
   url: "/writing"
 secondary_button:
-  text: "Learn More About Me"
-  url: "/about.html" 
+  text: "Check Out The Series"
+  url: "/series" 

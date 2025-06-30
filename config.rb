@@ -258,7 +258,9 @@ data.series.series.each do |series|
   proxy "/series/#{series[:slug]}.html", "/series.html", locals: {
     series_name: series[:name],
     series_description: series[:description],
-    series_status: series[:status]
+    series_status: series[:status],
+    page_title: "#{series[:name]} - Series - macapinlac.com",
+    page_description: series[:description] || "Multi-part content series by Ritchie Macapinlac"
   }
 end
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%= partial 'layouts/_html_head', locals: {
-      title: "macapinlac.com - #{current_article.title}",
+      title: "#{current_article.title} - macapinlac.com",
       description: current_article.data.summary || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
     } %>
   </head>
@@ -39,7 +39,7 @@
           <div class="post-content post-content--minimal">
             <% if current_article.data.reply %>
               <div class="post-reply post-reply--minimal">
-                <p class="post-reply-label post-reply-label--minimal">In reply to:</p>
+                <span class="post-reply-label post-reply-label--minimal">In reply to:</span>
                 <%= link_to current_article.data.reply.reply_title || current_article.data.reply.url, 
                             current_article.data.reply.url, 
                             class: 'post-reply-link post-reply-link--minimal' %>
