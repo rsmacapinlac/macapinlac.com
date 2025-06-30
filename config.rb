@@ -152,21 +152,64 @@ helpers do
     data.series.series
   end
   
+  # Get featured series from data file
+  def featured_series_metadata
+    data.series.series.select { |s| s[:featured] == true }
+  end
+  
   # Get articles for a specific series
   def series_articles(series_name)
-    blog.articles.select { |article| article.data.series == series_name }
+    # First try to get articles from series metadata (YAML-driven approach)
+    series_metadata = get_series_metadata(series_name)
+    if series_metadata && series_metadata[:posts]
+      # Get articles by matching titles and dates from YAML
+      yaml_posts = series_metadata[:posts]
+      blog.articles.select do |article|
+        yaml_posts.any? do |yaml_post|
+          article.title == yaml_post[:title] && 
+          article.date.strftime('%Y-%m-%d') == yaml_post[:date]
+        end
+      end
+    else
+      # Fallback to frontmatter-based approach for backward compatibility
+      blog.articles.select { |article| article.data.series == series_name }
+    end
   end
   
   # Get series navigation for individual posts
   def series_navigation(current_article)
-    return unless current_article.data.series
+    # Try to find series by checking if current article is in any series
+    series_metadata = nil
+    series_name = nil
     
-    series_metadata = get_series_metadata(current_article.data.series)
-    series_posts = series_articles(current_article.data.series).sort_by(&:date)
+    # Check if article has series in frontmatter (backward compatibility)
+    if current_article.data.series
+      series_name = current_article.data.series
+      series_metadata = get_series_metadata(series_name)
+    else
+      # Find series by checking if current article is in any series posts
+      all_series_metadata.each do |series|
+        if series[:posts]
+          series[:posts].each do |yaml_post|
+            if current_article.title == yaml_post[:title] && 
+               current_article.date.strftime('%Y-%m-%d') == yaml_post[:date]
+              series_name = series[:name]
+              series_metadata = series
+              break
+            end
+          end
+        end
+        break if series_name
+      end
+    end
+    
+    return unless series_name && series_metadata
+    
+    series_posts = series_articles(series_name).sort_by(&:date)
     current_index = series_posts.index(current_article)
     
     {
-      series_name: current_article.data.series,
+      series_name: series_name,
       series_metadata: series_metadata,
       current_index: current_index,
       total_posts: series_posts.length,

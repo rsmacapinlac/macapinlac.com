@@ -7,7 +7,7 @@ RSpec.describe 'Series Functionality' do
     get '/series'
     expect(last_response).to be_ok
     expect(last_response.body).to include('Series')
-    expect(last_response.body).to include('Multi-part content exploring topics in depth')
+    expect(last_response.body).to include('Tesla Road Trip Adventure')
   end
 
   it 'displays series posts with navigation' do
@@ -18,7 +18,7 @@ RSpec.describe 'Series Functionality' do
     expect(last_response.body).to include('Tesla Road Trip Adventure')
     expect(last_response.body).to include('Part 1 of 2')
     expect(last_response.body).to include('progress-indicator')
-    expect(last_response.body).to include('section-navigation')
+    expect(last_response.body).to include('series-navigation')
   end
 
   it 'shows series navigation between posts' do
@@ -60,5 +60,15 @@ RSpec.describe 'Series Functionality' do
     # Check for series link in navigation
     expect(last_response.body).to include('Series')
     expect(last_response.body).to include('/series')
+  end
+
+  it 'displays featured series on homepage' do
+    get '/'
+    expect(last_response).to be_ok
+    
+    # Check for featured series section
+    expect(last_response.body).to include('Featured Series')
+    expect(last_response.body).to include('Tesla Road Trip Adventure')
+    expect(last_response.body).to include('Explore Series')
   end
 end 

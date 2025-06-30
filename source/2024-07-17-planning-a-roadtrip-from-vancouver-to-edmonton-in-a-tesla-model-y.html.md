@@ -4,7 +4,6 @@ date: 2024-07-17
 tags:
   - Travelling
   - Figuring Things Out
-series: "Tesla Road Trip Adventure"
 
 ---
 

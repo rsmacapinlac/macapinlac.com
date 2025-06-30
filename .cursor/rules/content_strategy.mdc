@@ -146,11 +146,13 @@ bundle exec middleman deploy
 ## Integration Points
 
 ### Documentation References
+- **Documentation overview**: See `docs/README.md` for complete documentation index
 - **Comprehensive strategy**: See `docs/Content Strategy.md` for detailed guidelines
 - **Design specifications**: See `docs/Design System.md` for visual standards
 - **Project objectives**: See `docs/Redesign Brief.md` for overall context
 - **Technical implementation**: See `middleman_conventions.mdc` for template patterns
 - **Development workflow**: See `development_workflow.mdc` for content creation process
+- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
 
 ### External Services
 - **GitHub**: Version control for all content

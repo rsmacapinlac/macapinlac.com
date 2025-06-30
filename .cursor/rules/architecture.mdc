@@ -296,11 +296,14 @@ bundle outdated
 ## Integration Points
 
 ### Documentation References
+- **Documentation overview**: See `docs/README.md` for complete documentation index
 - **Development workflow**: See `development_workflow.mdc` for local development patterns
 - **Development setup**: See `README.md` for complete setup procedures
 - **Decision history**: See `docs/Decision Log/` for all architectural decision records
 - **Design standards**: See `docs/Design System.md` for visual architecture
 - **Content strategy**: See `docs/Content Strategy.md` for content architecture
+- **Technical specifications**: See `docs/Technical Specifications.md` for implementation details
+- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
 
 ### External Services
 - **GitHub**: Source control and CI/CD

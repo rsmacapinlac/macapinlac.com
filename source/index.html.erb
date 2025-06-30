@@ -26,7 +26,19 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
   <div class="container">
     <h2 class="section-title">Featured Series</h2>
     <div class="featured-grid">
-      <% if all_series_metadata.any? %>
+      <% featured_series = featured_series_metadata %>
+      <% if featured_series.any? %>
+        <% featured_series.each do |series_metadata| %>
+          <% articles = series_articles(series_metadata[:name]) %>
+          <% if articles.any? %>
+            <%= partial 'layouts/_series_card', locals: { 
+              series_name: series_metadata[:name], 
+              articles: articles,
+              series_metadata: series_metadata 
+            } %>
+          <% end %>
+        <% end %>
+      <% elsif all_series_metadata.any? %>
         <% all_series_metadata.first(2).each do |series_metadata| %>
           <% articles = series_articles(series_metadata[:name]) %>
           <% if articles.any? %>
@@ -40,14 +52,14 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
       <% else %>
         <article class="card">
           <div class="card-content">
-            <h2 class="card-title">No Series Available</h2>
+            <h2 class="card-title">No Featured Series</h2>
             <p class="card-description">
-              Check back soon for multi-part content series and explorations.
+              No series are currently featured on the homepage. Check back soon for highlighted multi-part content series.
             </p>
             <div class="card-meta">
               <span class="card-count">Coming soon</span>
             </div>
-            <%= link_to "Browse All Posts", '/writing/', class: 'button button--primary' %>
+            <%= link_to "Browse All Series", '/series/', class: 'button button--primary' %>
           </div>
         </article>
       <% end %>

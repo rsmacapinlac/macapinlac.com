@@ -160,7 +160,10 @@ alwaysApply: false
 
 ## Cross-Reference Documentation
 
+- **Documentation overview**: See `docs/README.md` for complete documentation index
 - **Setup procedures**: See `README.md` for environment setup
 - **Architecture patterns**: See `architecture.mdc` for high-level guidance
 - **Technical implementation**: See `middleman_conventions.mdc` for specific patterns
 - **Content guidelines**: See `content_strategy.mdc` for editorial standards
+- **Design system**: See `docs/Design System.md` for visual standards
+- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process

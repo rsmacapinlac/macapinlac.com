@@ -128,10 +128,12 @@ layout: post  # Optional, defaults to blog layout
 - **Tag system**: Organized by categories, linked via `tag_path(tag)`
 
 ### Cross-Reference
+- **Documentation overview**: See `docs/README.md` for complete documentation index
 - **Content creation guidelines**: See `docs/Content Strategy.md` for brand voice, editorial standards, and site architecture
 - **Visual design standards**: See `docs/Design System.md` for complete typography, color, and component specifications  
 - **Project requirements**: See `docs/Redesign Brief.md` for overall project objectives and target audience
-- **Deployment procedures**: See `deployment.mdc`
+- **Technical specifications**: See `docs/Technical Specifications.md` for implementation details
+- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
 - **Overall architecture decisions**: See `architecture.mdc`
 
 ## Testing Integration
