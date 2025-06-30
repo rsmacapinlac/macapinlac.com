@@ -7,11 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -25,10 +25,20 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: '3.2'
           bundler-cache: true
       - name: Install ruby dependencies
         run: bundle install
       - name: Build static site
         run: bundle exec middleman build
+      - name: List build contents
+        run: ls -la build/
+      - name: Check build directory size
+        run: du -sh build/
       - name: Deploy static site to S3 bucket
         run: aws s3 sync ./build/ s3://${{ secrets.BUCKET_NAME }} --delete
+      - name: Verify deployment
+        run: aws s3 ls s3://${{ secrets.BUCKET_NAME }} --recursive | head -20
+      - name: Invalidate CloudFront cache
+        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
