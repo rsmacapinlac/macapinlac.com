@@ -209,6 +209,46 @@ helpers do
     # Return tags that exist in both blog posts and descriptions
     blog_tags.map { |tag_name| tag_map[tag_name] }.compact
   end
+
+  # Reading Time Helper Methods
+  # Calculate and format reading time for blog posts
+  
+  # Average reading speed in words per minute
+  WORDS_PER_MINUTE = 200
+
+  # Calculate reading time for given content
+  # @param content [String] The content to analyze
+  # @return [Integer] Estimated reading time in minutes
+  def reading_time(content)
+    return 0 if content.nil? || content.empty?
+    
+    word_count = content.split(/\s+/).length
+    minutes = (word_count.to_f / WORDS_PER_MINUTE).ceil
+    
+    # Ensure minimum of 1 minute
+    [minutes, 1].max
+  end
+
+  # Format reading time for display
+  # @param minutes [Integer] Reading time in minutes
+  # @return [String] Formatted reading time string
+  def format_reading_time(minutes)
+    if minutes == 1
+      "1 min read"
+    else
+      "#{minutes} min read"
+    end
+  end
+
+  # Get reading time for current article
+  # @return [String] Formatted reading time
+  def article_reading_time
+    return unless current_article
+    
+    content = current_article.body
+    minutes = reading_time(content)
+    format_reading_time(minutes)
+  end
 end
 
 # Proxy Pages for Series

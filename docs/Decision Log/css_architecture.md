@@ -32,6 +32,7 @@ type: technical
 - CSS custom properties enable runtime theming for dark mode functionality
 - Mobile-first responsive patterns built into architecture foundation
 - Balances maintainability with performance requirements
+- **Supports modifier-based component variations** (e.g., `--minimal` classes for reading-focused layouts)
 
 ## 3. Solutions Considered
 
@@ -102,3 +103,90 @@ type: technical
   - Overkill complexity for single-author personal site
   - Limited benefit without component-based JavaScript framework
   - Additional learning curve for module-based development
+
+## 4. Consequences
+
+### 4.1 Positive
+- **Design System Integration**: CSS custom properties enable consistent theming across components
+- **Component-Based Organization**: Modular structure improves maintainability and reusability
+- **Dark Mode Support**: Runtime theme switching without additional build complexity
+- **Mobile-First Responsive**: Built-in responsive patterns ensure cross-device compatibility
+- **Performance Optimization**: SASS compilation with minification for production builds
+- **Modifier Pattern Support**: Enables component variations (e.g., `--minimal` classes) without architectural changes
+
+### 4.2 Negative
+- **Build Step Dependency**: Requires SASS compilation for development and production
+- **Learning Curve**: Team must understand SASS syntax and best practices
+- **CSS Custom Properties**: Limited support in very old browsers (IE11 and below)
+- **Bundle Size**: SASS compilation may increase CSS bundle size if not properly optimized
+
+### 4.3 Risks
+- **Browser Compatibility**: CSS custom properties require fallbacks for older browsers
+- **Build Process Complexity**: SASS compilation adds step to deployment pipeline
+- **CSS Specificity**: Complex selectors may lead to specificity conflicts
+- **Performance Impact**: Large CSS bundles may affect page load times
+
+## 5. Implementation Examples
+
+### 5.1 Component Modifier Pattern
+The architecture supports modifier-based component variations through consistent naming conventions:
+
+```scss
+// Base component
+.post {
+  // Base styles
+}
+
+// Modifier variations
+.post--minimal {
+  // Reading-focused layout styles
+  font-size: 1.125rem;
+  line-height: 1.7;
+  
+  .post-title--minimal {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .post-navigation--minimal {
+    // Distinct navigation styling
+  }
+}
+```
+
+### 5.2 CSS Custom Properties Integration
+Design system tokens are implemented through CSS custom properties:
+
+```scss
+:root {
+  --color-primary: #3B5F7F;
+  --color-text: #252525;
+  --space-lg: 2rem;
+}
+
+.post--minimal {
+  color: var(--color-text);
+  padding: var(--space-lg);
+  
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+```
+
+### 5.3 Responsive Design Patterns
+Mobile-first responsive patterns are built into the architecture:
+
+```scss
+.post--minimal {
+  // Mobile-first base styles
+  font-size: 1rem;
+  
+  @media (min-width: $breakpoint-md) {
+    // Tablet and desktop enhancements
+    font-size: 1.125rem;
+  }
+}
+```
+
+## 6. Related Decisions

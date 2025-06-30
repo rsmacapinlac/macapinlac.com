@@ -291,6 +291,93 @@ Part of: [Series Name]
   - Series navigation (if applicable)
   - Related articles
 
+#### Minimalist Reading Layout ✅ IMPLEMENTED
+**Status**: Complete (January 2025)
+
+**Overview**: Reading-focused layout with enhanced typography, distinct navigation styling, and reading time integration.
+
+##### Typography Specifications
+- **Post Title**: Lora, 2.5rem (40px), 700 weight, 1.2 line height
+- **Body Text**: Inter, 1.125rem (18px), 400 weight, 1.7 line height
+- **Meta Information**: Inter, 0.875rem (14px), 500 weight, 1.5 line height
+- **Reading Time**: Inter, 0.875rem (14px), 400 weight, integrated with meta
+
+##### Meta Information Layout
+```
+Date • Reading Time • Tags
+```
+- **Separators**: Bullet points (•) for clean visual separation
+- **Reading Time**: Calculated at 200 words per minute
+- **Tags**: Minimal styling with subtle hover effects
+
+##### Navigation Components
+
+###### Series Navigation (Card-like)
+- **Container**: Card-like appearance with background, borders, and left accent
+- **Background**: `var(--color-bg-secondary)`
+- **Border**: 1px solid with 4px left accent in primary color
+- **Padding**: `$space-lg` (32px) with responsive adjustments
+- **Buttons**: Solid background with hover animations
+- **Center Button**: Primary color background for "View All Posts in Series"
+
+###### Chronological Navigation (Text Links)
+- **Container**: Minimal styling with no background
+- **Buttons**: Underlined text links with subtle hover effects
+- **Typography**: Inter, 1rem (16px), 600 weight
+- **Hover**: Color change and text decoration thickness increase
+
+##### Progress Indicators
+
+###### Series Progress
+- **Text**: "Part X of Y" with clear typography
+- **Progress Bar**: Visual indicator with primary color fill
+- **Animation**: Smooth width transitions for progress updates
+
+##### Content Organization
+- **Header**: Title, meta information, and optional summary
+- **Content**: Main article content with optimized typography
+- **Reply Context**: Styled reply links for webmention integration
+- **Footer**: Navigation components and optional changelog
+
+##### Responsive Behavior
+
+###### Mobile Adaptations
+- **Typography Scaling**: Reduced font sizes for mobile screens
+- **Navigation Stacking**: Series and chronological navigation stack vertically
+- **Spacing Adjustments**: Reduced padding and margins for mobile
+- **Touch Targets**: Minimum 44px height for all interactive elements
+
+###### Tablet and Desktop
+- **Horizontal Navigation**: Navigation components display horizontally
+- **Optimal Reading Width**: Maximum 800px content width
+- **Generous Spacing**: Increased padding and margins for comfortable reading
+
+##### Dark Mode Compatibility
+- **Color Mapping**: All components use CSS custom properties
+- **Background Contrast**: Maintains readability in both modes
+- **Interactive States**: Hover and focus states work in both themes
+- **Progress Indicators**: Adapt to dark mode color scheme
+
+##### Accessibility Features
+- **Semantic Structure**: Proper heading hierarchy and landmark roles
+- **Focus Management**: Clear focus indicators for all interactive elements
+- **Screen Reader Support**: Descriptive labels and ARIA attributes
+- **Keyboard Navigation**: Full keyboard accessibility for all components
+
+##### Performance Considerations
+- **CSS Optimization**: Efficient selectors and minimal specificity conflicts
+- **Loading Strategy**: Critical CSS inlined, non-critical deferred
+- **Animation Performance**: Hardware-accelerated transitions and transforms
+- **Bundle Size**: Minimal CSS footprint with component-based organization
+
+**Implementation Details**:
+- Uses `--minimal` modifier classes for all components
+- Reading time helper methods in `config.rb`
+- Comprehensive CSS styling in `site.css.scss`
+- Full responsive design with mobile-first approach
+- Dark mode compatibility maintained
+- Comprehensive test coverage with 9 test scenarios
+
 ### Series Section
 
 #### Series Landing Template
@@ -406,67 +493,83 @@ Part of: [Series Name]
 
 ---
 
-## 8. Mobile-Specific Design Considerations
+## 6. Minimalist Reading Layout Components
 
-### Mobile Typography Adjustments
-- **Touch targets:** Minimum 44px height for all interactive elements
-- **Reading distance:** Optimized for 16-24 inch reading distance
-- **Line length:** Maximum 50-60 characters per line on mobile
-- **Contrast:** Enhanced contrast ratios for outdoor reading
+### Post Layout (Minimalist)
 
-### Mobile Component Variations
+#### Reading-Optimized Typography
+- **Post Title**: Lora, 2.5rem (40px), 700 weight, 1.2 line height
+- **Body Text**: Inter, 1.125rem (18px), 400 weight, 1.7 line height
+- **Meta Information**: Inter, 0.875rem (14px), 500 weight, 1.5 line height
+- **Reading Time**: Inter, 0.875rem (14px), 400 weight, integrated with meta
 
-#### Mobile Navigation
-- **Hamburger menu:** 3-line icon, 48px touch target
-- **Menu overlay:** Full-screen with large touch targets
-- **Gesture support:** Swipe to close menu
-- **Safe areas:** Respect iOS notch and Android navigation
+#### Meta Information Layout
+```
+Date • Reading Time • Tags
+```
+- **Separators**: Bullet points (•) for clean visual separation
+- **Reading Time**: Calculated at 200 words per minute
+- **Tags**: Minimal styling with subtle hover effects
 
-#### Mobile Article Cards
-- **Simplified layout:** Stack elements vertically
-- **Larger touch targets:** Entire card clickable
-- **Thumb-friendly:** Important actions within thumb reach
-- **Image sizing:** Responsive images with art direction
+#### Navigation Components
 
-#### Mobile Forms
-- **Input fields:** Minimum 48px height
-- **Spacing:** Extra spacing between fields for fat finger navigation
-- **Keyboard optimization:** Appropriate input types (email, tel, etc.)
-- **Validation:** Real-time feedback without overwhelming
+##### Series Navigation (Card-like)
+- **Container**: Card-like appearance with background, borders, and left accent
+- **Background**: `var(--color-bg-secondary)`
+- **Border**: 1px solid with 4px left accent in primary color
+- **Padding**: `$space-lg` (32px) with responsive adjustments
+- **Buttons**: Solid background with hover animations
+- **Center Button**: Primary color background for "View All Posts in Series"
 
-### Mobile Performance Considerations
-- **Progressive enhancement:** Core functionality works without JavaScript
-- **Image optimization:** Responsive images with appropriate sizing
-- **Touch responsiveness:** 100ms maximum touch response time
-- **Smooth scrolling:** 60fps scroll performance maintained
+##### Chronological Navigation (Text Links)
+- **Container**: Minimal styling with no background
+- **Buttons**: Underlined text links with subtle hover effects
+- **Typography**: Inter, 1rem (16px), 600 weight
+- **Hover**: Color change and text decoration thickness increase
 
----
+#### Progress Indicators
 
-## 9. Accessibility Implementation Details
+##### Series Progress
+- **Text**: "Part X of Y" with clear typography
+- **Progress Bar**: Visual indicator with primary color fill
+- **Animation**: Smooth width transitions for progress updates
 
-### Screen Reader Support
-- **Semantic HTML:** Proper heading hierarchy (H1→H2→H3)
-- **ARIA labels:** Descriptive labels for complex interactions
-- **Skip links:** "Skip to main content" for keyboard users
-- **Focus management:** Logical tab order throughout
+#### Content Organization
+- **Header**: Title, meta information, and optional summary
+- **Content**: Main article content with optimized typography
+- **Reply Context**: Styled reply links for webmention integration
+- **Footer**: Navigation components and optional changelog
 
-### Visual Accessibility
-- **Color contrast:** 4.5:1 minimum for normal text, 3:1 for large text
-- **Color independence:** Information not conveyed by color alone
-- **Focus indicators:** Visible 2px outline on all interactive elements
-- **Text scaling:** Layout remains functional at 200% zoom
+### Responsive Behavior
 
-### Motor Accessibility
-- **Click targets:** Minimum 44px touch targets
-- **Hover alternatives:** Touch-friendly alternatives for hover states
-- **Keyboard navigation:** All functionality accessible via keyboard
-- **Time limits:** No automatic timeouts on user interactions
+#### Mobile Adaptations
+- **Typography Scaling**: Reduced font sizes for mobile screens
+- **Navigation Stacking**: Series and chronological navigation stack vertically
+- **Spacing Adjustments**: Reduced padding and margins for mobile
+- **Touch Targets**: Minimum 44px height for all interactive elements
 
-### Cognitive Accessibility
-- **Clear language:** Simple, concise instructions and labels
-- **Consistent patterns:** UI patterns repeat throughout site
-- **Error prevention:** Clear validation and confirmation
-- **Help text:** Contextual help without overwhelming interface
+#### Tablet and Desktop
+- **Horizontal Navigation**: Navigation components display horizontally
+- **Optimal Reading Width**: Maximum 800px content width
+- **Generous Spacing**: Increased padding and margins for comfortable reading
+
+### Dark Mode Compatibility
+- **Color Mapping**: All components use CSS custom properties
+- **Background Contrast**: Maintains readability in both modes
+- **Interactive States**: Hover and focus states work in both themes
+- **Progress Indicators**: Adapt to dark mode color scheme
+
+### Accessibility Features
+- **Semantic Structure**: Proper heading hierarchy and landmark roles
+- **Focus Management**: Clear focus indicators for all interactive elements
+- **Screen Reader Support**: Descriptive labels and ARIA attributes
+- **Keyboard Navigation**: Full keyboard accessibility for all components
+
+### Performance Considerations
+- **CSS Optimization**: Efficient selectors and minimal specificity conflicts
+- **Loading Strategy**: Critical CSS inlined, non-critical deferred
+- **Animation Performance**: Hardware-accelerated transitions and transforms
+- **Bundle Size**: Minimal CSS footprint with component-based organization
 
 ---
 

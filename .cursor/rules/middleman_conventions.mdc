@@ -48,6 +48,8 @@ source/
 - Loop through articles: `page_articles.each_with_index do |article, i|`
 - Handle pagination: Check `paginate`, `num_pages`, `page_number`
 - Tag links: `<%= link_to tag, tag_path(tag) %>`
+- **Reading time**: Use `article_reading_time` helper for content discovery
+- **Series navigation**: Use `series_navigation(current_article)` helper for series posts
 
 ## Configuration Patterns (config.rb)
 
@@ -94,6 +96,8 @@ end
 - Follow component patterns for post cards, topic cards, and navigation elements
 - Maintain 800px max-width content constraint
 - Use 8px grid spacing system for consistent layouts
+- **Minimalist layout**: Use `--minimal` modifier classes for reading-focused layouts
+- **Navigation styling**: Series navigation uses card-like styling, chronological navigation uses text links
 
 ### Dark Mode Support
 - Default to light mode on first visit (as specified in design system)
@@ -166,6 +170,8 @@ layout: post  # Optional, defaults to blog layout
 - Define in `config.rb` helpers block if needed
 - Keep helpers simple and focused
 - Prefer data files over complex helper logic
+- **Reading time helpers**: `reading_time(content)`, `format_reading_time(minutes)`, `article_reading_time`
+- **Series helpers**: `series_navigation(current_article)`, `get_series_metadata(series_name)`
 
 ## Development Workflow
 

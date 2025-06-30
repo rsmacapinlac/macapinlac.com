@@ -11,91 +11,94 @@
       <%= partial 'layouts/_header' %>
 
       <main class="main-content">
-        <article class="post">
-          <header class="post-header">
-            <div class="post-meta">
-              <time datetime="<%= current_article.date.iso8601 %>" class="post-date">
+        <article class="post post--minimal">
+          <header class="post-header post-header--minimal">
+            <h1 class="post-title post-title--minimal"><%= current_article.title %></h1>
+            
+            <div class="post-meta post-meta--minimal">
+              <time datetime="<%= current_article.date.iso8601 %>" class="post-date post-date--minimal">
                 <%= current_article.date.strftime('%B %d, %Y') %>
               </time>
+              <span class="post-meta-separator">•</span>
+              <span class="post-reading-time"><%= article_reading_time %></span>
               <% unless current_article.tags.empty? %>
-                <div class="post-tags">
+                <span class="post-meta-separator">•</span>
+                <div class="post-tags post-tags--minimal">
                   <% current_article.tags.each do |tag| %>
-                    <%= link_to tag, tag_path(tag), class: 'post-tag' %>
+                    <%= link_to tag, tag_path(tag), class: 'post-tag post-tag--minimal' %>
                   <% end %>
                 </div>
               <% end %>
             </div>
             
-            <h1 class="post-title"><%= current_article.title %></h1>
-            
             <% if current_article.data.summary %>
-              <p class="post-summary"><%= current_article.data.summary %></p>
+              <p class="post-summary post-summary--minimal"><%= current_article.data.summary %></p>
             <% end %>
           </header>
 
-          <div class="post-content">
+          <div class="post-content post-content--minimal">
             <% if current_article.data.reply %>
-              <div class="post-reply">
-                <p class="post-reply-label">In reply to:</p>
+              <div class="post-reply post-reply--minimal">
+                <p class="post-reply-label post-reply-label--minimal">In reply to:</p>
                 <%= link_to current_article.data.reply.reply_title || current_article.data.reply.url, 
                             current_article.data.reply.url, 
-                            class: 'post-reply-link' %>
+                            class: 'post-reply-link post-reply-link--minimal' %>
               </div>
             <% end %>
 
             <%= yield %>
           </div>
 
-          <footer class="post-footer">
+          <footer class="post-footer post-footer--minimal">
             <% if current_article.data.series %>
               <% series_nav = series_navigation(current_article) %>
-              <div class="post-section">
-                <h3>Part of the "<%= series_nav[:series_name] %>" series</h3>
-                <div class="progress-indicator">
-                  <span class="progress-text">
+              <div class="post-section post-section--minimal">
+                <h3 class="post-section-title">Part of the "<%= series_nav[:series_name] %>" series</h3>
+                <div class="progress-indicator progress-indicator--minimal">
+                  <span class="progress-text progress-text--minimal">
                     Part <%= series_nav[:current_index] + 1 %> of <%= series_nav[:total_posts] %>
                   </span>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: <%= ((series_nav[:current_index] + 1).to_f / series_nav[:total_posts]) * 100 %>%"></div>
+                  <div class="progress-bar progress-bar--minimal">
+                    <div class="progress-fill progress-fill--minimal" style="width: <%= ((series_nav[:current_index] + 1).to_f / series_nav[:total_posts]) * 100 %>%"></div>
                   </div>
                 </div>
                 
-                <div class="section-navigation">
+                <div class="series-navigation series-navigation--minimal">
                   <% if series_nav[:previous_post] %>
-                    <%= link_to "← Previous: #{series_nav[:previous_post].title}", 
+                    <%= link_to "Previous: #{series_nav[:previous_post].title}", 
                                 series_nav[:previous_post], 
-                                class: 'button button--secondary' %>
+                                class: 'series-nav-button series-nav-button--minimal' %>
                   <% end %>
                   
                   <%= link_to "View All Posts in Series", 
                               "/series/#{series_nav[:series_name].downcase.gsub(/\s+/, '-')}.html", 
-                              class: 'button button--secondary' %>
+                              class: 'series-nav-button series-nav-button--minimal series-nav-button--center' %>
                   
                   <% if series_nav[:next_post] %>
-                    <%= link_to "Next: #{series_nav[:next_post].title} →", 
+                    <%= link_to "Next: #{series_nav[:next_post].title}", 
                                 series_nav[:next_post], 
-                                class: 'button button--secondary' %>
+                                class: 'series-nav-button series-nav-button--minimal' %>
                   <% end %>
                 </div>
               </div>
             <% end %>
 
-            <div class="post-navigation">
+            <div class="post-navigation post-navigation--minimal">
               <% if current_article.article_previous %>
-                <%= link_to "← #{current_article.article_previous.title}", 
+                <%= link_to current_article.article_previous.title, 
                             current_article.article_previous, 
-                            class: 'button button--secondary' %>
+                            class: 'button button--secondary button--minimal' %>
               <% end %>
               
               <% if current_article.article_next %>
-                <%= link_to "#{current_article.article_next.title} →", 
+                <%= link_to current_article.article_next.title, 
                             current_article.article_next, 
-                            class: 'button button--secondary' %>
+                            class: 'button button--secondary button--minimal' %>
               <% end %>
             </div>
 
             <% if current_article.data.changelog %>
-              <details class="post-changelog">
+              <details class="post-changelog post-changelog--minimal">
                 <summary>Changelog</summary>
                 <ul>
                   <% current_article.data.changelog.each do |change| %>
