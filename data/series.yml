@@ -1,5 +1,31 @@
 ---
 series:
+  - name: "Building with AI: A Website Redesign Experiment"
+    description: "An honest look at using AI to redesign a website from scratch. Spoiler: it's not as easy as YouTube makes it look, but the journey is worth sharing."
+    icon: "🤖"
+    color: "#3498db"
+    slug: "building-with-ai-website-redesign"
+    featured: true
+    posts:
+      - title: "How I Procrastinated my way into my website redesign"
+        date: "2025-06-30"
+        summary: "The story of how strategic procrastination led to the most valuable part of my website redesign process - and why you should probably do the same."
+      #- title: "Failed Experiments: When AI Wireframing Goes Wrong"
+      #  date: "2025-07-07"
+      #  summary: "Reality check: what happens when you try to jump straight to wireframes with AI? Spoiler: it doesn't work as advertised."
+      #- title: "Setting the Stage: Cursor Rules and AI Guardrails"
+      #  date: "2025-07-14"
+      #  summary: "Why setting up proper AI guardrails before implementation makes all the difference - and how to do it right."
+      #- title: "ASCII Art and Architecture: Designing Without Wireframes"
+      #  date: "2025-07-21"
+      #  summary: "How to design a website using ASCII art and AI, because sometimes the best wireframes are the ones you don't make."
+      #- title: "Feature by Feature: The Implementation Dance"
+      #  date: "2025-07-28"
+      #  summary: "The actual building process: what works, what doesn't, and how to dance with AI through feature implementation."
+      #- title: "Lessons Learned: What Works (And What Doesn't)"
+      #  date: "2025-08-04"
+      #  summary: "Final reflections on the AI-assisted redesign process and practical takeaways for your own projects."
+
   - name: "Tesla Road Trip Adventure"
     description: "We bought a Tesla! We got free FSD for a month. So what do we do? Drive 19 hours to Edmonton... Fully Autonomous."
     icon: "🚗"
