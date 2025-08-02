@@ -157,7 +157,7 @@ When writing posts for a series:
 For comprehensive brand voice, content guidelines, and design specifications, refer to:
 
 - **Content Strategy**: @docs/Content Strategy.md - Writing guidelines, editorial standards, content themes
-- **Redesign Brief**: @docs/Redesign Brief.md - Brand essence, tone, target audience, objectives
+- **Brand Guidelines**: @docs/Brand Guidelines.md - Brand essence, tone, target audience, visual identity
 - **Design System**: @docs/Design System.md - Typography, colors, UI components, layout specifications
 
 ### Content Organization
@@ -172,3 +172,7 @@ The `scripts/dev.sh` script provides streamlined workflow management:
 - Colored output for clear status messages
 - Supports running individual test files
 - Handles common development tasks with simple commands
+
+## Implementing Features or Fixes 
+
+- Always use the feature implementation pattern (@docs/Feature Implementation Pattern.md) when building a feature or fixing a bug
