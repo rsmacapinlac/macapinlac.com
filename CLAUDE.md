@@ -107,6 +107,11 @@ Production builds include:
 ### Testing Approach
 Tests use Rack::Test and run against an in-memory Middleman application. No development server is required for testing - they run independently and much faster than HTTP-based tests.
 
+### Documentation Guidelines
+Temporary documentation (implementation plans, feature specs, debugging notes) should be created outside the repository in `~/Documents/macapinlac.com/` to avoid cluttering the codebase with transient files.
+
+Only permanent documentation that adds long-term value to the project should be committed to the repository.
+
 ### Series Management
 When adding new series / modifying an existing series:
 1. Add metadata to `data/series.yml` with slug, description, status, icon, and color
@@ -175,4 +180,4 @@ The `scripts/dev.sh` script provides streamlined workflow management:
 
 ## Implementing Features or Fixes 
 
-- Always use the feature implementation pattern (@docs/Feature Implementation Pattern.md) when building a feature or fixing a bug
+- Always follow the FeatureIimplementation Pattern (@docs/Feature Implementation Pattern.md) when building a feature or fixing a bug

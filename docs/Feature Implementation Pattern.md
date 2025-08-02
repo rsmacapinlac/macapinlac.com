@@ -78,10 +78,9 @@ This document defines the standardized pattern for implementing features in the 
 **Objective:** Ensure alignment and gather feedback before implementation
 
 **Activities:**
-- [ ] Present checklist to stakeholders for review
+- [ ] **Report back**: Present checklist to stakeholders for review
 - [ ] Clarify any ambiguous requirements
 - [ ] Validate architectural alignment
-- [ ] Confirm resource requirements
 - [ ] Finalize implementation approach
 - [ ] **Seek approval**: Explicitly request approval to proceed with implementation
 
@@ -94,8 +93,8 @@ This document defines the standardized pattern for implementing features in the 
 **Objective:** Create detailed implementation documentation
 
 **Activities:**
-- [ ] Create implementation plan in @docs/implementation/ folder
-- [ ] Use standardized template (see template below)
+- [ ] Create implementation plan in ~/Documents/macapinlac.com/ (per Documentation Guidelines in CLAUDE.md)
+- [ ] Use standardized template (@docs/Implementation Plan Template.md)
 - [ ] Document all tasks and subtasks
 - [ ] Define success criteria
 - [ ] Set up tracking structure
@@ -116,188 +115,24 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Document any deviations or challenges
 - [ ] Update status throughout implementation
 - [ ] **Report back**: Provide regular progress updates during implementation
-- [ ] **Final report**: Present completed implementation and request final acceptance
+- [ ] **Final report**: Present completed implementation and request final acceptance (via UAT)
 
 **Outcomes:**
 - Working feature implementation
 - Implementation plan updated with progress
 - Issues and changes documented
 
-### 7. Progress Tracking
-**Objective:** Maintain accurate status throughout implementation
+### 7. Final Documentation Audit and Acceptance
+**Objective:** Final audit and update of documentation with confirmation and acceptance
 
 **Activities:**
-- [ ] Update task status in implementation plan
-- [ ] Document completed work with details
-- [ ] Note any challenges or solutions
-- [ ] Track testing results
-- [ ] Update final status upon completion
-- [ ] **Final report**: Summarize lessons learned and implementation results
+- [ ] Audit all documentation in the @docs folder for accuracy and completeness
+- [ ] Update documentation only if required (avoid unnecessary changes)
+- [ ] Confirm documentation aligns with implemented features
+- [ ] **Seek Approval**: Request acceptance of any updated documentation
+- [ ] **Final report**: Present documentation status and request final acceptance
 
 **Outcomes:**
-- Current progress status maintained
-- Complete implementation history tracked
-- Lessons learned captured
-
-## Implementation Plan Template
-
-### File Naming Convention
-```
-@docs/implementation/[feature-name]-feature.md
-```
-
-### Template Structure
-
-```markdown
-# [Feature Name] Feature Implementation
-
-## Overview
-
-Brief description of the feature and its purpose.
-
-## Implementation Status: [PENDING/IN PROGRESS/COMPLETE]
-
-**Date Started**: [Date]  
-**Target Completion**: [Date]  
-**Current Status**: [Status description]
-
-## Feature Requirements
-
-### Core Requirements
-- [ ] [Requirement 1]
-- [ ] [Requirement 2]
-- [ ] [Requirement 3]
-
-### Design System Alignment
-- [ ] [Design requirement 1]
-- [ ] [Design requirement 2]
-
-## Implementation Steps
-
-### 1. [Task Name] [Status]
-**Status**: [Complete/In Progress/Pending]  
-**File**: [File path]
-
-**Changes Made**:
-- [Change 1]
-- [Change 2]
-
-**Final Implementation**:
-```[language]
-[Code snippet if relevant]
-```
-
-### 2. [Task Name] [Status]
-**Status**: [Complete/In Progress/Pending]  
-**File**: [File path]
-
-**Changes Made**:
-- [Change 1]
-- [Change 2]
-
-## Technical Challenges and Solutions
-
-### Challenge 1: [Challenge Description] [Status]
-**Problem**: [Description of the problem]
-**Root Cause**: [What caused the problem]
-**Solution**: [How it was resolved]
-**Status**: [Resolved/In Progress/Pending]
-
-## Final Implementation Details
-
-### File Structure
-```
-[File structure changes]
-```
-
-### Configuration Updates
-- [Configuration change 1]
-- [Configuration change 2]
-
-## Testing Results
-
-### Test Suite Summary
-- **Total Tests**: [Number]
-- **Passing**: [Number] ✅
-- **Skipped**: [Number] (appropriately)
-- **Failing**: [Number] ❌
-
-## Lessons Learned
-
-- [Lesson 1]
-- [Lesson 2]
-```
-
-## Integration with Existing Workflow
-
-### Relationship to Other Documentation
-
-**Implementation Plan.md**: 
-- High-level project roadmap
-- Phase-based organization
-- Cross-feature dependencies
-
-**ADR (Architectural Decision Records)**: 
-- Architectural decisions that guide implementation
-- Technology choices and rationale
-- Patterns to follow or avoid
-
-**Design System.md**: 
-- Visual and interaction standards
-- Component specifications
-- Accessibility requirements
-
-### Development Workflow Integration
-
-This pattern integrates with the existing development workflow by:
-
-1. **Following established conventions**: Uses existing file structures and naming patterns
-2. **Maintaining architectural alignment**: References ADRs and design decisions
-3. **Supporting incremental development**: Allows for phased implementation
-4. **Enabling comprehensive testing**: Includes testing strategy in planning
-5. **Providing clear documentation**: Creates maintainable feature documentation
-
-## Quality Assurance
-
-### Checklist Validation
-
-Before proceeding with implementation, ensure:
-
-- [ ] All impacted files have been identified
-- [ ] Architectural decisions have been reviewed
-- [ ] Testing strategy is defined
-- [ ] Design system alignment is confirmed
-- [ ] Dependencies are understood
-- [ ] Risk assessment is complete
-
-### Success Criteria
-
-A successful implementation includes:
-
-- [ ] All requirements met
-- [ ] Tests passing
-- [ ] Documentation complete
-- [ ] No regressions introduced
-- [ ] Performance maintained
-- [ ] Accessibility standards met
-
-## Maintenance and Updates
-
-### Pattern Evolution
-
-This pattern should be updated when:
-
-- New development tools are adopted
-- Workflow processes change
-- Team structure evolves
-- Project requirements shift
-
-### Version History
-
-- **v1.2** (August 2025): Added Requirements Clarification Phase as first step to ensure clear understanding of business requirements through multi-prompt process
-- **v1.1** (January 2025): Enhanced pattern with detailed implementation guidance
-- **v1.0** (January 2025): Initial pattern definition
-
----
-
-This pattern ensures consistent, well-documented feature implementation while maintaining alignment with the project's architectural decisions and development standards. 
+- Documentation accurately reflects implementation
+- Only necessary documentation updates completed
+- Documentation acceptance confirmed
