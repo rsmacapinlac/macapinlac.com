@@ -180,4 +180,19 @@ The `scripts/dev.sh` script provides streamlined workflow management:
 
 ## Implementing Features or Fixes 
 
-- Always follow the FeatureIimplementation Pattern (@docs/Feature Implementation Pattern.md) when building a feature or fixing a bug
+**MANDATORY PROCESS TRIGGER**: When any request involves:
+- Adding new functionality to the codebase
+- Modifying existing features or behavior
+- Fixing bugs that require code changes
+- Making architectural or design changes
+- Any request starting with: "implement", "add", "create", "build", "fix", "modify", "update", "change"
+
+**→ ALWAYS follow the Feature Implementation Pattern (@docs/Feature Implementation Pattern.md)**
+
+**BEFORE starting any code changes:**
+1. **STOP** - Do not begin implementation immediately
+2. **IDENTIFY** the request as a feature/fix requiring the pattern
+3. **ANNOUNCE** that you will follow the Feature Implementation Pattern
+4. **START** with Phase 1: Requirements Clarification
+
+**Exception**: Simple documentation updates, typo fixes, or read-only analysis tasks do not require the full pattern.

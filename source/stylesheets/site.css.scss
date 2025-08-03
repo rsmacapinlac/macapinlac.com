@@ -2016,6 +2016,103 @@ ul, ol {
   }
 }
 
+// Hero Latest Post Card
+.hero-latest-post-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin: 0 0 $space-xl 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+.hero-latest-post {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: $space-lg;
+  max-width: 720px;
+  margin: 0 auto;
+  transition: all 0.2s ease;
+
+  .hero-latest-post-card:hover & {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.hero-latest-post-header {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+
+.hero-latest-post-icon {
+  font-size: 1.2rem;
+}
+
+.hero-latest-post-label {
+  font-family: $font-sans;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+
+  .hero-latest-post-card:visited & {
+    color: white;
+  }
+}
+
+.hero-latest-post-title {
+  font-family: $font-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 $space-md 0;
+  color: white;
+  
+  .hero-latest-post-card:hover & {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-latest-post-card:visited & {
+    color: white;
+  }
+}
+
+.hero-excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+  color: white;
+
+  .hero-latest-post-card:visited & {
+    color: white;
+  }
+}
+
 // Featured Content Section
 .featured-content {
   padding: $space-xl 0;

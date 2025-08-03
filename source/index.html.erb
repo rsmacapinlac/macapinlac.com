@@ -14,6 +14,22 @@ description: "Thoughtful reflections on technology, parenting, productivity, and
     <p class="hero-description">
       <%= data.homepage_hero.description %>
     </p>
+    <% latest_post = blog.articles.first %>
+    <% if latest_post %>
+      <% post_excerpt = article_excerpt(latest_post) %>
+      <a href="<%= latest_post.url %>" class="hero-latest-post-card">
+        <div class="hero-latest-post">
+          <div class="hero-latest-post-header">
+            <span class="hero-latest-post-icon">📝</span>
+            <span class="hero-latest-post-label">Latest from the blog</span>
+          </div>
+          <h3 class="hero-latest-post-title"><%= latest_post.title %></h3>
+          <% if post_excerpt %>
+            <p class="hero-excerpt"><%= post_excerpt %></p>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
     <div class="hero-actions">
       <%= link_to data.homepage_hero.primary_button.text, data.homepage_hero.primary_button.url, class: 'button button--primary' %>
       <%= link_to data.homepage_hero.secondary_button.text, data.homepage_hero.secondary_button.url, class: 'button button--secondary' %>

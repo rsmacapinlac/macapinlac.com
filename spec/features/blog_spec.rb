@@ -10,6 +10,25 @@ RSpec.describe 'Blog' do
     expect(last_response.body).to include('card-title')
   end
 
+  it 'has hero section with latest post card functionality' do
+    get '/'
+    expect(last_response).to be_ok
+    
+    # Check for hero section structure
+    expect(last_response.body).to include('hero')
+    expect(last_response.body).to include('hero-content')
+    expect(last_response.body).to include('hero-actions')
+    
+    # Check for latest post card and regular buttons
+    expect(last_response.body).to include('hero-latest-post-card')
+    expect(last_response.body).to include('Read My Posts')
+    expect(last_response.body).to include('button button--primary')
+    
+    # Ensure recent posts section still works
+    expect(last_response.body).to include('Recent Posts')
+    expect(last_response.body).to include('posts-grid')
+  end
+
   it 'renders individual blog posts correctly' do
     # Test a specific blog post
     get '/2025/04/20/i-asked-ai-to-pick-my-next-tablet.html'

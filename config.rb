@@ -320,6 +320,18 @@ helpers do
     minutes = reading_time(content)
     format_reading_time(minutes)
   end
+
+  # Get article excerpt with consistent fallback logic
+  # @param article [Middleman::Blog::BlogArticle] The article to get excerpt for
+  # @return [String, nil] The excerpt content or nil if none available
+  def article_excerpt(article)
+    return nil unless article
+    
+    excerpt = article.data.excerpt || article.summary
+    return nil if excerpt.nil? || excerpt.strip.empty?
+    
+    excerpt
+  end
 end
 
 # Proxy Pages for Series

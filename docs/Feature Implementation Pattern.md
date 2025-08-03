@@ -6,6 +6,16 @@
 
 This document defines the standardized pattern for implementing features in the macapinlac.com project. This pattern ensures consistent, well-documented, and maintainable feature development while maintaining alignment with the project's architectural decisions and development workflow.
 
+## Process Enforcement
+
+**CRITICAL**: This pattern contains mandatory approval gates that MUST be respected:
+
+- **NEVER** skip phases or approval gates
+- **ALWAYS** wait for explicit approval before proceeding  
+- **STOP** implementation if approval is not granted
+- **FORMAT** all "Report back" sections clearly and comprehensively
+- **ASK** explicit questions when seeking approval
+
 ## Pattern Steps
 
 ### 1. Requirements Clarification Phase
@@ -24,6 +34,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Iterate through multiple rounds of clarification as needed
 - [ ] **Report back**: Summarize understood requirements and ask for confirmation
 - [ ] **Seek approval**: Explicitly ask stakeholder to approve understanding before proceeding
+
+**MANDATORY APPROVAL GATE**: You MUST receive explicit approval (e.g., "approved", "yes", "proceed") before continuing to Phase 2. Do not proceed without clear confirmation.
 
 **Key Questions to Address:**
 - What problem is this solving for users?
@@ -50,6 +62,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Identify files that need modification
 - [ ] **Report back**: Present technical analysis findings and implementation approach
 
+**MANDATORY CHECKPOINT**: Present analysis in structured format before proceeding to Phase 3.
+
 **Outcomes:**
 - A clear understanding of impacted files and components
 - A clear understanding of identified dependencies and integration points
@@ -65,8 +79,14 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Define acceptance criteria for each task
 - [ ] Estimate complexity and dependencies
 - [ ] Identify testing requirements
+- [ ] Audit any existing test scripts.
+  - Plan to create any new scripts (as required)
+  - Identify any scripts that need to be updated (as required)
+  - Identify any scripts that need to be deleted (as required)
 - [ ] Document any new architectural decisions needed
 - [ ] **Report back**: Present comprehensive implementation plan and ask for feedback
+
+**MANDATORY APPROVAL GATE**: You MUST receive explicit approval before proceeding to Phase 4.
 
 **Outcomes:**
 - Comprehensive task breakdown (can be summarized in response)
@@ -84,6 +104,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Finalize implementation approach
 - [ ] **Seek approval**: Explicitly request approval to proceed with implementation
 
+**MANDATORY APPROVAL GATE**: You MUST receive explicit approval (e.g., "approved", "proceed") before starting Phase 5.
+
 **Outcomes:**
 - Stakeholder approval of implementation approach
 - Any additional clarified requirements
@@ -99,6 +121,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Define success criteria
 - [ ] Set up tracking structure
 - [ ] **Report back**: Present created implementation plan and confirm it's ready for execution
+
+**MANDATORY CHECKPOINT**: Confirm plan is complete and ready before execution.
 
 **Outcomes:**
 - Approved Implementation plan document created in @docs/implementation/
@@ -117,6 +141,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] **Report back**: Provide regular progress updates during implementation
 - [ ] **Final report**: Present completed implementation and request final acceptance (via UAT)
 
+**MANDATORY APPROVAL GATE**: You MUST receive explicit acceptance before proceeding to Phase 7.
+
 **Outcomes:**
 - Working feature implementation
 - Implementation plan updated with progress
@@ -131,6 +157,8 @@ This document defines the standardized pattern for implementing features in the 
 - [ ] Confirm documentation aligns with implemented features
 - [ ] **Seek Approval**: Request acceptance of any updated documentation
 - [ ] **Final report**: Present documentation status and request final acceptance
+
+**MANDATORY APPROVAL GATE**: You MUST receive final approval before considering the feature complete.
 
 **Outcomes:**
 - Documentation accurately reflects implementation
