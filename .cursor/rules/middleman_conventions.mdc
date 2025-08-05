@@ -133,7 +133,7 @@ layout: post  # Optional, defaults to blog layout
 - **Visual design standards**: See `docs/Design System.md` for complete typography, color, and component specifications  
 - **Project requirements**: See `docs/Redesign Brief.md` for overall project objectives and target audience
 - **Technical specifications**: See `docs/Technical Specifications.md` for implementation details
-- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
+- **Feature implementation**: Use the `plan-and-implement-feature` command for development process
 - **Overall architecture decisions**: See `architecture.mdc`
 
 ## Testing Integration
@@ -198,7 +198,7 @@ layout: post  # Optional, defaults to blog layout
 - Use partials for repeated elements
 
 ### When adding new features:
-- All new features and major changes must follow the Feature Implementation Pattern (see `docs/Feature Implementation Pattern.md`) for planning, checklist, and documentation.
+- All new features and major changes must follow the Feature Implementation Pattern using the `plan-and-implement-feature` command for planning, checklist, and documentation.
 - Check if data files can be used instead of hardcoding
 - Reference visual standards from `docs/Design System.md`
 - Follow content strategy guidelines from `docs/Content Strategy.md`

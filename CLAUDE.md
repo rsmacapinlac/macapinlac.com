@@ -187,7 +187,7 @@ The `scripts/dev.sh` script provides streamlined workflow management:
 - Making architectural or design changes
 - Any request starting with: "implement", "add", "create", "build", "fix", "modify", "update", "change"
 
-**→ ALWAYS follow the Feature Implementation Pattern (@docs/Feature Implementation Pattern.md)**
+**→ ALWAYS follow the Feature Implementation Pattern (use the plan-and-implement-feature command)**
 
 **BEFORE starting any code changes:**
 1. **STOP** - Do not begin implementation immediately

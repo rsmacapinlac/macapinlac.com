@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # Development Workflow Guidelines
 
-**MANDATORY:** All requests for changes or new features must follow the Feature Implementation Pattern as documented in `docs/Feature Implementation Pattern.md`, including checklist and implementation plan documentation. This ensures consistent, well-documented, and maintainable feature development.
+**MANDATORY:** All requests for changes or new features must follow the Feature Implementation Pattern using the `plan-and-implement-feature` command, including checklist and implementation plan documentation. This ensures consistent, well-documented, and maintainable feature development.
 
 ## Local Development Setup
 
@@ -166,4 +166,4 @@ alwaysApply: false
 - **Technical implementation**: See `middleman_conventions.mdc` for specific patterns
 - **Content guidelines**: See `content_strategy.mdc` for editorial standards
 - **Design system**: See `docs/Design System.md` for visual standards
-- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
+- **Feature implementation**: Use the `plan-and-implement-feature` command for development process

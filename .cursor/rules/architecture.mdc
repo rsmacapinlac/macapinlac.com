@@ -121,7 +121,7 @@ Project Documentation
 ├── Technical Specifications
 ├── Design System
 ├── Content Strategy
-└── All new features and major changes must follow the Feature Implementation Pattern (see docs/Feature Implementation Pattern.md)
+└── All new features and major changes must follow the Feature Implementation Pattern (use the plan-and-implement-feature command)
 ```
 
 ## Process
@@ -303,7 +303,7 @@ bundle outdated
 - **Design standards**: See `docs/Design System.md` for visual architecture
 - **Content strategy**: See `docs/Content Strategy.md` for content architecture
 - **Technical specifications**: See `docs/Technical Specifications.md` for implementation details
-- **Feature implementation**: See `docs/Feature Implementation Pattern.md` for development process
+- **Feature implementation**: Use the `plan-and-implement-feature` command for development process
 
 ### External Services
 - **GitHub**: Source control and CI/CD

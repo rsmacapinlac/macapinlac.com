@@ -1,12 +1,6 @@
-# Feature Implementation Pattern
+Read through the full prompt. Use the provided pattern steps to implement the following feature:
 
-**Version:** 1.2
-
-## Overview
-
-This document defines the standardized pattern for implementing features in the macapinlac.com project. This pattern ensures consistent, well-documented, and maintainable feature development while maintaining alignment with the project's architectural decisions and development workflow.
-
-## Process Enforcement
+$ARGUMENTS
 
 **CRITICAL**: This pattern contains mandatory approval gates that MUST be respected:
 
@@ -125,7 +119,7 @@ This document defines the standardized pattern for implementing features in the 
 **MANDATORY CHECKPOINT**: Confirm plan is complete and ready before execution.
 
 **Outcomes:**
-- Approved Implementation plan document created in @docs/implementation/
+- Approved Implementation plan document created in ~/Documents/macapinlac.com/
 - Task tracking structure established
 - Success criteria documented
 

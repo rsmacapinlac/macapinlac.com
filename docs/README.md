@@ -14,13 +14,13 @@ This directory contains all permanent documentation for the macapinlac.com proje
 
 ### 🧠 Decision Making & Process
 - **[ADR](ADR/)** - Architectural Decision Records with rationale and status
-- **[Feature Implementation Pattern](Feature%20Implementation%20Pattern.md)** - Standard process for implementing new features
+- **Feature Implementation Pattern** - Standard process for implementing new features (use the `plan-and-implement-feature` command)
 - **[Implementation Plan Template](Implementation%20Plan%20Template.md)** - Reusable template for feature implementation documentation
 
 ## 🎯 Quick Reference
 
 ### For New Features
-1. Review **[Feature Implementation Pattern](Feature%20Implementation%20Pattern.md)**
+1. Use the **`plan-and-implement-feature`** command
 2. Check **[ADR](ADR/)** for existing architectural decisions
 3. Reference **[Design System](Design%20System.md)** for visual standards
 4. Use **[Implementation Plan Template](Implementation%20Plan%20Template.md)** for documentation
@@ -33,7 +33,7 @@ This directory contains all permanent documentation for the macapinlac.com proje
 
 ### For Technical Decisions
 1. Check **[ADR](ADR/)** for existing patterns
-2. Follow **[Feature Implementation Pattern](Feature%20Implementation%20Pattern.md)** for documentation
+2. Use the **`plan-and-implement-feature`** command for structured implementation
 3. Reference **[Design System](Design%20System.md)** for visual specifications
 
 ## 📁 Directory Structure
@@ -44,7 +44,6 @@ docs/
 ├── Brand Guidelines.md                 # Brand identity and visual standards
 ├── Content Strategy.md                 # Content guidelines and brand voice
 ├── Design System.md                    # Visual design specifications
-├── Feature Implementation Pattern.md   # Standard feature development process
 ├── Implementation Plan Template.md     # Reusable implementation documentation template
 ├── Tag-System.md                       # Content organization system
 └── ADR/                                # Architectural Decision Records
@@ -71,7 +70,7 @@ The docs folder has been streamlined to focus on permanent documentation. Projec
 
 ### When to Update Documentation
 - **New architectural decisions** → Create new ADR in ADR folder
-- **New features** → Follow Feature Implementation Pattern
+- **New features** → Use the `plan-and-implement-feature` command
 - **Design changes** → Update Design System
 - **Content strategy changes** → Update Content Strategy
 - **Brand changes** → Update Brand Guidelines
