@@ -31,7 +31,7 @@ RSpec.describe 'Layout Structure' do
     
     # Check for footer elements
     expect(last_response.body).to include('site-footer')
-    expect(last_response.body).to include('social-links')
+    expect(last_response.body).to include('footer-social-icons')
     expect(last_response.body).to include('footer-copyright')
     expect(last_response.body).to include('Instagram')
     expect(last_response.body).to include('LinkedIn')

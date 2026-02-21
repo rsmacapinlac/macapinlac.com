@@ -50,8 +50,8 @@
           </div>
 
           <footer class="post-footer post-footer--minimal">
-            <% if current_article.data.series %>
-              <% series_nav = series_navigation(current_article) %>
+            <% series_nav = series_navigation(current_article) %>
+            <% if series_nav %>
               <div class="post-section post-section--minimal">
                 <h3 class="post-section-title">Part of the "<%= series_nav[:series_name] %>" series</h3>
                 <div class="progress-indicator progress-indicator--minimal">

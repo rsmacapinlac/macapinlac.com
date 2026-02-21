@@ -6,26 +6,20 @@ RSpec.describe 'Contact Page', type: :feature do
   end
 
   it 'displays contact page content correctly' do
-    expect(page).to have_content('Contact')
+    expect(page).to have_content('Get in Touch')
     expect(page).to have_content("Let's Connect")
-    expect(page).to have_content('Send a Message')
-    expect(page).to have_content('Other Ways to Connect')
-    expect(page).to have_content('Privacy & Response')
+    expect(page).to have_content('Send Message')
   end
 
   it 'displays proper page structure' do
-    expect(page).to have_css('.page-header')
-    expect(page).to have_css('.page-title', text: 'Contact')
-    expect(page).to have_css('.page-description')
-    expect(page).to have_css('.site-intro')
-    expect(page).to have_css('.featured-content')
+    expect(page).to have_css('.page-main-content')
     expect(page).to have_css('.contact-form-container')
+    expect(page).to have_css('h1', text: 'Get in Touch')
   end
 
-  it 'contact link works from navigation' do
-    visit '/'
-    click_link 'Contact'
-    expect(page).to have_content('Contact')
+  it 'contact page is accessible directly' do
+    visit '/contact.html'
+    expect(page).to have_content('Get in Touch')
     expect(current_path).to eq('/contact.html')
   end
 
@@ -51,14 +45,9 @@ RSpec.describe 'Contact Page', type: :feature do
     expect(page).to have_link('Instagram', href: 'https://www.instagram.com/rsmacapinlac')
   end
 
-  it 'displays LinkedIn connection button' do
-    expect(page).to have_link('Connect on LinkedIn', href: 'https://www.linkedin.com/in/rsmacapinlac')
-  end
-
-  it 'displays privacy notice' do
-    expect(page).to have_content('Privacy & Response')
-    expect(page).to have_content('Your privacy is important to me')
-    expect(page).to have_content('Response Time')
+  it 'displays privacy notice in sidebar' do
+    expect(page).to have_content('Privacy')
+    expect(page).to have_content('Your privacy is important')
   end
 
   it 'responsive design works on mobile' do
@@ -82,34 +71,26 @@ RSpec.describe 'Contact Page', type: :feature do
 
   it 'structured data is valid JSON-LD' do
     expect(page).to have_css('script[type="application/ld+json"]', visible: false)
-    
+
     # Parse the JSON-LD content
     json_ld_element = page.find('script[type="application/ld+json"]', visible: false)
     json_ld_text = json_ld_element.text.strip
-    
+
     # Skip test if JSON-LD is empty (might be a rendering issue)
     if json_ld_text.empty?
       skip 'JSON-LD content is empty - may be a rendering issue'
     end
-    
+
     expect { JSON.parse(json_ld_text) }.not_to raise_error
-    
+
     parsed_data = JSON.parse(json_ld_text)
     expect(parsed_data['@type']).to eq('ContactPage')
     expect(parsed_data['name']).to eq('Contact Ritchie Macapinlac')
   end
 
-  it 'navigation buttons work correctly' do
-    expect(page).to have_link('Back to Home', href: '/')
-    expect(page).to have_link('Learn More About Me', href: 'about.html')
-    
-    click_link 'Back to Home'
-    expect(current_path).to eq('/')
-  end
-
   it 'form has proper formspree action' do
-    expect(page).to have_css('form[action="https://formspree.io/f/xpzgwqwg"]')
     expect(page).to have_css('form[method="POST"]')
+    expect(page).to have_css('form[action*="formspree.io"]')
   end
 
   it 'form has client-side validation script' do
@@ -118,4 +99,4 @@ RSpec.describe 'Contact Page', type: :feature do
     expect(page.source).to include('contactForm')
     expect(page.source).to include('addEventListener')
   end
-end 
+end

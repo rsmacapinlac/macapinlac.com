@@ -7,17 +7,17 @@ RSpec.describe 'About Page', type: :feature do
 
   it 'displays about page content correctly' do
     expect(page).to have_content('About Me')
-    expect(page).to have_content('Hello! I\'m Ritchie Macapinlac')
-    expect(page).to have_content('What You\'ll Find Here')
-    expect(page).to have_content('This Site')
+    expect(page).to have_content('I\'m Ritchie Macapinlac')
+    expect(page).to have_content('Rabbit Holes I Keep Falling Into')
+    expect(page).to have_content('Under the Hood')
   end
 
   it 'displays proper page structure' do
     expect(page).to have_css('.page-main-content')
     expect(page).to have_css('.sidebar-section')
     expect(page).to have_css('h1', text: 'About Me')
-    expect(page).to have_css('h2', text: 'What You\'ll Find Here')
-    expect(page).to have_css('h2', text: 'This Site')
+    expect(page).to have_css('h2', text: 'Rabbit Holes I Keep Falling Into')
+    expect(page).to have_css('h2', text: 'Under the Hood')
   end
 
   it 'about link works from navigation' do
@@ -29,14 +29,13 @@ RSpec.describe 'About Page', type: :feature do
 
   it 'displays sidebar content correctly' do
     expect(page).to have_css('.sidebar-section')
-    expect(page).to have_content('Let\'s Connect')
-    expect(page).to have_css('.sidebar-actions')
+    expect(page).to have_content('Say Hi')
     expect(page).to have_css('.sidebar-social-links')
   end
 
-  it 'displays resume button in sidebar' do
-    expect(page).to have_link('View Résumé (PDF)', href: '/resume.pdf')
-    expect(page).to have_css('.btn.btn-secondary')
+  it 'does not display resume button when disabled' do
+    expect(page).not_to have_link('View Résumé (PDF)')
+    expect(page).not_to have_css('.sidebar-actions')
   end
 
   it 'displays social links correctly' do
@@ -50,19 +49,18 @@ RSpec.describe 'About Page', type: :feature do
     expect(page).to have_css('.content-areas')
     expect(page).to have_css('.content-area')
     
-    # Check for specific tags that should be present based on blog posts
-    # These are the tags we know exist in the blog posts
-    expect(page).to have_content('Adventures in AI')
-    expect(page).to have_content('Road Trip')
-    expect(page).to have_content('Tesla')
-    expect(page).to have_content('Parenting')
+    # Check for curated tags displayed on the about page
+    expect(page).to have_content('Family Adventures')
+    expect(page).to have_content('Playing with AI')
+    expect(page).to have_content('Building Things')
+    expect(page).to have_content('Figuring Things Out')
   end
 
   it 'displays tag icons in content areas' do
     expect(page).to have_css('.tag-icon')
     # Check that icons are present (emoji characters)
-    expect(page).to have_content('🤖') # Adventures in AI icon
-    expect(page).to have_content('🚗') # Road Trip icon
+    expect(page).to have_content('🤖') # Playing with AI icon
+    expect(page).to have_content('💻') # Building Things icon
   end
 
   it 'responsive design works on mobile' do

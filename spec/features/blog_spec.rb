@@ -59,21 +59,21 @@ RSpec.describe 'Blog' do
   it 'renders blog posts with proper metadata' do
     get '/2025/04/20/i-asked-ai-to-pick-my-next-tablet.html'
     expect(last_response).to be_ok
-    
+
     # Check for post metadata
     expect(last_response.body).to include('post-meta')
     expect(last_response.body).to include('post-date')
     expect(last_response.body).to include('April 20, 2025')
     expect(last_response.body).to include('post-tags')
-    expect(last_response.body).to include('Adventures in AI')
+    expect(last_response.body).to include('Playing with AI')
   end
 
   it 'renders blog posts with proper navigation' do
     get '/2025/04/20/i-asked-ai-to-pick-my-next-tablet.html'
     expect(last_response).to be_ok
-    
+
     # Check for navigation elements
     expect(last_response.body).to include('post-navigation')
-    expect(last_response.body).to include('post-nav-link')
+    expect(last_response.body).to include('button--secondary')
   end
 end

@@ -65,10 +65,10 @@ RSpec.describe 'Series Functionality' do
   it 'displays featured series on homepage' do
     get '/'
     expect(last_response).to be_ok
-    
+
     # Check for featured series section
     expect(last_response.body).to include('Featured Series')
-    expect(last_response.body).to include('Tesla Road Trip Adventure')
+    expect(last_response.body).to include('Building with AI')
     expect(last_response.body).to include('Explore Series')
   end
 end 
