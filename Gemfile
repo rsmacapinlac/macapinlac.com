@@ -36,6 +36,12 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby, :x64_mingw]
 # For faster file watcher updates on Windows - improves development server performance
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw, :x64_mingw]
 
+# Security Auditing
+# Checks Gemfile.lock for known vulnerable gem versions
+group :development, :test do
+  gem 'bundler-audit', '~> 0.9'
+end
+
 # Testing Framework
 group :test do
   # Ruby community standard testing framework - comprehensive feature and unit testing

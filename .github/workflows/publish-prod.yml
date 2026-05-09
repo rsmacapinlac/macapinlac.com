@@ -25,10 +25,13 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
           bundler-cache: true
       - name: Install ruby dependencies
         run: bundle install
+      - name: Run tests
+        run: bundle exec rspec
+      - name: Run security audit
+        run: bundle exec bundler-audit check --update
       - name: Build static site
         run: bundle exec middleman build
       - name: List build contents
