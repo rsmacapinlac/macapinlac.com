@@ -24,7 +24,7 @@ RSpec.describe 'Hero Section' do
       
       # The latest post card should be linked (assuming posts exist)
       # We check for a link structure that matches blog post URLs
-      expect(last_response.body).to include('href="/2025/')
+      expect(last_response.body).to match(/href="\/20\d{2}\//)
       expect(last_response.body).to include('hero-latest-post-card')
     end
 
