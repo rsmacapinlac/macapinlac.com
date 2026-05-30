@@ -1,38 +1,39 @@
 ---
 pageable: true
-title: Archive for <%= case page_type
-     when 'day' %>
-    <%= Date.new(year, month, day).strftime('%B %e, %Y') %>
-  <% when 'month' %>
-    <%= Date.new(year, month, 1).strftime('%B %Y') %>
-  <% when 'year' %>
-    <%= year %>
-  <% end %> - macapinlac.com
-description: Browse all articles from <%= case page_type
-     when 'day' %>
-    <%= Date.new(year, month, day).strftime('%B %e, %Y') %>
-  <% when 'month' %>
-    <%= Date.new(year, month, 1).strftime('%B %Y') %>
-  <% when 'year' %>
-    <%= year %>
-  <% end %> on macapinlac.com
+title: "Archive — macapinlac.com"
+description: "Posts on macapinlac.com archived by date."
 ---
-<h2>Archive for
-  <% case page_type
-     when 'day' %>
-    <%= Date.new(year, month, day).strftime('%b %e %Y') %>
-  <% when 'month' %>
-    <%= Date.new(year, month, 1).strftime('%b %Y') %>
-  <% when 'year' %>
-    <%= year %>
-  <% end %>
-</h2>
+<%
+  scope_articles = page_articles.respond_to?(:to_a) ? page_articles.to_a : page_articles
+  scope_label = case page_type
+                when 'day'   then Date.new(year, month, day).strftime('%B %e, %Y')
+                when 'month' then Date.new(year, month, 1).strftime('%B %Y')
+                when 'year'  then year.to_s
+                end
+%>
 
-<div id="articles">
-<% page_articles.each_with_index do |article, i| %>
-  <%= partial 'layouts/_blog_card', locals: {
-    article: article,
-    i: i
-  } %>
-<% end %>
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow"><span class="c">$</span> ls -la ~/posts/<%= year %></div>
+    <h1>~/<%= scope_label %></h1>
+    <p class="sub"><%= scope_articles.length %> post<%= 's' unless scope_articles.length == 1 %> from this <%= page_type %>. Want everything? See <a href="/archive.html">the full archive</a>.</p>
+  </div>
+
+  <section class="yeargroup">
+    <div class="yhead"><span class="y"><%= scope_label %></span><span class="c"><%= scope_articles.length %> posts</span><span class="rule"></span></div>
+    <% scope_articles.each do |article| %>
+      <%
+        tag = primary_tag(article)
+        cat = article_cat_color(article)
+        minutes = reading_time(article.body)
+      %>
+      <a class="arow" href="<%= article.url %>" style="--cat: <%= cat %>">
+        <span class="dt"><%= archive_date(article.date) %></span>
+        <span class="t">
+          <% if tag %><span class="em"><%= tag.icon %></span><% end %><%= article.title %>
+        </span>
+        <span class="tg"><%= minutes %> min</span>
+      </a>
+    <% end %>
+  </section>
 </div>

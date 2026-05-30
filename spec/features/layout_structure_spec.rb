@@ -2,104 +2,71 @@
 
 require_relative '../spec_helper'
 
-RSpec.describe 'Layout Structure' do
+RSpec.describe 'Layout Structure (Build Log)' do
   it 'loads the main layout with proper structure' do
     get '/'
     expect(last_response).to be_ok
-    
-    # Check for main layout elements
     expect(last_response.body).to include('site-container')
     expect(last_response.body).to include('main-content')
     expect(last_response.body).to include('lang="en"')
+    expect(last_response.body).to include('class="bl grain"')
   end
 
-  it 'has header with navigation and dark mode toggle' do
+  it 'has terminal header with nav and dark mode toggle' do
     get '/'
     expect(last_response).to be_ok
-    
-    # Check for header elements
-    expect(last_response.body).to include('site-header')
-    expect(last_response.body).to include('main-navigation')
-    expect(last_response.body).to include('nav-toggle')
-    expect(last_response.body).to include('theme-toggle')
+    expect(last_response.body).to include('term-bar')
+    expect(last_response.body).to include('term-nav')
+    expect(last_response.body).to include('class="toggle"')
     expect(last_response.body).to include('toggleTheme()')
+    # Nav entries
+    expect(last_response.body).to match(/href="\/"[^>]*>home/)
+    expect(last_response.body).to include('about')
+    expect(last_response.body).to include('archive')
+    expect(last_response.body).to include('tags')
   end
 
-  it 'has footer with social links and copyright' do
+  it 'has status-bar footer with motto, uptime, credits and socials' do
     get '/'
     expect(last_response).to be_ok
-    
-    # Check for footer elements
-    expect(last_response.body).to include('site-footer')
-    expect(last_response.body).to include('footer-social-icons')
-    expect(last_response.body).to include('footer-copyright')
-    expect(last_response.body).to include('Instagram')
-    expect(last_response.body).to include('LinkedIn')
-    expect(last_response.body).to include('GitHub')
+    expect(last_response.body).to include('statusbar')
+    expect(last_response.body).to include('class="motto"')
+    expect(last_response.body).to include('class="uptime"')
+    expect(last_response.body).to include('class="credit"')
+    expect(last_response.body).to include('class="socials"')
+    expect(last_response.body).to include('GitHub'.downcase)
+    expect(last_response.body).to include('LinkedIn'.downcase)
   end
 
-  it 'includes dark mode functionality' do
+  it 'serves dynamic post count and uptime years in footer' do
     get '/'
     expect(last_response).to be_ok
-    
-    # Check for dark mode elements
+    expect(last_response.body).to match(/uptime: \d+ years · \d+ posts/)
+  end
+
+  it 'includes dark mode bootstrap script in head' do
+    get '/'
+    expect(last_response).to be_ok
     expect(last_response.body).to include('data-theme')
     expect(last_response.body).to include('localStorage')
     expect(last_response.body).to include('prefers-color-scheme')
   end
 
-  it 'has responsive navigation structure' do
-    get '/'
-    expect(last_response).to be_ok
-    
-    # Check for responsive navigation elements
-    expect(last_response.body).to include('nav-menu')
-    expect(last_response.body).to include('hamburger')
-    expect(last_response.body).to include('aria-expanded')
-    expect(last_response.body).to include('aria-controls')
-  end
-
-  it 'has button component styles in CSS' do
+  it 'has terminal chrome styles in CSS' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    expect(last_response.body).to include('.button')
-    expect(last_response.body).to include('.button--primary')
-    expect(last_response.body).to include('.button--secondary')
-    expect(last_response.body).to include('.button--card-action')
-    expect(last_response.body).to include('background: var(--color-primary)')
+    expect(last_response.body).to include('.term-bar')
+    expect(last_response.body).to include('.term-nav')
+    expect(last_response.body).to include('.cmdline')
+    expect(last_response.body).to include('.statusbar')
   end
 
-  it 'has card component styles in CSS' do
+  it 'has page-head and reading layout styles in CSS' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    expect(last_response.body).to include('.card')
-    expect(last_response.body).to include('.card-title')
-    expect(last_response.body).to include('.card-meta')
-    expect(last_response.body).to include('.card-content')
-    expect(last_response.body).to include('.card-actions')
-    expect(last_response.body).to include('box-shadow: 0 2px 8px')
+    expect(last_response.body).to include('.page-head')
+    expect(last_response.body).to include('.read')
+    expect(last_response.body).to include('.phead')
+    expect(last_response.body).to include('.body')
   end
-
-  it 'has form element styles in CSS' do
-    get '/stylesheets/site.css'
-    expect(last_response).to be_ok
-    expect(last_response.body).to include('.form-group')
-    expect(last_response.body).to include('.form-label')
-    expect(last_response.body).to include('.form-input')
-    expect(last_response.body).to include('.form-textarea')
-    expect(last_response.body).to include('.form-error')
-    expect(last_response.body).to include('border-color: var(--color-primary)')
-  end
-
-  it 'has post layout styles in CSS' do
-    get '/stylesheets/site.css'
-    expect(last_response).to be_ok
-    expect(last_response.body).to include('.post')
-    expect(last_response.body).to include('.post-header')
-    expect(last_response.body).to include('.post-meta')
-    expect(last_response.body).to include('.post-title')
-    expect(last_response.body).to include('.post-content')
-    expect(last_response.body).to include('.post-footer')
-    expect(last_response.body).to include('.post-navigation')
-  end
-end 
+end

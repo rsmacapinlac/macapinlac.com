@@ -14,13 +14,16 @@ activate :autoprefixer do |prefix|
 end
 
 # Image Optimization Configuration
-# Optimizes images for web performance and accessibility
+# Optimizes images for web performance and accessibility.
+# Only enables optimizers whose binaries we ship in this environment —
+# pngout and svgo are intentionally disabled because the binaries aren't
+# installed (would otherwise emit a warning on every build).
 activate :imageoptim do |options|
-  # Enable supported optimizers for maximum compression
-  options.gifsicle = true
+  options.gifsicle  = true
   options.jpegoptim = true
-  options.optipng = true
-  options.svgo = true
+  options.optipng   = true
+  options.pngout    = false
+  options.svgo      = false
 end
 
 # Responsive Image Generation Configuration
@@ -176,49 +179,6 @@ helpers do
     end
   end
   
-  # Get series navigation for individual posts
-  def series_navigation(current_article)
-    # Try to find series by checking if current article is in any series
-    series_metadata = nil
-    series_name = nil
-    
-    # Check if article has series in frontmatter (backward compatibility)
-    if current_article.data.series
-      series_name = current_article.data.series
-      series_metadata = get_series_metadata(series_name)
-    else
-      # Find series by checking if current article is in any series posts
-      all_series_metadata.each do |series|
-        if series[:posts]
-          series[:posts].each do |yaml_post|
-            if current_article.title == yaml_post[:title] && 
-               current_article.date.strftime('%Y-%m-%d') == yaml_post[:date]
-              series_name = series[:name]
-              series_metadata = series
-              break
-            end
-          end
-        end
-        break if series_name
-      end
-    end
-    
-    return unless series_name && series_metadata
-    
-    series_posts = series_articles(series_name).sort_by(&:date)
-    current_index = series_posts.index(current_article)
-    
-    {
-      series_name: series_name,
-      series_metadata: series_metadata,
-      current_index: current_index,
-      total_posts: series_posts.length,
-      previous_post: current_index > 0 ? series_posts[current_index - 1] : nil,
-      next_post: current_index < series_posts.length - 1 ? series_posts[current_index + 1] : nil,
-      all_posts: series_posts
-    }
-  end
-  
   # Generate series URL helper
   def series_url(series_name_or_slug)
     if series_name_or_slug.is_a?(String)
@@ -326,11 +286,135 @@ helpers do
   # @return [String, nil] The excerpt content or nil if none available
   def article_excerpt(article)
     return nil unless article
-    
+
     excerpt = article.data.excerpt || article.summary
     return nil if excerpt.nil? || excerpt.strip.empty?
-    
+
     excerpt
+  end
+
+  # Plain-text version of an excerpt for use in list rows / cards.
+  # Strips HTML, collapses whitespace, optionally truncates.
+  def article_excerpt_text(article, limit: nil)
+    raw = article.data.summary || article_excerpt(article)
+    return nil if raw.nil?
+    text = raw.to_s.gsub(/<[^>]+>/, ' ').gsub(/&nbsp;/, ' ').gsub(/\s+/, ' ').strip
+    return nil if text.empty?
+    if limit && text.length > limit
+      "#{text[0, limit].rstrip}…"
+    else
+      text
+    end
+  end
+
+  # Build Log helpers ---------------------------------------------------------
+
+  # Primary tag for an article (first tag with metadata in tags.yml).
+  def primary_tag(article)
+    return nil unless article && article.tags
+    article.tags.map { |t| get_tag_metadata(t) }.compact.first
+  end
+
+  # Hex color for an article's primary tag — used as --cat custom property.
+  def article_cat_color(article)
+    tag = primary_tag(article)
+    tag ? tag.color : '#c2451d'
+  end
+
+  # Emoji for an article's primary tag.
+  def article_cat_icon(article)
+    tag = primary_tag(article)
+    tag ? tag.icon : ''
+  end
+
+  # Find the series metadata an article belongs to (or nil).
+  def article_series(article)
+    return nil unless article
+    all_series_metadata.find do |series|
+      next false unless series[:posts]
+      series[:posts].any? do |yaml_post|
+        article.title == yaml_post[:title] &&
+          article.date.strftime('%Y-%m-%d') == yaml_post[:date]
+      end
+    end
+  end
+
+  # Index (1-based) of article within its series, plus series total.
+  def article_series_part(article)
+    series = article_series(article)
+    return nil unless series
+    posts = series_articles(series[:name]).sort_by(&:date)
+    idx = posts.index(article)
+    return nil unless idx
+    {
+      series: series,
+      number: idx + 1,
+      total: posts.length + (series[:planned_posts] ? series[:planned_posts].length : 0),
+    }
+  end
+
+  # Group articles by year for the archive page.
+  def articles_by_year(articles = nil)
+    list = articles || blog.articles
+    list.group_by { |a| a.date.year }.sort_by { |year, _| -year }
+  end
+
+  # All unique taxonomy filter chips for the archive — returns array of
+  # { name:, slug:, color:, icon:, count: } sorted by post count desc.
+  def archive_filter_chips
+    tag_counts = Hash.new(0)
+    blog.articles.each do |article|
+      (article.tags || []).each { |t| tag_counts[t] += 1 }
+    end
+    chips = tag_counts.map do |name, count|
+      meta = get_tag_metadata(name)
+      next nil unless meta
+      {
+        name: name,
+        slug: name.downcase.gsub(/\s+/, '-'),
+        color: meta.color,
+        icon: meta.icon,
+        count: count,
+      }
+    end.compact
+    chips.sort_by { |c| -c[:count] }
+  end
+
+  # All tags-with-metadata sorted by article count desc (for /tags/ index).
+  # Tags with zero articles are excluded — they don't get a generated page,
+  # so linking to them would produce a 404.
+  def tags_with_counts
+    counts = Hash.new(0)
+    blog.articles.each { |a| (a.tags || []).each { |t| counts[t] += 1 } }
+    data.tags.tags.map do |tag|
+      {
+        meta: tag,
+        slug: tag.name.downcase.gsub(/\s+/, '-'),
+        count: counts[tag.name],
+      }
+    end.reject { |t| t[:count].zero? }.sort_by { |t| -t[:count] }
+  end
+
+  # Articles that share at least one tag with the given tag (excluding it),
+  # weighted by how many they share. Returns up to N tag-metadata entries.
+  def related_tags(tag_name, limit = 4)
+    co_counts = Hash.new(0)
+    blog.articles.each do |a|
+      tags = a.tags || []
+      next unless tags.include?(tag_name)
+      (tags - [tag_name]).each { |t| co_counts[t] += 1 }
+    end
+    co_counts.sort_by { |_, c| -c }.first(limit).map { |name, _| get_tag_metadata(name) }.compact
+  end
+
+  # Format an article's date for log rows (mono YYYY-MM-DD).
+  def log_date(date)
+    date.strftime('%Y-%m-%d')
+  end
+
+  # Format an article's date for archive rows (mono MMM DD).
+  def archive_date(date)
+    date.strftime('%b %d')
   end
 end
 
@@ -347,6 +431,10 @@ data.series.series.each do |series|
   }
 end
 
+# The series.html template is only used as a proxy source for /series/{slug}.html
+# pages above — its own root output would render the "not found" fallback.
+ignore "/series.html"
+
 # Build Configuration
 # Settings that affect the final static site generation
 
@@ -356,6 +444,18 @@ end
 set :relative_links, false
 set :relative_assets, true
 set :pretty_urls, true
+
+# Markdown Engine Configuration
+# Redcarpet with GitHub-flavored extensions enabled.
+set :markdown_engine, :redcarpet
+set :markdown,
+    fenced_code_blocks: true,
+    smartypants: true,
+    strikethrough: true,
+    tables: true,
+    autolink: true,
+    no_intra_emphasis: true,
+    space_after_headers: true
 
 # Development Environment Configuration
 # Settings applied only during development

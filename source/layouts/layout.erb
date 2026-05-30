@@ -3,10 +3,10 @@
   <head>
     <%= partial 'layouts/_html_head', locals: {
       title: content_for?(:page_title) ? yield_content(:page_title) : (current_page.data.title || 'macapinlac.com'),
-      description: content_for?(:page_description) ? yield_content(:page_description) : (current_page.data.description || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between')
+      description: content_for?(:page_description) ? yield_content(:page_description) : (current_page.data.description || 'Personal blog and digital journal of Ritchie Macapinlac — thoughts on technology, parenting, productivity, and life.')
     } %>
   </head>
-  <body>
+  <body class="bl grain"<% if content_for?(:body_attrs) %> <%= yield_content(:body_attrs) %><% end %>>
     <div class="site-container">
       <%= partial 'layouts/_header' %>
 
@@ -17,14 +17,21 @@
       <%= partial 'layouts/_footer' %>
     </div>
 
-    <!-- Dark mode toggle script -->
     <script>
       function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        var lbl = document.querySelector('#themeToggle .theme-label');
+        if (lbl) lbl.textContent = next === 'dark' ? '◑ dark' : '◐ light';
       }
+      (function syncToggleLabel(){
+        var lbl = document.querySelector('#themeToggle .theme-label');
+        if (!lbl) return;
+        var theme = document.documentElement.getAttribute('data-theme');
+        lbl.textContent = theme === 'dark' ? '◑ dark' : '◐ light';
+      })();
     </script>
   </body>
 </html>

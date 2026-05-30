@@ -1,74 +1,77 @@
 ---
 layout: layout
 ---
-
 <% if !defined?(series_name) || !series_name %>
-  <% content_for :page_title, "Series Not Found - macapinlac.com" %>
-  <% content_for :page_description, "Series not found. Please visit the Series Index to browse all available series." %>
-  <div class="page-container">
-    <header class="page-header">
-      <h1 class="page-title">Series Not Found</h1>
-      <p class="page-description">No series specified. Please visit the <a href="/series">Series Index</a> to browse all available series.</p>
-    </header>
-    <footer class="page-footer">
-      <div class="page-navigation">
-        <%= link_to '← Back to All Series', '/series', class: 'button button--secondary' %>
-        <%= link_to '← Back to Blog', '/', class: 'button button--secondary' %>
-      </div>
-    </footer>
+  <% content_for :page_title, "Series not found — macapinlac.com" %>
+  <div class="wrap">
+    <div class="page-head">
+      <div class="eyebrow"><span class="c">$</span> ls ~/series</div>
+      <h1>Series not found</h1>
+      <p class="sub">That series doesn't exist. Back to <a href="/tags/">all series &amp; tags</a>.</p>
+    </div>
   </div>
 <% else %>
-<% series_metadata = get_series_metadata(series_name) %>
-<% series_articles = series_articles(series_name).sort_by(&:date) %>
-<% content_for :page_title, defined?(page_title) ? page_title : "#{series_name} - Series - macapinlac.com" %>
-<% content_for :page_description, defined?(page_description) ? page_description : (series_metadata && series_metadata[:description]) ? series_metadata[:description] : "Multi-part content series by Ritchie Macapinlac" %>
-<div class="page-container">
-  <header class="page-header">
-    <h1 class="page-title">
-      <% if series_metadata && series_metadata[:icon] %>
-        <span class="series-icon"><%= series_metadata[:icon] %></span>
-      <% end %>
-      <%= series_name %>
-    </h1>
-    
-    <% if series_metadata && series_metadata[:description] %>
-      <div class="page-description">
-        <p><%= series_metadata[:description] %></p>
-      </div>
-    <% elsif defined?(series_description) && series_description %>
-      <div class="page-description">
-        <p><%= series_description %></p>
-      </div>
-    <% end %>
-    
-    <div class="page-meta">
-      <span class="meta-item"><%= series_articles.length %> posts</span>
-      <% if series_metadata && series_metadata[:status] %>
-        <span class="meta-item"><%= series_metadata[:status] %></span>
-      <% elsif defined?(series_status) && series_status %>
-        <span class="meta-item"><%= series_status %></span>
-      <% end %>
-    </div>
-  </header>
+<%
+  series_meta = get_series_metadata(series_name)
+  published   = series_articles(series_name).sort_by(&:date)
+  planned     = (series_meta && series_meta[:planned_posts]) || []
+  total       = published.length + planned.length
+  pct         = total.zero? ? 0 : ((published.length.to_f / total) * 100).round
+  status      = series_meta ? (series_meta[:status] || (published.length == total && total > 0 ? 'complete' : 'active')) : 'active'
+  color       = series_meta ? series_meta[:color] : '#c2451d'
+  icon        = series_meta ? series_meta[:icon] : '🤖'
+  desc        = series_meta ? series_meta[:description] : (defined?(series_description) ? series_description : '')
+  slug        = series_meta ? series_meta[:slug] : series_name.downcase.gsub(/\s+/, '-')
+%>
+<% content_for :page_title, defined?(page_title) ? page_title : "#{series_name} — Series — macapinlac.com" %>
+<% content_for :page_description, defined?(page_description) ? page_description : desc %>
+<% content_for :body_attrs do %>data-screen-label="Series · <%= series_name %>" style="--c: <%= color %>"<% end %>
 
-  <div class="page-content">
-    <div class="card-stack">
-      <% series_articles.each_with_index do |article, index| %>
-        <div class="series-post-wrapper">
-          <div class="series-post-meta">
-            <div class="progress-indicator progress-indicator--minimal">
-              <span class="progress-text progress-text--minimal">
-                Part <%= index + 1 %> of <%= series_articles.length %>
-              </span>
-              <div class="progress-bar progress-bar--minimal">
-                <div class="progress-fill progress-fill--minimal" style="width: <%= ((index + 1).to_f / series_articles.length) * 100 %>%"></div>
-              </div>
-            </div>
-          </div>
-          <%= partial 'layouts/_blog_card', locals: { article: article } %>
+<div class="wrap">
+  <section class="shero">
+    <div class="crumb"><a href="/tags/">cd ~/series</a> / <%= slug %></div>
+    <div class="badge">&bull; <%= status %> series</div>
+    <div class="top">
+      <div class="ico"><%= icon %></div>
+      <div>
+        <h1><%= series_name %></h1>
+        <p class="desc"><%= desc %></p>
+        <div class="meter">
+          <span class="bar"><i style="width: <%= pct %>%"></i></span>
+          <span class="lbl"><b><%= published.length %></b> of <%= total %> published</span>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <div class="partshead">./parts <span class="p">— read in order</span></div>
+
+  <% published.each_with_index do |article, idx| %>
+    <%
+      minutes = reading_time(article.body)
+      excerpt = article_excerpt_text(article, limit: 220)
+    %>
+    <a class="part" href="<%= article.url %>">
+      <span class="num"><span class="pre">part </span><%= '%02d' % (idx + 1) %></span>
+      <div>
+        <div class="dt"><%= log_date(article.date) %> · <%= minutes %> min</div>
+        <div class="t"><%= article.title %></div>
+        <% if excerpt %><div class="s"><%= excerpt %></div><% end %>
+      </div>
+      <span class="go">read <span class="a">→</span></span>
+    </a>
+  <% end %>
+
+  <% planned.each_with_index do |post, planned_idx| %>
+    <div class="part planned">
+      <span class="num"><span class="pre">part </span><%= '%02d' % (published.length + planned_idx + 1) %></span>
+      <div>
+        <div class="dt">planned</div>
+        <div class="t"><%= post[:title] %></div>
+        <% if post[:summary] %><div class="s"><%= post[:summary] %></div><% end %>
+      </div>
+      <span class="badge2">// coming soon</span>
+    </div>
+  <% end %>
 </div>
-<% end %> 
+<% end %>

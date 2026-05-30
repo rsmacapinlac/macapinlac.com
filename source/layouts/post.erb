@@ -2,104 +2,114 @@
 <html lang="en">
   <head>
     <%= partial 'layouts/_html_head', locals: {
-      title: "#{current_article.title} - macapinlac.com",
-      description: current_article.data.summary || 'Personal blog and portfolio of Ritchie Macapinlac - thoughts on technology, life, and everything in between'
+      title: "#{current_article.title} — macapinlac.com",
+      description: current_article.data.summary || article_excerpt_text(current_article, limit: 220) || 'Personal blog and digital journal of Ritchie Macapinlac.'
     } %>
   </head>
-  <body>
+  <body class="bl grain" data-screen-label="Article">
+    <div class="progress" id="prog"></div>
+
     <div class="site-container">
       <%= partial 'layouts/_header' %>
 
       <main class="main-content">
-        <article class="post post--minimal">
-          <header class="post-header post-header--minimal">
-            <h1 class="post-title post-title--minimal"><%= current_article.title %></h1>
-            
-            <div class="post-meta post-meta--minimal">
-              <time datetime="<%= current_article.date.iso8601 %>" class="post-date post-date--minimal">
-                <%= current_article.date.strftime('%B %d, %Y') %>
-              </time>
-              <span class="post-meta-separator">•</span>
-              <span class="post-reading-time"><%= article_reading_time %></span>
-              <% unless current_article.tags.empty? %>
-                <span class="post-meta-separator">•</span>
-                <div class="post-tags post-tags--minimal">
-                  <% current_article.tags.each do |tag| %>
-                    <%= link_to tag, tag_path(tag), class: 'post-tag post-tag--minimal' %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-            
-            <% if current_article.data.summary %>
-              <p class="post-summary post-summary--minimal"><%= current_article.data.summary %></p>
-            <% end %>
-          </header>
+        <%
+          primary = primary_tag(current_article)
+          tag_slug = primary ? primary.name.downcase.gsub(/\s+/, '-') : nil
+          part_info = article_series_part(current_article)
+          minutes  = reading_time(current_article.body)
+        %>
+        <div class="read">
+          <nav class="toc toc-rail" aria-label="On this page">
+            <div class="toc-h">// on this page</div>
+            <ol></ol>
+          </nav>
 
-          <div class="post-content post-content--minimal">
-            <% if current_article.data.reply %>
-              <div class="post-reply post-reply--minimal">
-                <span class="post-reply-label post-reply-label--minimal">In reply to:</span>
-                <%= link_to current_article.data.reply.reply_title || current_article.data.reply.url, 
-                            current_article.data.reply.url, 
-                            class: 'post-reply-link post-reply-link--minimal' %>
-              </div>
+          <div class="crumb">
+            <a href="/archive.html">cd ~/posts</a>
+            <% if primary && tag_slug %>
+              <span class="sep">/</span><a href="/tags/<%= tag_slug %>.html"><%= tag_slug %></a>
             <% end %>
-
-            <%= yield %>
+            <span class="sep">/</span><%= current_article.slug %>.md
           </div>
 
-          <footer class="post-footer post-footer--minimal">
-            <% series_nav = series_navigation(current_article) %>
-            <% if series_nav %>
-              <div class="post-section post-section--minimal">
-                <h3 class="post-section-title">Part of the "<%= series_nav[:series_name] %>" series</h3>
-                <div class="progress-indicator progress-indicator--minimal">
-                  <span class="progress-text progress-text--minimal">
-                    Part <%= series_nav[:current_index] + 1 %> of <%= series_nav[:total_posts] %>
-                  </span>
-                  <div class="progress-bar progress-bar--minimal">
-                    <div class="progress-fill progress-fill--minimal" style="width: <%= ((series_nav[:current_index] + 1).to_f / series_nav[:total_posts]) * 100 %>%"></div>
-                  </div>
-                </div>
-                
-                <div class="series-navigation series-navigation--minimal">
-                  <% if series_nav[:previous_post] %>
-                    <%= link_to "Previous: #{series_nav[:previous_post].title}", 
-                                series_nav[:previous_post], 
-                                class: 'series-nav-button series-nav-button--minimal' %>
-                  <% end %>
-                  
-                  <%= link_to "View All Posts in Series", 
-                              "/series/#{series_nav[:series_name].downcase.gsub(/\s+/, '-')}.html", 
-                              class: 'series-nav-button series-nav-button--minimal series-nav-button--center' %>
-                  
-                  <% if series_nav[:next_post] %>
-                    <%= link_to "Next: #{series_nav[:next_post].title}", 
-                                series_nav[:next_post], 
-                                class: 'series-nav-button series-nav-button--minimal' %>
-                  <% end %>
-                </div>
+          <article>
+            <header class="phead">
+              <% if part_info %>
+                <a class="series-badge" href="<%= series_url(part_info[:series]) %>">
+                  <%= part_info[:series][:icon] %> <%= part_info[:series][:name] %> · part <%= part_info[:number] %> of <%= part_info[:total] %>
+                </a>
+              <% end %>
+              <h1><%= current_article.title %></h1>
+              <% if current_article.data.summary %>
+                <p class="lede"><%= current_article.data.summary %></p>
+              <% end %>
+              <div class="meta">
+                <span class="k">$</span> stat post.md —
+                <time datetime="<%= current_article.date.iso8601 %>"><%= log_date(current_article.date) %></time>
+                · <%= minutes %> min read · by ritchie
+              </div>
+            </header>
+
+            <nav class="toc toc-inline" aria-label="On this page">
+              <div class="toc-h">// on this page</div>
+              <ol></ol>
+            </nav>
+
+            <% if current_article.data.reply %>
+              <div class="in-reply">
+                <span class="lbl">// in reply to:</span>
+                <%= link_to (current_article.data.reply.reply_title || current_article.data.reply.url),
+                            current_article.data.reply.url, target: '_blank', rel: 'noopener' %>
               </div>
             <% end %>
 
-            <div class="post-navigation post-navigation--minimal">
-              <% if current_article.article_previous %>
-                <%= link_to current_article.article_previous.title, 
-                            current_article.article_previous, 
-                            class: 'button button--secondary button--minimal' %>
-              <% end %>
-              
-              <% if current_article.article_next %>
-                <%= link_to current_article.article_next.title, 
-                            current_article.article_next, 
-                            class: 'button button--secondary button--minimal' %>
-              <% end %>
+            <div class="body">
+              <%= yield %>
+              <p class="signoff">— written in vancouver, between two cups of coffee and one questionable life choice.</p>
             </div>
 
+            <% unless current_article.tags.empty? %>
+              <div class="ptags">
+                <span class="lbl"># filed under</span>
+                <% current_article.tags.each do |tag| %>
+                  <%= link_to tag.downcase.gsub(/\s+/, '-'), tag_path(tag), class: 'chip' %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <aside class="author">
+              <%= image_tag 'avatar-240.webp', alt: 'Ritchie Macapinlac' %>
+              <div>
+                <div class="nm">Ritchie Macapinlac</div>
+                <p>Technology professional, parent, and serial rebuilder of perfectly functional things. Writing from Vancouver since 2000.</p>
+              </div>
+            </aside>
+
+            <% prev_article = current_article.article_previous %>
+            <% next_article = current_article.article_next %>
+            <% if prev_article || next_article %>
+              <nav class="pnav" aria-label="Adjacent posts">
+                <% if prev_article %>
+                  <a class="ncard prev" href="<%= prev_article.url %>">
+                    <div class="d">← previous</div>
+                    <div class="t"><%= prev_article.title %></div>
+                  </a>
+                <% else %>
+                  <span></span>
+                <% end %>
+                <% if next_article %>
+                  <a class="ncard next" href="<%= next_article.url %>">
+                    <div class="d">next →</div>
+                    <div class="t"><%= next_article.title %></div>
+                  </a>
+                <% end %>
+              </nav>
+            <% end %>
+
             <% if current_article.data.changelog %>
-              <details class="post-changelog post-changelog--minimal">
-                <summary>Changelog</summary>
+              <details class="changelog">
+                <summary>changelog</summary>
                 <ul>
                   <% current_article.data.changelog.each do |change| %>
                     <li>
@@ -110,21 +120,28 @@
                 </ul>
               </details>
             <% end %>
-          </footer>
-        </article>
+          </article>
+        </div>
       </main>
 
       <%= partial 'layouts/_footer' %>
     </div>
 
-    <!-- Dark mode toggle script -->
     <script>
       function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        var lbl = document.querySelector('#themeToggle .theme-label');
+        if (lbl) lbl.textContent = next === 'dark' ? '◑ dark' : '◐ light';
       }
+      (function syncToggleLabel(){
+        var lbl = document.querySelector('#themeToggle .theme-label');
+        if (!lbl) return;
+        var theme = document.documentElement.getAttribute('data-theme');
+        lbl.textContent = theme === 'dark' ? '◑ dark' : '◐ light';
+      })();
     </script>
   </body>
 </html>

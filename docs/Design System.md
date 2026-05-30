@@ -6,7 +6,7 @@
 
 This design system defines the visual language and component library for macapinlac.com. Version 3 ("Build Log") replaces the previous cool-grey/blue system with a warmer, terminal-forward identity: warm cream paper, near-black ink, a single confident rust accent, and JetBrains Mono promoted from "dates and code" to the connective voice of the entire interface.
 
-The canonical token file is `design-system/colors_and_type.css`. Drop it in with `<link>` and all variables are available.
+The canonical token file is `source/stylesheets/site.css.scss` (with `_variables.scss` providing SCSS-time font and breakpoint constants). All CSS custom properties below live under `:root` at the top of that file, and dark-mode overrides under `[data-theme="dark"]`.
 
 ---
 
@@ -33,7 +33,7 @@ The canonical token file is `design-system/colors_and_type.css`. Drop it in with
 
 #### Legacy aliases
 
-The old `--color-bg`, `--color-text`, `--color-primary`, etc. are aliased to the new names in `colors_and_type.css` so existing templates continue to work. All new work should use the short token names above.
+The legacy `--color-*` aliases from v2 have been **removed**. All templates use the short Build Log token names (`--paper`, `--ink`, `--rust`, etc.) directly. If you need backwards compatibility while migrating an old asset, add an alias declaration in `site.css.scss` rather than reintroducing the v2 names site-wide.
 
 ### Dark Mode — "Espresso"
 
@@ -56,7 +56,7 @@ Each tag and series carries a `--cat` variable that keys to a category color. Us
 - Hover rail on log-feed index rows
 - Category pill backgrounds
 
-Defined as `--cat-ai`, `--cat-building`, `--cat-making`, etc. in `colors_and_type.css`.
+Defined as `--cat-ai`, `--cat-building`, `--cat-making`, etc. in `site.css.scss`. Per-element override is via inline `style="--cat: <hex>"` on log feed rows and `style="--c: <hex>"` on tag / series surfaces — the Ruby helpers `article_cat_color(article)` and the `color` field on `data/tags.yml` / `data/series.yml` produce the hex value.
 
 ---
 
@@ -225,9 +225,9 @@ Mono motto line, uptime stat (`uptime: 26 years · N posts · 0 regrets (citatio
 
 ### Navigation
 
-Primary nav links: JetBrains Mono, sentence case. Items: Home · Writing · Series · About · RSS · dark-mode toggle.
+Primary nav links: JetBrains Mono, sentence case. Items: `home` · `about` · `archive` · `tags` · `◐ light` (dark-mode toggle). The Build Log removed the standalone `Series` and `RSS` nav entries — series are surfaced on `/tags/` and the homepage strip; RSS lives in the status-bar footer socials row.
 
-Mobile: hamburger expands to full-screen overlay with same mono type.
+Mobile: there is no hamburger — the nav is implemented as a horizontal flex row that hides `about` and `archive` (the `.about-link` / `.archive-link` classes) below 720px while keeping `home`, `tags`, and the theme toggle visible. The full archive remains reachable via the `ls -la → all N` link in the log-feed header.
 
 ### Content Cards
 
@@ -409,19 +409,18 @@ A subtle two-radial CSS background grain (`.grain` class) adds texture to `--pap
 | Mobile | 0–760px |
 | Desktop | 760px+ |
 
-At mobile: single-column, TOC rail hidden, mono header collapses to hamburger, nav is full-screen overlay.
+At mobile: single-column, TOC rail hidden (inline `.toc-inline` fallback renders instead at ≤1180px), term-bar drops the `~ %` path and the about / archive nav items.
 
 ---
 
 ## 10. Implementation Notes
 
-- All tokens live in `design-system/colors_and_type.css` — import it first.
-- UI kit HTML prototypes in `design-system/ui_kits/blog/` (Homepage, Article, Archive, Tags, Tag, Series, About, 404).
-- Preview cards for every token and component in `design-system/preview/`.
-- Legacy `--color-*` aliases are exported — existing templates that use them will not break, but migrate to short names on any new work.
+- All tokens live in `source/stylesheets/site.css.scss` under `:root` and `[data-theme="dark"]`.
+- Reference HTML prototypes (read-only) live in the design handoff bundle archived under `~/Documents/macapinlac.com/design-bundle/` (not checked into the repo). The implemented pages mirror them — see the live templates for the source of truth: `source/index.html.erb`, `source/layouts/post.erb`, `source/archive.html.erb`, `source/tags/index.html.erb`, `source/tag.html.erb`, `source/series.html.erb`, `source/about.html.erb`, `source/404.html.erb`.
+- Legacy `--color-*` aliases from v2 have been **removed** — see the matching note in the Color Palette section. New work must use the short token names.
 - Web fonts are loaded via Google Fonts CDN; no woff2 assets are stored in the repo.
 - Dark mode: toggle writes `data-theme="dark"` to `<html>`, persisted to `localStorage`. `prefers-color-scheme` is read on first visit.
 
 ---
 
-*Design system v3 — "Build Log" direction. Supersedes v2 (December 2024). Source of truth: `design-system/colors_and_type.css` + `design-system/README.md`.*
+*Design system v3 — "Build Log" direction. Supersedes v2 (December 2024). Source of truth: `source/stylesheets/site.css.scss` + this document.*

@@ -1,124 +1,60 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe 'About Page', type: :feature do
-  before do
-    visit '/about.html'
+RSpec.describe 'About Page (Build Log)', type: :feature do
+  before { visit '/about.html' }
+
+  it 'renders the portrait hero with eyebrow and headline' do
+    expect(page).to have_css('.ahero')
+    expect(page).to have_content('whoami --verbose')
+    expect(page).to have_css('h1', text: /tech professional, parent, and serial rebuilder/i)
+    expect(page).to have_content('perfectly functional')
   end
 
-  it 'displays about page content correctly' do
-    expect(page).to have_content('About Me')
-    expect(page).to have_content('I\'m Ritchie Macapinlac')
-    expect(page).to have_content('Rabbit Holes I Keep Falling Into')
-    expect(page).to have_content('Under the Hood')
+  it 'renders the rabbit-holes grid backed by data/about_page_tags.yml' do
+    expect(page).to have_css('.holes h2', text: /Where I tend to wander/i)
+    expect(page).to have_css('.hgrid')
+    expect(page).to have_css('a.hole', minimum: 1)
+    expect(page).to have_content('🤖')
+    expect(page).to have_content('💻')
   end
 
-  it 'displays proper page structure' do
-    expect(page).to have_css('.page-main-content')
-    expect(page).to have_css('.sidebar-section')
-    expect(page).to have_css('h1', text: 'About Me')
-    expect(page).to have_css('h2', text: 'Rabbit Holes I Keep Falling Into')
-    expect(page).to have_css('h2', text: 'Under the Hood')
+  it 'renders the now strip from data/now.yml' do
+    expect(page).to have_css('.now')
+    expect(page).to have_css('.now .lbl')
+    expect(page).to have_content("what I'm into right now")
   end
 
-  it 'about link works from navigation' do
-    visit '/'
-    click_link 'About'
-    expect(page).to have_content('About Me')
-    expect(current_path).to eq('/about.html')
+  it 'renders contact links from data/socials.yml plus email + rss' do
+    expect(page).to have_css('.contact')
+    expect(page).to have_link(href: 'https://github.com/rsmacapinlac')
+    expect(page).to have_link(href: 'https://www.linkedin.com/in/rsmacapinlac')
+    expect(page).to have_link(href: 'https://www.instagram.com/rsmacapinlac')
+    expect(page).to have_link(href: 'mailto:ritchie@macapinlac.com')
+    expect(page).to have_link(href: '/feed.xml')
   end
 
-  it 'displays sidebar content correctly' do
-    expect(page).to have_css('.sidebar-section')
-    expect(page).to have_content('Say Hi')
-    expect(page).to have_css('.sidebar-social-links')
-  end
-
-  it 'does not display resume button when disabled' do
-    expect(page).not_to have_link('View Résumé (PDF)')
-    expect(page).not_to have_css('.sidebar-actions')
-  end
-
-  it 'displays social links correctly' do
-    expect(page).to have_css('.sidebar-social-links')
-    expect(page).to have_link('GitHub', href: 'https://github.com/rsmacapinlac')
-    expect(page).to have_link('LinkedIn', href: 'https://www.linkedin.com/in/rsmacapinlac')
-    expect(page).to have_link('Instagram', href: 'https://www.instagram.com/rsmacapinlac')
-  end
-
-  it 'displays dynamic tag-based content areas' do
-    expect(page).to have_css('.content-areas')
-    expect(page).to have_css('.content-area')
-    
-    # Check for curated tags displayed on the about page
-    expect(page).to have_content('Family Adventures')
-    expect(page).to have_content('Playing with AI')
-    expect(page).to have_content('Building Things')
-    expect(page).to have_content('Figuring Things Out')
-  end
-
-  it 'displays tag icons in content areas' do
-    expect(page).to have_css('.tag-icon')
-    # Check that icons are present (emoji characters)
-    expect(page).to have_content('🤖') # Playing with AI icon
-    expect(page).to have_content('💻') # Building Things icon
-  end
-
-  it 'responsive design works on mobile' do
-    # Skip this test for Rack::Test as it doesn't support window resizing
-    skip 'Rack::Test does not support window resizing' if Capybara.current_driver == :rack_test
-  end
-
-  it 'dark mode toggle works on about page' do
-    expect(page).to have_css('.theme-toggle')
-    # Note: Rack::Test doesn't execute JavaScript, so we can't test the actual theme toggle
-    # In a real browser, clicking the toggle would change the data-theme attribute
-    expect(page).to have_css('.theme-icon.light')
-    expect(page).to have_css('.theme-icon.dark')
-  end
-
-  it 'page has proper SEO meta tags' do
-    expect(page).to have_title('About - macapinlac.com')
+  it 'has proper SEO meta tags' do
+    expect(page).to have_title('About — macapinlac.com')
     expect(page).to have_css('meta[name="description"]', visible: false)
   end
 
-  it 'structured data is valid JSON-LD' do
-    expect(page).to have_css('script[type="application/ld+json"]', visible: false)
-    
-    # Parse the JSON-LD content
-    json_ld_element = page.find('script[type="application/ld+json"]', visible: false)
-    json_ld_text = json_ld_element.text.strip
-    
-    # Skip test if JSON-LD is empty (might be a rendering issue)
-    if json_ld_text.empty?
-      skip 'JSON-LD content is empty - may be a rendering issue'
-    end
-    
-    expect { JSON.parse(json_ld_text) }.not_to raise_error
-    
-    parsed_data = JSON.parse(json_ld_text)
-    expect(parsed_data['@type']).to eq('Person')
-    expect(parsed_data['name']).to eq('Ritchie Macapinlac')
-    expect(parsed_data['url']).to eq('https://macapinlac.com')
+  it 'includes valid JSON-LD person data' do
+    # Capybara's .text on a hidden <script> returns empty — pull the raw text
+    # straight from the parsed page HTML via Nokogiri instead.
+    doc = Nokogiri::HTML(page.html)
+    node = doc.at_css('script[type="application/ld+json"]')
+    expect(node).not_to be_nil
+    parsed = JSON.parse(node.content)
+    expect(parsed['@type']).to eq('Person')
+    expect(parsed['name']).to eq('Ritchie Macapinlac')
+    expect(parsed['url']).to eq('https://macapinlac.com')
   end
 
-  it 'does not display removed Professional Background section' do
-    expect(page).not_to have_content('Professional Background')
-    expect(page).not_to have_content('Technology & Development')
-    expect(page).not_to have_content('Productivity & Systems')
-    expect(page).not_to have_css('.featured-grid')
-    expect(page).not_to have_css('.featured-card')
+  it 'has no legacy sidebar / content-areas markup' do
+    expect(page).not_to have_css('.sidebar-section')
+    expect(page).not_to have_css('.page-main-content')
+    expect(page).not_to have_css('.content-areas')
   end
-
-  it 'does not display removed page elements' do
-    expect(page).not_to have_css('.page-header')
-    expect(page).not_to have_css('.page-title')
-    expect(page).not_to have_css('.page-description')
-    expect(page).not_to have_css('.site-intro')
-    expect(page).not_to have_css('.featured-content')
-  end
-
-  it 'does not display removed navigation buttons' do
-    expect(page).not_to have_link('Back to Home')
-    expect(page).not_to have_link('Browse My Writing')
-  end
-end 
+end

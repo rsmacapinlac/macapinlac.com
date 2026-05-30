@@ -2,73 +2,44 @@
 
 require_relative '../spec_helper'
 
-RSpec.describe 'Series Functionality' do
-  it 'has series index page' do
-    get '/series'
+RSpec.describe 'Series Functionality (Build Log)' do
+  it 'renders the combined /tags page with a series grid' do
+    get '/tags/'
     expect(last_response).to be_ok
-    expect(last_response.body).to include('Series')
+    expect(last_response.body).to include('Rabbit holes')
+    expect(last_response.body).to include('class="series-grid"')
     expect(last_response.body).to include('Tesla Road Trip Adventure')
+    expect(last_response.body).to include('Building with AI')
   end
 
-  it 'displays series posts with navigation' do
-    get '/2024/07/17/planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html'
-    expect(last_response).to be_ok
-    
-    # Check for series information
-    expect(last_response.body).to include('Tesla Road Trip Adventure')
-    expect(last_response.body).to include('Part 1 of 2')
-    expect(last_response.body).to include('progress-indicator')
-    expect(last_response.body).to include('series-navigation')
-  end
-
-  it 'shows series navigation between posts' do
-    get '/2024/07/18/the-actual-tesla-road-trip-vancouver-to-edmonton.html'
-    expect(last_response).to be_ok
-    
-    # Check for series navigation
-    expect(last_response.body).to include('Tesla Road Trip Adventure')
-    expect(last_response.body).to include('Part 2 of 2')
-    expect(last_response.body).to include('Previous: Planning a Road Trip')
-    expect(last_response.body).to include('View All Posts in Series')
-  end
-
-  it 'has individual series page' do
+  it 'renders individual series pages with hero + progress meter + parts' do
     get '/series/tesla-road-trip-adventure.html'
     expect(last_response).to be_ok
-    
-    # Check for series page content
+    expect(last_response.body).to include('class="shero"')
+    expect(last_response.body).to include('class="meter"')
     expect(last_response.body).to include('Tesla Road Trip Adventure')
-    expect(last_response.body).to include('2 posts')
-    expect(last_response.body).to include('card')
+    expect(last_response.body).to include('class="part"')
     expect(last_response.body).to include('Planning a Road Trip')
     expect(last_response.body).to include('The Actual Tesla Road Trip')
   end
 
-  it 'shows series progress indicators' do
+  it 'shows series badge on articles that belong to a series' do
     get '/2024/07/17/planning-a-roadtrip-from-vancouver-to-edmonton-in-a-tesla-model-y.html'
     expect(last_response).to be_ok
-    
-    # Check for progress bar
-    expect(last_response.body).to include('progress-bar')
-    expect(last_response.body).to include('progress-fill')
+    expect(last_response.body).to include('class="series-badge"')
+    expect(last_response.body).to include('Tesla Road Trip Adventure')
+    expect(last_response.body).to include('part 1 of 2')
   end
 
-  it 'includes series in navigation' do
-    get '/'
+  it 'shows planned (coming-soon) parts on an active series' do
+    get '/series/building-with-ai-website-redesign.html'
     expect(last_response).to be_ok
-    
-    # Check for series link in navigation
-    expect(last_response.body).to include('Series')
-    expect(last_response.body).to include('/series')
+    expect(last_response.body).to include('part planned')
+    expect(last_response.body).to include('// coming soon')
   end
 
-  it 'displays featured series on homepage' do
-    get '/'
-    expect(last_response).to be_ok
-
-    # Check for featured series section
-    expect(last_response.body).to include('Featured Series')
-    expect(last_response.body).to include('Building with AI')
-    expect(last_response.body).to include('Explore Series')
+  it 'no longer exposes a /series/ index page' do
+    get '/series/'
+    expect(last_response.status).to eq(404)
   end
-end 
+end
