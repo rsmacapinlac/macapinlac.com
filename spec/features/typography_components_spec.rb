@@ -2,63 +2,47 @@
 
 require_relative '../spec_helper'
 
-RSpec.describe 'Typography Components' do
-  it 'has blockquote styles defined' do
+RSpec.describe 'Typography Components (Build Log)' do
+  it 'declares the four-font CSS custom properties' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    
-    # Check for blockquote styling
-    expect(last_response.body).to include('blockquote {')
-    expect(last_response.body).to include('border-left: 4px solid')
-    expect(last_response.body).to include('font-style: italic')
+    expect(last_response.body).to include('--font-serif:')
+    expect(last_response.body).to include('--font-editorial:')
+    expect(last_response.body).to include('--font-sans:')
+    expect(last_response.body).to include('--font-mono:')
+    expect(last_response.body).to include('Lora')
+    expect(last_response.body).to include('Inter')
+    expect(last_response.body).to include('JetBrains Mono')
+    expect(last_response.body).to include('Crimson Text')
   end
 
-  it 'has code block styles defined' do
+  it 'styles article body blockquotes with rust border and editorial italic' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    
-    # Check for code block styling
-    expect(last_response.body).to include('pre {')
-    expect(last_response.body).to include('background: var(--color-code-bg)')
-    expect(last_response.body).to include('font-family: "JetBrains Mono"')
+    expect(last_response.body).to include('.body blockquote')
+    expect(last_response.body).to include('border-left: 3px solid var(--rust)')
+    expect(last_response.body).to include('font-family: var(--font-editorial)')
   end
 
-  it 'has inline code styles defined' do
+  it 'styles article pre/code blocks with the terminal dark surface' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    
-    # Check for inline code styling
-    expect(last_response.body).to include('code {')
-    expect(last_response.body).to include('border-radius: 3px')
-    expect(last_response.body).to include('padding: 0.2em 0.4em')
+    expect(last_response.body).to include('.body pre')
+    expect(last_response.body).to include('background: var(--code-bg)')
+    expect(last_response.body).to include('.body code')
+    expect(last_response.body).to include('font-family: var(--font-mono)')
   end
 
-  it 'has caption styles defined' do
+  it 'has the mono `##` and `###` heading prefix decorations' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    
-    # Check for caption styling
-    expect(last_response.body).to include('.caption {')
-    expect(last_response.body).to include('text-align: center')
-    expect(last_response.body).to include('font-style: italic')
+    expect(last_response.body).to include(".body h2::before")
+    expect(last_response.body).to include(".body h3::before")
   end
 
-  it 'has list styles defined' do
+  it 'has the drop-cap rule on the first paragraph' do
     get '/stylesheets/site.css'
     expect(last_response).to be_ok
-    
-    # Check for list styling
-    expect(last_response.body).to include('ul, ol {')
-    expect(last_response.body).to include('padding-left: 2rem')
-    expect(last_response.body).to include('li {')
+    expect(last_response.body).to include('.body p:first-of-type::first-letter')
   end
-
-  it 'has system preference detection for dark mode' do
-    get '/stylesheets/site.css'
-    expect(last_response).to be_ok
-    
-    # Check for system preference detection
-    expect(last_response.body).to include('@media (prefers-color-scheme: dark)')
-    expect(last_response.body).to include(':root:not([data-theme])')
-  end
-end 
+end

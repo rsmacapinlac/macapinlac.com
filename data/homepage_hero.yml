@@ -1,9 +1,12 @@
-title: "Hi, I'm Ritchie"
-tagline: ""
-description: "Welcome to my digital home since 2000. I'm a technology professional, parent, and serial rebuilder of perfectly functional things based in Vancouver, Canada. If something's broken here, I probably \"improved\" it last weekend. Take a look around and see what catches your interest."
-primary_button:
-  text: "Read My Posts"
-  url: "/writing"
-secondary_button:
-  text: "Check Out The Series"
-  url: "/series" 
+---
+# Homepage hero copy — Build Log v3.
+# The eyebrow renders as "$ whoami" in mono. Wrap the bold phrase in <em>
+# (rendered with class "hl" → rust italic).
+eyebrow: "whoami"
+title_html: >-
+  I build, break, and <em class="hl">over-engineer</em> perfectly functional things.
+sub: >-
+  Technology professional, parent, and recovering gadget addict in Vancouver.
+  This site has been my online home since 2000 — if something's broken here,
+  I probably "improved" it last weekend.
+metaline: "vancouver, canada · writing since 2000"

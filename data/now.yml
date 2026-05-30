@@ -1,0 +1,9 @@
+---
+# "What I'm into right now" — rendered on /about as a sand-tinted strip.
+# Plain text or simple HTML (em tags are styled). Update freely; the file
+# is the source of truth — no template changes needed.
+label: "what I'm into right now"
+body: >-
+  Rebuilding this very website (again), teaching an AI <em>my weird little
+  money system</em>, and pretending I'll finally finish the
+  "Building with AI" series before the year ends.

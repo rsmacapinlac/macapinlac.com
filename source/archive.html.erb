@@ -1,0 +1,57 @@
+---
+title: "The Archive — macapinlac.com"
+description: "All posts on macapinlac.com, grouped by year. Filter by topic."
+---
+<%
+  total_posts = blog.articles.length
+  by_year = articles_by_year
+  chips = archive_filter_chips
+%>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow"><span class="c">$</span> ls -la ~/posts</div>
+    <h1>The Archive</h1>
+    <p class="sub"><%= total_posts %> posts. The site itself is older — the early stuff is mercifully lost to a hard drive failure. Filter by rabbit hole below.</p>
+  </div>
+
+  <div class="filters" role="toolbar" aria-label="Filter by topic">
+    <button type="button" class="fchip on" data-cat="all">all <span class="ct"><%= total_posts %></span></button>
+    <% chips.each do |chip| %>
+      <button type="button" class="fchip" data-cat="<%= chip[:slug] %>" style="--c: <%= chip[:color] %>">
+        <%= chip[:icon] %> <%= chip[:slug] %> <span class="ct"><%= chip[:count] %></span>
+      </button>
+    <% end %>
+  </div>
+
+  <div id="results">
+    <% by_year.each do |year, articles| %>
+      <section class="yeargroup" data-year="<%= year %>">
+        <div class="yhead">
+          <span class="y"><%= year %></span>
+          <span class="c"><%= articles.length %> post<%= 's' unless articles.length == 1 %></span>
+          <span class="rule"></span>
+        </div>
+        <% articles.each do |article| %>
+          <%
+            tag = primary_tag(article)
+            cat = article_cat_color(article)
+            tag_slug = tag ? tag.name.downcase.gsub(/\s+/, '-') : ''
+            minutes = reading_time(article.body)
+          %>
+          <a class="arow"
+             href="<%= article.url %>"
+             data-year="<%= year %>"
+             data-cat="<%= tag_slug %>"
+             style="--cat: <%= cat %>">
+            <span class="dt"><%= archive_date(article.date) %></span>
+            <span class="t">
+              <% if tag %><span class="em"><%= tag.icon %></span><% end %><%= article.title %>
+            </span>
+            <span class="tg"><%= minutes %> min</span>
+          </a>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>

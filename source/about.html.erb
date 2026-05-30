@@ -1,63 +1,66 @@
 ---
-title: About - macapinlac.com
-description: Learn more about me, my background, and what I do.
-keywords: about, bio, background, developer, writer
-layout: sidebar_layout
+title: "About — macapinlac.com"
+description: "About Ritchie Macapinlac — tech professional, parent, and serial rebuilder of perfectly functional things based in Vancouver, BC."
 ---
+<% content_for :body_attrs do %>data-screen-label="About"<% end %>
 
-<% content_for :sidebar do %>
-  <div class="sidebar-section">
-    <h3>Say Hi</h3>
-    <p>If you're also overthinking the same stuff, have better solutions and are currently resisting the urge to reach through the screen to strangle me, or just want to say hi, I'd love to hear from you.</p>
-    
-    <div class="sidebar-social-links">
-      <% data.socials.sites.each do |social| %>
-        <a href="<%= social.url %>" class="sidebar-social-link" target="_blank" rel="noopener">
-          <span class="sidebar-social-icon"><%= social.icon %></span>
-          <span class="sidebar-social-name"><%= social.display_name %></span>
+<div class="read">
+  <div class="ahero">
+    <div class="portrait">
+      <%= image_tag 'avatar-240.webp', alt: 'Ritchie Macapinlac' %>
+      <span class="badge">📍 vancouver, bc</span>
+    </div>
+    <div>
+      <div class="eyebrow"><span class="c">$</span> whoami --verbose</div>
+      <h1>A tech professional, parent, and serial rebuilder of <em>perfectly functional</em> things.</h1>
+      <p class="lede">This site has been my online home since 2000 — which makes me older than dirt itself.</p>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>I write about technology, parenting, productivity, and my well-documented tendency to over-engineer everything. By day I work in tech — a long career somewhere between DevOps, infrastructure, and "can you take a look at this?" By night and weekend, I tinker: a homelab nobody asked for, a money system only I understand, and the occasional EV road trip planned with the enthusiasm of a man who really loves a spreadsheet.</p>
+
+    <p>The writing here is honest, occasionally funny, and frequently about lessons learned the hard way. You'll find earnest reflection sitting right next to a dry punchline. <strong>My wife questions most of these life choices</strong> and she's usually right.</p>
+
+    <p>If something on this site looks broken, there's a good chance I "improved" it last weekend. This is my playground. Damnit.</p>
+  </div>
+
+  <div class="holes">
+    <h2>Where I tend to wander</h2>
+    <p class="sub">// the recurring obsessions, roughly</p>
+    <div class="hgrid">
+      <% about_page_tags.each do |tag| %>
+        <% slug = tag.name.downcase.gsub(/\s+/, '-') %>
+        <a class="hole" href="/tags/<%= slug %>.html">
+          <span class="em"><%= tag.icon %></span>
+          <div>
+            <div class="t"><%= slug %></div>
+            <div class="d"><%= tag.description %></div>
+          </div>
         </a>
       <% end %>
     </div>
-    <!--
-    <div class="sidebar-actions">
-      <a href="/resume.pdf" class="button btn-secondary" target="_blank" rel="noopener">View Résumé (PDF)</a>
-    </div>
-    //-->
   </div>
-<% end %>
 
-<div class="page-main-content">
-  <h1>About Me</h1>
-  <p>I'm Ritchie Macapinlac, and this site has been my online home since 2000—which makes me older than dirt itself. What started as a simple personal site has evolved into my digital journal where I document whatever has currently captured my attention, from Tesla road trip logistics to Docker deep-dives to the reality of parenting while trying to maintain some semblence of productivity.</p>
+  <div class="now">
+    <div class="lbl"><%= data.now.label %></div>
+    <p><%= data.now.body.html_safe %></p>
+  </div>
 
-  <p>When I'm not wrestling with code or explaining why the wifi isn't working to my kids, you'll find me planning overly detailed road trips, rebuilding my Linux setup for the nth time, or discovering that the "simple" productivity system I just implemented is anything but. My wife questions most of these life choices.</p>
-  <p>Turns out documenting the process of figuring things out is useful—both for me and for other people who think "there has to be a better way to do this."</p>
-
-  <h2>Under the Hood</h2>
-
-  <p>This website is built with <a href="https://middlemanapp.com/">Middleman</a>, a Ruby-based static site generator that perfectly enables my tendency to overthink simple things. It's designed to be fast, accessible, and—most importantly—something I can break and rebuild without taking down a database.</p>
-
-  <p>The whole thing is just static HTML files deployed via <a href="https://github.com/features/actions">GitHub Actions</a>. Content is written in <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, styled with <a href="https://sass-lang.com/">SASS</a>, and served with a focus on speed and accessibility.</p>
-
-  <h2>Rabbit Holes I Keep Falling Into</h2>
-  
-  <!-- Manually Curated Content Areas -->
-  <div class="content-areas">
-    <% about_page_tags.each do |tag| %>
-      <div class="content-area">
-        <h3>
-          <a href="<%= tag_url(tag.name) %>" class="content-area-title">
-            <span class="tag-icon"><%= tag.icon %></span>
-            <%= tag.name %>
-          </a>
-        </h3>
-        <p><%= tag.description %></p>
-      </div>
-    <% end %>
+  <div class="contact">
+    <h2>Say hello</h2>
+    <div class="links">
+      <% data.socials.sites.each do |site| %>
+        <a class="lk" href="<%= site.url %>" target="_blank" rel="noopener noreferrer">
+          <%= site.icon %> <%= site.display_name.downcase %>
+        </a>
+      <% end %>
+      <a class="lk" href="mailto:ritchie@macapinlac.com">📧 email</a>
+      <a class="lk" href="/feed.xml">📡 rss</a>
+    </div>
   </div>
 </div>
 
-<!-- Structured Data for SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,6 +70,6 @@ layout: sidebar_layout
   "description": "Technology professional, parent, and lifelong learner sharing thoughts on technology, parenting, productivity, and personal development.",
   "jobTitle": "Technology Professional",
   "knowsAbout": ["Software Development", "DevOps", "Parenting", "Productivity", "Personal Development"],
-  "sameAs": [<%= data.socials.sites.map { |social| "\"#{social.url}\"" }.join(', ') %>]
+  "sameAs": [<%= data.socials.sites.map { |s| "\"#{s.url}\"" }.join(', ') %>]
 }
-</script> 
+</script>

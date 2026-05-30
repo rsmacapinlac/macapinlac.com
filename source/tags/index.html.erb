@@ -1,0 +1,63 @@
+---
+title: "Rabbit holes — macapinlac.com"
+description: "Series and recurring tags. Everything I write eventually falls into one of these."
+---
+<%
+  all_series = all_series_metadata
+  tag_chips  = tags_with_counts
+%>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow"><span class="c">$</span> tree ~/topics</div>
+    <h1>Rabbit holes</h1>
+    <p class="sub">Everything I write eventually falls into one of these. Series are the ones I committed to finishing (results vary); tags are the recurring obsessions.</p>
+  </div>
+
+  <% if all_series.any? %>
+    <div class="sec-label"><span class="c">##</span> series — long-form experiments</div>
+    <div class="series-grid">
+      <% all_series.each do |series| %>
+        <%
+          published = series_articles(series[:name]).length
+          planned   = (series[:planned_posts] || []).length
+          total     = published + planned
+          pct       = total.zero? ? 0 : ((published.to_f / total) * 100).round
+          status    = series[:status] || (published == total && total > 0 ? 'complete' : 'active')
+          featured  = series[:featured] ? 'feat' : nil
+          label     = featured ? "featured · #{status}" : status
+        %>
+        <a class="scard <%= featured %>" href="<%= series_url(series) %>">
+          <div class="ico"><%= series[:icon] %></div>
+          <div class="lbl"><%= label %></div>
+          <h3><%= series[:name] %></h3>
+          <p><%= series[:description] %></p>
+          <div class="prog">
+            <span><%= published %> / <%= total %> published</span>
+            <span class="bar"><i style="width: <%= pct %>%"></i></span>
+          </div>
+          <span class="arr">cd ./<%= series[:slug] %> <span class="a">→</span></span>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="sec-label"><span class="c">##</span> tags — recurring obsessions</div>
+  <div class="tags-grid">
+    <% tag_chips.each do |entry| %>
+      <%
+        tag = entry[:meta]
+        slug = entry[:slug]
+        count = entry[:count]
+      %>
+      <a class="tcard" href="/tags/<%= slug %>.html" style="--c: <%= tag.color %>">
+        <span class="em"><%= tag.icon %></span>
+        <div>
+          <h4><%= slug %></h4>
+          <p><%= tag.description %></p>
+        </div>
+        <span class="ct"><%= count %></span>
+      </a>
+    <% end %>
+  </div>
+</div>

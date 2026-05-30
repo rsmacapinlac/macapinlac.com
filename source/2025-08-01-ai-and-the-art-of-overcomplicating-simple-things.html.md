@@ -38,7 +38,7 @@ Maybe Canva is perfect for wireframing and I'm just dense.
 
 [Relume](https://relume.io) was the closest I got. Give it prompts and it builds a whole sitemap, wireframes, and style guide. Pretty impressive!
 
-The catch? Relume couldn't use those [foundation documents from part 1](/2025-06-30-how-i-procrastinated-my-way-into-my-website-redesign/) as-is. I had to summarize everything to fit into their prompt interface. A better feature would've been importing markdown files directly, but that's wishful thinking.
+The catch? Relume couldn't use those [foundation documents from part 1](/2025/06/30/how-i-procrastinated-my-way-into-my-website-redesign.html) as-is. I had to summarize everything to fit into their prompt interface. A better feature would've been importing markdown files directly, but that's wishful thinking.
 
 But I'm also cheap and couldn't justify $18 USD ($25 CAD) for another tool. The templates all felt Nike.com-inspired. If I'd continued, I would've exported the React components into [Cursor](https://cursor.com), but that felt disconnected from everything else.
 

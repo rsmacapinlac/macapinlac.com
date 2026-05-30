@@ -155,21 +155,24 @@ The architecture supports modifier-based component variations through consistent
 ```
 
 ### 5.2 CSS Custom Properties Integration
-Design system tokens are implemented through CSS custom properties:
+Design system tokens are implemented through CSS custom properties (Build Log v3 names):
 
 ```scss
 :root {
-  --color-primary: #3B5F7F;
-  --color-text: #252525;
+  --rust:   #c2451d;   /* primary accent — was --color-primary: #3B5F7F */
+  --ink:    #1d1b17;   /* primary text  — was --color-text: #252525     */
+  --paper:  #f4f0e8;   /* background    — was --color-bg: #f9f9f9       */
   --space-lg: 2rem;
 }
 
+/* Legacy --color-* aliases still work via colors_and_type.css */
+
 .post--minimal {
-  color: var(--color-text);
+  color: var(--read-ink);
   padding: var(--space-lg);
   
   &:hover {
-    color: var(--color-primary);
+    color: var(--rust);
   }
 }
 ```

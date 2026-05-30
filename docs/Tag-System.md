@@ -1,288 +1,106 @@
 # Tag System Documentation
 
+**Version:** 3.0 — "Build Log" | **Date:** May 2026
+
 ## Overview
 
-The new tag system provides a comprehensive, flexible approach to displaying tags across the site with multiple variants, sizes, colors, and interactive features.
+The Build Log tag system is intentionally simple: one chip style, taxonomy-keyed colors, JetBrains Mono throughout. The previous multi-variant BEM system (pill/rounded/square, primary/secondary/muted) is superseded.
 
-## Features
+---
 
-### ✅ **What's New**
-- **Consistent styling** across all contexts
-- **Multiple size variants** (small, medium, large)
-- **Multiple style variants** (pill, rounded, square)
-- **Multiple color variants** (primary, secondary, muted, success, warning, error)
-- **Interactive features** (hover effects, removable tags, tag clouds)
-- **Accessibility improvements** (better contrast, larger touch targets)
-- **Responsive design** (works on all screen sizes)
-- **Tag counts** and **tag icons** support
-- **Tag filtering** and **tag suggestions** components
+## Tag Visual Style
 
-## Tag Variants
+Tags are mono chips — compact, readable, consistent.
 
-### Size Variants
-
-```html
-<!-- Small tags (11px) -->
-<a href="/tags/tech" class="tag tag--small tag--pill tag--primary">tech</a>
-
-<!-- Medium tags (13px) - Default -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--primary">tech</a>
-
-<!-- Large tags (14px) -->
-<a href="/tags/tech" class="tag tag--large tag--pill tag--primary">tech</a>
+**Default chip:**
+```css
+font-family: var(--font-mono);
+font-size: 11.5px;
+background: color-mix(in srgb, var(--cat, var(--faint)) 13%, transparent);
+color: var(--cat, var(--ink-soft-2));
+padding: 4px 10px;
+border-radius: var(--radius-pill);   /* 20px */
+border: none;
 ```
 
-### Style Variants
-
-```html
-<!-- Square corners -->
-<a href="/tags/tech" class="tag tag--medium tag--square tag--primary">tech</a>
-
-<!-- Rounded corners -->
-<a href="/tags/tech" class="tag tag--medium tag--rounded tag--primary">tech</a>
-
-<!-- Pill shape (most popular) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--primary">tech</a>
+On hover:
+```css
+border: 1px solid var(--rust);
+color: var(--rust);
 ```
 
-### Color Variants
+### Category Color Keying (`--cat`)
+
+Each tag/series sets a local `--cat` variable matched to its taxonomy. The chip automatically inherits that color for its text and background tint.
+
+| Taxonomy | Token | Color |
+|---|---|---|
+| 💻 building-things | `--cat-building` | `#2a5d8f` |
+| 🌱 figuring-things-out | `--cat-figuring` | `#4a90e2` |
+| ⚡ making-things-work | `--cat-making` | `#e4572e` |
+| 👨‍👩‍👧‍👦 family-adventures | `--cat-family` | `#e0a96d` |
+| 🤖 playing-with-ai | `--cat-ai` | `#9b59b6` |
+| 🚗 travelling | `--cat-travel` | `#27ae60` |
+| 💬 conversations | `--cat-convo` | `#1abc9c` |
+| 📧 random-thoughts | `--cat-random` | `#3498db` |
+| 🖥️ homelab-experiments | `--cat-homelab` | `#8e44ad` |
+| 📱 tech-life | `--cat-techlife` | `#34495e` |
+
+Fallback when no `--cat` is set: `var(--rust)`.
+
+---
+
+## Context-Specific Use
+
+### Log-feed index rows
+
+Tags appear as a single chip on the right side of each row (right column of the grid). Always mono, 11.5px, category-keyed color.
 
 ```html
-<!-- Primary (blue) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--primary">tech</a>
-
-<!-- Secondary (gray) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--secondary">tech</a>
-
-<!-- Muted (light gray) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--muted">tech</a>
-
-<!-- Success (green) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--success">tech</a>
-
-<!-- Warning (yellow) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--warning">tech</a>
-
-<!-- Error (red) -->
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--error">tech</a>
+<span class="tg" style="--cat: var(--cat-ai)">playing-with-ai</span>
 ```
 
-## Context-Specific Implementations
+### Latest-entry card
 
-### 1. Homepage Blog Cards
+The tag row above the title: mono uppercase, 11.5px, letter-spacing `.08em`, category badge + date.
+
 ```html
-<div class="card-tags">
-  <a href="/tags/tech" class="card-tag">tech</a>
-  <a href="/tags/productivity" class="card-tag">productivity</a>
-</div>
-```
-- **Size**: Medium
-- **Style**: Pill
-- **Color**: Primary
-- **Features**: Hover effects, clickable
-
-### 2. Individual Post Pages
-```html
-<div class="post-tags">
-  <a href="/tags/tech" class="post-tag">tech</a>
-  <a href="/tags/productivity" class="post-tag">productivity</a>
-</div>
-```
-- **Size**: Medium
-- **Style**: Rounded
-- **Color**: Secondary
-- **Features**: Hover effects, clickable
-
-### 3. Series Pages
-```html
-<div class="series-post-tags">
-  <a href="/tags/tech" class="series-post-tag">tech</a>
-  <a href="/tags/productivity" class="series-post-tag">productivity</a>
-</div>
-```
-- **Size**: Small
-- **Style**: Square
-- **Color**: Muted
-- **Features**: Subtle hover effects
-
-### 4. Homepage Post List
-```html
-<div class="post-item .post-tags">
-  <a href="/tags/tech" class="post-item .tag">tech</a>
-  <a href="/tags/productivity" class="post-item .tag">productivity</a>
-</div>
-```
-- **Size**: Small
-- **Style**: Pill
-- **Color**: Primary
-- **Features**: Compact display
-
-## Advanced Features
-
-### Tag with Count
-```html
-<a href="/tags/tech" class="tag tag--medium tag--pill tag--primary tag--with-count" data-count="15">tech</a>
-```
-Shows the number of posts with that tag.
-
-### Tag with Icon
-```html
-<a href="/tags/tech" class="tag tag--medium tag--rounded tag--primary tag--with-icon">tech</a>
-```
-Includes a tag icon before the text.
-
-### Removable Tags (for filters)
-```html
-<span class="tag tag--medium tag--pill tag--primary tag--removable">
-  tech
-  <button class="tag-remove" onclick="removeTag(this)"></button>
-</span>
-```
-Includes a close button for removing filters.
-
-### Tag Cloud
-```html
-<div class="tag-cloud">
-  <a href="/tags/tech" class="tag tag--large tag--rounded tag--primary" data-weight="5">tech</a>
-  <a href="/tags/productivity" class="tag tag--large tag--rounded tag--primary" data-weight="4">productivity</a>
-  <a href="/tags/parenting" class="tag tag--large tag--rounded tag--primary" data-weight="3">parenting</a>
-</div>
-```
-Tags with different sizes based on frequency (weight 1-5).
-
-### Tag Filters
-```html
-<div class="tag-filters">
-  <span class="tag-filter-label">Filter by:</span>
-  <a href="/tags/tech" class="tag tag--small tag--rounded tag--primary">tech</a>
-  <a href="/tags/productivity" class="tag tag--small tag--rounded tag--primary">productivity</a>
-</div>
-```
-Container for tag filtering with label.
-
-## Usage Guidelines
-
-### When to Use Each Variant
-
-**Small Tags (`tag--small`)**
-- Limited space contexts
-- Secondary information
-- Series pages
-- Homepage post lists
-
-**Medium Tags (`tag--medium`)**
-- Default choice
-- Blog cards
-- Individual posts
-- Most general use cases
-
-**Large Tags (`tag--large`)**
-- Tag clouds
-- Featured content
-- When tags are the primary focus
-
-### Color Guidelines
-
-**Primary (`tag--primary`)**
-- Main content areas
-- Blog cards
-- Homepage elements
-
-**Secondary (`tag--secondary`)**
-- Individual post pages
-- Supporting content
-
-**Muted (`tag--muted`)**
-- Series pages
-- Secondary information
-- Less important contexts
-
-**Success/Warning/Error**
-- Status indicators
-- Special categories
-- When semantic meaning is important
-
-### Style Guidelines
-
-**Pill (`tag--pill`)**
-- Most popular choice
-- Modern, friendly appearance
-- Good for most contexts
-
-**Rounded (`tag--rounded`)**
-- Clean, professional look
-- Good for content-heavy areas
-
-**Square (`tag--square`)**
-- Minimal, technical appearance
-- Good for series or technical content
-
-## Accessibility Features
-
-- **High contrast** colors for better visibility
-- **Larger touch targets** on mobile devices
-- **Keyboard navigation** support
-- **Screen reader** friendly with proper ARIA labels
-- **Focus indicators** for keyboard users
-
-## Responsive Behavior
-
-- **Flexible wrapping** on smaller screens
-- **Adjusted spacing** for mobile devices
-- **Touch-friendly** sizing on mobile
-- **Consistent appearance** across all devices
-
-## Implementation Examples
-
-### Basic Tag Group
-```html
-<div class="tag-group">
-  <a href="/tags/tech" class="tag tag--medium tag--pill tag--primary">tech</a>
-  <a href="/tags/productivity" class="tag tag--medium tag--pill tag--primary">productivity</a>
-  <a href="/tags/parenting" class="tag tag--medium tag--pill tag--primary">parenting</a>
+<div class="tagrow">
+  <span class="badge" style="color: var(--cat-ai)">🤖 playing-with-ai</span>
+  <span class="dt">May 18, 2026</span>
 </div>
 ```
 
-### Compact Tag Group
-```html
-<div class="tag-group tag-group--compact">
-  <a href="/tags/tech" class="tag tag--small tag--pill tag--primary">tech</a>
-  <a href="/tags/productivity" class="tag tag--small tag--pill tag--primary">productivity</a>
-</div>
-```
+### Article page (post footer / meta)
 
-### Spaced Tag Group
-```html
-<div class="tag-group tag-group--spaced">
-  <a href="/tags/tech" class="tag tag--medium tag--rounded tag--primary">tech</a>
-  <a href="/tags/productivity" class="tag tag--medium tag--rounded tag--primary">productivity</a>
-</div>
-```
+Tags appear in the mono metadata row below the title: `date · read-time · tags`. Same chip style.
 
-## Future Enhancements
+### Tag index page (`/tags/`)
 
-- **Tag suggestions** dropdown
-- **Tag search** functionality
-- **Tag analytics** display
-- **Tag categories** and hierarchies
-- **Custom tag colors** per category
-- **Tag sharing** features
+Grid of category pill cards. Each shows: emoji icon, tag name in Lora 17px, post count in mono. Hover: `--rust` border + lift.
 
-## Migration Guide
+### Tag page (`/tags/tag-name`)
 
-The new tag system is backward compatible. Existing tag classes will continue to work, but you can gradually migrate to the new system:
+Eyebrow: `# filed under` in mono. Tag name in Lora page-title size. Body: log-feed rows filtered to that tag.
 
-1. **Phase 1**: Update homepage blog cards (already done)
-2. **Phase 2**: Update individual post pages
-3. **Phase 3**: Update series pages
-4. **Phase 4**: Add advanced features as needed
+---
 
-## Testing
+## Editorial Guidelines
 
-To test the tag system, you can include the `_tag_examples.erb` partial in any page:
+- Limit to **3–5 tags per post**
+- Use tags from `data/tags.yml`; propose new ones and get approval before adding
+- Tags are case-sensitive — match exactly
+- Use specific but not overly granular tags
+- Emoji only in system surfaces (index, tag page header, series) — not in prose
 
-```erb
-<%= partial 'layouts/_tag_examples' %>
-```
+---
 
-This will display all tag variants for testing and reference. 
+## Data Structure
+
+Tags are defined in `data/tags.yml` with name, description, icon, and color. The `about_page_tags.yml` file holds the curated list shown on the About page.
+
+---
+
+## Legacy Note
+
+The previous multi-variant BEM tag system (`tag--pill`, `tag--small`, `tag--primary`, etc.) is removed as part of the Build Log redesign. Existing templates referencing those classes will need to be migrated to the single-chip pattern above during implementation.

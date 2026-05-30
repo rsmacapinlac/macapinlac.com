@@ -84,5 +84,5 @@ The docs folder has been streamlined to focus on permanent documentation. Projec
 
 ---
 
-**Last Updated**: August 2025  
+**Last Updated**: May 2026 — updated for Build Log v3 design system  
 **Maintained By**: Project team following established patterns 

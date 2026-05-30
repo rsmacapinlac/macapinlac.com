@@ -1,24 +1,25 @@
-<footer class="site-footer redesigned-footer">
-  <div class="footer-top-bar"></div>
-  <div class="footer-container">
-    <div class="footer-content redesigned-footer-content">
-      <div class="footer-social">
-        <span class="footer-connect-label">Connect:</span>
-        <ul class="footer-social-icons">
-          <% data.socials.sites.each do |site| %>
-            <li>
-              <a href="<%= site.url %>" class="footer-social-icon-link" target="_blank" rel="noopener noreferrer" aria-label="<%= site.display_name %>">
-                <span class="footer-social-icon"><%= site.icon %></span>
-              </a>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="footer-meta">
-        <span class="footer-credit">Made with <span aria-label="love">❤️</span>, <a href="https://middlemanapp.com" target="_blank" rel="noopener">Middleman</a>, <a href="https://cursor.sh" target="_blank" rel="noopener">Cursor</a>, <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> &amp; <a href="https://pi.dev" target="_blank" rel="noopener">Pi</a></span>
-        <span class="footer-copyright">© <%= Time.now.year %> Ritchie Macapinlac</span>
-      </div>
+<%
+  post_count   = (defined?(blog) && blog) ? blog.articles.length : 0
+  current_year = Time.now.year
+  uptime_years = current_year - 2000
+%>
+<footer class="statusbar" role="contentinfo">
+  <div class="motto">// if something's broken here, I probably <span class="em">&quot;improved&quot;</span> it last weekend.</div>
+  <div class="uptime">uptime: <%= uptime_years %> years · <%= post_count %> posts · 0 regrets (citation needed)</div>
+  <div class="wrap">
+    <div class="credit">
+      made with <span class="heart">&hearts;</span> on
+      <a href="https://middlemanapp.com" target="_blank" rel="noopener">middleman</a>,
+      <a href="https://cursor.sh" target="_blank" rel="noopener">cursor</a>,
+      <a href="https://claude.ai" target="_blank" rel="noopener">claude</a> &amp;
+      <a href="https://pi.ai" target="_blank" rel="noopener">pi</a>
+    </div>
+    <div class="socials">
+      © <%= current_year %> ritchie macapinlac
+      <% data.socials.sites.each do |site| %>
+        <a href="<%= site.url %>" target="_blank" rel="noopener noreferrer" aria-label="<%= site.display_name %>"><%= site.display_name.downcase %></a>
+      <% end %>
+      <a href="/feed.xml" aria-label="RSS">rss</a>
     </div>
   </div>
 </footer>
-

@@ -7,16 +7,17 @@ type: technical
 
 ## 1. Context / Background
 
-### 1.1 Current State
-- Two-font system using Inconsolata (monospace, dates) and JetBrains Mono (post body text)
-- Limited typography hierarchy and visual distinction
-- Inconsistent with design system requirements for professional presentation
+### 1.1 Current State (as of Build Log v3, May 2026)
+- Four-font system: Lora (headings), JetBrains Mono (system voice — chrome, nav, metadata, code), Inter (body), Crimson Text (editorial italic)
+- JetBrains Mono is now the connective voice of the entire interface — not just for code/dates
+- Previously: two-font (Inconsolata + JetBrains Mono), then three-font (Lora + Crimson Text + Inter with Mono for code only)
 
 ### 1.2 Requirements
-- Implement three-font typography system per design specifications
-- Primary serif for authoritative headings and section headers
-- Secondary serif for editorial and narrative content
-- Sans-serif for functional interface elements
+- Implement four-font typography system per Build Log design specifications
+- Primary serif (Lora) for authoritative headings and reading
+- Editorial serif (Crimson Text) for ledes, pull quotes, sign-offs (italic only)
+- Sans-serif (Inter) for body prose and UI labels
+- **Monospace (JetBrains Mono) as the primary system voice**: header prompt, nav, dates, tags, CTAs, footer, code
 - Maintain performance while improving visual hierarchy
 - Support future migration to self-hosted fonts if needed
 

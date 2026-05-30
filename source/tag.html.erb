@@ -1,21 +1,71 @@
 ---
 pageable: true
-per_page: 12
-title: Articles tagged '<%= tagname %>' - macapinlac.com
-description: Browse all articles tagged '<%= tagname %>' on macapinlac.com
+per_page: 50
 ---
-<h2><%= tagname %></h2>
+<% content_for :page_title,       "##{tagname} — macapinlac.com" %>
+<% content_for :page_description, "All posts on macapinlac.com tagged with #{tagname}." %>
+<%
+  meta = get_tag_metadata(tagname)
+  color = meta ? meta.color : '#c2451d'
+  icon  = meta ? meta.icon  : '#'
+  desc  = meta ? meta.description : nil
+  tag_slug = tagname.downcase.gsub(/\s+/, '-')
+  related = related_tags(tagname, 4)
+%>
+<% content_for :body_attrs do %>data-screen-label="Tag · <%= tagname %>" style="--c: <%= color %>"<% end %>
 
-<% tag_metadata = get_tag_metadata(tagname) %>
-<% if tag_metadata && tag_metadata.description %>
-  <p class="tag-description"><%= tag_metadata.description %></p>
-<% end %>
+<div class="wrap">
+  <section class="taghero">
+    <div class="crumb"><a href="/tags/">cd ~/tags</a> / <%= tag_slug %></div>
+    <div class="top">
+      <div class="ico"><%= icon %></div>
+      <div>
+        <h1><span class="hash">#</span> <%= tagname %></h1>
+        <div class="count"><%= page_articles.length %> post<%= 's' unless page_articles.length == 1 %> tagged</div>
+      </div>
+    </div>
+    <% if desc %><p class="desc"><%= desc %></p><% end %>
+  </section>
 
-<div id="articles">
-<% page_articles.each_with_index do |article, i| %>
-  <%= partial 'layouts/_blog_card', locals: {
-    article: article,
-    i: i
-  } %>
-<% end %>
+  <div class="listhead">
+    <div class="h">grep -l <span class="p">"<%= tag_slug %>" ~/posts</span></div>
+  </div>
+
+  <% page_articles.each do |article| %>
+    <%
+      minutes = reading_time(article.body)
+      excerpt = article_excerpt_text(article, limit: 200)
+      others = (article.tags || []) - [tagname]
+    %>
+    <a class="prow" href="<%= article.url %>">
+      <span class="dt"><%= log_date(article.date) %></span>
+      <div>
+        <div class="t"><%= article.title %></div>
+        <% if excerpt %><div class="d"><%= excerpt %></div><% end %>
+        <% unless others.empty? %>
+          <div class="also">
+            <% others.each do |other| %>
+              <% om = get_tag_metadata(other) %>
+              <% next unless om %>
+              <span class="tpill" style="--c2: <%= om.color %>"><%= om.icon %> <%= other.downcase.gsub(/\s+/, '-') %></span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <span class="rt"><%= minutes %> min</span>
+    </a>
+  <% end %>
+
+  <% unless related.empty? %>
+    <div class="relatedtags">
+      <div class="lbl">// often filed alongside</div>
+      <div class="tlist">
+        <% related.each do |rt| %>
+          <a class="tlink" href="/tags/<%= rt.name.downcase.gsub(/\s+/, '-') %>.html" style="--tc: <%= rt.color %>">
+            <%= rt.icon %> <%= rt.name.downcase.gsub(/\s+/, '-') %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
