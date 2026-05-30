@@ -1,591 +1,427 @@
 # Macapinlac.com Design System
 
-**Version:** 2.0 | **Date:** December 2024
+**Version:** 3.0 — "Build Log" | **Date:** May 2026
 
 ## Overview
 
-This design system serves as the foundation for macapinlac.com's redesign, creating a consistent visual language and component library that can be applied across all pages. The system prioritizes readability, minimalism, and thoughtful interaction design that aligns with Ritchie Macapinlac's personal brand and content strategy.
+This design system defines the visual language and component library for macapinlac.com. Version 3 ("Build Log") replaces the previous cool-grey/blue system with a warmer, terminal-forward identity: warm cream paper, near-black ink, a single confident rust accent, and JetBrains Mono promoted from "dates and code" to the connective voice of the entire interface.
+
+The canonical token file is `design-system/colors_and_type.css`. Drop it in with `<link>` and all variables are available.
 
 ---
 
 ## 1. Core Foundation
 
-### Typography
+### Color Palette (Light — default)
 
-| Element | Font | Weight | Size (Desktop) | Size (Mobile) | Line Height |
-|---------|------|--------|----------------|---------------|------------|
-| Body    | Inter | 400    | 18px           | 16px          | 1.6        |
-| H1      | Lora  | 700    | 40px           | 32px          | 1.2        |
-| H2      | Lora  | 700    | 32px           | 28px          | 1.25       |
-| H3      | Lora  | 600    | 24px           | 22px          | 1.3        |
-| H4      | Inter | 600    | 20px           | 18px          | 1.35       |
-| H5      | Inter | 600    | 18px           | 16px          | 1.4        |
-| H6      | Inter | 600    | 16px           | 14px          | 1.4        |
-| Editorial Text | Crimson Text | 400 | 16-18px | 14-16px | 1.5-1.6 |
-| Caption | Inter | 400    | 14px           | 12px          | 1.5        |
-| Code    | Mono  | 400    | 16px           | 14px          | 1.5        |
+| Token | Hex | Use |
+|---|---|---|
+| `--paper` | `#f4f0e8` | Page background (warm cream) |
+| `--paper-2` | `#efe9dd` | Footer, hover fills, inline code |
+| `--surface` | `#fbf9f4` | Raised cards / panels |
+| `--ink` | `#1d1b17` | Primary text |
+| `--ink-soft-2` | `#5c554a` | Secondary text, nav |
+| `--faint` | `#938b7b` | Dates, meta, placeholders |
+| `--read-ink` | `#2a261f` | Long-form reading body |
+| `--line` | `#e0d8c8` | Hairlines, card borders |
+| `--line-strong` | `#cabfa9` | Inputs, chips, stronger borders |
+| `--rust` | `#c2451d` | **Primary accent** — links, prompts, marks, active states |
+| `--rust-d` | `#a23816` | Rust pressed / inline-code text |
+| `--sand` | `#d49a4f` | Secondary — series, sand-keyed surfaces |
+| `--blue` | `#2a5d8f` | Taxonomy color (sparing use only) |
+| `--green` | `#3f7a52` | Terminal ok-green — status, sparingly |
 
-### Three-Font Typography System
+#### Legacy aliases
 
-#### **Font Usage Guidelines:**
+The old `--color-bg`, `--color-text`, `--color-primary`, etc. are aliased to the new names in `colors_and_type.css` so existing templates continue to work. All new work should use the short token names above.
 
-| Font | Purpose | Applications |
-|------|---------|-------------|
-| **Lora (Serif)** | Authoritative Headings | Section headers ("Featured Post", "Topics"), page titles, post titles |
-| **Crimson Text (Serif)** | Editorial/Narrative Content | Tagline quotes, post excerpts, narrative text |
-| **Inter (Sans-serif)** | Functional Interface | Navigation, buttons, labels, dates, metadata, UI elements |
+### Dark Mode — "Espresso"
 
-#### **Specific Applications:**
-- **Tagline/Brand Quote**: Crimson Text, 28px, italic
-- **Post Excerpts**: Crimson Text, 16px, regular
-- **Section Headers**: Lora, 28px, bold
-- **Post Titles**: Lora, 22-24px, semi-bold
-- **Navigation**: Inter, 16px, regular
-- **Metadata (dates, counts)**: Inter, 12-14px, regular
+Warm, brown-tinted near-black. Never cold charcoal.
 
-### Color Palette
+| Token | Dark value |
+|---|---|
+| `--paper` | `#1a1714` |
+| `--surface` | `#242019` |
+| `--ink` | `#efe9dd` |
+| `--rust` | `#e0673b` |
+| `--sand` | `#e0b06a` |
 
-#### Primary Colors
-- **Blue:** #3B5F7F (Text accents, links, primary buttons)
-- **Earth:** #7F6E56 (Secondary accents, highlights)
+Default is light, persisted to `localStorage`. `prefers-color-scheme` detection applies on first visit. 300ms ease cross-fade. Toggle is a mono pill: `◐ light` / `◑ dark`.
 
-#### Neutrals
-- **Dark Gray:** #252525 (Primary text)
-- **Mid Gray:** #474747 (Secondary text)
-- **Light Gray 1:** #777777 (Tertiary text, icons)
-- **Light Gray 2:** #A0A0A0 (Disabled text, borders)
-- **Light Gray 3:** #E5E5E5 (Backgrounds, dividers)
-- **Off-White:** #F7F7F7 (Page background)
+### Taxonomy Colors
 
-#### Functional
-- **Success/Positive:** #2E7D32
-- **Warning:** #ED6C02
-- **Error:** #D32F2F
+Each tag and series carries a `--cat` variable that keys to a category color. Used for:
+- Left border of the latest-entry card
+- Hover rail on log-feed index rows
+- Category pill backgrounds
 
-#### Dark Mode Colors
-- **Background:** #121212
-- **Surface:** #1E1E1E
-- **Surface Elevated:** #2D2D2D
-- **Primary Text:** #F5F5F5
-- **Secondary Text:** #C7C7C7
-- **Dark Mode Blue:** #81A4C7
-- **Dark Mode Earth:** #B8A38C
+Defined as `--cat-ai`, `--cat-building`, `--cat-making`, etc. in `colors_and_type.css`.
+
+---
+
+## 2. Typography
+
+**Four families:**
+
+| Family | Role | Where |
+|---|---|---|
+| **Lora** (serif, 400/600/700) | Authoritative headings & reading | Hero, post titles, H2/H3, card titles |
+| **JetBrains Mono** (400–700) | **The system voice** | Header prompt, nav, eyebrows, dates, reading-time, tags, CTAs, footer, code |
+| **Inter** (sans, 300–700) | Body & UI prose | Body copy, ledes fallback, labels |
+| **Crimson Text** (editorial serif) | Editorial italic | Ledes under titles, pull quotes, sign-offs |
+
+Via Google Fonts CDN — no self-hosted woff2 in the repo.
+
+**Scale (desktop):**
+
+| Use | Size | Family |
+|---|---|---|
+| Hero / page title | 44–46px | Lora 600, tracking -0.018em |
+| Post title | 44px | Lora 600 |
+| H2 | 30px | Lora 600 |
+| H3 | 22px | Lora 600 |
+| Card / H4 title | 20px | Lora 600 |
+| Lede / pull | 23px | Crimson Text italic |
+| Reading body | 19.5px / 1.78lh | Inter 400 |
+| UI body | 17px / 1.6lh | Inter 400 |
+| Meta / eyebrow | 12.5–11.5px | JetBrains Mono, uppercase |
+
+**Reading heads** get a mono prefix via CSS `::before`: H2 → `## `, H3 → `### ` in `--line-strong`. The first paragraph of an article gets a **rust serif drop-cap**.
+
+---
+
+## 3. Spacing, Radii & Shadows
 
 ### Spacing
 
-Based on a flexible spacing system using rem units:
+| Token | rem | px |
+|---|---|---|
+| `--space-xs` | 0.25rem | 4px |
+| `--space-sm` | 0.5rem | 8px |
+| `--space-md` | 1rem | 16px |
+| `--space-lg` | 2rem | 32px |
+| `--space-xl` | 4rem | 64px |
+| `--space-xxl` | 8rem | 128px |
 
-| Token | Value | Pixels (16px base) |
-|-------|-------|-------------------|
-| xs    | 0.25rem | 4px   |
-| sm    | 0.5rem  | 8px   |
-| md    | 1rem    | 16px  |
-| lg    | 2rem    | 32px  |
-| xl    | 4rem    | 64px  |
-| xxl   | 8rem    | 128px |
+Pages breathe — prefer bigger jumps.
 
-### Breakpoints
+### Radii
 
-| Name    | Size       | Content Area |
-|---------|------------|--------------|
-| Mobile  | 0-639px    | 100% - 32px  |
-| Tablet  | 640-1023px | 608px        |
-| Desktop | 1024px+    | 800px        |
-| Wide    | 1440px+    | 1000px       |
+| Use | Value |
+|---|---|
+| Inputs, chips, code | 4px |
+| Cards / panels (workhorse) | 8px |
+| Featured / hero | 14px |
+| Category pills | 20px |
+| Avatars | 50% |
 
-### Layout
+### Shadows
 
-- **Content Width:** Maximum 800px for optimal readability
-- **Margins:** Minimum 16px on mobile, 5% on larger screens
-- **Column System:** 12-column grid for flexibility
+Warm-tinted `rgba(60,40,20,…)` — restrained. Borders separate surfaces at rest; shadows appear only on hover.
+
+| Token | Value | Use |
+|---|---|---|
+| `--shadow-sm` | `0 4px 12px rgba(60,40,20,.08)` | Card / row hover |
+| `--shadow-md` | `0 10px 30px rgba(60,40,20,.10)` | Latest / featured hover |
+| `--shadow-lg` | `0 14px 40px rgba(60,40,20,.14)` | Overlay |
+| `--focus-ring` | `0 0 0 3px rgba(194,69,29,.18)` | Rust-tinted keyboard focus |
+
+### Line Heights
+
+| Token | Value | Use |
+|---|---|---|
+| `--lh-tight` | `1.12` | Hero / post titles |
+| `--lh-snug` | `1.25` | Section heads |
+| `--lh-normal` | `1.6` | UI body |
+| `--lh-read` | `1.78` | Long-form reading |
+
+### Layout Widths
+
+| Token | Value | Use |
+|---|---|---|
+| `--wrap` | `980px` | Page chrome max-width |
+| `--read-width` | `720px` | Article reading column |
+
+### Motion
+
+| Token | Value |
+|---|---|
+| `--ease` | `ease` |
+| `--dur-fast` | `150ms` |
+| `--dur` | `200ms` |
+| `--dur-slow` | `300ms` |
+
+Transitions: cheap and quick, never bouncy.
+
+### Code Surfaces
+
+| Token | Light | Dark |
+|---|---|---|
+| `--code-bg` | `#211f1a` | `#14110e` |
+| `--code-text` | `#ece6da` | `#ece6da` |
+| `--code-inline-bg` | `#efe9dd` | `#2a251e` |
+
+Terminal code blocks use `--code-bg` (near-black) on both themes for consistent terminal look. Inline code uses `--code-inline-bg` (a shade of `--paper-2`) with `--rust-d` text.
+
+### Functional Colors
+
+| Token | Light | Dark |
+|---|---|---|
+| `--success` | `#3f7a52` | `#6fae84` |
+| `--warning` | `#b9791f` | `#d99a3f` |
+| `--error` | `#b23a2b` | `#e07a5f` |
+
+All warm-toned, never cold/saturated. Used sparingly for status indicators only.
 
 ---
 
-## 2. UI Components
+## 4. Signature Components
+
+### Terminal Header
+
+Sticky, blurred. Contains:
+- Shell prompt: `macapinlac.com @ ritchie ~ %` with blinking cursor (rust)
+- Nav links in JetBrains Mono
+- Search field that expands on focus and filters the log feed live with a `grep` status line
+- Dark mode toggle pill: `◐ light` / `◑ dark`
+
+### Latest-Entry Card
+
+- `--cat`-colored left border (4px)
+- Mono uppercase tag row
+- `cat latest-post.md →` CTA
+- Hover: lift + warm shadow (`--shadow-md`)
+
+### Log-Feed Index Row
+
+Grid layout: `[no · date · title/desc · meta]`
+
+On hover: a `--cat`-colored rail grows on the left and the title shifts to the category color.
+
+### Series Strip
+
+Dashed `--line-strong` border on a faint sand tint (`--sand` at low opacity).
+
+### Status-Bar Footer
+
+Mono motto line, uptime stat (`uptime: 26 years · N posts · 0 regrets (citation needed)`), "made with ♥" credit.
+
+### Reading Page
+
+- Fixed mono TOC rail with scroll-spy
+- Rust reading-progress bar (top of viewport)
+- Breadcrumb: `cd ~/posts / …`
+- Series badge
+- Rust serif drop-cap on first paragraph
+- Mono-prefixed H2/H3 (`## ` / `### `)
+- Terminal code blocks with `$ label` header
+- Author card
+- Prev/next article cards
+
+---
+
+## 5. UI Components
 
 ### Navigation
 
-#### Primary Navigation
-- Simple horizontal menu on desktop
-- Hidden behind hamburger on mobile
-- Active state uses subtle underline or color change
+Primary nav links: JetBrains Mono, sentence case. Items: Home · Writing · Series · About · RSS · dark-mode toggle.
 
-```
-Home | Writing | Series | About | Contact
-```
-
-#### Mobile Navigation
-- Hamburger icon in header
-- Expands to full-screen overlay
-- Bold typography with clear tap targets
-- Dark/light mode toggle included
-
-#### Dark/Light Mode Toggle
-- Positioned in header (desktop)
-- In menu on mobile
-- Sun/moon icons with smooth transition
-- Default: Light mode
+Mobile: hamburger expands to full-screen overlay with same mono type.
 
 ### Content Cards
 
-#### Article Preview Card
+#### Latest-Entry Card (homepage featured)
 ```
-[Optional Image]
-Date
-Title (H3)
-Brief excerpt (2-3 lines)
-Read more → (or time estimate)
-```
-
-#### Featured Article Card
-```
-[Larger Optional Image]
-Featured Badge
-Date
-Title (H2)
-Extended excerpt (3-4 lines)
-Read more → (or time estimate)
+[--cat left border]
+[mono tag row]
+Title (Lora 600)
+Lede (Crimson italic)
+cat latest-post.md →
 ```
 
-#### Series Card
+#### Log-Feed Index Row (archive/writing list)
 ```
-[Visual Element/Icon]
-Series Title (H3)
-Brief description
-x Articles in series
-Explore →
+[no]  [date]  [title + one-line desc]  [tag · read-time]
+                     ↑ --cat rail grows on hover
 ```
 
-### Typography Components
-
-#### Links
-- Default: Primary blue with subtle underline
-- Hover: Darker blue with full underline
-- Visited: Slightly desaturated
-- External: Include external link icon
-
-#### Blockquotes
+#### Series Strip
 ```
-|
-| "Quoted text appears here with slightly
-| larger font size and italics."
-|
-| — Attribution
+[dashed border, sand tint]
+  Series title · description · N posts  cd ./series →
 ```
 
-#### Code Blocks
-- Light gray background (#F1F1F1)
-- Dark mode: #2D2D2D
-- Border-radius: 4px
-- Padding: 16px
-- Language tag (optional)
+### Buttons & CTAs
+
+CTAs use mono command syntax: `cat latest-post.md →`, `cd ./series →`, `ls -la → all N`.
+
+Standard buttons:
+- **Primary:** rust background, cream text, hover darkens to `--rust-d`
+- **Secondary:** `--surface` background, `--ink` text, `--line-strong` border
+- **Text/CTA:** mono, rust color, underline on hover
+
+### Tags & Chips
+
+Mono font, 12px, `--paper-2` background, `--line-strong` border, 4px radius. On hover: `--rust` border and text. Category pills use `--cat` as background at 15% opacity with full-opacity border.
+
+### Blockquote
+
+Left border in `--sand` (4px). Body in Crimson italic 20px. Attribution in mono 12.5px faint.
+
+### Code Blocks
+
+Terminal aesthetic: `--ink` background (near-black), cream text. Optional `$ label` header in rust mono. Inline code: `--paper-2` background, `--rust-d` text, 4px radius.
 
 ### Form Elements
 
-#### Text Inputs
-```
-Label
-[                    ]
-Helper text / Error message
-```
-
-#### Buttons
-- **Primary:** Filled background, white text
-- **Secondary:** Outline, colored text
-- **Tertiary:** Text only with subtle hover
-- **States:** Default, Hover, Active, Disabled, Loading
-- **Padding:** Generous padding for comfortable touch targets (minimum 180px width for text-heavy buttons)
-
-##### Button States and Behaviors
-- **Default:** Primary blue (#3B5F7F) background, white text
-- **Hover:** Darker blue (#2D4A5F), smooth 200ms transition
-- **Active:** Pressed state with slightly darker background and 1px inset shadow
-- **Disabled:** Light gray (#A0A0A0) background, disabled cursor
-- **Loading:** Spinner icon replaces text, button remains same size
-- **Focus:** 2px blue outline for keyboard navigation
-
-#### Text Areas
-```
-Label
-[                    ]
-[                    ]
-[                    ]
-Helper text / Character count
-```
-
-### Utility Components
-
-#### Tag System Components
-
-#### Tags
-```
-[tag name]
-```
-- Unified earth tone styling: #F5F3F0 background, #7F6E56 border
-- Small text size
-- Hover effect
-- Placement: Article footer, series pages
-
-#### Tag Cards
-- **Background:** #F5F3F0 (light earth tone)
-- **Border:** #7F6E56 (earth tone), 1px width
-- **Dimensions:** 110px × 90px
-- **Border radius:** 8px
-- **Layout:** Single row of 6 cards
-- **Content:** Emoji icon, tag name, article count
-
-#### Badges
-```
-Part of: [Series Name]
-```
-- For identifying series or special content
-- Distinguished from tags by shape/color
-
-#### Dividers
-- Thin line: 1px
-- Medium line: 2px
-- Visual divider: 3-5px with margin
-
-#### Icons
-- Minimal set for UI elements
-- Consistent 24x24 viewbox
-- Stroke-based for scalability
-- Match to text color
+Inputs: `--surface` background, `--line-strong` border (1px, 4px radius). Focus: `--rust` border 2px. Labels: mono uppercase 11.5px faint.
 
 ---
 
-## 3. Page Templates
+## 6. Shared CSS Files
 
-### Writing Section
+All pages import two shared files:
 
-#### Writing Index Template
-- **Header:**
-  - Page title: "Writing"
-  - Optional filter controls
+**`base.css`** — CSS custom properties (all tokens), `*` reset, `body` defaults (17px Inter, `--paper` bg), `a` reset, `::selection` rust, `.grain` paper texture.
 
-- **Main:**
-  - Article preview cards in reverse chronological order
-  - Year-based navigation sidebar (desktop) or dropdown (mobile)
-  - Pagination or load more option
-
-- **Sidebar/Filter (Desktop):**
-  - Year filter
-  - Popular tags
-  - Featured articles
-
-#### Individual Article Template
-- **Header:**
-  - Series badge (if applicable)
-  - Article title (H1)
-  - Date
-  - Reading time
-
-- **Content:**
-  - Clear typography
-  - Image handling (wide)
-  - Blockquote styling
-  - Code block styling
-
-- **Footer:**
-  - Tags
-  - Series navigation (if applicable)
-  - Related articles
-
-#### Minimalist Reading Layout ✅ IMPLEMENTED
-**Status**: Complete (January 2025)
-
-**Overview**: Reading-focused layout with enhanced typography, distinct navigation styling, and reading time integration.
-
-##### Typography Specifications
-- **Post Title**: Lora, 2.5rem (40px), 700 weight, 1.2 line height
-- **Body Text**: Inter, 1.125rem (18px), 400 weight, 1.7 line height
-- **Meta Information**: Inter, 0.875rem (14px), 500 weight, 1.5 line height
-- **Reading Time**: Inter, 0.875rem (14px), 400 weight, integrated with meta
-
-##### Meta Information Layout
-```
-Date • Reading Time • Tags
-```
-- **Separators**: Bullet points (•) for clean visual separation
-- **Reading Time**: Calculated at 200 words per minute
-- **Tags**: Minimal styling with subtle hover effects
-
-##### Navigation Components
-
-###### Series Navigation (Card-like)
-- **Container**: Card-like appearance with background, borders, and left accent
-- **Background**: `var(--color-bg-secondary)`
-- **Border**: 1px solid with 4px left accent in primary color
-- **Padding**: `$space-lg` (32px) with responsive adjustments
-- **Buttons**: Solid background with hover animations
-- **Center Button**: Primary color background for "View All Posts in Series"
-
-###### Chronological Navigation (Text Links)
-- **Container**: Minimal styling with no background
-- **Buttons**: Underlined text links with subtle hover effects
-- **Typography**: Inter, 1rem (16px), 600 weight
-- **Hover**: Color change and text decoration thickness increase
-
-##### Progress Indicators
-
-###### Series Progress
-- **Text**: "Part X of Y" with clear typography
-- **Progress Bar**: Visual indicator with primary color fill
-- **Animation**: Smooth width transitions for progress updates
-
-##### Content Organization
-- **Header**: Title, meta information, and optional summary
-- **Content**: Main article content with optimized typography
-- **Reply Context**: Styled reply links for webmention integration
-- **Footer**: Navigation components and optional changelog
-
-##### Responsive Behavior
-
-###### Mobile Adaptations
-- **Typography Scaling**: Reduced font sizes for mobile screens
-- **Navigation Stacking**: Series and chronological navigation stack vertically
-- **Spacing Adjustments**: Reduced padding and margins for mobile
-- **Touch Targets**: Minimum 44px height for all interactive elements
-
-###### Tablet and Desktop
-- **Horizontal Navigation**: Navigation components display horizontally
-- **Optimal Reading Width**: Maximum 800px content width
-- **Generous Spacing**: Increased padding and margins for comfortable reading
-
-##### Dark Mode Compatibility
-- **Color Mapping**: All components use CSS custom properties
-- **Background Contrast**: Maintains readability in both modes
-- **Interactive States**: Hover and focus states work in both themes
-- **Progress Indicators**: Adapt to dark mode color scheme
-
-##### Accessibility Features
-- **Semantic Structure**: Proper heading hierarchy and landmark roles
-- **Focus Management**: Clear focus indicators for all interactive elements
-- **Screen Reader Support**: Descriptive labels and ARIA attributes
-- **Keyboard Navigation**: Full keyboard accessibility for all components
-
-##### Performance Considerations
-- **CSS Optimization**: Efficient selectors and minimal specificity conflicts
-- **Loading Strategy**: Critical CSS inlined, non-critical deferred
-- **Animation Performance**: Hardware-accelerated transitions and transforms
-- **Bundle Size**: Minimal CSS footprint with component-based organization
-
-**Implementation Details**:
-- Uses `--minimal` modifier classes for all components
-- Reading time helper methods in `config.rb`
-- Comprehensive CSS styling in `site.css.scss`
-- Full responsive design with mobile-first approach
-- Dark mode compatibility maintained
-- Comprehensive test coverage with 9 test scenarios
-
-### Series Section
-
-#### Series Landing Template
-- **Header:**
-  - Page title: "Series"
-  - Brief introduction
-
-- **Main:**
-  - Series cards grid
-  - Visual distinction between series types
-  - Topic filters (optional)
-
-#### Individual Series Template
-- **Header:**
-  - Series title (H1)
-  - Series description
-
-- **Main:**
-  - Sequential article listing
-  - Progress indicator
-  - Article previews with dates
-
-### About Page
-
-#### About Template ✅ IMPLEMENTED
-**Status**: Complete (January 2025)
-
-- **Header:**
-  - ✅ Page title: "About"
-  - ✅ Page description: "Personal introduction and professional background"
-
-- **Main:**
-  - ✅ Personal introduction section
-  - ✅ Professional background with featured cards
-  - ✅ Content areas overview (Technology, Parenting, Productivity, Personal Development)
-  - ✅ Connection section with social links
-  - ✅ Social media integration with icons
-
-- **Footer:**
-  - ✅ Connection options (social links)
-  - ✅ Navigation buttons (Back to Home, Browse My Writing)
-  - ✅ CV/Resume link (placeholder)
-
-**Implementation Details**:
-- Uses design system components and styling
-- Responsive grid layouts for content areas
-- Dynamic social links from data file
-- SEO optimization with JSON-LD structured data
-- Dark mode compatibility maintained
-- Comprehensive test coverage implemented
-
-### Contact Page
-
-#### Contact Template
-- **Header:**
-  - Page title: "Contact"
-  - Brief invitation
-
-- **Main:**
-  - Form with:
-    - Name
-    - Email
-    - Message
-    - Submit button
-  - Alternative contact methods
-  - Privacy notice
+**`chrome.css`** — `.wrap` (980px max, 32px padding), `.term-bar` (sticky header), `.cmdline`, `.term-nav`, `.toggle`, `.page-head` (60px top padding, eyebrow + H1 + sub), `.statusbar` (footer).
 
 ---
 
-## 4. Tag System
+## 7. Page Templates
 
-### Tag Display
-- Unified earth tone styling across all tags
-- Group at bottom of articles
-- Limited to 3-5 per article
+### 7.1 Homepage
 
-### Tag Cards
-- **Unified Design:** All tag cards use the same earth tone color scheme
-- **Background:** #F5F3F0
-- **Border:** #7F6E56, 1px stroke
-- **Layout:** Single row of 6 cards (110px × 90px each)
-- **Content:** Emoji icon at top, tag name center, article count bottom
-- **Hover State:** Subtle interaction feedback
+**Class inventory:** `.term-bar`, `.cmdline`, `.ps1`, `.fakecur`, `.search`, `.term-nav`, `.toggle`, `.hero`, `.eyebrow`, `.latest`, `.latest a`, `.tagrow`, `.badge`, `.logsec`, `.ix-row`, `.no`, `.dt`, `.t`, `.d`, `.meta-r`, `.rt`, `.tg`, `.searchstat`, `.series`, `.statusbar`
 
-### Tag Index Page
-- Alphabetical grid or list
-- Article count per tag
-- Most popular tags highlighted
+**Key markup patterns:**
+- Search input inside `.cmdline`, expands on focus
+- Latest card: `border-left: 3px solid var(--cat, var(--rust))`
+- Log rows: 4-col grid `44px 116px 1fr auto`; `::before` pseudo-element is the `--cat` rail (width 0 → 3px on hover)
+- Tag chip on row: `color-mix(in srgb, var(--cat) 13%, transparent)` background, 20px border-radius
 
----
+### 7.2 Article
 
-## 5. Dark Mode Implementation
+**Additional CSS (page-local):** `.progress` (3px rust bar fixed top), `.toc-rail` (fixed left rail, hidden <1180px), `.toc-inline` (shown <1180px), `.crumb`, `.phead`, `.series-badge`, `.body`, `.ptags`, `.chip`, `.author`, `.pnav`, `.ncard`
 
-### Mode Switching
-- System preference detection
-- Manual toggle preserved in local storage
-- Smooth transition animation (300ms)
+**Key markup patterns:**
+- Reading column: `.read { max-width: 720px; margin: 0 auto; padding: 0 32px; }`
+- Progress bar: `<div class="progress" id="prog"></div>` — JS writes `style.width`
+- Drop-cap: `.body p:first-of-type::first-letter` — Lora 600, 3.4em, rust, float left
+- H2 prefix: `.body h2::before { content: '## '; font-family: var(--font-mono); color: var(--line-strong); }`
+- H3 prefix: `.body h3::before { content: '### '; }`
+- Pre block: `::before` pseudo with `content: '$ ' attr(data-label)`
+- Series badge: sand bg/border pill with `🤖 Series Name · part N of M`
+- Prev/next: 2-col grid; `.ncard.next { text-align: right; }`
+- TOC scroll-spy: JS toggles `.on` class; smooth scroll on click
 
-### Dark Mode Defaults
-- Default to light mode on first visit
-- Clear visual hierarchy maintained
-- All interactive elements clearly visible
-- Reduced brightness for comfortable reading
+### 7.3 Archive
 
-### Color Mapping
+**Additional CSS (page-local):** `.filters`, `.fchip`, `.fchip.on`, `.yeargroup`, `.yhead`, `.arow`
 
-| Light Mode | Dark Mode |
-|------------|-----------|
-| #F7F7F7 (Background) | #121212 |
-| #FFFFFF (Surface) | #1E1E1E |
-| #252525 (Text) | #F5F5F5 |
-| #3B5F7F (Primary) | #81A4C7 |
+**Key markup patterns:**
+- Filter chips: `border-left: 3px solid var(--c, var(--line-strong))` — `--c` set per chip via inline style
+- `fchip.on`: `background: var(--ink); color: var(--paper)` (inverted)
+- Year head: `~/` prefix in faint, then year bold, then count faint, then flex rule
+- Archive row: 3-col grid `92px 1fr auto`; emoji prefixed to title span
 
----
+### 7.4 Tags & Series (combined)
 
-## 6. Minimalist Reading Layout Components
+**Path:** `/tags/` · **Additional CSS:** `.sec-label`, `.series-grid`, `.scard`, `.scard.feat`, `.tags-grid`, `.tcard`
 
-### Post Layout (Minimalist)
+**Key markup patterns:**
+- Section label: mono, rust, with flex `::after` rule line
+- Series card: flex-column; `.scard.feat { border-left: 3px solid var(--rust); }`
+- Progress bar inside scard: `flex: 1; height: 4px; background: var(--line)`; inner `<i>` in rust with inline `width: X%`
+- Tag card: 3-col grid `auto 1fr auto`; `border-left: 4px solid var(--c)`; `h4::before { content: '#'; color: var(--c); }`
 
-#### Reading-Optimized Typography
-- **Post Title**: Lora, 2.5rem (40px), 700 weight, 1.2 line height
-- **Body Text**: Inter, 1.125rem (18px), 400 weight, 1.7 line height
-- **Meta Information**: Inter, 0.875rem (14px), 500 weight, 1.5 line height
-- **Reading Time**: Inter, 0.875rem (14px), 400 weight, integrated with meta
+### 7.5 Tag Page
 
-#### Meta Information Layout
-```
-Date • Reading Time • Tags
-```
-- **Separators**: Bullet points (•) for clean visual separation
-- **Reading Time**: Calculated at 200 words per minute
-- **Tags**: Minimal styling with subtle hover effects
+**Path:** `/tags/{slug}.html` · `<body style="--c:{category-color}">` · **Additional CSS:** `.taghero`, `.listhead`, `.prow`, `.tpill`, `.relatedtags`, `.tlink`
 
-#### Navigation Components
+**Key markup patterns:**
+- `--c` on `<body>`: drives icon box bg, hash color, count color, left rail color, secondary pill colors
+- Icon box: 64px, border-radius 16px, `color-mix(in srgb, var(--c) 14%, transparent)` bg
+- Title: `<h1><span class="hash">#</span> Tag Name</h1>` — `.hash { color: var(--c); font-family: var(--font-mono); }`
+- Post rows: 3-col grid `116px 1fr auto`; `--c` rail on hover
+- Secondary tag pills: `.tpill` with `--c2` variable for each pill's color
+- Related tags: `.tlink { border-left: 3px solid var(--tc); }` — `--tc` per link
 
-##### Series Navigation (Card-like)
-- **Container**: Card-like appearance with background, borders, and left accent
-- **Background**: `var(--color-bg-secondary)`
-- **Border**: 1px solid with 4px left accent in primary color
-- **Padding**: `$space-lg` (32px) with responsive adjustments
-- **Buttons**: Solid background with hover animations
-- **Center Button**: Primary color background for "View All Posts in Series"
+### 7.6 Series Page
 
-##### Chronological Navigation (Text Links)
-- **Container**: Minimal styling with no background
-- **Buttons**: Underlined text links with subtle hover effects
-- **Typography**: Inter, 1rem (16px), 600 weight
-- **Hover**: Color change and text decoration thickness increase
+**Path:** `/series/{slug}.html` · `<body style="--c:{category-color}">` · **Additional CSS:** `.shero`, `.meter`, `.partshead`, `.part`, `.part.planned`
 
-#### Progress Indicators
+**Key markup patterns:**
+- `--c` on `<body>`: drives badge, icon, progress bar, part number, rail color
+- Status badge: pill with `color-mix(in srgb, var(--c) 13%, transparent)` bg
+- Icon box: 66px, border-radius 16px
+- Progress meter: `max-width: 360px; height: 6px; background: var(--line)`; inner `<i style="width:X%">` in `--c`
+- Part rows: 3-col grid `54px 1fr auto`; `--c` rail on hover; `→` arrow translates 4px on hover
+- Planned parts: `.planned { opacity: .6; }`, italic title, dashed `// coming soon` pill badge
 
-##### Series Progress
-- **Text**: "Part X of Y" with clear typography
-- **Progress Bar**: Visual indicator with primary color fill
-- **Animation**: Smooth width transitions for progress updates
+### 7.7 About
 
-#### Content Organization
-- **Header**: Title, meta information, and optional summary
-- **Content**: Main article content with optimized typography
-- **Reply Context**: Styled reply links for webmention integration
-- **Footer**: Navigation components and optional changelog
+**Additional CSS (page-local):** `.ahero`, `.prose`, `.holes`, `.hgrid`, `.hole`, `.now`, `.contact`, `.links`, `.lk`
 
-### Responsive Behavior
+**Key markup patterns:**
+- Hero: `grid-template-columns: 200px 1fr; gap: 44px; padding: 58px 0 44px`
+- Portrait: 200px circle, `border: 1px solid var(--line-strong)`; location badge positioned absolute bottom-right
+- Reading column: `.read { max-width: 720px; margin: 0 auto; padding: 0 32px; }`
+- Topic grid: `.hgrid { grid-template-columns: 1fr 1fr; gap: 12px; }`
+- Now strip: `border: 1px dashed var(--line-strong); background: rgba(212,154,79,.07)`; `$ what I'm into right now` label
+- Contact links: `.lk` — mono font, border button; hover: `background: var(--ink); color: var(--paper)`
 
-#### Mobile Adaptations
-- **Typography Scaling**: Reduced font sizes for mobile screens
-- **Navigation Stacking**: Series and chronological navigation stack vertically
-- **Spacing Adjustments**: Reduced padding and margins for mobile
-- **Touch Targets**: Minimum 44px height for all interactive elements
+### 7.8 404
 
-#### Tablet and Desktop
-- **Horizontal Navigation**: Navigation components display horizontally
-- **Optimal Reading Width**: Maximum 800px content width
-- **Generous Spacing**: Increased padding and margins for comfortable reading
+**Additional CSS (page-local):** `.fill`, `.term`, `.term-card`, `.chrome`, `.dot`, `.backrow`
 
-### Dark Mode Compatibility
-- **Color Mapping**: All components use CSS custom properties
-- **Background Contrast**: Maintains readability in both modes
-- **Interactive States**: Hover and focus states work in both themes
-- **Progress Indicators**: Adapt to dark mode color scheme
-
-### Accessibility Features
-- **Semantic Structure**: Proper heading hierarchy and landmark roles
-- **Focus Management**: Clear focus indicators for all interactive elements
-- **Screen Reader Support**: Descriptive labels and ARIA attributes
-- **Keyboard Navigation**: Full keyboard accessibility for all components
-
-### Performance Considerations
-- **CSS Optimization**: Efficient selectors and minimal specificity conflicts
-- **Loading Strategy**: Critical CSS inlined, non-critical deferred
-- **Animation Performance**: Hardware-accelerated transitions and transforms
-- **Bundle Size**: Minimal CSS footprint with component-based organization
+**Key markup patterns:**
+- Layout: `body { min-height: 100vh; display: flex; flex-direction: column; }`, `.fill { flex: 1; display: flex; align-items: center; }`
+- Terminal card: `background: #211f1a; border-radius: var(--radius-lg); box-shadow: 0 20px 50px rgba(60,40,20,.16)`
+- Chrome bar: `#2b2823` bg, traffic dots (red `#e0625a`, yellow `#e0b14f`, green `#5aae6a`)
+- "404" text: Lora 700, 64px, `#ece6da`, on dark background
+- Back nav: `border-left: 3px solid var(--rust)` on primary link; hover = filled ink
 
 ---
 
-## 7. Style Guide Usage
+## 7. Iconography & Imagery
 
-### Implementation Notes
-- Component-based approach recommended
-- CSS custom properties for theming
-- Mobile-first responsive approach
-- Progressive enhancement philosophy
+Deliberately icon-light:
+- Emoji as system icons for tags, series, socials
+- Unicode glyphs for affordances (`→`, `›`, `●`, `◐`)
+- No icon font or SVG sprite in the base system
 
-### Governance
-- Design system version tracking
-- Component approval process
-- Feedback loop for improvements
+The avatar is the only branded visual (no stock photography, no SVG illustrations). If a richer icon set is needed, substitute **Lucide** (24×24, stroke 2) and flag the substitution.
 
 ---
 
-This document serves as the foundation for macapinlac.com's redesign and will evolve as the site grows and adapts to new content needs.
+## 8. Paper Grain
+
+A subtle two-radial CSS background grain (`.grain` class) adds texture to `--paper` surfaces. Applied to `<body>` and hero sections. No visible on `--surface` cards — depth comes from warm borders and shadows, not the grain.
+
+---
+
+## 9. Breakpoints
+
+| Name | Size |
+|---|---|
+| Mobile | 0–760px |
+| Desktop | 760px+ |
+
+At mobile: single-column, TOC rail hidden, mono header collapses to hamburger, nav is full-screen overlay.
+
+---
+
+## 10. Implementation Notes
+
+- All tokens live in `design-system/colors_and_type.css` — import it first.
+- UI kit HTML prototypes in `design-system/ui_kits/blog/` (Homepage, Article, Archive, Tags, Tag, Series, About, 404).
+- Preview cards for every token and component in `design-system/preview/`.
+- Legacy `--color-*` aliases are exported — existing templates that use them will not break, but migrate to short names on any new work.
+- Web fonts are loaded via Google Fonts CDN; no woff2 assets are stored in the repo.
+- Dark mode: toggle writes `data-theme="dark"` to `<html>`, persisted to `localStorage`. `prefers-color-scheme` is read on first visit.
+
+---
+
+*Design system v3 — "Build Log" direction. Supersedes v2 (December 2024). Source of truth: `design-system/colors_and_type.css` + `design-system/README.md`.*
