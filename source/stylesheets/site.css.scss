@@ -2014,6 +2014,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-size: 19px;
   line-height: 1.78;
   color: var(--read-ink);
+  max-width: 680px;     // keep a comfortable reading measure inside the wide column
 }
 
 .prose p { margin: 0 0 24px; }
@@ -2047,7 +2048,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .hgrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
