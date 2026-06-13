@@ -126,7 +126,7 @@ body {
   width: 100%;
 }
 
-main.main-content { flex: 1; }
+main.main-content { flex: 1; min-width: 0; }
 
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
@@ -161,6 +161,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   max-width: var(--read-width);
   margin: 0 auto;
   padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .wrap { padding: 0 20px; }
+  .read { padding: 0 20px; }
 }
 
 // -----------------------------------------------------------------------------
@@ -278,15 +283,34 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .toggle:hover { color: var(--rust); }
 
-@media (max-width: 720px) {
-  .term-bar .wrap { gap: 12px; padding: 0 18px; }
+@media (max-width: 768px) {
+  // Header stacks into two rows: prompt/search on top, nav below.
+  // Nothing is hidden — the nav row scrolls horizontally instead.
+  .term-bar .wrap {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    gap: 0;
+    padding: 0 20px;
+  }
+  .cmdline { width: 100%; height: 52px; gap: 8px; min-width: 0; }
   .cmdline .ps1 .host { font-size: 13px; }
   .cmdline .ps1 .path { display: none; }
-  .cmdline .search { width: 110px; font-size: 13px; }
-  .cmdline .search:focus { width: 160px; }
-  .term-nav { gap: 14px; font-size: 12.5px; }
-  .term-nav a.about-link,
-  .term-nav a.archive-link { display: none; }
+  // Search flexes to fill the prompt row (home page only)
+  .cmdline .search,
+  .cmdline .search:focus { flex: 1 1 auto; width: auto; min-width: 0; font-size: 13px; }
+  .term-nav {
+    width: 100%;
+    height: 46px;
+    gap: 18px;
+    font-size: 12.5px;
+    border-top: 1px solid var(--line);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .term-nav::-webkit-scrollbar { display: none; }
+  .term-nav .toggle { margin-left: auto; }
 }
 
 // -----------------------------------------------------------------------------
@@ -322,7 +346,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.6;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .page-head { padding: 36px 0 8px; }
   .page-head h1 { font-size: 32px; }
 }
@@ -373,9 +397,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .statusbar .socials a { color: var(--ink-soft-2); margin-left: 14px; transition: color var(--t-fast); }
 .statusbar .socials a:hover { color: var(--rust); }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .statusbar .wrap { padding: 18px 18px; }
   .statusbar .motto, .statusbar .uptime { padding-left: 18px; padding-right: 18px; }
+  .statusbar .uptime { overflow-wrap: anywhere; }
 }
 
 // -----------------------------------------------------------------------------
@@ -425,10 +450,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   letter-spacing: .03em;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .hero { padding: 48px 0 32px; }
   .hero h1 { font-size: 34px; max-width: none; }
   .hero .sub { font-size: 16px; margin-top: 28px; }
+  .hero .metaline { overflow-wrap: anywhere; }
 }
 
 // Latest-entry card
@@ -629,13 +655,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
   padding: 30px 14px;
 }
 
-@media (max-width: 720px) {
-  .ix-row { grid-template-columns: 36px 1fr auto; row-gap: 4px; padding: 14px 8px 14px 12px; }
-  .ix-row .dt { grid-column: 1 / -1; font-size: 11.5px; }
-  .ix-row .no { grid-column: 1; }
-  .ix-row .t { font-size: 17px; }
-  .ix-row .meta-r { gap: 8px; }
-  .ix-row .tg { display: none; }
+@media (max-width: 768px) {
+  // Stack the row: date / title+desc / readtime+tag — readtime drops to its
+  // own line instead of baseline-floating beside a wrapping title.
+  .ix-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 16px 12px;
+  }
+  .ix-row .no { display: none; }
+  .ix-row .dt { font-size: 11.5px; }
+  .ix-row .t { font-size: 19px; }
+  .ix-row .d { max-width: none; }
+  .ix-row .meta-r { gap: 14px; }
 }
 
 // Series strip
@@ -684,7 +718,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .series-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
   .series-strip .arr2 { margin-left: 0; }
 }
@@ -836,7 +870,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .phead .meta .k { color: var(--rust); }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .phead h1 { font-size: 32px; }
   .phead .lede { font-size: 20px; }
 }
@@ -847,6 +881,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-size: 19.5px;
   line-height: 1.78;
   color: var(--read-ink);
+  overflow-wrap: anywhere;
 }
 
 .body p { margin: 0 0 26px; }
@@ -1111,9 +1146,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .ncard.next { text-align: right; }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .pnav { grid-template-columns: 1fr; }
   .ncard.next { text-align: left; }
+}
+
+@media (max-width: 768px) {
+  .body { font-size: 17.5px; }
+  .body p:first-of-type::first-letter { font-size: 3em; padding-right: 9px; }
+  .body h2 { font-size: 24px; margin-top: 40px; }
+  .body h3 { font-size: 20px; }
+  .body blockquote { font-size: 20px; padding-left: 20px; }
+  .body .pull { font-size: 22px; }
+  // clear the taller stacked mobile header when jumping to a heading anchor
+  .body h2, .body h3 { scroll-margin-top: 110px; }
+  .toc-inline { padding: 18px 20px; }
 }
 
 // In-reply marker
@@ -1268,10 +1315,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 
-@media (max-width: 720px) {
-  .arow { grid-template-columns: 1fr auto; row-gap: 4px; }
-  .arow .dt { grid-column: 1 / -1; font-size: 11.5px; }
-  .arow .t { font-size: 17px; }
+@media (max-width: 768px) {
+  // Stack the row so the readtime sits on its own line, not beside the title.
+  .arow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 14px 12px;
+  }
+  .arow .dt { font-size: 11.5px; }
+  .arow .t { font-size: 19px; }
 }
 
 // -----------------------------------------------------------------------------
@@ -1445,7 +1499,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .series-grid, .tags-grid { grid-template-columns: 1fr; }
 }
 
@@ -1511,6 +1565,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--ink-soft-2);
   margin: 22px 0 0;
   max-width: 56ch;
+}
+
+@media (max-width: 768px) {
+  .taghero { padding: 40px 0 8px; }
+  .taghero h1 { font-size: 28px; }
+  .taghero .ico { width: 56px; height: 56px; font-size: 28px; }
+  .taghero .desc { font-size: 18px; }
 }
 
 .listhead {
@@ -1641,10 +1702,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: color-mix(in srgb, var(--tc, var(--rust)) 8%, transparent);
 }
 
-@media (max-width: 720px) {
-  .prow { grid-template-columns: 1fr auto; row-gap: 4px; }
-  .prow .dt { grid-column: 1 / -1; }
-  .prow .t { font-size: 18px; }
+@media (max-width: 768px) {
+  // Stack the row so the readtime sits on its own line, not beside the title.
+  .prow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 16px 12px;
+  }
+  .prow .dt { font-size: 11.5px; }
+  .prow .t { font-size: 19px; }
+  .prow .d { max-width: none; }
 }
 
 // -----------------------------------------------------------------------------
@@ -1716,6 +1785,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--ink-soft-2);
   margin: 20px 0 0;
   max-width: 58ch;
+}
+
+@media (max-width: 768px) {
+  .shero { padding: 40px 0 8px; }
+  .shero .top { gap: 14px; }
+  .shero .ico { width: 56px; height: 56px; font-size: 28px; }
+  .shero h1 { font-size: 26px; }
+  .shero .desc { font-size: 18px; }
 }
 
 .meter {
@@ -1850,9 +1927,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 
-@media (max-width: 720px) {
-  .part { grid-template-columns: 44px 1fr; row-gap: 6px; }
-  .part .go, .part .badge2 { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
+@media (max-width: 768px) {
+  // Stack the row: part-label / title+summary / read-link.
+  .part {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 18px 12px;
+  }
+  .part .t { font-size: 20px; }
+  .part .s { max-width: none; }
 }
 
 // -----------------------------------------------------------------------------
@@ -2071,7 +2156,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-color: var(--ink);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .ahero { grid-template-columns: 1fr; gap: 28px; padding: 36px 0 28px; text-align: left; }
   .ahero .portrait { justify-self: start; }
   .ahero .portrait img { width: 140px; height: 140px; }
@@ -2183,3 +2268,36 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .backrow a.primary { border-left: 3px solid var(--rust); }
+
+@media (max-width: 768px) {
+  .term { padding: 0 20px; }
+  .term-card .body-card { padding: 22px 20px 26px; font-size: 13px; }
+  .term-card .big { font-size: 48px; }
+  .backrow a { font-size: 12.5px; }
+}
+
+// -----------------------------------------------------------------------------
+// 15. Responsive — cross-cutting tiers (additive, loaded last)
+//     Adds the tiers around the main phone breakpoint (768px, which now
+//     covers iPad mini portrait): an early tablet grid-collapse so 2-col
+//     layouts don't get cramped between 769–860px, and a very-narrow phone
+//     tier that tightens the worst type offenders.
+// -----------------------------------------------------------------------------
+
+// Tablet — collapse the wide 2-col grids early
+@media (max-width: 860px) {
+  .series-grid { grid-template-columns: 1fr; } // tags + series index
+  .tags-grid   { grid-template-columns: 1fr; } // tags + series index
+  .ahero       { grid-template-columns: 1fr; } // about
+  .hgrid       { grid-template-columns: 1fr; } // about
+  .pnav        { grid-template-columns: 1fr; } // article prev/next
+}
+
+// Very narrow — ≤400px, tighten the worst offenders a touch more
+@media (max-width: 400px) {
+  .hero h1  { font-size: 27px; }
+  .phead h1 { font-size: 25px; }
+  .cmdline .ps1 .host { font-size: 12px; }
+  .term-nav { gap: 12px; font-size: 12px; }
+  .body p:first-of-type::first-letter { font-size: 2.6em; }
+}
